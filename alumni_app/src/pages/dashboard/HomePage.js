@@ -1,11 +1,13 @@
 import React from "react";
-import Header from "./Header";
+import Navbar from "../../common/Navbar";
 
 export default function HomePage() {
     return (
         <>
-            <Header></Header>
-            Home Page Is Here !
+            <Navbar></Navbar>
+            <div>
+                Home Page Is Here !
+            </div>
         </>
 
     )
