@@ -2,11 +2,13 @@ package alumnimanagement.dto;
 
 import alumnimanagement.entity.Education;
 import alumnimanagement.entity.Experience;
-import alumnimanagement.entity.User;
+import lombok.Data;
+
 
 import javax.persistence.OneToMany;
 import java.util.List;
 
+@Data
 public class CvDto {
     private String summary;
     private String skills;

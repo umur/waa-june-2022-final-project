@@ -1,13 +1,16 @@
 package alumnimanagement.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Data
 public class Education {
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private enum level{
         Masters, PHD
     }
