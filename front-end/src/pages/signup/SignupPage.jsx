@@ -10,7 +10,7 @@ import Authentication from '../../service/authentication';
 const SignupPage = () => {
 
     // need to implement user class
-    const [user, setUser] = useState(new User('', '', ''));
+    const [user, setUser] = useState(new User('', '', '', ''));
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -43,7 +43,7 @@ const SignupPage = () => {
         setSubmitted(true);
 
         //validation
-        if (!user.username || !user.password || !user.email) {
+        if (!user.username || !user.password || !user.email || !user.role) {
             return;
         }
 
@@ -122,6 +122,23 @@ const SignupPage = () => {
                         />
                         <div className="invalid-feedback">
                             Password is required.
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="Password">Role: </label>
+                        <select
+                            className="form-select"
+                            name='role'
+                            value={user.role}
+                            onChange={(e) => handleChange(e)}
+                            required>
+                            <option value=''>Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                        </select>
+                        <div className="invalid-feedback">
+                            Role is required.
                         </div>
                     </div>
 

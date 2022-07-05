@@ -1,5 +1,6 @@
 package com.finalproject.controllers;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -91,7 +92,9 @@ public class AuthController {
                signUpRequest.getEmail(),
                encoder.encode(signUpRequest.getPassword()));
 
-    Set<String> strRoles = signUpRequest.getRole();
+
+
+    Set<String> strRoles = Collections.singleton(signUpRequest.getRole());
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
@@ -104,8 +107,15 @@ public class AuthController {
           Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(adminRole);
-
           break;
+          case "student":
+            Role studentRole = roleRepository.findByName(ERole.ROLE_STUDENT).orElseThrow(() -> new RuntimeException("Error: Role is not found"));
+            roles.add(studentRole);
+          break;
+          case "faculty":
+            Role facultyRole = roleRepository.findByName(ERole.ROLE_FACULTY).orElseThrow(() -> new RuntimeException("Error: Role is not found"));
+            roles.add(facultyRole);
+            break;
         default:
           Role userRole = roleRepository.findByName(ERole.ROLE_USER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

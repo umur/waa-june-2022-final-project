@@ -6,6 +6,7 @@ import { SignupPage } from './pages/signup/SignupPage'
 import { NotfoundPage } from './pages/error/NotFound';
 import { UnauthorizedPage } from './pages/unauthorized/Unauthorized';
 import { ProfilePage } from './pages/profile/ProfilePage';
+import HomePage from './pages/home/HomePage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
       <div className='container'>
         <Routes>
+          <Route path='/home' element={<HomePage />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
