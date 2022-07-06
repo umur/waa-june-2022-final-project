@@ -1,13 +1,10 @@
 package edu.miu.amp.controller;
 
 
-import edu.miu.amp.domain.JobHistory;
 import edu.miu.amp.dto.JobHistoryDto;
-import edu.miu.amp.dto.PagedResponse;
 
 
 import edu.miu.amp.service.JobHistoryService;
-import edu.miu.amp.utils.AppConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
