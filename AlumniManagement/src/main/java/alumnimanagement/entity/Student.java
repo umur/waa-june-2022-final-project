@@ -10,6 +10,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private  String name;
 
     @OneToOne
     @JoinColumn(name = "id_address")
