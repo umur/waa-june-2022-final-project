@@ -8,6 +8,8 @@ public class AlumniManagementPortalApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AlumniManagementPortalApplication.class, args);
+        System.out.println("GITHUB");
+
     }
 
 }
