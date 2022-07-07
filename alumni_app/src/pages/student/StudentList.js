@@ -6,7 +6,7 @@ export default function StudentList() {
         <>
             Student List
             <div className="list-table">
-                <TableMain dataUrl={'/todos'}></TableMain>
+                <TableMain dataUrl={'/students'}></TableMain>
             </div>
         </>
 

@@ -5,19 +5,20 @@ import alumnimanagement.services.JobService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/jobs")
 @AllArgsConstructor
 public class JobController {
 
     private final JobService jobService;
 
-    @GetMapping
-    public List<JobAdvertisementDTO> findAll() {
+    @GetMapping("/getAll")
+    public List<JobAdvertisementDTO> findAll(@RequestParam int page, @RequestParam int size) {
         return jobService.getAll();
     }
 

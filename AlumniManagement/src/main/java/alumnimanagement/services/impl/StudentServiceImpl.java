@@ -38,10 +38,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> findAll() {
-
         List<StudentDTO> studentDTOS = studentRepo.findAll().stream().map(student -> {
             return modelMapper.map(student, StudentDTO.class);
         }).toList();
+
         return studentDTOS;
     }
 
