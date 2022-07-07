@@ -3,16 +3,17 @@ package alumnimanagement.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 public class Faculty {
     @Id
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_address")
     private Address address;
 
