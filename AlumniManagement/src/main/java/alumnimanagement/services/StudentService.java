@@ -1,6 +1,7 @@
 package alumnimanagement.services;
 
 import alumnimanagement.dto.StudentDTO;
+import alumnimanagement.dto.StudentListDto;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface StudentService {
     List<StudentDTO> findAll();
 
     void remove(long id);
+    List<StudentListDto> findAllByParam(int page, int size, String searchValue);
+    Long totalStudents();
 }
