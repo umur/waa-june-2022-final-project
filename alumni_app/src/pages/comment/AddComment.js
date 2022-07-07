@@ -4,9 +4,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { useState } from "react";
+import { useParams } from "react-router";
 
 export default function AddComment() {
 
+    const {id} = useParams();
     const [commentState, setCommentState] = useState('');
     const onClicked = () => {
 
@@ -18,6 +20,7 @@ export default function AddComment() {
     }
     return (
         <div>
+            {id}
             <Box
                 component="form"
                 sx={{
