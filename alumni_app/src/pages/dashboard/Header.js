@@ -34,6 +34,8 @@ export default function Header() {
         <ListItem><Link to='/Students' className={classes.link}>Student</Link></ListItem>
         <ListItem><Link to='/Faculties' className={classes.link}>Faculty</Link></ListItem>
         <ListItem><Link to='/Jobs' className={classes.link}>Jobs</Link></ListItem>
+        <ListItem><Link to='/Profile' className={classes.link}>Profile</Link></ListItem>
+
       </Stack>
 
 
