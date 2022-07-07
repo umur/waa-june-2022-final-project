@@ -36,5 +36,5 @@ public class Faculty {
     //Faculty can write comments on students.
     //  Only faculty can see the comments.
     @OneToMany
-    private List<FacultyFeedback> facultyFeedbacks;
+    private List<Comment> facultyFeedbacks;
 }
