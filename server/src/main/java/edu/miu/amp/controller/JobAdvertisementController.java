@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/job-advertisements")
+@RequestMapping("v1/api/job-advertisements")
 public class JobAdvertisementController {
     @Autowired
     private JobAdvertisementService jobAdvertisementService;
