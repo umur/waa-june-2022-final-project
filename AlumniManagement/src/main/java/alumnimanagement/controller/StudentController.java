@@ -30,6 +30,11 @@ public class StudentController {
         return studentService.findAll();
     }
 
+    @GetMapping("/getAll")
+    public List<StudentDTO> findAllStudent(@RequestParam String searchValue) {
+        return studentService.findAll();
+    }
+
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable long id, @RequestBody StudentDTO studentDTO) throws Exception {
         studentService.update(id, studentDTO);
