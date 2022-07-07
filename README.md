@@ -89,7 +89,7 @@ JobAdvertisement:
 tags: List<Tag>
 description: String
 benefits: String
-files: List<String>
+files: List<File>
 ```
 
 Faculty:
