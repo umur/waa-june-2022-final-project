@@ -22,4 +22,4 @@ server:
 subo8:
   app:
     jwtSecret: SecretKey!
-    jwtExpirationMs: '900000'
+    jwtExpirationMs: '9000000'

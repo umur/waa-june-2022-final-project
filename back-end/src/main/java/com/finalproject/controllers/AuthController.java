@@ -1,5 +1,6 @@
 package com.finalproject.controllers;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -125,6 +126,7 @@ public class AuthController {
     }
 
     user.setRoles(roles);
+    user.setActive(true);
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

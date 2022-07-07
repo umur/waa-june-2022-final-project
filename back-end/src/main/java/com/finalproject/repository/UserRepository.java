@@ -2,6 +2,7 @@ package com.finalproject.repository;
 
 import java.util.Optional;
 
+import com.finalproject.models.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
   Boolean existsByUsername(String username);
 
   Boolean existsByEmail(String email);
+
+  Address findByAddress_User_Id(Long id);
+
 }
