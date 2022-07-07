@@ -161,7 +161,7 @@ export default function TableMain(props) {
                         <TableCell style={{ width: 50 }}>
                             <Button onClick={() => { navigate('/Edit') }} variant="contained" color="success" className='button-custom'>Edit</Button>
                             <Button variant="contained" color="warning" className='button-custom'>Delete</Button>
-                            <Button variant="contained" color="secondary" className='button-custom'>Detail</Button>
+                            <Button onClick={() => { navigate('/StudentDetails/' + data.id) }} variant="contained" color="secondary" className='button-custom'>Detail</Button>
                             <Button onClick={() => { navigate('/AddComment/' + data.id) }} variant="contained" color="primary" className='button-custom'>Add Comment</Button>
                         </TableCell>
 

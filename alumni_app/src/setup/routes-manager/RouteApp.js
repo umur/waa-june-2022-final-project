@@ -6,6 +6,7 @@ import StudentList from "../../pages/student/StudentList";
 import Jobs from "../../pages/job/Jobs";
 import AddComment from "../../pages/comment/AddComment";
 import ErrorPage from "../../pages/ErrorPage";
+import StudentDetail from "../../pages/student/StudentDetail";
 
 
 export default function RouteApp() {
@@ -18,6 +19,7 @@ export default function RouteApp() {
                 <Route path='/AddComment/:id' element={<AddComment />}></Route>
                 <Route path='/Jobs' element={<Jobs />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
+                <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
             </Routes>
         </>
     )
