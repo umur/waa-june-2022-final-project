@@ -26,7 +26,7 @@ public class Student {
     @NotNull
     private String email;
     @NotNull
-    private String passwpord;
+    private String password;
     private float gpa;
 
     @ManyToOne
