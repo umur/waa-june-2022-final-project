@@ -3,6 +3,8 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../pages/dashboard/Header";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,18 +17,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
+    const navigate = useNavigate();
 
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="h6" color="inherit">
-                        Alumini Management Portal
+                        <span onClick={()=>{navigate('/')}} className="pointer">  Alumini Management Portal</span>
                     </Typography>
                     <IconButton edge="start"
-                    className={classes.root}
+                        className={classes.root}
                         color="inherit" aria-label="menu">
-                            <Header></Header>
+                        <Header></Header>
                     </IconButton>
                 </Toolbar>
             </AppBar>
