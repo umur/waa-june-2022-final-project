@@ -16,7 +16,7 @@ public class JobAdvertisement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
-    private String benifits;
+    private String benefits;
 
     @ManyToMany
     private List<Tag> tags;
