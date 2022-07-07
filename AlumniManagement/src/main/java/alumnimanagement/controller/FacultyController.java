@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/faculties")
+@CrossOrigin
 public class FacultyController {
     private final FacultyService facultyService;
 

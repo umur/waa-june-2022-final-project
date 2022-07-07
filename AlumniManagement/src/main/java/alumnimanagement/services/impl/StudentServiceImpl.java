@@ -1,6 +1,7 @@
 package alumnimanagement.services.impl;
 
 import alumnimanagement.dto.StudentDTO;
+import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Student;
 import alumnimanagement.repo.StudentRepo;
 import alumnimanagement.services.StudentService;
@@ -26,8 +27,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void update(long id, StudentDTO studentDTO) throws Exception {
         Student student = studentRepo.findById(id).orElseThrow(() -> new Exception("Student id is invalid"));
-        student.setAddress(studentDTO.getAddress());
-        student.setName(studentDTO.getName());
+        student.setAddress(modelMapper.map(studentDTO.getAddress(), Address.class));
+        student.setFirstName(studentDTO.getFirstName());
+        student.setLastName(studentDTO.getLastName());
+        student.setEmail(studentDTO.getEmail());
         student.setId(id);
         studentRepo.save(student);
 

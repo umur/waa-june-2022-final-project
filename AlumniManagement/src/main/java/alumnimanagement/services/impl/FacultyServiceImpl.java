@@ -1,6 +1,7 @@
 package alumnimanagement.services.impl;
 
 import alumnimanagement.dto.FacultyDTO;
+import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Faculty;
 import alumnimanagement.repo.FacultyRepo;
 import alumnimanagement.services.FacultyService;
@@ -28,8 +29,10 @@ public class FacultyServiceImpl implements FacultyService {
     public void update(long id, FacultyDTO facultyDTO) throws Exception {
         Faculty faculty = facultyRepo.findById(id).orElseThrow(() -> new Exception("Invalid id"));
         faculty.setId(id);
-        faculty.setAddress(facultyDTO.getAddress());
-        faculty.setName(facultyDTO.getName());
+        faculty.setAddress(modelMapper.map(facultyDTO.getAddress(), Address.class));
+        faculty.setFirstName(facultyDTO.getFirstName());
+        faculty.setLastName(facultyDTO.getLastName());
+        faculty.setEmail(facultyDTO.getEmail());
         facultyRepo.save(faculty);
 
     }

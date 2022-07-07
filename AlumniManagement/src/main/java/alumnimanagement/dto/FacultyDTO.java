@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data
 public class FacultyDTO {
-    private String name;
-    private Address address;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private AddressDTO address;
 }
