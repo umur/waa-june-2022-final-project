@@ -137,7 +137,8 @@ export default function TableMain(props) {
     // get table heading data
     const thData = () => {
         return column.map((data) => {
-            return <TableCell key={data} style={{ width: 50 }} className="uppercase">{data}</TableCell>
+            if (data != 'id')
+                return <TableCell key={data} style={{ width: 50 }} className="uppercase">{data}</TableCell>
         })
     }
 
@@ -151,16 +152,17 @@ export default function TableMain(props) {
                 return (
                     <TableRow key={++uniqueKey}>{
                         column.map((v) => {
-                            return (
-                                <TableCell style={{ width: 50 }} key={++uniqueKey + data[v]}>{data[v]} </TableCell>
-                            )
+                            if (v != 'id')
+                                return (
+                                    <TableCell style={{ width: 50 }} key={++uniqueKey + data[v]}>{data[v]} </TableCell>
+                                )
                         })
                     }
                         <TableCell style={{ width: 50 }}>
-                            <Button onClick={()=>{navigate('/Edit')}} variant="contained" color="success" className='button-custom'>Edit</Button>
+                            <Button onClick={() => { navigate('/Edit') }} variant="contained" color="success" className='button-custom'>Edit</Button>
                             <Button variant="contained" color="warning" className='button-custom'>Delete</Button>
                             <Button variant="contained" color="secondary" className='button-custom'>Detail</Button>
-                            <Button  onClick={()=>{navigate('/AddComment')}} variant="contained" color="primary" className='button-custom'>Add Comment</Button>
+                            <Button onClick={() => { navigate('/AddComment/' + data.id) }} variant="contained" color="primary" className='button-custom'>Add Comment</Button>
                         </TableCell>
 
                     </TableRow>

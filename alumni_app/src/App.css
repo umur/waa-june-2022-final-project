@@ -14,6 +14,19 @@ thead>td {
     text-transform: capitalize;
 }
 
-.button-custom{
-        padding: 10px;
+.button-custom {
+    padding: 10px;
+}
+
+.error-page {
+    text-align: center;
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 10%;
+}
+
+.pointer{
+    cursor: pointer;
 }

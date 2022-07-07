@@ -70,6 +70,7 @@ public class StudentServiceImpl implements StudentService {
             dtp.setLastName(r.getLastName());
             dtp.setCity(r.getAddress().getCity());
             dtp.setState(r.getAddress().getState());
+            dtp.setId(r.getId());
             studentListDtos.add(dtp);
         }
         return studentListDtos;
