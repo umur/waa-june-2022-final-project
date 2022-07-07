@@ -3,6 +3,8 @@ package edu.miu.amp.controller;
 import edu.miu.amp.dto.JobAdvertisementDto;
 import edu.miu.amp.service.JobAdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,25 +17,25 @@ public class JobAdvertisementController {
     private JobAdvertisementService jobAdvertisementService;
 
     @GetMapping
-    public List<JobAdvertisementDto> findAll(){
-        return jobAdvertisementService.findAll();
+    public ResponseEntity<List<JobAdvertisementDto>> findAll(){
+        return new ResponseEntity<>(jobAdvertisementService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public JobAdvertisementDto getById(@PathVariable Integer id){
-        return jobAdvertisementService.findById(id);
+    public ResponseEntity<JobAdvertisementDto> getById(@PathVariable Integer id){
+        return new ResponseEntity<>(jobAdvertisementService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public JobAdvertisementDto create(@RequestBody JobAdvertisementDto jobAdvertisementDto){
-        return (jobAdvertisementService.save(jobAdvertisementDto));
+    public ResponseEntity<JobAdvertisementDto> create(@RequestBody JobAdvertisementDto jobAdvertisementDto){
+        return new ResponseEntity<> (jobAdvertisementService.save(jobAdvertisementDto), HttpStatus.CREATED);
 
     }
 
     @PutMapping("/{id}")
-    public JobAdvertisementDto update(@RequestBody JobAdvertisementDto jobAdvertisementDto, @PathVariable Integer id){
+    public ResponseEntity<JobAdvertisementDto> update(@RequestBody JobAdvertisementDto jobAdvertisementDto, @PathVariable Integer id){
         jobAdvertisementDto.setId(id);
-        return jobAdvertisementService.save(jobAdvertisementDto);
+        return new ResponseEntity<>(jobAdvertisementService.save(jobAdvertisementDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

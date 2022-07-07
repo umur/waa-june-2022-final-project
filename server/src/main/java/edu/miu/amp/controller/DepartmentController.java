@@ -3,6 +3,8 @@ package edu.miu.amp.controller;
 import edu.miu.amp.dto.DepartmentDto;
 import edu.miu.amp.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,25 +16,25 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping
-    public List<DepartmentDto> findAll(){
-        return departmentService.findAll();
+    public ResponseEntity<List<DepartmentDto>> findAll(){
+        return new ResponseEntity<>(departmentService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public DepartmentDto getById(@PathVariable Integer id){
-        return departmentService.findById(id);
+    public ResponseEntity<DepartmentDto> getById(@PathVariable Integer id){
+        return new ResponseEntity<>(departmentService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public DepartmentDto create(@RequestBody DepartmentDto departmentDto){
-        return (departmentService.save(departmentDto));
+    public ResponseEntity<DepartmentDto> create(@RequestBody DepartmentDto departmentDto){
+        return new ResponseEntity<> (departmentService.save(departmentDto), HttpStatus.CREATED);
 
     }
 
     @PutMapping("/{id}")
-    public DepartmentDto update(@RequestBody DepartmentDto departmentDto, @PathVariable Integer id){
+    public ResponseEntity<DepartmentDto> update(@RequestBody DepartmentDto departmentDto, @PathVariable Integer id){
         departmentDto.setId(id);
-        return departmentService.save(departmentDto);
+        return new ResponseEntity<>(departmentService.save(departmentDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
