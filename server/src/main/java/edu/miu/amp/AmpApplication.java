@@ -17,10 +17,5 @@ public class AmpApplication {
 	}
 
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
-
 
 }

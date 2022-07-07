@@ -1,4 +1,4 @@
-package edu.miu.amp.service.serviceImpl;
+package edu.miu.amp.service.impl;
 
 import edu.miu.amp.domain.JobApplication;
 import edu.miu.amp.dto.JobApplicationDto;
