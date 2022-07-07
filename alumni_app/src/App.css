@@ -1,3 +1,15 @@
-.body-custom{
+.body-custom {
     margin: 10px;
+}
+
+.list-table {
+    margin-top: 10px;
+}
+
+thead>td {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: capitalize;
 }
