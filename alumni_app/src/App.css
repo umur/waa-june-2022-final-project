@@ -13,3 +13,7 @@ thead>td {
 .uppercase {
     text-transform: capitalize;
 }
+
+.button-custom{
+        padding: 10px;
+}

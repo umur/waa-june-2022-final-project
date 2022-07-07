@@ -17,6 +17,9 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { TableHead } from '@material-ui/core';
 import { getRequest } from '../setup/fetch-manager/FetchGateway';
+import { Button } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -88,6 +91,7 @@ export default function TableMain(props) {
     const [count, setCount] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [rowData, setRowData] = React.useState([]);
+    const navigate = useNavigate();
     let uniqueKey = 1;
 
     const fetchData = async () => {
@@ -152,6 +156,13 @@ export default function TableMain(props) {
                             )
                         })
                     }
+                        <TableCell style={{ width: 50 }}>
+                            <Button onClick={()=>{navigate('/Edit')}} variant="contained" color="success" className='button-custom'>Edit</Button>
+                            <Button variant="contained" color="warning" className='button-custom'>Delete</Button>
+                            <Button variant="contained" color="secondary" className='button-custom'>Detail</Button>
+                            <Button  onClick={()=>{navigate('/AddComment')}} variant="contained" color="primary" className='button-custom'>Add Comment</Button>
+                        </TableCell>
+
                     </TableRow>
 
                 )
@@ -165,10 +176,12 @@ export default function TableMain(props) {
                 <TableHead>
                     <TableRow key={++uniqueKey}>
                         {thData()}
+                        <TableCell key={++uniqueKey} style={{ width: 50 }} className="uppercase">Actions</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {tdData()}
+
                 </TableBody>
                 <TableFooter>
                     <TableRow>
