@@ -10,12 +10,14 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private String firstName;
+    private String lastName;
+    private String email;
 
-    @OneToOne
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_address")
     private Address address;
 
-//    Todo
-//  @OneToMany(mappedBy = "id_student")
-//    private List<Comment> comment;
+
 }
