@@ -36,8 +36,6 @@ export default function Header() {
         <ListItem><Link to='/Jobs' className={classes.link}>Jobs</Link></ListItem>
       </Stack>
 
-
-
     </div>
   )
 }
