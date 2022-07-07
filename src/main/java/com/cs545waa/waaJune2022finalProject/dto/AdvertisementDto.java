@@ -5,7 +5,5 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class StudentDto {
+public class AdvertisementDto {
 }
-
-

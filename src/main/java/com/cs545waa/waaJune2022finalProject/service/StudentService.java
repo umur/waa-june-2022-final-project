@@ -1,4 +1,8 @@
 package com.cs545waa.waaJune2022finalProject.service;
 
-public class StudentService {
+
+public interface StudentService {
+
+
+
 }

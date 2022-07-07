@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/faculty")
+@RequestMapping("/apply")
 @Data
 @AllArgsConstructor
-public class FacultyController {
+public class JobApplicationController {
 }
