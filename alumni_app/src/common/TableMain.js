@@ -85,6 +85,7 @@ TablePaginationActions.propTypes = {
 
 export default function TableMain(props) {
     const [page, setPage] = React.useState(0);
+    const [count, setCount] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [rowData, setRowData] = React.useState([]);
     let uniqueKey = 1;
@@ -92,13 +93,19 @@ export default function TableMain(props) {
     const fetchData = async () => {
         let params = props.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage + "&searchValue=";
         let result = await getRequest(params);
-        let finalResult = [];
         setRowData(result);
+    }
+
+    const countData = async () => {
+        let params = props.dataUrl + "/count";
+        const count = await getRequest(params);
+        setCount(count);
     }
 
     React.useEffect(() => {
         fetchData();
-    }, [])
+        countData();
+    }, [page, rowsPerPage])
 
 
 
@@ -169,10 +176,7 @@ export default function TableMain(props) {
                             rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                             colSpan={3}
                             count={
-                                (rowData == undefined ?
-                                    0
-                                    : rowData.length
-                                )
+                                count
                             }
                             rowsPerPage={rowsPerPage}
                             page={page}

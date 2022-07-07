@@ -35,20 +35,13 @@ public class StudentController {
     @GetMapping("/getAll")
     public List<StudentListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
-        var result = studentService.findAll();
-        List<StudentListDto> studentListDtos = new ArrayList<>();
-        for(StudentDTO r : result)
-        {
-            StudentListDto dtp = new StudentListDto();
-            dtp.setEmail(r.getEmail());
-            dtp.setFirstName(r.getFirstName());
-            dtp.setLastName(r.getLastName());
-            dtp.setCity(r.getAddress().getCity());
-            dtp.setState(r.getAddress().getState());
+        var result = studentService.findAllByParam(page,size,searchValue);
+        return result;
+    }
 
-            studentListDtos.add(dtp);
-        }
-        return studentListDtos;
+    @GetMapping("/count")
+    public Long totalStudents() {
+        return studentService.totalStudents();
     }
 
     @PutMapping("/{id}")
