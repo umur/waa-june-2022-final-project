@@ -6,7 +6,11 @@ import { SignupPage } from './pages/signup/SignupPage'
 import { NotfoundPage } from './pages/error/NotFound';
 import { UnauthorizedPage } from './pages/unauthorized/Unauthorized';
 import { ProfilePage } from './pages/profile/ProfilePage';
+import { ProfileEdit } from './pages/profile/ProfileEdit';
 import HomePage from './pages/home/HomePage';
+import { UsersPage } from './pages/admin/UsersPage';
+import { StudentPage } from './pages/users/StudentPage';
+import { StudentDetailPage } from './pages/users/StudentDetail';
 
 function App() {
   return (
@@ -16,7 +20,11 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path='/home' element={<HomePage />} />
+          <Route path='/users' element={<UsersPage />} />
+          <Route path='/students' element={<StudentPage />} />
+          <Route path='/student/:id' element={<StudentDetailPage />} />
           <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile/user/:id' element={<ProfileEdit />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/403" element={<UnauthorizedPage />} />

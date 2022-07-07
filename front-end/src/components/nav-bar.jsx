@@ -19,29 +19,48 @@ const NavBar = () => {
 
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a href='https://reactjs.org' className="brand ms 1">
+            <a href='/home' className="brand ms 1">
                 <img src={logo} className="App-logo" alt="logo" />
             </a>
             <div className="navbar-nav me-auto">
-                {currentUser?.roles[0] === Role.USER &&
+                {currentUser?.roles[0] === Role.STUDENT &&
                     <li className="nav-item">
                         <NavLink to="/profile" className="nav-link">
-                            User Dashboard
+                            Dashboard
                         </NavLink>
                     </li>
                 }
+
+                {currentUser?.roles[0] === Role.STUDENT &&
+                    <li className="nav-item">
+                        <NavLink to="/profile" className="nav-link">
+                            Job Advertisement
+                        </NavLink>
+                    </li>
+                }
+
                 {currentUser?.roles[0] === Role.ADMIN &&
                     <li className="nav-item">
-                        <NavLink to="/admin" className="nav-link">
-                            Admin Dashboard
+                        <NavLink to="/users" className="nav-link">
+                            Registered Users
                         </NavLink>
                     </li>
                 }
-                <li className="nav-item">
-                    <NavLink to="/home" className="nav-link">
-                        Home
-                    </NavLink>
-                </li>
+
+                {currentUser?.roles[0] === Role.FACULTY &&
+                    <li className="nav-item">
+                        <NavLink to="/students" className="nav-link">
+                            Students
+                        </NavLink>
+                    </li>
+                }
+                {currentUser?.roles[0] === Role.FACULTY &&
+                    <li className="nav-item">
+                        <NavLink to="/jobs" className="nav-link">
+                            Job Advertisement
+                        </NavLink>
+                    </li>
+                }
 
             </div>
 
