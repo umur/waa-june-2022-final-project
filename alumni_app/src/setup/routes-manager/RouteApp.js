@@ -5,6 +5,7 @@ import FacultyList from "../../pages/faculty/FacultyList";
 import StudentList from "../../pages/student/StudentList";
 import Jobs from "../../pages/job/Jobs";
 import AddComment from "../../pages/comment/AddComment";
+import ErrorPage from "../../pages/ErrorPage";
 
 
 export default function RouteApp() {
@@ -14,8 +15,9 @@ export default function RouteApp() {
                 <Route path='/' element={<HomePage />}></Route>
                 <Route path='/Students' element={<StudentList />}></Route>
                 <Route path='/Faculties' element={<FacultyList />}></Route>
-                <Route path='/AddComment' element={<AddComment />}></Route>
+                <Route path='/AddComment/:id' element={<AddComment />}></Route>
                 <Route path='/Jobs' element={<Jobs />}></Route>
+                <Route path='*' element={<ErrorPage />}></Route>
             </Routes>
         </>
     )
