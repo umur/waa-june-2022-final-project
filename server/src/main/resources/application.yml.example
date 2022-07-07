@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: todo
+    name: Alumni Management Portal
 
   datasource:
     password:
