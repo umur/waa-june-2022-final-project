@@ -6,9 +6,11 @@ import alumnimanagement.repo.CvRepo;
 import alumnimanagement.services.CvService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 @AllArgsConstructor
+@Service
 public class CvServiceImpl implements CvService {
 
     private final ModelMapper modelMapper;
