@@ -1,12 +1,13 @@
-package com.example.almuni.domian;
+package com.example.almuni.entity;
 
-import org.aspectj.apache.bcel.generic.Tag;
+import lombok.Data;
+//import org.aspectj.apache.bcel.generic.Tag;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
+
+@Data
 public class JobHistory {
 
     private String companyName;
@@ -15,7 +16,5 @@ public class JobHistory {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private List<Tag> tags;
-
-
 
 }
