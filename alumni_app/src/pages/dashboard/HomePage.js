@@ -6,14 +6,14 @@ import { getRequest } from '../../setup/fetch-manager/FetchGateway'
 
 export default function HomePage() {
 
-    const fetchData = async () => {
-        let result = await getRequest('/todos');
-        console.log(result);
-    }
+    // const fetchData = async () => {
+    //     let result = await getRequest('/todos');
+    //     console.log(result);
+    // }
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
 
     return (
         <>

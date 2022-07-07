@@ -90,7 +90,7 @@ export default function TableMain(props) {
     let uniqueKey = 1;
 
     const fetchData = async () => {
-        let params = props.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage;
+        let params = props.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage + "&searchValue=";
         let result = await getRequest(params);
         let finalResult = [];
         setRowData(result);
@@ -132,19 +132,24 @@ export default function TableMain(props) {
 
     // get table row data
     const tdData = () => {
-        return rowData.map((data) => {
-            return (
-                <TableRow key={++uniqueKey}>{
-                    column.map((v) => {
-                        return (
-                            <TableCell style={{ width: 50 }} key={++uniqueKey + data[v]}>{data[v]} </TableCell>
-                        )
-                    })
-                }
-                </TableRow>
+        if (rowData == undefined) {
+            return <></>
+        }
+        else {
+            return rowData.map((data) => {
+                return (
+                    <TableRow key={++uniqueKey}>{
+                        column.map((v) => {
+                            return (
+                                <TableCell style={{ width: 50 }} key={++uniqueKey + data[v]}>{data[v]} </TableCell>
+                            )
+                        })
+                    }
+                    </TableRow>
 
-            )
-        })
+                )
+            })
+        }
     }
 
     return (
@@ -163,7 +168,12 @@ export default function TableMain(props) {
                         <TablePagination
                             rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                             colSpan={3}
-                            count={rowData.length}
+                            count={
+                                (rowData == undefined ?
+                                    0
+                                    : rowData.length
+                                )
+                            }
                             rowsPerPage={rowsPerPage}
                             page={page}
                             SelectProps={{

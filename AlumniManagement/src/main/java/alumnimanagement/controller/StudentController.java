@@ -1,12 +1,14 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.StudentDTO;
+import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,8 +33,22 @@ public class StudentController {
     }
 
     @GetMapping("/getAll")
-    public List<StudentDTO> findAllStudent(@RequestParam String searchValue) {
-        return studentService.findAll();
+    public List<StudentListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = studentService.findAll();
+        List<StudentListDto> studentListDtos = new ArrayList<>();
+        for(StudentDTO r : result)
+        {
+            StudentListDto dtp = new StudentListDto();
+            dtp.setEmail(r.getEmail());
+            dtp.setFirstName(r.getFirstName());
+            dtp.setLastName(r.getLastName());
+            dtp.setCity(r.getAddress().getCity());
+            dtp.setState(r.getAddress().getState());
+
+            studentListDtos.add(dtp);
+        }
+        return studentListDtos;
     }
 
     @PutMapping("/{id}")
