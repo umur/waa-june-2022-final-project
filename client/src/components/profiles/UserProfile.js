@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Breadcrumb, Container, Row, Col } from 'react-bootstrap';
+import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
+
+import JobHistoryInfo from './JobHistoryInfo';
 import FileUploadPage from '../../pages/FileUploadPage';
+
 export default function UserProfile() {
     const initialState = { email: "ansharma@miu.edu", password: "1234", role: "student", firstName: "Anjana", lastName: "Sharma" }
     const [userProfile, setUserProfile] = useState(initialState);
@@ -10,6 +13,19 @@ export default function UserProfile() {
     // useEffect(() => {
     //     get();
     // }, []);
+    const jobHistory = [
+        {
+            id: 1,
+            title: "Software Engineer",
+            location: "Iowa",
+            aboutUs: "test"
+        }, {
+            id: 2,
+            title: "Software Project Manager",
+            location: "Iowa",
+            aboutUs: "test"
+        }
+    ]
 
     return (
         <Container>
@@ -39,7 +55,9 @@ export default function UserProfile() {
                                                 <p className="font-italic mb-0">
                                                     Email: {userProfile?.email}
                                                 </p>
-                                            
+
+
+
                                             </div>
                                         </div>
 
@@ -50,6 +68,22 @@ export default function UserProfile() {
                            
                         </Col>
                     </Row>
+                    <br />
+
+                    <h3>Job History</h3>
+                    <div className='container'>{
+
+                        jobHistory.map(history => {
+                            return (
+                                <JobHistoryInfo
+                                    key={history.id}
+                                    title={history.title}
+                                    location={history.location}
+                                    aboutUs={history.aboutUs}></JobHistoryInfo>
+                            )
+                        })
+                    }
+                    </div>
                 </Container>
             </section>
         </Container>
