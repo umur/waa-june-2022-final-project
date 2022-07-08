@@ -18,6 +18,7 @@ public class File {
     private Long id;
     private String fileName;
 
+
     @ManyToMany(mappedBy = "files")
     private List<JobAdvertisement> jobAdvertisements;
 }

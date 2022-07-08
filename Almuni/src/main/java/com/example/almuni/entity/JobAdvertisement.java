@@ -21,7 +21,7 @@ public class JobAdvertisement {
     private String benefits;
     private String companyName;
 
-    @ManyToMany //todo ?
+    @ManyToMany
     private List<File> files;
     @OneToOne
     private Address address;
