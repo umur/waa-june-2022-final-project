@@ -23,9 +23,9 @@ public class Student {
     private String firstName;
     @NotNull
     private String lastName;
-    @NotNull
+
     private String email;
-    @NotNull
+
     private String password;
     private float gpa;
 

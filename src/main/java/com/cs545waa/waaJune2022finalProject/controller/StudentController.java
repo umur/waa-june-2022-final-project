@@ -52,7 +52,7 @@ public class StudentController {
 
 
     //------------------------------------------------------
-    @PostMapping
+    @PostMapping("")
     public void save(@RequestBody StudentDto a){
         studentService.registerStudent(a);
     }

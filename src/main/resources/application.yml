@@ -5,13 +5,13 @@ spring:
     name: AlumniManagement
 
   datasource:
-    password: O1933419@postgres
+    password: 1
     url: jdbc:postgresql://localhost:5432/AlumniManagement
     username: postgres
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 
     properties:
       hibernate:
