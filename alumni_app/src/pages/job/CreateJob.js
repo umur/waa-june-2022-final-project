@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useParams } from "react-router";
 import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 
 const initialValues = {
   firstName: "",
@@ -31,11 +32,21 @@ const initialValues = {
 
 export default function CreateJob() {
 
+const [selectValue, setSelectValue] = useState();
+
+    const setValue = (value) => {
+        let values = '';
+        value.map((x)=>{
+            values += x.title;
+        })
+        setSelectValue(values);
+    }
+
 const { id } = useParams();
 
 
 const postData = async () => {
-    let params = "/jobs";
+    let params = "/jobs/newJob";
     let result = await postRequest(params, values);
 }
 
@@ -50,7 +61,6 @@ const handleInputChange = (e) => {
   };
 
   const handleReset = (e) => {
-      //const [values, setValues] = useState(initialValues);
       setValues(initialValues);
     };
 
@@ -71,57 +81,59 @@ const handleInputChange = (e) => {
         Create New Job Post
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-            value={values.firstName}
-            onChange={handleInputChange}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-            value={values.lastName}
-            onChange={handleInputChange}
-          />
-        </Grid>
-        <Grid item xs={6}>
-                  <TextField
-                    id="phoneNo"
-                    name="phoneNo"
-                    label="Phone Number"
-                    fullWidth
-                    autoComplete="phone-number"
-                    variant="standard"
-                    value={values.phoneNo}
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-        <Grid item xs={6}>
-                  <TextField
-                    required
-                    id="emailAddress"
-                    name="emailAddress"
-                    label="Email Address"
-                    fullWidth
-                    autoComplete="email-address"
-                    variant="standard"
-                    value={values.emailAddress}
-                    onChange={handleInputChange}
-                  />
-                 </Grid>
+      {/*
+//        <Grid item xs={12} sm={6}>
+//          <TextField
+//            required
+//            id="firstName"
+//            name="firstName"
+//            label="First name"
+//            fullWidth
+//            autoComplete="given-name"
+//            variant="standard"
+//            value={values.firstName}
+//            onChange={handleInputChange}
+//          />
+//        </Grid>
+//        <Grid item xs={12} sm={6}>
+//          <TextField
+//            required
+//            id="lastName"
+//            name="lastName"
+//            label="Last name"
+//            fullWidth
+//            autoComplete="family-name"
+//            variant="standard"
+//            value={values.lastName}
+//            onChange={handleInputChange}
+//          />
+//        </Grid>
+//        <Grid item xs={6}>
+//                  <TextField
+//                    id="phoneNo"
+//                    name="phoneNo"
+//                    label="Phone Number"
+//                    fullWidth
+//                    autoComplete="phone-number"
+//                    variant="standard"
+//                    value={values.phoneNo}
+//                    onChange={handleInputChange}
+//                  />
+//                </Grid>
+//        <Grid item xs={6}>
+//                  <TextField
+//                    required
+//                    id="emailAddress"
+//                    name="emailAddress"
+//                    label="Email Address"
+//                    fullWidth
+//                    autoComplete="email-address"
+//                    variant="standard"
+//                    value={values.emailAddress}
+//                    onChange={handleInputChange}
+//                  />
+//                 </Grid>
+*/}
         <Grid item xs={6}>
           <TextField
             required
@@ -137,7 +149,7 @@ const handleInputChange = (e) => {
         </Grid>
         <Grid item xs={6}>
           <FormControl fullWidth>
-                  <InputLabel id="company-Size">Company Size</InputLabel>
+                  <InputLabel id="companySize">Company Size</InputLabel>
                   <Select
                     labelId="companySize"
                     id="companySize"
@@ -179,7 +191,7 @@ const handleInputChange = (e) => {
                 </Grid>
                 <Grid item xs={6}>
                       <FormControl fullWidth>
-                              <InputLabel id="job-Type">Job Type</InputLabel>
+                              <InputLabel id="jobType">Job Type</InputLabel>
                               <Select
                                 labelId="jobType"
                                 id="jobType"
@@ -205,6 +217,13 @@ const handleInputChange = (e) => {
                     value={values.paymentAmount}
                     onChange={handleInputChange}
                   />
+                </Grid>
+        <Grid item xs={12}>
+                <>
+
+                    < AutoCompleteSelect onChange={value => setValue(value)} dataUrl='/tags' ></AutoCompleteSelect >
+                </>
+
                 </Grid>
         <Grid item xs={12}>
                   <TextField

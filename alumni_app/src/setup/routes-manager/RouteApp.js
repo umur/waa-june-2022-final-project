@@ -11,6 +11,7 @@ import StudentDetail from "../../pages/student/StudentDetail";
 import CreateJob from "../../pages/job/CreateJob";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import TestAuto from "../../common/testAuto";
+import Jobs from "../../pages/job/Jobs";
 
 
 export default function RouteApp() {
@@ -21,12 +22,13 @@ export default function RouteApp() {
                 <Route path='/Students' element={<StudentList />}></Route>
                 <Route path='/Faculties' element={<FacultyList />}></Route>
                 <Route path='/AddComment/:id' element={<AddComment />}></Route>
-                <Route path='/Jobs' element={<CreateJob />}></Route>
+                <Route path='/Jobs' element={<Jobs />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
                 <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
                 <Route path="/Profile" element={<Profile />}></Route>
                 <Route path="/reset-password" element={<ChangePassword />}></Route>
                 <Route path='/as' element={<TestAuto />}></Route>
+                <Route path='/Jobs/newJob' element={<CreateJob />}></Route>
             </Routes>
         </>
     )

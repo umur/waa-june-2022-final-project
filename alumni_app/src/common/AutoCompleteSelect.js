@@ -38,7 +38,7 @@ export default function AutoCompleteSelect(props) {
                             getOptionLabel={(option) => option.title}
                             style={{ width: 500 }}
                             renderInput={(params) => (
-                                <TextField {...params} label="Fixed tag" placeholder="Favorites" />
+                                <TextField {...params} label="Job Tag" placeholder="Eg. C#, Java, JavaScript" />
                             )}
                         />
                     </>
