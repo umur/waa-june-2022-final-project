@@ -7,6 +7,7 @@ import Jobs from "../../pages/job/Jobs";
 import AddComment from "../../pages/comment/AddComment";
 import ErrorPage from "../../pages/ErrorPage";
 import StudentDetail from "../../pages/student/StudentDetail";
+import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 
 
 export default function RouteApp() {
@@ -20,6 +21,7 @@ export default function RouteApp() {
                 <Route path='/Jobs' element={<Jobs />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
                 <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
+                <Route path='/as' element={<AutoCompleteSelect />}></Route>
             </Routes>
         </>
     )
