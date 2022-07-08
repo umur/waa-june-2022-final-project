@@ -53,4 +53,9 @@ public class StudentController {
     public void removeStudent(@PathVariable long id) {
         studentService.remove(id);
     }
+
+    @GetMapping("/{id}")
+    public StudentDTO getStudentById(@PathVariable long id){
+        return studentService.findStudentById(id);
+    }
 }
