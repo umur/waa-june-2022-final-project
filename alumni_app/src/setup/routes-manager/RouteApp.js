@@ -6,10 +6,8 @@ import HomePage from "../../pages/dashboard/HomePage";
 import ErrorPage from "../../pages/ErrorPage";
 import FacultyList from "../../pages/faculty/FacultyList";
 import StudentList from "../../pages/student/StudentList";
-import Jobs from "../../pages/job/Jobs";
 import Profile from "../../pages/profile/Profile";
 import StudentDetail from "../../pages/student/StudentDetail";
-import StudentList from "../../pages/student/StudentList";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import CreateJob from "../../pages/job/CreateJob";
 
