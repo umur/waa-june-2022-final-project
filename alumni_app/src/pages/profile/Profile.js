@@ -18,6 +18,7 @@ const Profile = () => {
       gpa: 3.5,
       lastLoggedInAt: "2022/6/17",
       active: true,
+      files: "/images/profile-imagejpg.jpg",
     },
   };
 
@@ -32,8 +33,8 @@ const Profile = () => {
     fetchData();
   }, []);
 
-  const handleInputChange = () => {
-    console.log("form changed");
+  const handleImageUpload = (event) => {
+    console.log("Image is changed " + event.target.files[0]);
   };
 
   return (
@@ -43,12 +44,25 @@ const Profile = () => {
           <Grid item xs={12} alignContent="center" className="profile-img">
             <Avatar
               alt="User Profile"
-              src="/images/profile-imagejpg.jpg"
+              src={userState.user.files}
               sx={{ width: 200, height: 200 }}
             />
+            {/* onChange={} */}
           </Grid>
+          <div className="file-upload">
+            <Button variant="contained" component="label">
+              Choose File
+              <input
+                type="file"
+                hidden
+                name="image"
+                onChange={handleImageUpload}
+              />
+            </Button>
+          </div>
 
           <TextField
+            className="text-field"
             required
             id="firstname"
             label="First Name"
@@ -66,6 +80,7 @@ const Profile = () => {
 
           <TextField
             required
+            className="text-field"
             id="lastname"
             label="Last Name"
             defaultValue={userState.user.lastName}
@@ -74,6 +89,7 @@ const Profile = () => {
 
           <TextField
             required
+            className="text-field"
             id="email"
             label="Email"
             defaultValue={userState.user.email}
@@ -82,6 +98,7 @@ const Profile = () => {
 
           <TextField
             required
+            className="text-field"
             id="gpa"
             label="GPA"
             type="number"
@@ -89,7 +106,7 @@ const Profile = () => {
             fullWidth
           />
 
-          <Button variant="contained" fullWidth>
+          <Button variant="contained" fullWidth className="text-field">
             Edit
           </Button>
         </Paper>
