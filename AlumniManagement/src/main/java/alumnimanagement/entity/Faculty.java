@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,6 +22,9 @@ public class Faculty {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_address")
     private Address address;
+
+    @OneToMany(mappedBy = "faculty")
+    private List<Comment> comments;
 
 
 }

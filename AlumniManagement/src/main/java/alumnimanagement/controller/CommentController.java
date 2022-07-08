@@ -18,6 +18,7 @@ public class CommentController {
 
     @PostMapping()
     public void writeComment(@RequestBody  CommentDTO commentDTO){
+
         commentService.create(commentDTO);
     }
 
