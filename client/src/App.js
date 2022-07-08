@@ -6,16 +6,14 @@ import Router from './pages/Router';
 import Footer from './components/Footer';
 import { BrowserRouter } from 'react-router-dom';
 
+
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <BrowserRouter>
         <Router></Router>
       </BrowserRouter>
-      
-      <Footer />
-
-
+      <Footer></Footer>
     </div>
   );
 }

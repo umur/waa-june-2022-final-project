@@ -3,14 +3,10 @@ import "./index.css";
 
 const Footer = () => {
   return (
-    <footer>
-
-      <ul>
-        <li>
-            Copy Right Protected
-        </li>
-      </ul>
-
+    <footer className="fixed-bottom">
+        <div className="text-center">
+        Copyright Protected
+      </div>
     </footer>
   );
 };
