@@ -20,8 +20,12 @@ public class JobAdvertisement {
     private String description;
     private String benefits;
 
-    @ManyToMany //todo ?
+    @ManyToMany
     private List<File> files;
+    private String companyName;
+
+    @OneToOne
+    private Address address;
 //    @OneToMany
 //    @Embedded
 //    private List<Tag> tags;  //todo ???????????????????/
