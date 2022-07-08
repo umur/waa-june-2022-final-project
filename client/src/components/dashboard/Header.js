@@ -4,7 +4,6 @@ import Main from './Main'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Header() {
     return (
@@ -15,6 +14,7 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/user-profile" >My Profile</Nav.Link>
+                        <Nav.Link as={Link} to="/add-new-advertisement" >Job Adds</Nav.Link>
                         {/* <Nav.Link href="#link">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
