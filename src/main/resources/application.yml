@@ -27,3 +27,16 @@ spring:
 
 server:
   port: 8080
+
+keycloak:
+  auth-server-url: http://localhost:8180
+  realm: CS545WAA-FinalProject
+  resource: waa-june-2022-final-project
+  public-client: true
+
+#keycloak.security-constraints[0].authRoles[0]=USER
+#keycloak.security-constraints[0].securityCollections[0].patterns[0]=/customers/*
+#keycloak.security-constraints[0].authRoles[1]=ADMIN
+#keycloak.security-constraints[0].securityCollections[0].patterns[1]=/customers/*
+#keycloak.principal-attribute=preferred_username
+
