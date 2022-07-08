@@ -1,12 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import HomePage from "../../pages/dashboard/HomePage";
-import FacultyList from "../../pages/faculty/FacultyList";
-import StudentList from "../../pages/student/StudentList";
-import Jobs from "../../pages/job/Jobs";
 import AddComment from "../../pages/comment/AddComment";
+import ChangePassword from "../../pages/dashboard/change-password/ChangePassword";
+import HomePage from "../../pages/dashboard/HomePage";
 import ErrorPage from "../../pages/ErrorPage";
+import FacultyList from "../../pages/faculty/FacultyList";
+import Jobs from "../../pages/job/Jobs";
+import Profile from "../../pages/profile/Profile";
 import StudentDetail from "../../pages/student/StudentDetail";
+import StudentList from "../../pages/student/StudentList";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 
 
@@ -21,6 +23,8 @@ export default function RouteApp() {
                 <Route path='/Jobs' element={<Jobs />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
                 <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
+                <Route path="/Profile" element={<Profile />}></Route>
+                <Route path="/reset-password" element={<ChangePassword />}></Route>
                 <Route path='/as' element={<AutoCompleteSelect />}></Route>
             </Routes>
         </>

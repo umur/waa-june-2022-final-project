@@ -1,10 +1,8 @@
 import React from "react";
-// import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../pages/dashboard/Header";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +22,7 @@ export default function Navbar() {
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="h6" color="inherit">
-                        <span onClick={()=>{navigate('/')}} className="pointer">  Alumini Management Portal</span>
+                        <span onClick={() => { navigate('/') }} className="pointer">  Alumini Management Portal</span>
                     </Typography>
                     <IconButton edge="start"
                         className={classes.root}
