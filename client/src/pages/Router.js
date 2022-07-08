@@ -4,13 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import UserProfile from  '../components/profiles/UserProfile'
 import Advertisement from '../components/job/Advertisement'
 import Dashboard from '../components/dashboard/Dashboard'
-
-
-
-
 export default function Router(){
-
-
     return(
         <div>
             <Routes>
@@ -19,7 +13,6 @@ export default function Router(){
                 <Route path="/add-new-advertisement" element={<Advertisement />}>Add New Advertisement</Route>
 
                 <Route path="/dashboard" element={<Dashboard />}>Dashboard</Route>
-
             </Routes>
         </div>
     )

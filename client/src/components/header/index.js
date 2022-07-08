@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Main from './Main'
+import Main from '../dashboard/Main'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { bottom } from '@popperjs/core';
 
 export default function Header() {
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
-            <Container>
-                <Navbar.Brand as={Link} to="/">Alumni Management Portal</Navbar.Brand>
+            {/* <Container> */}
+                <Navbar.Brand as={Link} to="/dashboard">Alumni Management Portal</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -29,7 +30,7 @@ export default function Header() {
                         </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
-            </Container>
+            {/* </Container> */}
         </Navbar>
     )
 }
