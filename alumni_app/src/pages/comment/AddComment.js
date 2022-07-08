@@ -6,6 +6,11 @@ import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import StudentDetail from "../student/StudentDetail";
+
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 export default function AddComment() {
 
@@ -31,30 +36,26 @@ export default function AddComment() {
         setCommentState(value);
     }
     return (
+
+
         <div>
-            {id}
-            <Box
-                component="form"
-                sx={{
-                    '& > :not(style)': { m: 5, height: '3ch', width: '50ch' },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField id="outlined-basic" label="Comment" variant="outlined" onChange={setCommentValue} />
 
-            </Box>
-            <Box
-                component="form"
-                sx={{
-                    '& > :not(style)': { ml: 5, height: '3ch', width: '10ch' },
-                }}
-                noValidate
-                autoComplete="off"
-            >
+            <StudentDetail />
 
-                <Button onClick={() => { postData() }} variant="contained">save</Button>
-            </Box>
+
+            <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+                <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                    <Typography component="h1" variant="h6" align="center">
+                        Add Comment
+                    </Typography>
+
+                    <TextField id="outlined-basic" label="Comment" variant="outlined" onChange={setCommentValue} />
+
+                    <br></br>
+                    <Button onClick={() => { postData() }} variant="contained" sx={{ mt: 3 }}>save</Button>
+
+                </Paper>
+            </Container>
 
 
         </div>
