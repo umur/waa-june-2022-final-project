@@ -10,35 +10,35 @@ import java.io.Serializable;
 
 @Data
 @JsonPropertyOrder({
-		"success",
-		"message"
+        "success",
+        "message"
 })
 public class ApiResponse implements Serializable {
 
-	@JsonIgnore
-	private static final long serialVersionUID = 7702134516418120340L;
+    @JsonIgnore
+    private static final long serialVersionUID = 7702134516418120340L;
 
-	@JsonProperty("success")
-	private Boolean success;
+    @JsonProperty("success")
+    private Boolean success;
 
-	@JsonProperty("message")
-	private String message;
+    @JsonProperty("message")
+    private String message;
 
-	@JsonIgnore
-	private HttpStatus status;
+    @JsonIgnore
+    private HttpStatus status;
 
-	public ApiResponse() {
+    public ApiResponse() {
 
-	}
+    }
 
-	public ApiResponse(Boolean success, String message) {
-		this.success = success;
-		this.message = message;
-	}
+    public ApiResponse(Boolean success, String message) {
+        this.success = success;
+        this.message = message;
+    }
 
-	public ApiResponse(Boolean success, String message, HttpStatus httpStatus) {
-		this.success = success;
-		this.message = message;
-		this.status = httpStatus;
-	}
+    public ApiResponse(Boolean success, String message, HttpStatus httpStatus) {
+        this.success = success;
+        this.message = message;
+        this.status = httpStatus;
+    }
 }

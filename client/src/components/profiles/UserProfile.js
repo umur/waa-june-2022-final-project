@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
+
 import JobHistoryInfo from './JobHistoryInfo';
+import FileUploadPage from '../../pages/FileUploadPage';
+
 export default function UserProfile() {
     const initialState = { email: "ansharma@miu.edu", password: "1234", role: "student", firstName: "Anjana", lastName: "Sharma" }
     const [userProfile, setUserProfile] = useState(initialState);
@@ -52,11 +55,17 @@ export default function UserProfile() {
                                                 <p className="font-italic mb-0">
                                                     Email: {userProfile?.email}
                                                 </p>
+
+
+
                                             </div>
                                         </div>
+
+                                        <FileUploadPage/>
                                     </div>
                                 </div>
                             </div>
+                           
                         </Col>
                     </Row>
                     <br />

@@ -9,10 +9,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Transactional
 @Service
 public class JobApplicationServiceImpl implements JobApplicationService {
     @Autowired
@@ -30,7 +32,6 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
 
-
     @Override
     public JobApplicationDto save(JobApplicationDto jobApplicationDto) {
         JobApplication jobApplication = toEntity(jobApplicationDto);
@@ -39,7 +40,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     public JobApplicationDto findById(Integer id) {
-        var jobApplication = jobApplicationRepository.findById(id).orElseThrow(()->new RuntimeException(String.format("JobApplication with id %s does not exists", id)));
+        var jobApplication = jobApplicationRepository.findById(id).orElseThrow(() -> new RuntimeException(String.format("JobApplication with id %s does not exists", id)));
         JobApplicationDto jobApplicationDto = toDto(jobApplication);
         return jobApplicationDto;
     }
@@ -51,22 +52,22 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     @Override
-    public JobApplicationDto updateById(JobApplicationDto jobApplicationDto,Integer id) {
-       JobApplication jobApplication = toEntity(jobApplicationDto);
-       jobApplicationRepository.findById(id).map(jobApplication1 -> {
-           jobApplication1.setJobAdvertisement(jobApplication.getJobAdvertisement());
-           jobApplication1.setStudentList(jobApplication.getStudentList());
-           return jobApplicationRepository.save(jobApplication);
-       });
-       return toDto(jobApplication);
+    public JobApplicationDto updateById(JobApplicationDto jobApplicationDto, Integer id) {
+        JobApplication jobApplication = toEntity(jobApplicationDto);
+        jobApplicationRepository.findById(id).map(jobApplication1 -> {
+            jobApplication1.setJobAdvertisement(jobApplication.getJobAdvertisement());
+            jobApplication1.setStudentList(jobApplication.getStudentList());
+            return jobApplicationRepository.save(jobApplication);
+        });
+        return toDto(jobApplication);
     }
 
-    public JobApplicationDto toDto(JobApplication jobApplication){
+    public JobApplicationDto toDto(JobApplication jobApplication) {
         JobApplicationDto jobApplicationDto = modelMapper.map(jobApplication, JobApplicationDto.class);
         return jobApplicationDto;
     }
 
-    public JobApplication toEntity(JobApplicationDto jobApplicationDto){
+    public JobApplication toEntity(JobApplicationDto jobApplicationDto) {
         JobApplication jobApplication = modelMapper.map(jobApplicationDto, JobApplication.class);
         return jobApplication;
     }
