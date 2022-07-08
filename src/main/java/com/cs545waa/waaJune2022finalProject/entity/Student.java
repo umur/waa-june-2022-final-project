@@ -19,9 +19,6 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @OneToOne
-//    private PersonalInformation personalInformation;
-
     @NotNull
     private String firstName;
     @NotNull
@@ -32,8 +29,9 @@ public class Student {
     private String password;
     private float gpa;
 
-    @NotNull
-    private Address adddress;
+
+    @OneToOne
+    private Address address;
 
     @ManyToOne
     private Department major;
@@ -53,5 +51,10 @@ public class Student {
 
 
     @OneToMany(mappedBy="student")
-    private List<ProfessionalExperiance> professionalExperiances;
+    private List<ProfessionalExperience> professionalExperiences;
+
+    @OneToOne
+    private Cv cv;
+
+
 }

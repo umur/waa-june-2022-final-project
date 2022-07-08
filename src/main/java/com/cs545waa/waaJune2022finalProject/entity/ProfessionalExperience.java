@@ -5,29 +5,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
+import java.time.LocalDate;
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public class ProfessionalExperience {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+    String companyName;
+    LocalDate startDate;
+    LocalDate finishDate;
+    String description;
 
-    @NotNull
-    private String street;
-
-    @NotNull
-    private String city;
-
-    @NotNull
-    private String state;
-
-    @NotNull
-    private int zip;
-
-    @OneToOne
+    @ManyToOne
     Student student;
+
 }

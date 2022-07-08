@@ -5,22 +5,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProfessionalExperiance {
+public class Cv {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String companyName;
-    LocalDate startDate;
-    LocalDate finishDate;
-    String description;
+    private Integer id;
 
-    @ManyToOne
+
+    @OneToMany
+    private List<ProfessionalExperience> professionalExperience;
+
+    @OneToMany
+    private List<EducationHistory> educationHistory;
+
+    @OneToOne
     Student student;
 
 }
