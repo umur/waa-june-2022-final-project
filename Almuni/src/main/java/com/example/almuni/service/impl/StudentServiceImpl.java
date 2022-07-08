@@ -60,10 +60,5 @@ public class StudentServiceImpl implements StudentService {
         });
        return studentDto;
     }
-    /**
-     * this is test
-     */
-    public void test(){
-        System.out.println("test");
-    }
+
 }
