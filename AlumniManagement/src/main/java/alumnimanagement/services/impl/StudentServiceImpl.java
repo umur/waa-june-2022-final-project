@@ -6,6 +6,7 @@ import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Student;
 import alumnimanagement.repo.StudentRepo;
 import alumnimanagement.services.StudentService;
+import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -59,6 +60,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String searchValue) {
 //        List<Student> student = studentRepo.findAll().stream().toList();
+        Long id = Helper.getLoggedUserId();
         Pageable pageable = PageRequest.of(page, size);
         List<Student> student = studentRepo.findAll(pageable).stream().toList();
         List<StudentListDto> studentListDtos = new ArrayList<>();
