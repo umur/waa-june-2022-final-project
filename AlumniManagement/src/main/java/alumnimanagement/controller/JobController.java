@@ -23,5 +23,4 @@ public class JobController {
         return jobService.getAll();
     }
 
-
 }

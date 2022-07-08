@@ -1,6 +1,13 @@
 package alumnimanagement.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TagDTO {
-    int id;
-    int title;
+  private int id;
+  private String title;
 }
