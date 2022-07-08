@@ -29,7 +29,6 @@ public class FacultyController {
     @PostMapping
     public ResponseEntity<FacultyDto> create(@RequestBody FacultyDto facultyDto){
         return new ResponseEntity<> (facultyService.save(facultyDto), HttpStatus.CREATED);
-
     }
 
     @PutMapping("/{id}")

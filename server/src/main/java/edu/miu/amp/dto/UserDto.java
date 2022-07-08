@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Embedded;
 @Data
-public class UserDto {
+public class UserDto{
     private Integer id;
 
     private String firstName;

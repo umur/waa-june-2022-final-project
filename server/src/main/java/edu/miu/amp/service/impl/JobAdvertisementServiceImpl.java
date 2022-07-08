@@ -9,10 +9,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service @AllArgsConstructor
+@Service
+@AllArgsConstructor
+@Transactional
 public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     @Autowired
     private JobAdvertisementRepository jobAdvertisementRepository;
@@ -29,7 +32,6 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     }
 
 
-
     @Override
     public JobAdvertisementDto save(JobAdvertisementDto jobAdvertisementDto) {
         JobAdvertisement jobAdvertisement = toEntity(jobAdvertisementDto);
@@ -38,7 +40,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     @Override
     public JobAdvertisementDto findById(Integer id) {
-        var jobAdvertisement = jobAdvertisementRepository.findById(id).orElseThrow(()->new RuntimeException(String.format("JobAdvertisement with id %s does not exists", id)));
+        var jobAdvertisement = jobAdvertisementRepository.findById(id).orElseThrow(() -> new RuntimeException(String.format("JobAdvertisement with id %s does not exists", id)));
         JobAdvertisementDto jobAdvertisementDto = toDto(jobAdvertisement);
         return jobAdvertisementDto;
     }
@@ -50,7 +52,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     }
 
     @Override
-    public JobAdvertisementDto updateById(JobAdvertisementDto jobAdvertisementDto,Integer id) {
+    public JobAdvertisementDto updateById(JobAdvertisementDto jobAdvertisementDto, Integer id) {
         JobAdvertisement jobAdvertisement = toEntity(jobAdvertisementDto);
         jobAdvertisementRepository.findById(id).map(jobAdvertisement1 -> {
             jobAdvertisement1.setAddress(jobAdvertisement.getAddress());
@@ -64,12 +66,12 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         return toDto(jobAdvertisement);
     }
 
-    public JobAdvertisementDto toDto(JobAdvertisement jobAdvertisement){
+    public JobAdvertisementDto toDto(JobAdvertisement jobAdvertisement) {
         JobAdvertisementDto jobAdvertisementDto = modelMapper.map(jobAdvertisement, JobAdvertisementDto.class);
         return jobAdvertisementDto;
     }
 
-    public JobAdvertisement toEntity(JobAdvertisementDto jobAdvertisementDto){
+    public JobAdvertisement toEntity(JobAdvertisementDto jobAdvertisementDto) {
         JobAdvertisement jobAdvertisement = modelMapper.map(jobAdvertisementDto, JobAdvertisement.class);
         return jobAdvertisement;
     }

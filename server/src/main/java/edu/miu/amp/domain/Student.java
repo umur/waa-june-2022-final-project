@@ -12,13 +12,13 @@ import java.util.List;
 @NoArgsConstructor@AllArgsConstructor
 public class Student extends User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     private Float gpa;
     private String CVFile;
 
-    @ManyToOne
+    @ManyToOne/**/
     private Department department;
 
 

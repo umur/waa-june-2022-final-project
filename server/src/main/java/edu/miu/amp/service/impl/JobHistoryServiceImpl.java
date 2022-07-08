@@ -6,16 +6,20 @@ import edu.miu.amp.dto.JobHistoryDto;
 import edu.miu.amp.exception.ResourceNotFoundException;
 import edu.miu.amp.repository.JobHistoryRepo;
 import edu.miu.amp.service.JobHistoryService;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
+@Transactional
 public class JobHistoryServiceImpl implements JobHistoryService {
 
     @Autowired
