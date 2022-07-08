@@ -8,8 +8,9 @@ import FacultyList from "../../pages/faculty/FacultyList";
 import StudentList from "../../pages/student/StudentList";
 import Profile from "../../pages/profile/Profile";
 import StudentDetail from "../../pages/student/StudentDetail";
-import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import CreateJob from "../../pages/job/CreateJob";
+import AutoCompleteSelect from "../../common/AutoCompleteSelect";
+import TestAuto from "../../common/testAuto";
 
 
 export default function RouteApp() {
@@ -25,7 +26,7 @@ export default function RouteApp() {
                 <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
                 <Route path="/Profile" element={<Profile />}></Route>
                 <Route path="/reset-password" element={<ChangePassword />}></Route>
-                <Route path='/as' element={<AutoCompleteSelect />}></Route>
+                <Route path='/as' element={<TestAuto />}></Route>
             </Routes>
         </>
     )
