@@ -3,8 +3,6 @@ function Registration() {
 
 
         <form>
-
-
             <div className="row">
                 <div class="mb-3 col-md-12">
                     <label for="profilePic" class="form-label">Upload Profile Picture</label>
