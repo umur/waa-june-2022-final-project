@@ -52,10 +52,10 @@ public class StudentController {
 
 
     //------------------------------------------------------
-//    @PostMapping
-//    public void save(@RequestBody Student a){
-//        studentService.save(a);
-//    }
+    @PostMapping
+    public void save(@RequestBody StudentDto a){
+        studentService.registerStudent(a);
+    }
 //
 //    @DeleteMapping("/{id}")
 //    public void delete(@PathVariable int id){

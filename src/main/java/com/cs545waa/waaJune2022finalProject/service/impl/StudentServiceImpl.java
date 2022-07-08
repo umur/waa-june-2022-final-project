@@ -37,6 +37,11 @@ public class StudentServiceImpl implements StudentService {
         
     }
 
+    @Override
+    public void registerStudent(StudentDto dto) {
+        studentRepo.save(modelMapper.map(dto,Student.class));
+    }
+
 
     @Override
     public void addExperience(ProfessionalExperienceDto professionalExperienceDto) {

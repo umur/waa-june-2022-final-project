@@ -10,7 +10,7 @@ public interface StudentService {
 
     void editProfile(StudentDto studentDto);
 
-
+        void registerStudent(StudentDto dto);
 
     void addExperience(ProfessionalExperienceDto professionalExperienceDto);
 }
