@@ -13,3 +13,17 @@ export async function getRequest(path) {
 
 }
 
+export async function postRequest(path, data) {
+    const fullURL = api_url + path;
+    try {
+        const response = await axios.post(fullURL, data, {
+            headers: {
+                // 'content-type': 'text/json'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+
+}
