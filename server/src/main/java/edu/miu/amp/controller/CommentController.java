@@ -1,4 +1,5 @@
 package edu.miu.amp.controller;
+
 import edu.miu.amp.dto.CommentDto;
 import edu.miu.amp.service.CommentService;
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentDto> addComment(@Valid @RequestBody CommentDto data
-    ) {
+    public ResponseEntity<CommentDto> addComment(@Valid @RequestBody CommentDto data) {
         var res = commentService.addComment(data);
 
         return new ResponseEntity<>(res, HttpStatus.CREATED);
