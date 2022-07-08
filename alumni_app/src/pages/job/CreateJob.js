@@ -39,6 +39,11 @@ const handleInputChange = (e) => {
     });
   };
 
+  const handleReset = (e) => {
+      //const [values, setValues] = useState(initialValues);
+      setValues(initialValues);
+    };
+
 //const [companySize, setCompanySize] = React.useState('');
 //
 //  const handleChangeCompanySize = (event) => {
@@ -127,7 +132,7 @@ const handleInputChange = (e) => {
                     labelId="companySize"
                     id="companySize"
                     label="Company Size"
-                    value={values.companySize}
+                    defaultValue={values.companySize}
                      onChange={handleInputChange}
                   >
                     <MenuItem value={1}>0- less than 100</MenuItem>
@@ -169,7 +174,7 @@ const handleInputChange = (e) => {
                                 labelId="jobType"
                                 id="jobType"
                                 label="Job Type"
-                                value={values.jobType}
+                                defaultValue={values.jobType}
                                 onChange={handleInputChange}
                               >
                                 <MenuItem value={1}>Full-Time</MenuItem>
@@ -226,7 +231,7 @@ const handleInputChange = (e) => {
              flexDirection:'row',
              justifyContent:'space-between'
              }}>
-          <Button variant="contained" type="reset">
+          <Button variant="contained" type="reset" onClick={handleReset}>
                     Reset
               </Button>
               <Button width="50px" margin-left="10px" type="submit" variant="contained" color="primary">
