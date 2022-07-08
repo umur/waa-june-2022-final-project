@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import {Routes, Route} from 'react-router-dom'
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { FacultyRegistration } from "../pages/faculty/Registration";
 import UserProfile from  '../components/profiles/UserProfile'
 import Advertisement from '../components/job/Advertisement'
 import Dashboard from '../components/dashboard/Dashboard'
 import SearchStudent from './faculty/SearchStudent'
 import Registration from './student/Registration'
-import JobListing from '../components/job/Listing'
 import JobListings from '../components/job/Listings'
 import AddJobHistory from './student/AddJobHistory'
 
@@ -28,6 +27,8 @@ export default function Router(){
 
                 <Route path="/student/registration" element={<Registration/>}> Registration</Route>
                 <Route path='/job-listings' element={<JobListings listings={jobListingState.listings}/>}>Job Listings</Route>
+                <Route path="/faculty/registration" element={<FacultyRegistration />}
+        ></Route>
 
                 <Route path='/add-jobhistory' element={<AddJobHistory/>}>Job Listings</Route>
 
