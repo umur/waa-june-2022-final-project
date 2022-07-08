@@ -8,9 +8,9 @@ import java.util.List;
 public class JobAdvertisementDTO {
     private int id;
 
-    private String title;
-    private String description;
-    private String benefits;
+    private String jobTitle;
+    private String jobDesc;
+    private String addBenefit;
     private String companyName;
 
     //todo Address address;

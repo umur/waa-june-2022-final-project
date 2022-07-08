@@ -10,6 +10,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useParams } from "react-router";
+import { postRequest } from "../../setup/fetch-manager/FetchGateway";
 
 const initialValues = {
   firstName: "",
@@ -28,6 +30,14 @@ const initialValues = {
 
 
 export default function CreateJob() {
+
+const { id } = useParams();
+
+
+const postData = async () => {
+    let params = "/jobs";
+    let result = await postRequest(params, values);
+}
 
 const [values, setValues] = useState(initialValues);
 
@@ -234,7 +244,7 @@ const handleInputChange = (e) => {
           <Button variant="contained" type="reset" onClick={handleReset}>
                     Reset
               </Button>
-              <Button width="50px" margin-left="10px" type="submit" variant="contained" color="primary">
+              <Button width="50px" margin-left="10px" onClick={postData} variant="contained" color="primary">
                 Add Job
               </Button>
               </div>
