@@ -19,9 +19,11 @@ export default function AddComment() {
 
     const postData = async () => {
         const data = {
-            comment: commentState
+            comment: commentState,
+            studentId: id
         };
         let params = "/comments";
+        console.log(data.comment);
         let result = await postRequest(params, data);
     }
 

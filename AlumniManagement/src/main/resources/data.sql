@@ -11,4 +11,7 @@ INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki','1',4,1,1);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (6,'sp@miu.edu','Sudip2','Budhatoki2','1',4,1,1);
 
+INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_at, last_name, password, id_address) VALUES (1, true,'cs','faculty@miu.edu','Bibek','2022-01-15','Thokar','admin123',1);
+
+
 
