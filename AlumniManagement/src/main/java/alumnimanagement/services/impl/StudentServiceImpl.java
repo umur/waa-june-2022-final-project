@@ -67,6 +67,7 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentListDto> findAllByParam(int page, int size, String searchValue) {
 //        List<Student> student = studentRepo.findAll().stream().toList();
         Long id = Helper.getLoggedUserId();
+        var a = Helper.getCurrentDate();
         Pageable pageable = PageRequest.of(page, size);
         List<Student> student = studentRepo.findAll(pageable).stream().toList();
         List<StudentListDto> studentListDtos = new ArrayList<>();
