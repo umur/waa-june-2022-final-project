@@ -19,7 +19,7 @@ function FileUploadPage() {
 
     return (
         <div>
-            <input type="file" name="file" onChange={changeHandler} />
+            <input variant="primary" type="file" name="file" onChange={changeHandler} />
             {isFilePicked ? (
                 <div>
                     <p>Filename: {selectedFile.name}</p>
@@ -30,7 +30,7 @@ function FileUploadPage() {
                     </p>
                 </div>
             ) : (
-                <p>Select a file to show details</p>
+                <p >Select a file to show details</p>
             )}
             <div>
                 <Button variant="secondary" onClick={handleSubmission}>Submit</Button>
