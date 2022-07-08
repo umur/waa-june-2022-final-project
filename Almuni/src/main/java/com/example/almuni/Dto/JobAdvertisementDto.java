@@ -1,4 +1,4 @@
-package com.example.almuni.entity;
+package com.example.almuni.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,23 +8,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobAdvertisement {
+public class JobAdvertisementDto {
 
-    @Id
-    @GeneratedValue
+
     private Long id;
     private String description;
     private String benefits;
-    private String companyName;
 
     @ManyToMany //todo ?
-    private List<File> files;
+    private List<FileDto> files;
     @OneToOne
-    private Address address;
+    private AddressDto address;
 //    @OneToMany
 //    @Embedded
 //    private List<Tag> tags;  //todo ???????????????????/
