@@ -5,11 +5,23 @@ import Button from '@mui/material/Button';
 import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 import { useState } from "react";
 import { useParams } from "react-router";
+import { postRequest } from "../../setup/fetch-manager/FetchGateway";
 
 export default function AddComment() {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const [commentState, setCommentState] = useState('');
+
+    const postData = async () => {
+        const data = {
+            comment: commentState
+        };
+        let params = "/comments";
+        let result = await postRequest(params, data);
+    }
+
+
+
     const onClicked = () => {
 
     }
@@ -29,9 +41,7 @@ export default function AddComment() {
                 noValidate
                 autoComplete="off"
             >
-                <TextField id="outlined-basic" label="Comment" variant="outlined" onChange={() => {
-                    setCommentValue();
-                }} />
+                <TextField id="outlined-basic" label="Comment" variant="outlined" onChange={setCommentValue} />
 
             </Box>
             <Box
@@ -43,7 +53,7 @@ export default function AddComment() {
                 autoComplete="off"
             >
 
-                <Button onClick={onClicked} variant="contained">save</Button>
+                <Button onClick={() => { postData() }} variant="contained">save</Button>
             </Box>
 
 
