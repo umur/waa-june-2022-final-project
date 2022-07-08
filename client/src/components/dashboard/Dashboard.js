@@ -5,7 +5,6 @@ import NumberOfJobs from './charts/NumberOfJobs';
 import JobSearchTime from './charts/JobSearchTime';
 import TagPieChart from './charts/TagPieChart';
 
-
 function Dashboard() {
 
     const option = {

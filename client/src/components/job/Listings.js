@@ -1,0 +1,22 @@
+import React from 'react';
+import JobFilter from './JobFilter';
+import JobListing from './Listing';
+
+export default function JobListings(props) {
+    return (
+        <>
+            <JobFilter></JobFilter>
+            <div className='container'>{
+                props.listings.map((item) => {
+                    return <JobListing
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        aboutUs={item.aboutUs}
+                        description={item.description}
+                    />
+                })
+            } </div>
+        </>
+    )
+}
