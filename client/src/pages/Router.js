@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import UserProfile from "../components/profiles/UserProfile";
 import Dashboard from "../components/dashboard/Dashboard";
-import { Registration as FacultyRegistration } from "../pages/faculty/Registration";
+import { FacultyRegistration } from "../pages/faculty/Registration";
 
 export default function MyRoutes() {
   return (

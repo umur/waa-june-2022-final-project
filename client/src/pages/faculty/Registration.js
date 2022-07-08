@@ -85,4 +85,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export { Registration as FacultyRegistration };
