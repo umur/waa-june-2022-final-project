@@ -1,0 +1,10 @@
+.profile-img {
+    display: flex;
+    justify-content: center;
+
+}
+
+.profile-paper {
+    padding: 20px 40px;
+    margin-top: 40px;
+}
