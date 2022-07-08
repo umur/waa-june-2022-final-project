@@ -1,13 +1,16 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Advertisement from './job/Advertisement'
-import Dashboard from './dashboard/Dashboard'
-import UserProfile from './profiles/UserProfile'
-import UserProfile from '../components/profiles/UserProfile'
+
+import UserProfile from  '../components/profiles/UserProfile'
+import Advertisement from '../components/job/Advertisement'
+import Dashboard from '../components/dashboard/Dashboard'
+
+
+
+
 export default function Router(){
 
-    import UserProfile from './profiles/UserProfile'
-export default function MyRoutes(){
+
     return(
         <div>
             <Routes>
