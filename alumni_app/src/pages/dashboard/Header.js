@@ -31,7 +31,7 @@ export default function Header() {
         spacing={1}
       >
         <ListItem>
-          <Link to="/" className={classes.link}>HomePage</Link>
+          <Link to="/" className={classes.link}>Dashboard</Link>
         </ListItem>
         <ListItem>
           <Link to="/Students" className={classes.link}>Student</Link>

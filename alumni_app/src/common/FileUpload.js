@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { postFileRequest } from "../setup/fetch-manager/FetchGateway";
 
-export default function FileUpload() {
+export default function FileUpload(props) {
     const [selectedFile, setSelectedFile] = useState();
 
     const fileSelectedHandler = (e) => {
@@ -18,8 +18,8 @@ export default function FileUpload() {
 
         let formData = new FormData();
         formData.append('file', data);
-        formData.append('type', 'student');
-        formData.append('id', 1)
+        formData.append('type', props.folderName);
+        formData.append('id', props.id)
 
         try {
             const response = await axios.post(fullURL, formData, {
