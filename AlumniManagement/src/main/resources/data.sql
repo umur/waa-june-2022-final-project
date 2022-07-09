@@ -28,5 +28,11 @@ INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_
 
 INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_at, last_name, password, id_address) VALUES (1, true,'cs','faculty@miu.edu','Bibek','2022-01-15','Thokar','admin123',1);
 
+INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (1, 'Extraordinary Student',true,false,1,1);
+INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (2, 'Good boy.',true,false,1,1);
+INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (3, 'Fresh boy',true,false,1,2);
+
+
+
 
 
