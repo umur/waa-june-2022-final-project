@@ -9,11 +9,13 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.finalproject.models.Student;
 import com.finalproject.payload.request.LoginRequest;
 import com.finalproject.payload.request.SignupRequest;
 import com.finalproject.payload.response.JwtResponse;
 import com.finalproject.payload.response.MessageResponse;
 import com.finalproject.repository.RoleRepository;
+import com.finalproject.repository.StudentRepo;
 import com.finalproject.repository.UserRepository;
 import com.finalproject.security.jwt.JwtUtils;
 import com.finalproject.security.services.UserDetailsImpl;
@@ -48,6 +50,9 @@ public class AuthController {
   RoleRepository roleRepository;
 
   @Autowired
+  StudentRepo studentRepo;
+
+  @Autowired
   PasswordEncoder encoder;
 
   @Autowired
@@ -66,6 +71,15 @@ public class AuthController {
     List<String> roles = userDetails.getAuthorities().stream()
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
+
+    if (roles.get(0) == "ROLE_STUDENT") {
+//        if (studentRepo.findByUser_Id(userDetails.getId())==null) {
+//          Student newStudent = new Student();
+//          var user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException("Error: User is not found."));
+//          newStudent.setUser(user);
+//          studentRepo.save(newStudent);
+//        }
+    }
 
     return ResponseEntity.ok(new JwtResponse(jwt,
                          userDetails.getId(), 
@@ -127,6 +141,7 @@ public class AuthController {
 
     user.setRoles(roles);
     user.setActive(true);
+
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

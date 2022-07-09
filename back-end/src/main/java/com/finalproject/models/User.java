@@ -61,6 +61,10 @@ public class User {
   @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
   private Address address;
 
+//  @OneToOne(mappedBy = "user")
+  @OneToOne
+  @JsonIgnore
+  private Student student;
   public User() {
   }
 

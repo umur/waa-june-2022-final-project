@@ -19,7 +19,7 @@ public class Address {
     private String street;
     private String city;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     @ToString.Exclude
     @JsonIgnore

@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useCollapse from 'react-collapsed';
 
-const StudentPage = () => {
+const StudentPage = (props) => {
 
     const [studentList, setStudentList] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("")
+    const [selectedFilter, setSelectedFilter] = useState({})
+    const [filteredList, setFilteredList] = useState([])
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     const navigate = useNavigate();
 
@@ -14,10 +19,44 @@ const StudentPage = () => {
 
     useEffect(() => {
         setStudentList([
-            { "id": 1, "Role": "Student", "fname": "John", "lname": "Doe", "email": "john@gmail.com", "active": true },
-            { "id": 2, "Role": "Student", "fname": "John", "lname": "Doe", "email": "john@gmail.com", "active": false }
+            {
+                "id": 1, "Role": "Student", "firstName": "John", "lastName": "Doe", "email": "john@gmail.com", "active": true,
+                "address": { "id": 1, "street": "106 S D S", "city": "Fairfield", "state": "IA", "zip": "52556" },
+                "major": "Compro", "studentId": "613799"
+            },
+            {
+                "id": 2, "Role": "Student", "firstName": "Jahna", "lastName": "Clara", "email": "john@gmail.com", "active": false,
+                "address": { "id": 2, "street": "107 S D S", "city": "Fairfield", "state": "IA", "zip": "52557" },
+                "major": "MBA", "studentId": "614800"
+            }
         ])
+        setFilteredList(studentList)
     }, [])
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (selectedFilter === "all" && !searchQuery) {
+            return setFilteredList(studentList)
+        } else if (selectedFilter && searchQuery) {
+            if (selectedFilter === "major") {
+                return setFilteredList(studentList.filter((item) => item.major === searchQuery))
+            }
+            if (selectedFilter === "studentId") {
+                return setFilteredList(studentList.filter((item) => item.studentId === searchQuery))
+            }
+            if (selectedFilter === "city") {
+                return setFilteredList(studentList.filter((item) => item.address.city === searchQuery))
+            }
+            if (selectedFilter === "state") {
+                return setFilteredList(studentList.filter((item) => item.address.state === searchQuery))
+            }
+            if (selectedFilter === "name") {
+                return setFilteredList(studentList.filter((item) => item.firstName === searchQuery))
+            }
+        } else {
+            console.log("Filter or query is null");
+        }
+    }
 
     return (
         <div className="container">
@@ -26,7 +65,53 @@ const StudentPage = () => {
                     <div className="card-header">
                         <div className="row">
                             <div className="col-6">
-                                <h3>All Users</h3>
+                                <h3><u>Students:</u></h3>
+                            </div>
+                        </div>
+                        <br />
+                        <div className="row">
+                            <div className='col-12'>
+                                <h5 {...getToggleProps()}>{isExpanded ? 'Filter Collapse' : 'Filter Expand'}</h5>
+                                <div {...getCollapseProps()}>
+                                    <form>
+                                        <div className="row">
+                                            <div className="col-3">
+                                                <select className='form-select'
+                                                    name="category"
+                                                    onChange={(e) => setSelectedFilter(e.target.value)}
+                                                >
+                                                    <option value="">Select</option>
+                                                    <option value="all">All</option>
+                                                    <option value="major">Filter by Major</option>
+                                                    <option value="studentId">Filter by StudentId</option>
+                                                    <option value="city">Filter by City</option>
+                                                    <option value="state">Filter by State</option>
+                                                    <option value="name">Filter by Name</option>
+                                                </select>
+                                            </div>
+                                            <div className="col-4">
+                                                <div className="input-group mb3">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">&&</span>
+                                                    </div>
+                                                    <input className='form-control' aria-label
+                                                        type="text"
+                                                        name="input"
+                                                        placeholder="insert value"
+                                                        value={searchQuery}
+                                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                                    />
+                                                    <div className="input-group-append">
+                                                        <button
+                                                            className="btn btn-outline-secondary"
+                                                            onClick={(e) => { handleSearch(e) }}
+                                                        >Search</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,12 +128,12 @@ const StudentPage = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {studentList.map((item, ind) =>
+                                {filteredList.map((item, ind) =>
                                     <tr key={item.id}>
                                         <th scope="row">{ind + 1}</th>
                                         <td>{item.Role}</td>
-                                        <td>{item.fname}</td>
-                                        <td>{item.lname}</td>
+                                        <td>{item.firstName}</td>
+                                        <td>{item.lastName}</td>
                                         <td>{item.email}</td>
                                         <td>{item.active ? 'Yes' : 'No'}
                                         </td>

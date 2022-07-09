@@ -28,7 +28,7 @@ public class ProfileController {
     @GetMapping("/profile/address")
     public Optional<Address> getAddress() { return addressService.getAddress();}
 
-    @PostMapping("/profile/{id}")
+    @PutMapping("/profile/{id}")
     public User update(@PathVariable Long id, @RequestBody User user) {
        return profileService.update(id, user);
     }

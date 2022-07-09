@@ -18,3 +18,6 @@ INSERT INTO public.user_roles(user_id, role_id)VALUES(3, 2);
 
 INSERT INTO public.address(city, state, street, zip, id_user)
 VALUES('Fairfield', 'IA', '106 S D S', '52556', 1);
+INSERT INTO public.address(city, state, street, zip, id_user)
+VALUES('Fairfield', 'IA', '106 S D S', '52556', 2);
+

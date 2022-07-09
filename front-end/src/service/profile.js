@@ -14,6 +14,10 @@ class ProfileService {
     getAddress() {
         return axios.get(BASE_URL + '/profile/address', { headers: authHeader() })
     }
+
+    updateProfile(id, user) {
+        return axios.put(BASE_URL + '/profile/' + id, user, { headers: authHeader() })
+    }
 }
 
 export default new ProfileService();
