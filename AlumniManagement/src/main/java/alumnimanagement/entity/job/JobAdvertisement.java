@@ -26,6 +26,11 @@ public class JobAdvertisement {
     private String addBenefit;
     private String companyName;
     private LocalDateTime publishDate;
+    private String companySize;
+    private int numOpening;
+    private String jobType;
+    private float paymentAmount;
+
 
     //todo @OneToOne
     //todo Address address;
@@ -34,6 +39,7 @@ public class JobAdvertisement {
     private Address address;
 
     @OneToMany
+    @JoinColumn(name = "id_jobadvertisement")
     private List<Tag> tags;
 
     @ManyToOne

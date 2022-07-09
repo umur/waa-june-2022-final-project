@@ -15,7 +15,7 @@ public class JobController {
 
     private final JobService jobService;
 
-    @PostMapping
+    @PostMapping("/newJob")
     public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.create(jobAdvertisementDTO);}
 
     @GetMapping("/getAll")
