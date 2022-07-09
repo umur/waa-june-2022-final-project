@@ -13,6 +13,7 @@ import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import TestAuto from "../../common/testAuto";
 import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
+import CommentList from "../../pages/comment/CommentList";
 
 
 export default function RouteApp() {
@@ -23,6 +24,7 @@ export default function RouteApp() {
                 <Route path='/Students' element={<StudentList />}></Route>
                 <Route path='/Faculties' element={<FacultyList />}></Route>
                 <Route path='/AddComment/:id' element={<AddComment />}></Route>
+                <Route path='/Comments/:id' element={<CommentList />}></Route>
                 <Route path='/Jobs' element={<CreateJob />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
                 <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>

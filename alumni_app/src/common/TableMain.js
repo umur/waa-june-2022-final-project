@@ -164,7 +164,7 @@ export default function TableMain(props) {
                             <Button onClick={() => { navigate(props.deleteUrl + data.id) }} variant="contained" color="warning" className='button-custom'>Delete</Button>
                             <Button onClick={() => { navigate(props.detailUrl + data.id) }} variant="contained" color="secondary" className='button-custom'>Detail</Button>
                             {(props.addComment ?
-                                <Button onClick={() => { navigate('/AddComment/' + data.id) }} variant="contained" color="primary" className='button-custom'>Add Comment</Button>
+                                <Button onClick={() => { navigate('/Comments/' + data.id) }} variant="contained" color="primary" className='button-custom'>Comment</Button>
                                 :
                                 ''
                             )}
