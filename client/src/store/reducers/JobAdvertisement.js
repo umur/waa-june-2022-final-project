@@ -25,7 +25,7 @@ export const allJobAdvertisement = () => ({
   type: LIST_JOB_ADVERTISEMENT,
   payload: {
     request: {
-      url: "/job-advertisement",
+      url: "http://localhost:8080/v1/api/comments",
     },
   },
 });

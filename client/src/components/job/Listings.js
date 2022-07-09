@@ -6,7 +6,7 @@ import JobListing from "./Listing";
 
 export default function JobListings(props) {
   const dispatch = useDispatch();
-  const { jobAdvertisementList } = useSelector((state) => state);
+  const { JobAdvertisement } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(allJobAdvertisement());
@@ -16,15 +16,15 @@ export default function JobListings(props) {
     <>
       <JobFilter></JobFilter>
       <div className="container">
-        {jobAdvertisementList &&
-          jobAdvertisementList.map((item) => {
+        {JobAdvertisement &&
+          JobAdvertisement.map((job) => {
             return (
               <JobListing
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                aboutUs={item.aboutUs}
-                description={item.description}
+                key={job.id}
+                id={job.id}
+                title={"New Job"}
+                aboutUs={""}
+                description={job.comment}
               />
             );
           })}{" "}
