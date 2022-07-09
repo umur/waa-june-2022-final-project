@@ -1,14 +1,14 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 export default function Jobs() {
+    const navigate = useNavigate();
     return (
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-         <Link to="/Jobs/newJob">
-           <Button  variant="contained" color="primary">
-               Add Job
-           </Button>
-          </Link>
+            <Button variant="contained" color="primary" onClick={() => (navigate('/Jobs/newJob'))}>
+                Add Job
+            </Button>
         </div>
 
     )
