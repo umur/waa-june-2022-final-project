@@ -1,6 +1,8 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.JobAdvertisementDTO;
+import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.services.JobService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +20,8 @@ public class JobController {
     @PostMapping("/newJob")
     public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.create(jobAdvertisementDTO);}
 
-    @GetMapping("/getAll")
-    public List<JobAdvertisementDTO> findAll(@RequestParam int page, @RequestParam int size) {
+    @GetMapping()
+    public List<JobAdvertisementDTO> findAll() {
         return jobService.getAll();
     }
 
@@ -28,5 +30,15 @@ public class JobController {
         return jobService.findLastTop10Advertisement();
     }
 
+    @GetMapping("/getAll")
+    public List<JobAdvertisementListDTO> findAllList(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = jobService.findAllByParam(page,size,searchValue);
+        return result;
+    }
 
+    @GetMapping("/count")
+    public Long count() {
+        return jobService.count();
+    }
 }

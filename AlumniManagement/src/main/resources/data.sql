@@ -4,15 +4,15 @@ INSERT INTO department (id,department_name) VALUES (2,'Quality Assistance');
 INSERT INTO address (id,city,state) VALUES (1,'Fairfield','IOWA');
 INSERT INTO address (id,city,state) VALUES (2,'Fairfield','OHIO');
 
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (1,'apokhrel@miu.edu','Ashish','Pokhrel','1',4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (2,'pbudhathoki@miu.edu','Puskar','Budhatoki','1',4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (3,'spageni@miu.edu','Saugat','Pageni','1',4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (4,'akc@miu.edu','Anand','Kc','1',4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki','1',4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (6,'sp@miu.edu','Sudip2','Budhatoki2','1',4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (1,'apokhrel@miu.edu','Ashish','Pokhrel',1,4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (2,'pbudhathoki@miu.edu','Puskar','Budhatoki',1,4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (3,'spageni@miu.edu','Saugat','Pageni',1,4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (4,'akc@miu.edu','Anand','Kc',1,4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki',1,4,1,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (6,'sp@miu.edu','Sudip2','Budhatoki2',1,4,1,1);
 
--- INSERT INTO job_advertisement (id,benefits,company_name,description,publish_date,title,id_address) VALUES (1,'good salary with bonus','Infosys','Mid level .Net developer needed in Infosys','2021-08-28 10:30:15','.Net Developer',2);
--- INSERT INTO job_advertisement (id,benefits,company_name,description,publish_date,title,id_address) VALUES (2,'good salary with bonus','Infosys','Android Developer','2021-09-28 10:30:15','Mid level Android developer needed in Infosys',1);
+INSERT INTO job_advertisement (id,add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address) VALUES (1,'good salary with bonus','Infosys','Mid level java developer needed in Infosys','java Developer',1,5,1231,1);
+INSERT INTO job_advertisement (id,add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address) VALUES (2,'good salary with bonus','Data Sys','Mid level developer needed in Infosys','.Net Developer',2,10,16516,2);
 -- INSERT INTO job_advertisement (id,benefits,company_name,description,publish_date,title,id_address) VALUES (3,'good salary with bonus','Infosys','Angular Developer','2021-07-28 10:30:15','Mid level Angular developer needed in Infosys',1);
 -- INSERT INTO job_advertisement (id,benefits,company_name,description,publish_date,title,id_address) VALUES (4,'good salary with bonus','Infosys','IOS Developer','2021-10-28 10:30:15','Mid level IOS developer needed in Infosys',2);
 -- INSERT INTO job_advertisement (id,benefits,company_name,description,publish_date,title,id_address) VALUES (5,'good salary with bonus','Infosys','Java Developer','2021-06-28 10:30:15','Mid level Java developer needed in Infosys',1);
