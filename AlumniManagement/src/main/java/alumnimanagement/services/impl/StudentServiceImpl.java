@@ -63,6 +63,8 @@ public class StudentServiceImpl implements StudentService {
         return modelMapper.map(s,StudentDTO.class);
     }
 
+
+
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String searchValue) {
 //        List<Student> student = studentRepo.findAll().stream().toList();
