@@ -1,6 +1,7 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.CommentDTO;
+import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.services.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,16 @@ public class CommentController {
     @GetMapping("/student/{id}")
     public List<CommentDTO> commentByStudentId(@PathVariable long id){
         return commentService.commentByStudentId(id);
+    }
+    @GetMapping("/student/{id}/getAll")
+    public List<CommentDTO> findAllList(@PathVariable long id,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = commentService.commentByStudentId(id);
+        return result;
+    }
+
+    @GetMapping("/student/{id}/count")
+    public Long count(@PathVariable long id) {
+        return commentService.count();
     }
 }

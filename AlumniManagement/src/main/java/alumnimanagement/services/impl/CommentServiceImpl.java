@@ -64,5 +64,10 @@ public class CommentServiceImpl implements CommentService {
         return result;
     }
 
+    @Override
+    public Long count() {
+        return commentRepo.count();
+    }
+
 
 }

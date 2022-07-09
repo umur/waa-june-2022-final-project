@@ -16,4 +16,6 @@ public interface CommentService {
     void delete(long id);
 
     List<CommentDTO> commentByStudentId(long id);
+
+    Long count();
 }
