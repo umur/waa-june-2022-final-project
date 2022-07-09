@@ -1,14 +1,21 @@
 package alumnimanagement.services.impl;
 
+import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.JobAdvertisementDTO;
+import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.entity.Faculty;
 import alumnimanagement.entity.job.JobAdvertisement;
+import alumnimanagement.entity.job.Tag;
 import alumnimanagement.repo.JobRepo;
 import alumnimanagement.services.JobService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,5 +57,40 @@ public class JobServiceImpl implements JobService {
                 .map((jobAdvertisement ->
                         modelMapper.map(jobAdvertisement, JobAdvertisementDTO.class)))
                 .toList();
+    }
+
+    @Override
+    public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String searchValue) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
+        List<JobAdvertisementListDTO> dtos = new ArrayList<>();
+        for(JobAdvertisement f : list)
+        {
+            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
+            dto.setCity(f.getAddress().getCity());
+            dto.setId(f.getId());
+            dto.setState(f.getAddress().getState());
+            dto.setAddBenefit(f.getAddBenefit());
+            dto.setJobDesc(f.getJobDesc());
+            dto.setJobTitle(f.getJobTitle());
+            dto.setAddBenefit(f.getAddBenefit());
+            dto.setCompanyName(f.getCompanyName());
+            dto.setCompanySize(f.getCompanySize());
+            dto.setJobType(f.getJobType());
+            dto.setNumOpening(f.getNumOpening());
+            dto.setPaymentAmount(f.getPaymentAmount());
+            for(Tag t : f.getTags())
+            {
+               dto.setTag(dto.getTag()+ " " + t.getTitle());
+            }
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
+    @Override
+    public Long count() {
+        Long count = jobRepo.count();
+        return count;
     }
 }
