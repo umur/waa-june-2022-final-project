@@ -1,15 +1,20 @@
 package alumnimanagement.services.impl;
 
 import alumnimanagement.dto.FacultyDTO;
+import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Faculty;
+import alumnimanagement.entity.Student;
 import alumnimanagement.repo.FacultyRepo;
 import alumnimanagement.services.FacultyService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,5 +52,31 @@ public class FacultyServiceImpl implements FacultyService {
     public void remove(long id) {
         facultyRepo.deleteById(id);
 
+    }
+
+    @Override
+    public List<FacultyListDto> findAllByParam(int page, int size, String searchValue) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Faculty> facultyList = facultyRepo.findAll(pageable).stream().toList();
+        List<FacultyListDto> dtos = new ArrayList<>();
+        for(Faculty f : facultyList)
+        {
+            FacultyListDto facultyListDto = new FacultyListDto();
+            facultyListDto.setCity(f.getAddress().getCity());
+            facultyListDto.setEmail(f.getEmail());
+            facultyListDto.setId(f.getId());
+            facultyListDto.setFirstName(f.getFirstName());
+            facultyListDto.setLastName(f.getLastName());
+            facultyListDto.setState(f.getAddress().getState());
+            facultyListDto.setDepartment(f.getDepartment());
+            dtos.add(facultyListDto);
+        }
+        return dtos;
+    }
+
+    @Override
+    public Long count() {
+        Long count = facultyRepo.count();
+        return count;
     }
 }

@@ -13,4 +13,6 @@ public interface JobService {
     void update(JobAdvertisementDTO jobAdvertisementDTO, int id);
 
     void delete(int id);
+
+    List<JobAdvertisementDTO> findLastTop10Advertisement();
 }

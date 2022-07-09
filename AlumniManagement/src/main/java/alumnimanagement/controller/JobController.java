@@ -23,4 +23,10 @@ public class JobController {
         return jobService.getAll();
     }
 
+    @GetMapping("/getLastTop10")
+    public List<JobAdvertisementDTO> findLastTop10Advertisement(){
+        return jobService.findLastTop10Advertisement();
+    }
+
+
 }

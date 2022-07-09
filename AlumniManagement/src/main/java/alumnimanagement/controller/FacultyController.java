@@ -1,6 +1,8 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.FacultyDTO;
+import alumnimanagement.dto.FacultyListDto;
+import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.services.FacultyService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +34,17 @@ public class FacultyController {
     @DeleteMapping("/{id}")
     public void removeFaculty(@PathVariable long id) {
         facultyService.remove(id);
+    }
+
+    @GetMapping("/getAll")
+    public List<FacultyListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = facultyService.findAllByParam(page,size,searchValue);
+        return result;
+    }
+
+    @GetMapping("/count")
+    public Long count() {
+        return facultyService.count();
     }
 }
