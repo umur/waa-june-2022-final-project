@@ -15,9 +15,9 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class JobServiceImpl implements JobService {
-
     private final JobRepo jobRepo;
     private final ModelMapper modelMapper;
+
 
     @Override
     public void create(JobAdvertisementDTO job) {
@@ -42,5 +42,13 @@ public class JobServiceImpl implements JobService {
     @Override
     public void delete(int id) {
         jobRepo.deleteById(id);
+    }
+
+    @Override
+    public List<JobAdvertisementDTO> findLastTop10Advertisement() {
+        return jobRepo.findTop10ByOrderByPublishDateDesc().stream()
+                .map((jobAdvertisement ->
+                        modelMapper.map(jobAdvertisement, JobAdvertisementDTO.class)))
+                .toList();
     }
 }
