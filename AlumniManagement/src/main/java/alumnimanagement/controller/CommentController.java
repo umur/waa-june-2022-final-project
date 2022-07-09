@@ -36,4 +36,8 @@ public class CommentController {
     public void deleteComment(long id){
         commentService.delete(id);
     }
+
+    public List<CommentDTO> commentByStudentId(long id){
+        return commentService.commentByStudentId(id);
+    }
 }

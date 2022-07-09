@@ -14,4 +14,6 @@ public interface CommentService {
     void update(CommentDTO commentDTO, long id);
 
     void delete(long id);
+
+    List<CommentDTO> commentByStudentId(long id);
 }
