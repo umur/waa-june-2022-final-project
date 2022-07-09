@@ -1,0 +1,21 @@
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'john.doe@keycloak.org','John',4,'Doe','john.doe');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'jane.doe@keycloak.org','Jane',4,'Doe','jane.doe');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'anne.hathaway@keycloak.org','Anne',4,'Hathaway','anne.hathaway');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'eva.green@keycloak.org','Eva',4,'Green','eve.green');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'jlo@keycloak.org','Jenifer',4,'Lopez','jlo');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'jess.glynne@keycloak.org','Jess',4,'Glynne','jess.glynne');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'calum.scott@keycloak.org','Calum',4,'Scott','calum.scott');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'rbj@keycloak.org','Robert',4,'Downey Jr.','rbj');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'robert.deniro@keycloak.org','Robert',4,'De Niro','robert.deniro');
+insert into student (active, email, first_name, gpa, last_name,username) values (true,'johnny.depp@keycloak.org','Johnny',4,'Depp','johnny.depp');
+
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1001 N 4th St.',52556,1);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1002 N 4th St.',52557,2);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1003 N 4th St.',52557,3);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1004 N 4th St.',52557,4);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1005 N 4th St.',52557,5);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1006 N 4th St.',52557,6);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1007 N 4th St.',52557,7);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1008 N 4th St.',52557,8);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1009 N 4th St.',52557,9);
+insert into public.address ( city, state, street, zip, student_id) values ('Fairfield','IA','1010 N 4th St.',52557,10);

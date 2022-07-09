@@ -8,7 +8,10 @@ import com.cs545waa.waaJune2022finalProject.service.CvService;
 import com.cs545waa.waaJune2022finalProject.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.keycloak.KeycloakPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/students")
@@ -25,48 +28,55 @@ public class StudentController {
     // ============= just for testing purposes
 
     //------------------------------ edit profile -------------
-    @PutMapping("/edit-profile/{id}")
-    public void editProfile(@PathVariable int id, @RequestBody StudentDto studentDto) {
+    @PutMapping("/edit-profile")
+    public void editProfile(@RequestBody StudentDto studentDto, Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+
         studentService.editProfile(studentDto);
     }
 
     //------------------------------ create cv -------------
-    @PostMapping("/create-cv/{id}")
-    public void createCv(@PathVariable int id, @RequestBody CvDto cvDto) {
+    @PostMapping("/create-cv")
+    public void createCv(@RequestBody CvDto cvDto, Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+
 //        cvService.createCv(cvDto);
         cvService.createCv(cvDto);
 
     }
 
     //------------------------------ edit cv -------------
-    @PostMapping("/edit-cv/{id}")
-    public void editCv(@PathVariable int id, @RequestBody CvDto cvDto) {
+    @PostMapping("/edit-cv")
+    public void editCv( @RequestBody CvDto cvDto, Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+
         cvService.editCv(cvDto);
     }
 
     // ---------------- add professional experience---------
-    @PostMapping("/add-experience/{id}")
-    public void addExperience(@PathVariable int id, @RequestBody ProfessionalExperienceDto professionalExperienceDto) {
+    @PostMapping("/add-experience")
+    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto) {
         studentService.addExperience(professionalExperienceDto);
     }
 
 
     //------------------------------------------------------
-    @PostMapping("")
-    public void save(@RequestBody StudentDto a){
+    @PostMapping
+    public void save(@RequestBody StudentDto a, Principal principal){
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+
+        user.getKeycloakSecurityContext().getToken().getName();
         studentService.registerStudent(a);
     }
-//
-//    @DeleteMapping("/{id}")
-//    public void delete(@PathVariable int id){
-//        studentService.delete(id);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public  void update(@PathVariable int id, @RequestBody Student p){
-//        studentService.update(id,p);
 
-    //-----------------------------------------------------------
-
+    @GetMapping
+    public StudentDto get(Principal principal){
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        return studentService.getStudentByUsername(username);
+    }
 }
 

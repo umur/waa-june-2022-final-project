@@ -30,10 +30,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void editProfile(StudentDto studentDto) {
-        Student student = modelMapper.map(studentDto, Student.class);
-        Address address = student.getAddress();
-        studentRepo.save(student);
-        addressRepo.save(address);
+        //Student student = modelMapper.map(studentDto, Student.class);
+        //Address address = student.getAddress();
+        //studentRepo.save(student);
+        studentRepo.save(modelMapper.map(studentDto, Student.class));
+        addressRepo.save(modelMapper.map(studentDto.getAddress(), Address.class));
         
     }
 
@@ -52,5 +53,15 @@ public class StudentServiceImpl implements StudentService {
 //        cv.getProfessionalExperience().add(professionalExperience);
 //        cvRepo.save(cv);
 
+    }
+
+    @Override
+    public CvDto getCV(Integer id) {
+        return modelMapper.map(studentRepo.findById(id),CvDto.class);
+    }
+
+    @Override
+    public StudentDto getStudentByUsername(String username) {
+        return modelMapper.map(studentRepo.getStudentByUsername(username),StudentDto.class);
     }
 }

@@ -26,4 +26,7 @@ public class JobAdvertisement {
 
     @ManyToOne
     private Student student;
+
+    @ManyToMany(mappedBy = "jobApplications")
+    private List<Student> applicants;
 }

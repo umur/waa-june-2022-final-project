@@ -1,5 +1,6 @@
 package com.cs545waa.waaJune2022finalProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,6 @@ public class Address {
     private int zip;
 
     @OneToOne
+    @JoinColumn
     Student student;
 }

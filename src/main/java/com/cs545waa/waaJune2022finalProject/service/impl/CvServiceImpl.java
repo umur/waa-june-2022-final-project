@@ -1,7 +1,6 @@
 package com.cs545waa.waaJune2022finalProject.service.impl;
 
 import com.cs545waa.waaJune2022finalProject.dto.CvDto;
-import com.cs545waa.waaJune2022finalProject.entity.Cv;
 import com.cs545waa.waaJune2022finalProject.repository.CvRepo;
 import com.cs545waa.waaJune2022finalProject.service.CvService;
 import lombok.AllArgsConstructor;

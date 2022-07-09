@@ -1,6 +1,7 @@
 package com.cs545waa.waaJune2022finalProject.dto;
 
 import com.cs545waa.waaJune2022finalProject.entity.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,15 +16,17 @@ import java.util.List;
 @NoArgsConstructor
 public class StudentDto {
 
-    @NotNull
+    private Integer id;
+
     private String firstName;
-    @NotNull
+
     private String lastName;
-    @NotNull
+
     private String email;
+    private String username;
 
-
-    private Address address;
+     @JsonManagedReference(value = "stu")
+    private AddressDto address;
 
     private Department major;
 
@@ -38,8 +41,8 @@ public class StudentDto {
     @OneToMany
     private List<ProfessionalExperienceDto> professionalExperiencesDto;
 
-    @OneToOne
-    private Cv cv;
+//    @OneToOne
+//    private Cv cv;
 }
 
 

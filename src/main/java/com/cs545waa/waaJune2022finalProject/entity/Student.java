@@ -1,8 +1,10 @@
 package com.cs545waa.waaJune2022finalProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.w3c.dom.ls.LSInput;
 
 import javax.persistence.*;
@@ -25,12 +27,15 @@ public class Student {
     private String lastName;
 
     private String email;
-
+    private String username;
     private String password;
     private float gpa;
 
 
-    @OneToOne
+    @OneToOne(mappedBy = "student",fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.PERSIST,
+            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+    org.hibernate.annotations.CascadeType.DELETE})
     private Address address;
 
     @ManyToOne
@@ -39,22 +44,22 @@ public class Student {
     private LocalDateTime LastLoggedInAt;
     private boolean active;
 
+    //Students can add job advertisements
+    @OneToMany(mappedBy = "student")
+    private List<JobAdvertisement> jobAdvertisements;
+
     //Display 10 most recently applied job advertisements.
     //Students can apply to the jobs.
     @ManyToMany
     @JoinTable(name = "JobApplication")
     private List<JobAdvertisement> jobApplications;
 
-    //Students can add job advertisements
-    @OneToMany(mappedBy = "student")
-    private List<JobAdvertisement> jobAdvertisements;
 
 
     @OneToMany(mappedBy="student")
     private List<ProfessionalExperience> professionalExperiences;
 
-    @OneToOne
-    private Cv cv;
+
 
 
 }
