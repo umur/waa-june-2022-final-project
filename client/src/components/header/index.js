@@ -4,8 +4,11 @@ import Main from "../dashboard/Main";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+// import {FontAwesomeIcon} from "react-bootstrap"
 import "./index.css";
 import UserService from "../../services/UserService";
+
+var FontAwesomeIcon = require('react-fontawesome');
 
 export default function Header() {
   return (
@@ -51,9 +54,13 @@ export default function Header() {
           >
             Logout
           </button>
-          <p className="navbar-text navbar-right">
+          <span className="navbar-text navbar-right">
             Signed in as {UserService.getUsername()}
-          </p>
+          </span>
+          &nbsp;
+          <div className="notification-container">
+              <FontAwesomeIcon className="fa-solid fa-bell" size="xs"/>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
