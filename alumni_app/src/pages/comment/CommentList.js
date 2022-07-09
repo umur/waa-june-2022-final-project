@@ -26,7 +26,7 @@ export default function CommentList() {
         <>
             <Button onClick={() => { navigate('/AddComment/' + id) }}>Add Comment</Button>
             <div className="list-table">
-                <TableMain dataUrl={'/comments/' + { id }}  ></TableMain>
+                <TableMain dataUrl={'/comments/student/' + { id }}  ></TableMain>
             </div>
 
         </>

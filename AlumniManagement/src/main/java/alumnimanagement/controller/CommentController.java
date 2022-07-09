@@ -37,7 +37,8 @@ public class CommentController {
         commentService.delete(id);
     }
 
-    public List<CommentDTO> commentByStudentId(long id){
+    @GetMapping("/student/{id}")
+    public List<CommentDTO> commentByStudentId(@PathVariable long id){
         return commentService.commentByStudentId(id);
     }
 }

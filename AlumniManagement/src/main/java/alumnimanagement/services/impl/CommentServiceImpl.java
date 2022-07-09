@@ -60,7 +60,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<CommentDTO> commentByStudentId(long id) {
-        return commentRepo.commentByStudentId(id).stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
+        var result= commentRepo.commentByStudentId(id).stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
+        return result;
     }
 
 
