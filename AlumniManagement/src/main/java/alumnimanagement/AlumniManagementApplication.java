@@ -16,4 +16,10 @@ public class AlumniManagementApplication {
     public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
+
+    @Bean
+    public String getString()
+    {
+        return  new String();
+    }
 }

@@ -1,5 +1,6 @@
 package alumnimanagement.entity.job;
 
+import alumnimanagement.entity.Student;
 import alumnimanagement.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,10 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 public class JobAdvertisement {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    private String description;
-    private String benefits;
+
+    private String jobTitle;
+    private String jobDesc;
+    private String addBenefit;
     private String companyName;
     private LocalDateTime publishDate;
 
@@ -31,5 +35,8 @@ public class JobAdvertisement {
 
     @OneToMany
     private List<Tag> tags;
+
+    @ManyToOne
+    Student student;
 
 }

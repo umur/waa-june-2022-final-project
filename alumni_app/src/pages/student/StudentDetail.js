@@ -17,7 +17,6 @@ export default function StudentDetail(props) {
     const fetchData = async () => {
         let response = await getRequest('/students/' + id);
         setStudentState(response);
-        console.log(response);
     }
 
     useEffect(() => {
