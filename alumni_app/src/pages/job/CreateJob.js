@@ -35,11 +35,14 @@ export default function CreateJob() {
 const [selectValue, setSelectValue] = useState();
 
     const setValue = (value) => {
-        let values = '';
+        let tagvalues = '';
         value.map((x)=>{
-            values += x.title;
+            tagvalues += x.title+",";
         })
-        setSelectValue(values);
+        setValues({
+              ...values,
+              "jobTag": tagvalues,
+            });
     }
 
 const { id } = useParams();
@@ -53,7 +56,11 @@ const postData = async () => {
 const [values, setValues] = useState(initialValues);
 
 const handleInputChange = (e) => {
+
+
     const { name, value } = e.target;
+    debugger
+    console.log(e.target)
     setValues({
       ...values,
       [name]: value,
@@ -154,10 +161,11 @@ const handleInputChange = (e) => {
                     labelId="companySize"
                     id="companySize"
                     label="Company Size"
-                    defaultValue={values.companySize}
+                    name="companySize"
+                    value={values.companySize}
                      onChange={handleInputChange}
                   >
-                    <MenuItem value={1}>0- less than 100</MenuItem>
+                    <MenuItem value="0- less than 100">0- less than 100</MenuItem>
                     <MenuItem value={2}>100-1000</MenuItem>
                     <MenuItem value={3}>more than 1000</MenuItem>
                   </Select>
@@ -196,7 +204,7 @@ const handleInputChange = (e) => {
                                 labelId="jobType"
                                 id="jobType"
                                 label="Job Type"
-                                defaultValue={values.jobType}
+                                value={values.jobType}
                                 onChange={handleInputChange}
                               >
                                 <MenuItem value={1}>Full-Time</MenuItem>
@@ -220,8 +228,10 @@ const handleInputChange = (e) => {
                 </Grid>
         <Grid item xs={12}>
                 <>
-
-                    < AutoCompleteSelect onChange={value => setValue(value)} dataUrl='/tags' ></AutoCompleteSelect >
+                    < AutoCompleteSelect
+                    name = "jobTag"
+                    onChange={value => setValue(value)}
+                    dataUrl='/tags' ></AutoCompleteSelect >
                 </>
 
                 </Grid>
