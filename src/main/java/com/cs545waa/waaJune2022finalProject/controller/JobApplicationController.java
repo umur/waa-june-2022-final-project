@@ -23,12 +23,14 @@ public class JobApplicationController {
 
     @PostMapping
     public void applyToJob(@RequestBody Integer jobId, Principal principal){
+
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+
         jobService.applyToJob(jobId,username);
     }
-    @GetMapping
-    public List<JobAdvertisement> getJobAdvertisements(int limit, int offset){
-        return jobService.getJobAdvertisement(limit,offset);
-    }
+//    @GetMapping("/")
+//    public List<JobAdvertisement> getJobAdvertisements(int limit, int offset){
+//        return jobService.getJobAdvertisement(limit,offset);
+//    }
 }

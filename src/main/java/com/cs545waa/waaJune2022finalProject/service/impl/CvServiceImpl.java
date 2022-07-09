@@ -20,15 +20,15 @@ public class CvServiceImpl implements CvService {
 
     @Override
     public void createCv(CvDto cvDto) {
-        Cv cv = modelMapper.map(cvDto , Cv.class);
-        cvRepo.save(cv);
+//        Cv cv = modelMapper.map(cvDto , Cv.class);
+//        cvRepo.save(cv);
 
     }
 
     @Override
     public void editCv(CvDto cvDto) {
-        Cv cv = modelMapper.map(cvDto , Cv.class);
-        cvRepo.save(cv);
+//        Cv cv = modelMapper.map(cvDto , Cv.class);
+//        cvRepo.save(cv);
     }
 
 }
