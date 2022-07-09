@@ -1,14 +1,11 @@
 import { applyMiddleware, createStore } from "redux";
 import axiosMiddleware from "redux-axios-middleware";
 import thunk from "redux-thunk";
-import rootReducer from "./reducers";
-import HttpService from "../services/HttpService";
+import rootReducer from "../modules";
+import HttpService from "./HttpService";
 
 const setup = () => {
-  const middleware = applyMiddleware(
-    thunk,
-    axiosMiddleware(HttpService.getAxiosClient())
-  );
+  const middleware = applyMiddleware(thunk, axiosMiddleware(HttpService.getAxiosClient()));
   return createStore(rootReducer, middleware);
 };
 
