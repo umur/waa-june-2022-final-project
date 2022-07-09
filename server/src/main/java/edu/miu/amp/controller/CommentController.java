@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -20,12 +21,16 @@ public class CommentController {
     }
 
     @GetMapping
+    @RolesAllowed("faculty")
+
     public ResponseEntity<List<CommentDto>> getAllComment() {
         var res = commentService.getAllComment();
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @PostMapping
+    @RolesAllowed("faculty")
+
     public ResponseEntity<CommentDto> addComment(@Valid @RequestBody CommentDto data) {
         var res = commentService.addComment(data);
 
@@ -33,6 +38,8 @@ public class CommentController {
     }
 
     @GetMapping("/{id}")
+    @RolesAllowed("faculty")
+
     public ResponseEntity<CommentDto> getComment(@PathVariable(name = "id") Integer id) {
 
         var res = commentService.getComment(id);
@@ -41,6 +48,7 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed("faculty")
 
     public ResponseEntity<CommentDto> updateComment(@PathVariable(name = "id") Integer id, @RequestBody CommentDto data) {
 
@@ -50,6 +58,8 @@ public class CommentController {
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed("faculty")
+
     public void deleteComment(@PathVariable(name = "id") Integer id) {
 
         commentService.deleteComment(id);

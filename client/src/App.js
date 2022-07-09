@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import Main from "./components/dashboard/Main";
-import './App.css';
-import Router from './pages/Router';
-import Footer from './components/Footer';
-import { BrowserRouter } from 'react-router-dom';
-import Header from './components/header';
-
-import Router from "./pages/Router";
+import "./App.css";
 import Footer from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
-import Registration from "./pages/faculty/Registration";
+import Header from "./components/header";
+
+import Router from "./pages/Router";
+import store from "./store";
+import { Provider } from "react-redux";
+
+const reduxStore = store.setup();
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Header></Header>
-        <Router></Router>
-        <Footer></Footer>
-      </BrowserRouter>
+      <Provider store={reduxStore}>
+        <BrowserRouter>
+          <Header></Header>
+          <Router></Router>
+          <Footer></Footer>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

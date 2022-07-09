@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import auth from './Auth';
+import JobAdvertisement from "./JobAdvertisement";
 
 export default combineReducers({
-    auth
+  JobAdvertisement,
 });
