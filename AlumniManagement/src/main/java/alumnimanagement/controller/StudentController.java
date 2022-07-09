@@ -32,17 +32,32 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/getAll")
-    public List<StudentListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    @GetMapping("/{state}/{city}/{major}/{studentName}/getAll")
+    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
-        var result = studentService.findAllByParam(page,size,searchValue);
+        var result = studentService.findAllByParam(page,size,"");
         return result;
     }
 
-    @GetMapping("/count")
-    public Long totalStudents() {
+    @GetMapping("/{state}/{city}/{major}/{studentName}/count")
+    public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName)
+    {
         return studentService.totalStudents();
     }
+
+//    @GetMapping("/getAll")
+//    public List<StudentListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+//    {
+//        var result = studentService.findAllByParam(page,size,searchValue);
+//        return result;
+//    }
+
+
+
+//    @GetMapping("/count")
+//    public Long totalStudents() {
+//        return studentService.totalStudents();
+ //   }
 
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable long id, @RequestBody StudentDTO studentDTO) throws Exception {
