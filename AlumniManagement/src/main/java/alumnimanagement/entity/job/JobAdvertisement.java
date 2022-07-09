@@ -29,6 +29,7 @@ public class JobAdvertisement {
     private String companySize;
     private int numOpening;
     private String jobType;
+    private String jobTag;
     private float paymentAmount;
 
 
