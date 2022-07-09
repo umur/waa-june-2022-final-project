@@ -16,6 +16,7 @@ public class JobAdvertisementDTO {
     private String companySize;
     private int numOpening;
     private String jobType;
+    private String jobTag;
     private float paymentAmount;
     private LocalDateTime publishDate;
 
