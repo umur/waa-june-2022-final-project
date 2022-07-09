@@ -79,7 +79,7 @@ export default function Jobs() {
                             isMultiSelect={false}
                             label={"Tag"}
                             placeholder={"Eg. mpp, fpp"}
-                            dataUrl='/reports/major' ></AutoCompleteSelect >
+                            dataUrl='/tags' ></AutoCompleteSelect >
                     </div>
                     <div>
                         < AutoCompleteSelect
