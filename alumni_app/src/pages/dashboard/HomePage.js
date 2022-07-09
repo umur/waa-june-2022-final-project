@@ -1,15 +1,19 @@
-import { Container } from "@material-ui/core";
-import axios from "axios";
+import PieChart from '../chart/PieChart';
 import React, { useEffect, useState } from "react";
-import { getRequest } from '../../setup/fetch-manager/FetchGateway'
+import BarChart from '../chart/BarChart';
 
 
 export default function HomePage() {
     return (
         <>
-                <div>
-                    Home Page Is Here !
+            <div>
+                <div className="col-6">
+                    <BarChart></BarChart>
                 </div>
+                <div className="col-6">
+                    <PieChart></PieChart>
+                </div>
+            </div>
         </>
 
     )
