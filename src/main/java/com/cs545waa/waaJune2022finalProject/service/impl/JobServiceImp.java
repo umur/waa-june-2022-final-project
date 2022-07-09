@@ -10,6 +10,7 @@ import com.cs545waa.waaJune2022finalProject.service.JobService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +44,12 @@ public class JobServiceImp implements JobService {
     public List<JobAdvertisement> getJobAdvertisement(int limit, int offset) {
         // return 10 jobs
         return null;
+    }
+
+    @Override
+    public List<JobAdvertisementDto> filter(String tag, String state, String city, String companyName) {
+//        if(filter_param.equals(""))
+//        @Query("SELECT jobs FROM JobAdvertisement WHERE")
+        return jobRepo.findByFilter(tag, state, city, companyName);
     }
 }

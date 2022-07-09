@@ -5,7 +5,7 @@ import com.cs545waa.waaJune2022finalProject.dto.CvDto;
 public interface CvService {
 
 
-    void createCv(CvDto cv);
+    CvDto getCv(String username);
 
-    void editCv(CvDto cvDto);
+//    void saveCv(CvDto cvDto);
 }

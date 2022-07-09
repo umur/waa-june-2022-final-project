@@ -3,6 +3,7 @@ package com.cs545waa.waaJune2022finalProject.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,6 +27,7 @@ public class Faculty {
     private String email;
     @NotNull
     private String passwpord;
+    private String username;
 
     @ManyToOne
     private Department department;
@@ -37,4 +39,11 @@ public class Faculty {
     //  Only faculty can see the comments.
     @OneToMany
     private List<Comment> facultyFeedbacks;
+
+    @OneToOne(mappedBy = "faculty",fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.PERSIST,
+            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+            org.hibernate.annotations.CascadeType.DELETE})
+    private Address address;
+
 }
