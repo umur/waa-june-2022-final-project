@@ -22,11 +22,23 @@ export default function CommentList() {
     //     fetchComment();
     // }, [])
 
+    const listParams = {
+        'showDetail': true,
+        'showEdit': false,
+        'showDelete': false,
+        'showAddComment': false,
+        'dataUrl': '/comments/student/' + id,
+        'addCommentUrl': '',
+        'editUrl': '',
+        'deleteUrl': '',
+        'detailUrl': ''
+    }
+
     return (
         <>
             <Button onClick={() => { navigate('/AddComment/' + id) }}>Add Comment</Button>
             <div className="list-table">
-                <TableMain dataUrl={'/comments/' + { id }}  ></TableMain>
+                <TableMain listParams={listParams} ></TableMain>
             </div>
 
         </>

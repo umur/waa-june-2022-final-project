@@ -37,7 +37,7 @@ public class FacultyController {
     }
 
     @GetMapping("/getAll")
-    public List<FacultyListDto> findAllStudent(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    public List<FacultyListDto> findAllList(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
         var result = facultyService.findAllByParam(page,size,searchValue);
         return result;

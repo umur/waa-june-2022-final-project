@@ -95,14 +95,13 @@ export default function TableMain(props) {
     let uniqueKey = 1;
 
     const fetchData = async () => {
-        let params = props.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage + "&searchValue=";
+        let params = props.listParams.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage + "&searchValue=";
         let result = await getRequest(params);
-        debugger
         setRowData(result);
     }
 
     const countData = async () => {
-        let params = props.dataUrl + "/count";
+        let params = props.listParams.dataUrl + "/count";
         const count = await getRequest(params);
         setCount(count);
     }
@@ -160,11 +159,20 @@ export default function TableMain(props) {
                         })
                     }
                         <TableCell style={{ width: 50 }}>
-                            <Button onClick={() => { navigate(props.editUrl + data.id) }} variant="contained" color="success" className='button-custom'>Edit</Button>
-                            <Button onClick={() => { navigate(props.deleteUrl + data.id) }} variant="contained" color="warning" className='button-custom'>Delete</Button>
-                            <Button onClick={() => { navigate(props.detailUrl + data.id) }} variant="contained" color="secondary" className='button-custom'>Detail</Button>
-                            {(props.addComment ?
-                                <Button onClick={() => { navigate('/Comments/' + data.id) }} variant="contained" color="primary" className='button-custom'>Comment</Button>
+                            {(props.listParams.showEdit ?
+                                <Button onClick={() => { navigate(props.listParams.editUrl + data.id) }} variant="contained" color="success" className='button-custom'>Edit</Button>
+                                : ''
+                            )}
+                            {(props.listParams.showDelete ?
+                                <Button onClick={() => { navigate(props.listParams.deleteUrl + data.id) }} variant="contained" color="warning" className='button-custom'>Delete</Button>
+                                : ''
+                            )}
+                            {(props.listParams.showDetail ?
+                                <Button onClick={() => { navigate(props.listParams.detailUrl + data.id) }} variant="contained" color="secondary" className='button-custom'>Detail</Button>
+                                : ''
+                            )}
+                            {(props.listParams.showAddComment ?
+                                <Button onClick={() => { navigate(props.listParams.addCommentUrl + data.id) }} variant="contained" color="primary" className='button-custom'>Comment</Button>
                                 :
                                 ''
                             )}

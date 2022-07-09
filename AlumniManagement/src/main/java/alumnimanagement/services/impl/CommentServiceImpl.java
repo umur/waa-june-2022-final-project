@@ -58,5 +58,16 @@ public class CommentServiceImpl implements CommentService {
         commentRepo.deleteById(id);
     }
 
+    @Override
+    public List<CommentDTO> commentByStudentId(long id) {
+        var result= commentRepo.commentByStudentId(id).stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
+        return result;
+    }
+
+    @Override
+    public Long count() {
+        return commentRepo.count();
+    }
+
 
 }
