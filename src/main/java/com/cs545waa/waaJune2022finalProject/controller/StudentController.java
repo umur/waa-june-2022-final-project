@@ -2,6 +2,7 @@ package com.cs545waa.waaJune2022finalProject.controller;
 
 
 import com.cs545waa.waaJune2022finalProject.dto.CvDto;
+import com.cs545waa.waaJune2022finalProject.dto.JobAdvertisementDto;
 import com.cs545waa.waaJune2022finalProject.dto.ProfessionalExperienceDto;
 import com.cs545waa.waaJune2022finalProject.dto.StudentDto;
 import com.cs545waa.waaJune2022finalProject.service.CvService;
@@ -12,6 +13,7 @@ import org.keycloak.KeycloakPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/students")
@@ -24,46 +26,7 @@ public class StudentController {
     CvService cvService;
 
 
-    //====================  using pathvariable id until integrate with keyclock
-    // ============= just for testing purposes
-
-    //------------------------------ edit profile -------------
-    @PutMapping("/edit-profile")
-    public void editProfile(@RequestBody StudentDto studentDto, Principal principal) {
-        KeycloakPrincipal user=(KeycloakPrincipal)principal;
-        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
-
-        studentService.editProfile(studentDto);
-    }
-
-    //------------------------------ create cv -------------
-    @PostMapping("/create-cv")
-    public void createCv(@RequestBody CvDto cvDto, Principal principal) {
-        KeycloakPrincipal user=(KeycloakPrincipal)principal;
-        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
-
-//        cvService.createCv(cvDto);
-        cvService.createCv(cvDto);
-
-    }
-
-    //------------------------------ edit cv -------------
-    @PostMapping("/edit-cv")
-    public void editCv( @RequestBody CvDto cvDto, Principal principal) {
-        KeycloakPrincipal user=(KeycloakPrincipal)principal;
-        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
-
-        cvService.editCv(cvDto);
-    }
-
-    // ---------------- add professional experience---------
-    @PostMapping("/add-experience")
-    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto) {
-        studentService.addExperience(professionalExperienceDto);
-    }
-
-
-    //------------------------------------------------------
+   //    ------------   registering to the system  -----------------
     @PostMapping
     public void save(@RequestBody StudentDto a, Principal principal){
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
@@ -72,11 +35,46 @@ public class StudentController {
         studentService.registerStudent(a);
     }
 
+    // --------------------   get student -----------------------
     @GetMapping
     public StudentDto get(Principal principal){
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
         return studentService.getStudentByUsername(username);
     }
+
+    //------------------------------ edit profile -------------
+    @PutMapping("/save-profile")
+    public void saveProfile(@RequestBody StudentDto studentDto, Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        int id = Integer.valueOf(user.getKeycloakSecurityContext().getToken().getId());
+
+        studentService.editProfile(studentDto, id);
+    }
+
+
+    //------------------------------ get cv -------------
+    // when student clicks edit cv or wants to create cv
+
+    @GetMapping("/edit-cv")
+    public CvDto editCv(Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username = user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        return cvService.getCv(username);
+    }
+
+
+
+    // ---------------- add professional experience---------
+    @PostMapping("/add-experience")
+    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto) {
+        studentService.addExperience(professionalExperienceDto);
+    }
+
+
+
+
+
+
 }
 

@@ -5,7 +5,7 @@ import com.cs545waa.waaJune2022finalProject.dto.ProfessionalExperienceDto;
 import com.cs545waa.waaJune2022finalProject.dto.StudentDto;
 import com.cs545waa.waaJune2022finalProject.entity.*;
 import com.cs545waa.waaJune2022finalProject.repository.AddressRepo;
-import com.cs545waa.waaJune2022finalProject.repository.CvRepo;
+
 import com.cs545waa.waaJune2022finalProject.repository.StudentRepo;
 import com.cs545waa.waaJune2022finalProject.service.StudentService;
 import lombok.AllArgsConstructor;
@@ -24,15 +24,16 @@ public class StudentServiceImpl implements StudentService {
 
     StudentRepo studentRepo;
     ModelMapper modelMapper;
-    CvRepo cvRepo;
+
     AddressRepo addressRepo;
 
 
     @Override
-    public void editProfile(StudentDto studentDto) {
+    public void editProfile(StudentDto studentDto, int id) {
         //Student student = modelMapper.map(studentDto, Student.class);
         //Address address = student.getAddress();
         //studentRepo.save(student);
+        studentDto.setId(id);
         studentRepo.save(modelMapper.map(studentDto, Student.class));
         addressRepo.save(modelMapper.map(studentDto.getAddress(), Address.class));
         
@@ -61,7 +62,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void getProfile(int id) {
+        studentRepo.findById(id);
+    }
+
+
+    @Override
     public StudentDto getStudentByUsername(String username) {
+//        studentRepo.ge
+
         return modelMapper.map(studentRepo.getStudentByUsername(username),StudentDto.class);
     }
 }

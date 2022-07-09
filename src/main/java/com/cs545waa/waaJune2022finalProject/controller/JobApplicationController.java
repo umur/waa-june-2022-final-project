@@ -12,21 +12,28 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/job-application")
+@RequestMapping("/job-applications")
 @AllArgsConstructor
 public class JobApplicationController {
     private final JobService jobService;
-    @GetMapping
+
+    //    -------------------- get applicants -------------------
+
+    @GetMapping("/applicants")
     public List<ApplicantDTO> getApplicants(@RequestBody Integer jobId){
         return jobService.getApplicants(jobId);
     }
 
-    @PostMapping
+
+    //    -------------------- apply for a job -------------------
+    @PostMapping("/apply")
     public void applyToJob(@RequestBody Integer jobId, Principal principal){
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
         jobService.applyToJob(jobId,username);
     }
+
+    //    -----------------------  get list of advertisements ---------
     @GetMapping
     public List<JobAdvertisement> getJobAdvertisements(int limit, int offset){
         return jobService.getJobAdvertisement(limit,offset);

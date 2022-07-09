@@ -1,9 +1,42 @@
 package com.cs545waa.waaJune2022finalProject.dto;
 
+import com.cs545waa.waaJune2022finalProject.entity.Comment;
+import com.cs545waa.waaJune2022finalProject.entity.Department;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 public class FacultyDto {
+
+    private int id;
+
+
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private Department department;
+
+    @JsonManagedReference(value = "faculty")
+    private AddressDto address;
+
+
+//    private LocalDateTime LastLoggedInAt;
+
+//    private boolean active;
+
+    //Faculty can write comments on students.
+    //  Only faculty can see the comments.
+//    @OneToMany
+//    private List<CommentDto> facultyFeedbacks;
 }

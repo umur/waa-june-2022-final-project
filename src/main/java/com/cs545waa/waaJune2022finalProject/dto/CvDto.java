@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+// this id just for a view/ not edit cv
 public class CvDto {
 
     private String firstName;

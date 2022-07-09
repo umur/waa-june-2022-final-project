@@ -32,4 +32,13 @@ public class Address {
     @OneToOne
     @JoinColumn
     Student student;
+
+    @OneToOne
+    @JoinColumn
+    Faculty faculty;
+
+    @OneToOne
+    @JoinColumn
+    JobAdvertisement jobAd;
+
 }

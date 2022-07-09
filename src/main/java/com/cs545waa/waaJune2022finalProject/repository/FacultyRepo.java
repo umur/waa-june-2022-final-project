@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FacultyRepo extends CrudRepository<Faculty, Integer> {
+    Object getStudentByUsername(String username);
 }

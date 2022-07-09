@@ -26,7 +26,7 @@ spring:
       mode: always
 
 server:
-  port: 8090
+  port: 8080
 
 #keycloak:
 #  auth-server-url: http://localhost:8180
