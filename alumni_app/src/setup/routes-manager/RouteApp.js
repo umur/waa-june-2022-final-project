@@ -24,6 +24,7 @@ export default function RouteApp() {
                 <Route path='/Students' element={<StudentList />}></Route>
                 <Route path='/Faculties' element={<FacultyList />}></Route>
                 <Route path='/AddComment/:id' element={<AddComment />}></Route>
+                <Route path='/Jobs' element={<Jobs />}></Route>
                 <Route path='/Comments/:id' element={<CommentList />}></Route>
                 <Route path='/Jobs' element={<CreateJob />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
