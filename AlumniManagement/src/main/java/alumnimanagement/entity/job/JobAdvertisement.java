@@ -1,10 +1,14 @@
 package alumnimanagement.entity.job;
 
 import alumnimanagement.entity.Student;
+import alumnimanagement.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,9 +25,13 @@ public class JobAdvertisement {
     private String jobDesc;
     private String addBenefit;
     private String companyName;
+    private LocalDateTime publishDate;
 
     //todo @OneToOne
     //todo Address address;
+    @OneToOne
+    @JoinColumn(name="id_address")
+    private Address address;
 
     @OneToMany
     private List<Tag> tags;

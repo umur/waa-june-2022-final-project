@@ -18,6 +18,7 @@ const Profile = () => {
       gpa: 3.5,
       lastLoggedInAt: "2022/6/17",
       active: true,
+      files: "/images/profile-imagejpg.jpg",
     },
   };
 
@@ -32,8 +33,8 @@ const Profile = () => {
     fetchData();
   }, []);
 
-  const handleInputChange = () => {
-    console.log("form changed");
+  const handleImageUpload = (event) => {
+    console.log("Image is changed " + event.target.files[0]);
   };
 
   return (
@@ -43,53 +44,74 @@ const Profile = () => {
           <Grid item xs={12} alignContent="center" className="profile-img">
             <Avatar
               alt="User Profile"
-              src="/images/profile-imagejpg.jpg"
+              src={userState.user.files}
               sx={{ width: 200, height: 200 }}
             />
+            {/* onChange={} */}
+          </Grid>
+          <div className="file-upload">
+            <Button variant="contained" component="label">
+              Choose File
+              <input
+                type="file"
+                hidden
+                name="image"
+                onChange={handleImageUpload}
+              />
+            </Button>
+          </div>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                required
+                id="firstname"
+                label="First Name"
+                defaultValue={userState.user.firstName}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                required
+                className="text-field"
+                id="lastname"
+                label="Last Name"
+                defaultValue={userState.user.lastName}
+                fullWidth
+              />
+            </Grid>
           </Grid>
 
-          <TextField
-            required
-            id="firstname"
-            label="First Name"
-            defaultValue={userState.user.firstName}
-            fullWidth
-          />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                required
+                className="text-field"
+                id="email"
+                label="Email"
+                defaultValue={userState.user.email}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
 
-          {/* <TextField
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            fullWidth
-          /> */}
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                required
+                className="text-field"
+                id="gpa"
+                label="GPA"
+                type="number"
+                defaultValue={userState.user.gpa}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
 
-          <TextField
-            required
-            id="lastname"
-            label="Last Name"
-            defaultValue={userState.user.lastName}
-            fullWidth
-          />
-
-          <TextField
-            required
-            id="email"
-            label="Email"
-            defaultValue={userState.user.email}
-            fullWidth
-          />
-
-          <TextField
-            required
-            id="gpa"
-            label="GPA"
-            type="number"
-            defaultValue={userState.user.gpa}
-            fullWidth
-          />
-
-          <Button variant="contained" fullWidth>
+          <Button variant="contained" fullWidth className="text-field">
             Edit
           </Button>
         </Paper>
