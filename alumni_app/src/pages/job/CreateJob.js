@@ -72,6 +72,10 @@ export default function CreateJob() {
     setValues(initialValues);
   };
 
+  const getUrl=(e)=>{
+    debugger
+  }
+
   //const [companySize, setCompanySize] = React.useState('');
   //
   //  const handleChangeCompanySize = (event) => {
@@ -231,13 +235,13 @@ export default function CreateJob() {
         <Grid item xs={12}>
           <>
             < AutoCompleteSelect
-                    name="jobTag"
-                    onChange={value => setValue(value)}
-                    isMultiSelect={true}
-                    label={"Job Tag"}
-                    placeholder={"Eg. C#, Java, JavaScript"}
-                    dataUrl='/tags' ></AutoCompleteSelect >
-            </>
+              name="jobTag"
+              onChange={value => setValue(value)}
+              isMultiSelect={true}
+              label={"Job Tag"}
+              placeholder={"Eg. C#, Java, JavaScript"}
+              dataUrl='/tags' ></AutoCompleteSelect >
+          </>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -274,7 +278,7 @@ export default function CreateJob() {
               Upload Job details document
             </InputLabel>
             <br />
-            <FileUpload folderName="Job" id={1}></FileUpload>
+            <FileUpload folderName="Job" id={1} getUrl={getUrl.bind(this)}></FileUpload>
           </>
         </Grid>
         <Grid item xs={12}>

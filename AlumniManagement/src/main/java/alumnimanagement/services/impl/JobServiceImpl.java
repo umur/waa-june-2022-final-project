@@ -3,6 +3,7 @@ package alumnimanagement.services.impl;
 import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.entity.Faculty;
 import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.entity.job.Tag;
@@ -98,5 +99,20 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobAdvertisementDTO findById(int id) {
         return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);
+    }
+
+    @Override
+    public List<ReportList> JobByState() {
+        var result = jobRepo.JobByState();
+        List<ReportList> result2 = new ArrayList<>();
+        for(Object[] d : result)
+        {
+            Long id =(Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
     }
 }

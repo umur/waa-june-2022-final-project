@@ -1,5 +1,6 @@
 package alumnimanagement.services.impl;
 
+import alumnimanagement.dto.DropdownDto;
 import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
@@ -14,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -85,24 +87,39 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public List<StudentListDto> findAllByParam(int page, int size, String searchValue) {
-//        List<Student> student = studentRepo.findAll().stream().toList();
-        Long id = Helper.getLoggedUserId();
-        var a = Helper.getCurrentDate();
-        Pageable pageable = PageRequest.of(page, size);
-        List<Student> student = studentRepo.findAll(pageable).stream().toList();
-        List<StudentListDto> studentListDtos = new ArrayList<>();
-        for (Student r : student) {
-            StudentListDto dtp = new StudentListDto();
-            dtp.setEmail(r.getEmail());
-            dtp.setFirstName(r.getFirstName());
-            dtp.setLastName(r.getLastName());
-            dtp.setCity(r.getAddress().getCity());
-            dtp.setState(r.getAddress().getState());
-            dtp.setId(r.getId());
-            studentListDtos.add(dtp);
+    public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName) {
+        ///List<Student> student = studentRepo.findAll().stream().toList();
+//        Long id = Helper.getLoggedUserId();
+//        var a = Helper.getCurrentDate();
+//        Pageable pageable = PageRequest.of(page, size);
+//        List<Student> student = studentRepo.findAll(pageable).stream().toList();
+//        List<StudentListDto> studentListDtos = new ArrayList<>();
+//        for(Student r : student)
+//        {
+//            StudentListDto dtp = new StudentListDto();
+//            dtp.setEmail(r.getEmail());
+//            dtp.setFirstName(r.getFirstName());
+//            dtp.setLastName(r.getLastName());
+//            dtp.setCity(r.getAddress().getCity());
+//            dtp.setState(r.getAddress().getState());
+//            dtp.setId(r.getId());
+//            studentListDtos.add(dtp);
+//        }
+        List<Student> students=studentRepo.findAll().stream().toList();
+        List<StudentListDto> dto=new ArrayList<>();
+
+        for(Student s: students){
+            String sName=s.getFirstName()+" "+s.getLastName();
+            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.equals(studentName)){
+                StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
+                dto1.setState(s.getAddress().getState());
+                dto1.setCity(s.getAddress().getCity());
+                dto.add(dto1);
+            }
         }
-        return studentListDtos;
+
+
+        return dto;
     }
 
     @Override
