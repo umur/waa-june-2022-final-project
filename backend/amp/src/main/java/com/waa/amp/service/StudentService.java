@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentService {
 
+    private final UserService userService;
     private final JobRepository jobRepository;
     private final TagRepository tagRepository;
 
@@ -33,7 +34,7 @@ public class StudentService {
                 jobReq.state(),
                 jobReq.city(),
                 jobReq.companyName(),
-                null // TODO get logged in user
+                userService.getLoggedUser()
         );
 
         return jobRepository.save(job);
