@@ -11,5 +11,5 @@ import java.util.List;
 public interface JobRepo extends CrudRepository<JobAdvertisement,Integer> {
 //    public List<JobAdvertisement> findAllBy
     @Query("select job from JobAdvertisement job join job.address ad join job.tags tag where 1=1 OR tag.name =?1 OR ad.state = ?2 OR ad.city = ?3 OR job.companyName = ?4")
-    List<JobAdvertisementDto> findByFilter(String tag, String state, String city, String companyName);
+    List<JobAdvertisement> findByFilter(String tag, String state, String city, String companyName);
 }

@@ -23,9 +23,9 @@ public class Faculty {
     private String firstName;
     @NotNull
     private String lastName;
-    @NotNull
+
     private String email;
-    @NotNull
+
     private String passwpord;
     private String username;
 
@@ -37,8 +37,8 @@ public class Faculty {
 
     //Faculty can write comments on students.
     //  Only faculty can see the comments.
-    @OneToMany
-    private List<Comment> facultyFeedbacks;
+    @OneToMany(mappedBy = "faculty")
+    private List<Feedback> feedbacks;
 
     @OneToOne(mappedBy = "faculty",fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.PERSIST,

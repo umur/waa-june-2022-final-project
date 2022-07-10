@@ -24,7 +24,7 @@ public class JobServiceImp implements JobService {
     private final ModelMapper modelMapper;
     @Override
     public List<ApplicantDTO> getApplicants(Integer jobId) {
-       return jobRepo.findById(jobId).get().getApplicants()
+       return jobRepo.findById(jobId).get().getStudents()
                 .stream()
                 .map(applicant->modelMapper.map(applicant,ApplicantDTO.class))
                .collect(Collectors.toList());
@@ -37,7 +37,7 @@ public class JobServiceImp implements JobService {
     @Override
     public void applyToJob(Integer jobId,String username){
         Student st = studentRepo.getStudentByUsername(username);
-        jobRepo.findById(jobId).get().getApplicants().add(st);
+        jobRepo.findById(jobId).get().getStudents().add(st);
     }
 
     @Override
@@ -50,6 +50,9 @@ public class JobServiceImp implements JobService {
     public List<JobAdvertisementDto> filter(String tag, String state, String city, String companyName) {
 //        if(filter_param.equals(""))
 //        @Query("SELECT jobs FROM JobAdvertisement WHERE")
-        return jobRepo.findByFilter(tag, state, city, companyName);
+        List<JobAdvertisement> jobs=jobRepo.findByFilter(tag, state, city, companyName);
+        return jobRepo.findByFilter(tag, state, city, companyName).stream()
+                .map(job->modelMapper.map(job,JobAdvertisementDto.class))
+                .collect(Collectors.toList());
     }
 }

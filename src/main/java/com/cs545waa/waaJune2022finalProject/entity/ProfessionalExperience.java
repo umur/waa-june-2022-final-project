@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,6 +21,9 @@ public class ProfessionalExperience {
     LocalDate startDate;
     LocalDate finishDate;
     String description;
+
+    @ManyToMany
+    private List<Tag> tags;
 
     @ManyToOne
     Student student;

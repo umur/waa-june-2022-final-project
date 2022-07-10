@@ -17,7 +17,7 @@ public class JobAdvertisementController {
 
     //------------------------------ filter job advertisement  -------------
 
-    @GetMapping("/filter/")
+    @GetMapping("/filter")
     public List<JobAdvertisementDto> filter(@RequestParam(name = "tag", required = false) String tag,
                                             @RequestParam(name = "state",required = false) String state,
                                             @RequestParam(name = "city", required = false) String city,

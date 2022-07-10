@@ -23,14 +23,14 @@ public class JobAdvertisement {
     @ManyToMany
     private List<Tag> tags;
 
-    @OneToMany
-    private List<JobAttachment> files;
+    @OneToMany(mappedBy = "jobAdvertisement")
+    private List<JobAttachment> jobAttachments;
 
     @ManyToOne
     private Student student;
 
     @ManyToMany(mappedBy = "jobApplications")
-    private List<Student> applicants;
+    private List<Student> students;
 
     @OneToOne(mappedBy = "jobAd",fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.PERSIST,

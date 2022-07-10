@@ -51,8 +51,6 @@ public class StudentController {
 
         studentService.editProfile(studentDto, id);
     }
-
-
     //------------------------------ get cv -------------
     // when student clicks edit cv or wants to create cv
 
@@ -62,19 +60,10 @@ public class StudentController {
         String username = user.getKeycloakSecurityContext().getToken().getPreferredUsername();
         return cvService.getCv(username);
     }
-
-
-
     // ---------------- add professional experience---------
     @PostMapping("/add-experience")
     public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto) {
         studentService.addExperience(professionalExperienceDto);
     }
-
-
-
-
-
-
 }
 

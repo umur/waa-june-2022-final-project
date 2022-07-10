@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.net.URI;
 import java.net.URL;
 
@@ -21,5 +18,7 @@ public class JobAttachment {
     private Integer id;
     private String name;
     // cloud url of the file
-    private URL url;
+    private String url;
+    @ManyToOne
+    private JobAdvertisement jobAdvertisement;
 }

@@ -1,16 +1,9 @@
 package com.cs545waa.waaJune2022finalProject.dto;
 
-import com.cs545waa.waaJune2022finalProject.entity.Comment;
 import com.cs545waa.waaJune2022finalProject.entity.Department;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

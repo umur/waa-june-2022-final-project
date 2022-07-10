@@ -1,9 +1,14 @@
 package com.cs545waa.waaJune2022finalProject.dto;
 
+import com.cs545waa.waaJune2022finalProject.entity.Faculty;
+import com.cs545waa.waaJune2022finalProject.entity.JobAdvertisement;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -16,5 +21,9 @@ public class AddressDto {
     private int zip;
  @JsonBackReference(value = "stu")
     private StudentDto student;
+    @JsonBackReference(value = "faculty")
+    FacultyDto faculty;
+    @JsonBackReference(value = "attach")
+    JobAdvertisementDto jobAd;
 }
 
