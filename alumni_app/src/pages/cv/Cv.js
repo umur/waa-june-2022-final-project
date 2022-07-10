@@ -1,11 +1,15 @@
 import React from "react";
-import FileUpload from "../common/FileUpload";
+import FileUpload from "../../common/FileUpload";
 import { useState } from "react";
 import Button from "@material-ui/core/Button";
+import { postRequest } from "../../setup/fetch-manager/FetchGateway";
 
+const comdet= 
+[{ companyName: "", detail : ""}]
 export default function Cv() {
 
-    const [formValues, setFormValues] = useState([{ name: "", email : ""}]);
+    const [formValues, setFormValues] = useState(comdet);
+    const [cvValues, setcvValues] = useState();
     
     const handleChange = (i, e) => {
         let checkValues = [...formValues];
@@ -23,17 +27,22 @@ export default function Cv() {
         setFormValues( checkValues );
       }
     
-      const handleSubmit= () => {
-        let params = "/jobs/newJob";
+      const handleSubmit= async () => {
+        let params = "/students/1/cv";
+        let values = {"cvLink": cvValues, "jobExperienceList": formValues};
         let result = await postRequest(params, values);
         //navigate("/Jobs");
-        alert(JSON.stringify(formValues));
+        alert(JSON.stringify(values));
       }
     
+      const getUrl=(e)=>{
+        setcvValues(e);
+      }
+
     return (
         <div>
             <h3>Upload your CV here</h3>
-            <FileUpload/>
+            <FileUpload folderName="cv" id={1} getUrl={getUrl.bind(this)}></FileUpload>
             
             <h3>Add your job experiences</h3>
             <form >
@@ -41,11 +50,11 @@ export default function Cv() {
                 <div className="form-inline" key={index}>
                     <label>Company Name</label>
                 <br></br>
-                <input type="text" name="companyName" defaultValue={element.name || ""} onChange={e => handleChange(index, e)} />
+                <input type="text" name="companyName" defaultValue={element.companyName || ""} onChange={e => handleChange(index, e)} />
                 <br></br>
                 <label>Detail</label>
                 <br></br>
-                <input type="text" name="detail" defaultValue={element.email || ""} onChange={e => handleChange(index, e)} />
+                <input type="text" name="detail" defaultValue={element.detail || ""} onChange={e => handleChange(index, e)} />
               {
                 index ? <Button className= "ml-1" width="50px" margin-left="30px" onClick={() => removeFormFields(index)}
                     variant="contained" color="secondary">

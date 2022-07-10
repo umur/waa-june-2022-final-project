@@ -82,7 +82,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void updateStudentCV(long id, UpdateCVDTO updateCVDTO) {
-        System.out.println(id + "   "+ updateCVDTO.toString());
+        Student s = studentRepo.findById(id).get();
+        s.setCvLink(updateCVDTO.getCvLink());
+        s.setJobExperienceList(updateCVDTO.getJobExperienceList());
+
+        System.out.println(s);
+        studentRepo.save(s);
+//        System.out.println(id + "   "+ updateCVDTO.toString());
     }
 
 
