@@ -2,31 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
 
-import JobHistoryInfo from './JobHistoryInfo';
 import FileUploadPage from '../../pages/FileUploadPage';
 
-export default function UserProfile() {
-    const initialState = { email: "ansharma@miu.edu", password: "1234", role: "student", firstName: "Anjana", lastName: "Sharma", address: "1000 N 4th St, Fairfield, Iowa" }
-    const [userProfile, setUserProfile] = useState(initialState);
+export default function FacultyProfile() {
+    const initialState = { email: "pnaira@miu.edu", password: "1234", role: "faculty", firstName: "Premchand", lastName: "Nair", address: "Linclon Street, Nebraska" }
+    const [facultyProfile, setfacultyProfile] = useState(initialState);
 
     // const username = getUsername();
     // useEffect(() => {
     //     get();
     // }, []);
-    const jobHistory = [
-        {
-            id: 1,
-            title: "Software Engineer",
-            location: "Iowa",
-            aboutUs: "test"
-        }, {
-            id: 2,
-            title: "Software Project Manager",
-            location: "Iowa",
-            aboutUs: "test"
-        }
-    ]
-
     return (
         <Container>
             <Breadcrumb name="Basic Information" />
@@ -41,22 +26,22 @@ export default function UserProfile() {
                                 <div className='card'>
                                     <div className='card-body p-4 text-block'>
                                         <div className='mb-5'>
-                                            <p className="lead fw-normal mb-1">User Profile</p>
+                                            <p className="lead fw-normal mb-1">Faculty Profile</p>
                                             <div className="p-4" style={{ backgroundColor: "#f8f9fa" }}>
                                                 <p className="text-right">
-                                                    {/* <Link to={`update/${userProfile?.id}`}><i className='fas fa-edit text-primary ml-2'></i></Link> */}
+                                                    {/* <Link to={`update/${facultyProfile?.id}`}><i className='fas fa-edit text-primary ml-2'></i></Link> */}
                                                 </p>
                                                 <p className="font-italic mb-1">
-                                                    Name: {userProfile?.firstName + " " + userProfile?.lastName}
+                                                    Name: {facultyProfile?.firstName + " " + facultyProfile?.lastName}
                                                 </p>
                                                 <p className="font-italic mb-1">
-                                                    Role: {userProfile?.role}
+                                                    Role: {facultyProfile?.role}
                                                 </p>
                                                 <p className="font-italic mb-0">
-                                                    Email: {userProfile?.email}
+                                                    Email: {facultyProfile?.email}
                                                 </p>
                                                 <p className='font-italic mb-0'>
-                                                    Address: {userProfile?.address}
+                                                    Address: {facultyProfile?.address}
                                                 </p>
 
 
@@ -71,21 +56,6 @@ export default function UserProfile() {
                         </Col>
                     </Row>
                     <br />
-
-                    <h3>Job History</h3>
-                    <div className='container'>{
-
-                        jobHistory.map(history => {
-                            return (
-                                <JobHistoryInfo
-                                    key={history.id}
-                                    title={history.title}
-                                    location={history.location}
-                                    aboutUs={history.aboutUs}></JobHistoryInfo>
-                            )
-                        })
-                    }
-                    </div>
                 </Container>
             </section>
         </Container>
