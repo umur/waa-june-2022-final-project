@@ -28,28 +28,33 @@ public class StudentController {
     }
 
     @GetMapping
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<StudentDto>> getAllStudents() {
         return ResponseEntity.ok(this.studentService.findAll());
     }
 
     @GetMapping("/{id}")
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<StudentDto> getStudentById(@PathVariable Integer id) {
         return ResponseEntity.ok(this.studentService.findById(id));
     }
 
     @PostMapping
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<StudentDto> createUser(@Valid @RequestBody StudentDto studentDto) {
         StudentDto createdUserDto = this.studentService.save(studentDto);
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<StudentDto> updateStudent(@Valid @RequestBody StudentDto studentDto, @PathVariable("id") Integer studentId) {
         StudentDto updatedStudent = this.studentService.update(studentDto, studentId);
         return ResponseEntity.ok(updatedStudent);
     }
 
     @DeleteMapping("{id}")
+    @RolesAllowed("admin")
     public ResponseEntity<ApiResponse> deleteStudent(@PathVariable Integer id) {
         this.studentService.remove(id);
         return new ResponseEntity<>(new ApiResponse(true, "Student Removed Successfully"), HttpStatus.OK);
