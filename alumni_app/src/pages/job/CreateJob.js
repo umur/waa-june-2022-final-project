@@ -73,6 +73,10 @@ export default function CreateJob() {
     setValues(initialValues);
   };
 
+  
+  const getUrl=(e)=>{
+    debugger
+  }
   //const [companySize, setCompanySize] = React.useState('');
   //
   //  const handleChangeCompanySize = (event) => {
@@ -277,7 +281,7 @@ export default function CreateJob() {
                 Upload Job details document
               </InputLabel>
               <br />
-              <FileUpload folderName="Job" id={1}></FileUpload>
+              <FileUpload folderName="Job" id={1} getUrl={getUrl.bind(this)}></FileUpload>
             </>
           </Grid>
           <Grid item xs={12}>
