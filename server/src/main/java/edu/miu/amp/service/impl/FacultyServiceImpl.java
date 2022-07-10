@@ -60,10 +60,10 @@ public class FacultyServiceImpl implements FacultyService {
             faculty1.setEmail(faculty.getEmail());
             faculty1.setFirstName(faculty.getFirstName());
             faculty1.setLastName(faculty.getLastName());
-            faculty1.setPassword(faculty.getPassword());
+
             faculty1.setUserName(faculty.getUserName());
-            faculty1.setRole(faculty.getRole());
-            faculty1.setActive(faculty.getActive());
+
+
             return facultyRepository.save(faculty);
         });
         return toDto(faculty);

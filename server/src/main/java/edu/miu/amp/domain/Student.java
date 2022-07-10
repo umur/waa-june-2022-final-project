@@ -9,10 +9,10 @@ import java.util.List;
 
 @Data
 @Entity
-@NoArgsConstructor@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student extends User {
     @Id
-    @GeneratedValue
     private Integer id;
 
     private Float gpa;
@@ -20,8 +20,6 @@ public class Student extends User {
 
     @ManyToOne/**/
     private Department department;
-
-
 
     @OneToMany
     private List<JobAdvertisement> jobAdvertisementList;
