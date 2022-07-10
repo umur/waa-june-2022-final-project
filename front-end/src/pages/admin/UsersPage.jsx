@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading';
 import usersAdmin from '../../service/users-admin';
 import Modal from 'react-bootstrap/Modal'
+import { ChangePassword } from '../../components/changePassword';
 
 const UsersPage = () => {
     const [usersList, setUsersList] = useState([]);
@@ -88,6 +89,8 @@ const UsersPage = () => {
                         </div>
                     </div>
                 </div>
+
+                <ChangePassword></ChangePassword>
             </div>
         )
     }

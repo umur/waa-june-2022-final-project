@@ -14,6 +14,7 @@ import { StudentDetailPage } from './pages/users/StudentDetail';
 import { JobListPage } from './pages/job/JobListPage';
 import { JobsDetailPage } from './pages/job/JobDetailPage';
 import JobsRecent from './pages/job/JobRecent';
+import { ChartsPage } from './pages/charts/ChartsPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/profile/user/:id' element={<ProfileEdit />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path='/charts' element={<ChartsPage />} />
           <Route path="/403" element={<UnauthorizedPage />} />
           <Route path="*" element={< NotfoundPage />} />
         </Routes>
