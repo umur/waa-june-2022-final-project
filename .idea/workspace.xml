@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db69d841-24e3-4d01-894e-76c793e07e1d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/DepartmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/FacultyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/FacultyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobAdvertisementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobAdvertisementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/miu/amp/controller/JobHistoryController.java" afterDir="false" />
-    </list>
+    <list default="true" id="db69d841-24e3-4d01-894e-76c793e07e1d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
