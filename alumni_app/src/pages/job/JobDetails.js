@@ -18,7 +18,6 @@ const JobDetails = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  handleClick = () => {};
 
   return (
     <>
@@ -34,7 +33,6 @@ const JobDetails = () => {
                 variant="contained"
                 className="apply-button"
                 color="primary"
-                onClick={handleClick}
               >
                 Apply Now
               </Button>
