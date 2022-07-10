@@ -31,6 +31,21 @@ public class JobController {
     }
 
 
+//    @GetMapping("/{state}/{city}/{tag}/{name}/getAll")
+//    public List<JobAdvertisementListDTO> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+//    {
+//        if(state.equals("undefined"))
+//            state = "";
+//        if(city.equals("undefined"))
+//            city = "";
+//        if(tag.equals("undefined"))
+//            tag = "";
+//        if(name.equals("undefined"))
+//            name = "";
+//        var result = jobService.findAllByParam(page,size,searchValue);
+//        return result;
+//    }
+
     @GetMapping("/{state}/{city}/{tag}/{name}/getAll")
     public List<JobAdvertisementListDTO> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
@@ -42,7 +57,7 @@ public class JobController {
             tag = "";
         if(name.equals("undefined"))
             name = "";
-        var result = jobService.findAllByParam(page,size,searchValue);
+        var result = jobService.findAllByParam(page,size,state, city, tag, name);
         return result;
     }
 

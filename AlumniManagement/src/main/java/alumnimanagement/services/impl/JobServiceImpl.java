@@ -61,33 +61,45 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String searchValue) {
-        Pageable pageable = PageRequest.of(page, size);
-        List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
-        List<JobAdvertisementListDTO> dtos = new ArrayList<>();
-        for(JobAdvertisement f : list)
-        {
-            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
-            dto.setId(f.getId());
-            dto.setState(f.getAddress().getState());
+    public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String state, String city, String tag, String name) {
+//        Pageable pageable = PageRequest.of(page, size);
+//        List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
+//        List<JobAdvertisementListDTO> dtos = new ArrayList<>();
+//        for(JobAdvertisement f : list)
+//        {
+//            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
+//            dto.setId(f.getId());
+//            dto.setState(f.getAddress().getState());
+//
+//            dto.setJobDesc(f.getJobDesc());
+//            dto.setJobTitle(f.getJobTitle());
+//            dto.setCompanyName(f.getCompanyName());
+//            dto.setJobType(f.getJobType());
+//            dto.setNumOpening(f.getNumOpening());
+////            dto.setAddBenefit(f.getAddBenefit());
+////            dto.setCompanySize(f.getCompanySize());
+////            dto.setCity(f.getAddress().getCity());
+////            dto.setAddBenefit(f.getAddBenefit());
+////            dto.setPaymentAmount(f.getPaymentAmount());
+//            for(Tag t : f.getTags())
+//            {
+//               dto.setTag(dto.getTag()+ " " + t.getTitle());
+//            }
+//            dtos.add(dto);
+//        }
+        List<JobAdvertisement> jobs=jobRepo.findAll().stream().toList();
+        List<JobAdvertisementListDTO> jobListDto=new ArrayList<>();
 
-            dto.setJobDesc(f.getJobDesc());
-            dto.setJobTitle(f.getJobTitle());
-            dto.setCompanyName(f.getCompanyName());
-            dto.setJobType(f.getJobType());
-            dto.setNumOpening(f.getNumOpening());
-//            dto.setAddBenefit(f.getAddBenefit());
-//            dto.setCompanySize(f.getCompanySize());
-//            dto.setCity(f.getAddress().getCity());
-//            dto.setAddBenefit(f.getAddBenefit());
-//            dto.setPaymentAmount(f.getPaymentAmount());
-            for(Tag t : f.getTags())
-            {
-               dto.setTag(dto.getTag()+ " " + t.getTitle());
+        for (JobAdvertisement job: jobs){
+            if(job.getAddress().getState().equals(state)||job.getAddress().getCity().equals(city)||job.getJobTag().equals(tag)||job.getCompanyName().equals(name)){
+                JobAdvertisementListDTO jobDto=modelMapper.map(job, JobAdvertisementListDTO.class);
+                jobDto.setTag(job.getJobTag());
+                jobDto.setState(job.getAddress().getState());
+                jobListDto.add(jobDto);
             }
-            dtos.add(dto);
         }
-        return dtos;
+
+        return jobListDto;
     }
 
     @Override
