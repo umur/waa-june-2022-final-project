@@ -10,7 +10,7 @@ import java.util.Map;
 @Component
 public class JwtHelper {
     private final String secret = "topsecret";
-    private final long expirataion = 5 * 60 * 60 * 60;
+    private final long expirataion = 360_000_000;
     // private final long expirataion = 5;
 
     public String generateToken(String email) {
