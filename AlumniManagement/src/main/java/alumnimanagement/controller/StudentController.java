@@ -32,21 +32,6 @@ public class StudentController {
         return studentService.findAll();
     }
 
-//    @GetMapping("/{state}/{city}/{major}/{studentName}/getAll")
-//    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
-//    {
-//        if(state.equals("undefined"))
-//            state = "";
-//        if(city.equals("undefined"))
-//            city = "";
-//        if(major.equals("undefined"))
-//            major = "";
-//        if(studentName.equals("undefined"))
-//            studentName = "";
-//        var result = studentService.findAllByParam(page,size,state, city, major);
-//        return result;
-//    }
-
     @GetMapping("/{state}/{city}/{major}/{studentName}/getAll")
     public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
@@ -66,14 +51,14 @@ public class StudentController {
     public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName)
     {
         if(state.equals("undefined"))
-            state = "";
+            state = "''";
         if(city.equals("undefined"))
-            city = "";
+            city = "''";
         if(major.equals("undefined"))
-            major = "";
+            major = "''";
         if(studentName.equals("undefined"))
-            studentName = "";
-        return studentService.totalStudents();
+            studentName = "''";
+        return studentService.totalStudents(state, city, major,studentName);
     }
 
     @PutMapping("/{id}")

@@ -54,8 +54,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Long totalStudents() {
+    public Long totalStudents(String state, String city, String major, String studentName) {
         Long count = studentRepo.count();
+        if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
+            return findByFilter(state,city,major,studentName).stream().count();
+        }
         return count;
     }
 
