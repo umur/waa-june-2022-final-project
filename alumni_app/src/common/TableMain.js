@@ -109,7 +109,7 @@ export default function TableMain(props) {
     React.useEffect(() => {
         fetchData();
         countData();
-    }, [page, rowsPerPage])
+    }, [page, rowsPerPage, props])
 
 
 

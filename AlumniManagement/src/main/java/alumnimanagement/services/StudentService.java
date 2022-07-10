@@ -17,4 +17,5 @@ public interface StudentService {
     Long totalStudents();
 
     StudentDTO findStudentById(long id);
+
 }

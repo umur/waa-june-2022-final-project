@@ -30,15 +30,39 @@ public class JobController {
         return jobService.findLastTop10Advertisement();
     }
 
-    @GetMapping("/getAll")
-    public List<JobAdvertisementListDTO> findAllList(@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+
+    @GetMapping("/{state}/{city}/{tag}/{name}/getAll")
+    public List<JobAdvertisementListDTO> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
+        if(state.equals("undefined"))
+            state = "";
+        if(city.equals("undefined"))
+            city = "";
+        if(tag.equals("undefined"))
+            tag = "";
+        if(name.equals("undefined"))
+            name = "";
         var result = jobService.findAllByParam(page,size,searchValue);
         return result;
     }
 
-    @GetMapping("/count")
-    public Long count() {
+    @GetMapping("/{state}/{city}/{tag}/{name}/count")
+    public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name)
+    {
+        if(state.equals("undefined"))
+            state = "";
+        if(city.equals("undefined"))
+            city = "";
+        if(tag.equals("undefined"))
+            tag = "";
+        if(name.equals("undefined"))
+            name = "";
         return jobService.count();
     }
+
+    @GetMapping("/{id}")
+    public JobAdvertisementDTO getJobsById(@PathVariable int id){
+        return jobService.findById(id);
+    }
+
 }
