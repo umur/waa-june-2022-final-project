@@ -1,5 +1,6 @@
 package com.finalproject.controllers;
 
+import com.finalproject.models.Student;
 import com.finalproject.models.User;
 import com.finalproject.payload.request.PostRequest;
 import com.finalproject.payload.response.MessageResponse;
@@ -29,6 +30,25 @@ public class StudentController {
         return studentService.findById(id);
     }
 
+    @GetMapping("/studentId")
+    public Student  findById(@RequestParam  Integer id) {
+        return studentService.getByStudentId(id);
+    }
+
+    @GetMapping("/city")
+    public List< Student> findByCity(@RequestParam String city) {
+        return studentService.getByCity(city);
+    }
+
+    @GetMapping("/state")
+    public List< Student> findByByState(@RequestParam String state) {
+        return studentService.getByState(state);
+    }
+
+    @GetMapping("/major")
+    public List< Student> findByByMajor(@RequestParam String major) {
+        return studentService.getByMajor(major);
+    }
     @PostMapping("/{id}")
     public ResponseEntity<?> post(@Valid @RequestBody PostRequest postRequest, @PathVariable long id) {
         studentService.post(postRequest, id);

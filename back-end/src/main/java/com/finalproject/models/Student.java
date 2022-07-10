@@ -26,6 +26,18 @@ public class Student {
     @ToString.Exclude
     private User user;
 
+    @OneToOne
+//    @ToString.Exclude
+    private Address address;
+
+//new added
+    @OneToOne
+    @ToString.Exclude
+    private JobHistory jobHistory;
+
+    @OneToOne(mappedBy = "student")
+    private  JobAdvertisement jobAdvertisement;
+
     @OneToMany(mappedBy = "student")
     private List<Comments> comments;
 }

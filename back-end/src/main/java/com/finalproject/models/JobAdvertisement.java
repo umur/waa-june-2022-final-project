@@ -30,4 +30,8 @@ public class JobAdvertisement {
         inverseJoinColumns = @JoinColumn(name = "tags_id"))
     private List<Tags> tags;
 
+    @OneToOne()
+    private Student student;
+
+
 }

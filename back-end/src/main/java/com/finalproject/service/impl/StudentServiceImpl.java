@@ -2,6 +2,7 @@ package com.finalproject.service.impl;
 
 import com.finalproject.models.Comments;
 import com.finalproject.models.ERole;
+import com.finalproject.models.Student;
 import com.finalproject.models.User;
 import com.finalproject.payload.request.PostRequest;
 import com.finalproject.repository.CommentRepo;
@@ -47,6 +48,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student getbyId(Long id) {
+        return studentRepo.findById(id).orElseThrow();
+    }
+
+    @Override
     public void post(PostRequest postRequest, long id) {
         var student = studentRepo.findById(id).orElseThrow(()-> new RuntimeException("Error: Student not found."));
         Comments comment = new Comments();
@@ -55,5 +61,25 @@ public class StudentServiceImpl implements StudentService {
         comment.setPostTime(LocalDateTime.now());
         comment.setStudent(student);
         commentRepo.save(comment);
+    }
+
+    @Override
+    public List<Student> getByCity(String city) {
+        return studentRepo.findAllByAddress_City(city);
+    }
+
+    @Override
+    public List<Student> getByState(String state) {
+        return studentRepo.findAllByAddress_State(state);
+    }
+
+    @Override
+    public List<Student> getByMajor(String major) {
+        return studentRepo.findAllByMajor(major);
+    }
+
+    @Override
+    public Student getByStudentId(Integer id) {
+        return studentRepo.findByStudentId(id);
     }
 }

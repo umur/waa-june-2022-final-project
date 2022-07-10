@@ -1,6 +1,7 @@
 package com.finalproject.service.impl;
 
 import com.finalproject.models.JobAdvertisement;
+import com.finalproject.models.Student;
 import com.finalproject.repository.JobRepo;
 import com.finalproject.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,36 @@ public class JobServiceImpl implements JobService {
             jobs.add(job);
         });
         return jobs;
+    }
+
+    @Override
+    public List<JobAdvertisement> findRecent() {
+        return jobRepo.findAllRecentApplied(10);
+    }
+
+    @Override
+    public List<JobAdvertisement> findRecentApplied() {
+        return jobRepo.findAllRecentApplied(10);
+    }
+
+    @Override
+    public List<JobAdvertisement> findByCity(String city) {
+        return jobRepo.findAllByCity(city);
+    }
+
+    @Override
+    public List<JobAdvertisement> findByState(String states) {
+        return jobRepo.findAllByStates(states);
+    }
+
+    @Override
+    public List<JobAdvertisement> findByCompany(String company) {
+        return findByCompany(company);
+    }
+
+    @Override
+    public void postJobAdvert(JobAdvertisement jobAdvertisement, Student st ) {
+        jobAdvertisement.setStudent(st);
+        jobRepo.save(jobAdvertisement);
     }
 }
