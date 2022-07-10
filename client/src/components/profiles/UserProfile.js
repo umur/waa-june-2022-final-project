@@ -6,7 +6,7 @@ import JobHistoryInfo from './JobHistoryInfo';
 import FileUploadPage from '../../pages/FileUploadPage';
 
 export default function UserProfile() {
-    const initialState = { email: "ansharma@miu.edu", password: "1234", role: "student", firstName: "Anjana", lastName: "Sharma" }
+    const initialState = { email: "ansharma@miu.edu", password: "1234", role: "student", firstName: "Anjana", lastName: "Sharma", address: "1000 N 4th St, Fairfield, Iowa" }
     const [userProfile, setUserProfile] = useState(initialState);
 
     // const username = getUsername();
@@ -55,7 +55,9 @@ export default function UserProfile() {
                                                 <p className="font-italic mb-0">
                                                     Email: {userProfile?.email}
                                                 </p>
-
+                                                <p className='font-italic mb-0'>
+                                                    Address: {userProfile?.address}
+                                                </p>
 
 
                                             </div>
