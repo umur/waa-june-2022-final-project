@@ -9,30 +9,34 @@ import StudentList from "../../pages/student/StudentList";
 import Profile from "../../pages/profile/Profile";
 import StudentDetail from "../../pages/student/StudentDetail";
 import CreateJob from "../../pages/job/CreateJob";
+import AutoCompleteSelect from "../../common/AutoCompleteSelect";
+import TestAuto from "../../common/testAuto";
 import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
 import JobDetails from "../../pages/job/JobDetails";
 
+
 export default function RouteApp() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/Students" element={<StudentList />}></Route>
-        <Route path="/Faculties" element={<FacultyList />}></Route>
-        <Route path="/AddComment/:id" element={<AddComment />}></Route>
-        <Route path="/Jobs" element={<Jobs />}></Route>
-        <Route path="/Comments/:id" element={<CommentList />}></Route>
-        <Route path="/Jobs" element={<CreateJob />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-        <Route path="/StudentDetails/:id" element={<StudentDetail />}></Route>
-        <Route path="/Profile" element={<Profile />}></Route>
-        <Route path="/reset-password" element={<ChangePassword />}></Route>
-        <Route path="/Jobs/newJob" element={<CreateJob />}></Route>
-        <Route path="/FileUpload" element={<FileUpload />}></Route>
-        <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path='/' element={<HomePage />}></Route>
+                <Route path='/Students' element={<StudentList />}></Route>
+                <Route path='/Faculties' element={<FacultyList />}></Route>
+                <Route path='/AddComment/:id' element={<AddComment />}></Route>
+                <Route path='/Jobs' element={<Jobs />}></Route>
+                <Route path='/Comments/:id' element={<CommentList />}></Route>
+                <Route path='/Jobs' element={<CreateJob />}></Route>
+                <Route path='*' element={<ErrorPage />}></Route>
+                <Route path='/StudentDetails/:id' element={<StudentDetail />}></Route>
+                <Route path="/Profile" element={<Profile />}></Route>
+                <Route path="/reset-password" element={<ChangePassword />}></Route>
+                <Route path='/as' element={<TestAuto />}></Route>
+                <Route path='/Jobs/newJob' element={<CreateJob />}></Route>
+                <Route path='/FileUpload' element={<FileUpload />}></Route>
+                <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
+            </Routes>
+        </>
+    )
 }
