@@ -13,6 +13,7 @@ import static java.util.Map.of;
 @RestController
 @RequestMapping("/api/v1/faculty")
 @RequiredArgsConstructor
+@CrossOrigin
 public class FacultyController {
 
     private final CommentService commentService;
