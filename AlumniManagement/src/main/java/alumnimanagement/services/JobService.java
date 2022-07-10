@@ -20,7 +20,7 @@ public interface JobService {
 
     List<JobAdvertisementDTO> findLastTop10Advertisement();
 
-    List<JobAdvertisementListDTO> findAllByParam(int page, int size, String searchValue);
+    List<JobAdvertisementListDTO> findAllByParam(int page, int size, String state, String city, String tag, String name);
     Long count();
 
     JobAdvertisementDTO findById(int id);
