@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/api/job-history")
+@CrossOrigin
 public class JobHistoryController {
 
     private JobHistoryService jobHistoryService;

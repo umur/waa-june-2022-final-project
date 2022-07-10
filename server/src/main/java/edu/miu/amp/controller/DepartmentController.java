@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/api/departments")
+@CrossOrigin
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;

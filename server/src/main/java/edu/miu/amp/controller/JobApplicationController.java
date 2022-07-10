@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/api/job-applications")
+@CrossOrigin
 public class JobApplicationController {
     @Autowired
     private JobApplicationService jobApplicationService;
