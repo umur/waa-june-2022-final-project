@@ -25,6 +25,8 @@ export default function Jobs() {
   const [name, setName] = useState();
   const [listParamsD, setlistParamsD] = useState(listParams);
 
+  const id = "2";
+
   const setValue = (name, value) => {
     if (value[0] != null) {
       switch (name) {
@@ -58,13 +60,19 @@ export default function Jobs() {
           <Button
             variant="contained"
             color="primary"
+            onClick={() => navigate("/Jobs/" + id)}
+          >
+            Edit Job
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             onClick={() => navigate("/Jobs/newJob")}
           >
             Add Job
           </Button>
         </div>
       </div>
-
 
       <div className="row body-custom">
         <Box sx={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>

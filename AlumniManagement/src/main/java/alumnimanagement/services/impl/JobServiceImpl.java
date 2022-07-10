@@ -115,4 +115,19 @@ public class JobServiceImpl implements JobService {
         }
         return result2;
     }
+
+    @Override
+    public List<JobAdvertisementDTO> findStudentJobList(long id,int page, int size, String searchValue) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        return jobRepo.findAllByStudentId(id).stream()
+                .map(jobadv->modelMapper.map(jobadv,JobAdvertisementDTO.class))
+                .toList();
+    }
+
+    @Override
+    public Long countById(long id) {
+        Long count = jobRepo.countByStudentId(id);
+        return count;
+    }
 }
