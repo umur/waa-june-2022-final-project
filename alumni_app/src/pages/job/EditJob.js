@@ -34,7 +34,7 @@ const initialValues = {
   jobTag: "",
 };
 
-export default function CreateJob() {
+export default function EditJob() {
   const navigate = useNavigate();
   const [selectValue, setSelectValue] = useState();
 
@@ -61,7 +61,7 @@ export default function CreateJob() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+    debugger;
     console.log(e.target);
     setValues({
       ...values,
@@ -73,10 +73,6 @@ export default function CreateJob() {
     setValues(initialValues);
   };
 
-  
-  const getUrl=(e)=>{
-    
-  }
   //const [companySize, setCompanySize] = React.useState('');
   //
   //  const handleChangeCompanySize = (event) => {
@@ -90,10 +86,10 @@ export default function CreateJob() {
   //    };
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Create New Job Post
-      </Typography>
       <Container maxWidth="xl">
+        <Typography variant="h6" gutterBottom>
+          Edit Job Post
+        </Typography>
         <Grid container spacing={3}>
           {/*
 //        <Grid item xs={12} sm={6}>
@@ -281,7 +277,7 @@ export default function CreateJob() {
                 Upload Job details document
               </InputLabel>
               <br />
-              <FileUpload folderName="Job" id={1} getUrl={getUrl.bind(this)}></FileUpload>
+              <FileUpload folderName="Job" id={1}></FileUpload>
             </>
           </Grid>
           <Grid item xs={12}>
@@ -296,14 +292,8 @@ export default function CreateJob() {
               <Button variant="contained" type="reset" onClick={handleReset}>
                 Reset
               </Button>
-              <Button
-                width="50px"
-                margin-left="10px"
-                onClick={postData}
-                variant="contained"
-                color="primary"
-              >
-                Add Job
+              <Button onClick={postData} variant="contained" color="primary">
+                Edit Job
               </Button>
             </div>
           </Grid>

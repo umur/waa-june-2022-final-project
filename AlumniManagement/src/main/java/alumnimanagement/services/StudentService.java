@@ -13,7 +13,7 @@ public interface StudentService {
 
     void remove(long id);
     List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName);
-    Long totalStudents();
+    Long totalStudents(String state, String city, String major, String studentName);
 
     StudentDTO findStudentById(long id);
 

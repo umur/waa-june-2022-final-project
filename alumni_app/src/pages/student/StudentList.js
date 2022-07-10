@@ -24,21 +24,23 @@ export default function StudentList() {
     const [listParamsD, setlistParamsD] = useState(listParams);
 
     const setValue = (name, value) => {
+        let title = 'undefined';
         if (value[0] != null) {
-            switch (name) {
-                case 'state':
-                    setState(value[0].title);
-                    break;
-                case 'city':
-                    setCity(value[0].title);
-                    break;
-                case 'major':
-                    setMajor(value[0].title);
-                    break;
-                case 'name':
-                    setName(value[0].title);
-                    break;
-            }
+            title = value[0].title;
+        }
+        switch (name) {
+            case 'state':
+                setState(title);
+                break;
+            case 'city':
+                setCity(title);
+                break;
+            case 'major':
+                setMajor(title);
+                break;
+            case 'name':
+                setName(title);
+                break;
         }
     }
 
@@ -49,7 +51,7 @@ export default function StudentList() {
 
     return (
         <>
-          <span className="badge rounded-pill bg-primary mb-2"> Student List</span>
+            <span className="badge rounded-pill bg-primary mb-2"> Student List</span>
             <div className="row body-custom">
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
                     <div>

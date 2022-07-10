@@ -55,8 +55,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Long totalStudents() {
+    public Long totalStudents(String state, String city, String major, String studentName) {
         Long count = studentRepo.count();
+        if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
+            return findByFilter(state,city,major,studentName).stream().count();
+        }
         return count;
     }
 
@@ -94,40 +97,44 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName) {
-        ///List<Student> student = studentRepo.findAll().stream().toList();
-//        Long id = Helper.getLoggedUserId();
-//        var a = Helper.getCurrentDate();
-//        Pageable pageable = PageRequest.of(page, size);
-//        List<Student> student = studentRepo.findAll(pageable).stream().toList();
-//        List<StudentListDto> studentListDtos = new ArrayList<>();
-//        for(Student r : student)
-//        {
-//            StudentListDto dtp = new StudentListDto();
-//            dtp.setEmail(r.getEmail());
-//            dtp.setFirstName(r.getFirstName());
-//            dtp.setLastName(r.getLastName());
-//            dtp.setCity(r.getAddress().getCity());
-//            dtp.setState(r.getAddress().getState());
-//            dtp.setId(r.getId());
-//            studentListDtos.add(dtp);
-//        }
+       if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
+            return findByFilter(state,city,major,studentName);
+       }
+        Long id = Helper.getLoggedUserId();
+        var a = Helper.getCurrentDate();
+        Pageable pageable = PageRequest.of(page, size);
+        List<Student> student = studentRepo.findAll(pageable).stream().toList();
+        List<StudentListDto> studentListDtos = new ArrayList<>();
+        for(Student r : student)
+        {
+            StudentListDto dtp = new StudentListDto();
+            dtp.setEmail(r.getEmail());
+            dtp.setFirstName(r.getFirstName());
+            dtp.setLastName(r.getLastName());
+            dtp.setCity(r.getAddress().getCity());
+            dtp.setState(r.getAddress().getState());
+            dtp.setId(r.getId());
+            studentListDtos.add(dtp);
+        }
+        return studentListDtos;
+    }
+
+    public List<StudentListDto> findByFilter(String state, String city, String major, String studentName)
+    {
         List<Student> students=studentRepo.findAll().stream().toList();
         List<StudentListDto> dto=new ArrayList<>();
 
         for(Student s: students){
             String sName=s.getFirstName()+" "+s.getLastName();
-            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.equals(studentName)){
+            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
                 StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
                 dto1.setState(s.getAddress().getState());
                 dto1.setCity(s.getAddress().getCity());
                 dto.add(dto1);
             }
         }
-
-
-        return dto;
+        return  dto;
     }
-
     @Override
     public void remove(long id) {
         studentRepo.deleteById(id);
