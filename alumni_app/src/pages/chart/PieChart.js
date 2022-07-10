@@ -33,7 +33,7 @@ function PieChart() {
                     },
                     series: [
                         {
-                            name: 'Access From',
+                            name: 'Student Per State',
                             type: 'pie',
                             radius: '50%',
                             data: listData,
