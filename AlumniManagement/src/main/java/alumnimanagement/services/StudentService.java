@@ -15,7 +15,7 @@ public interface StudentService {
     List<StudentDTO> findAll();
 
     void remove(long id);
-    List<StudentListDto> findAllByParam(int page, int size, String searchValue);
+    List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName);
     Long totalStudents();
 
     StudentDTO findStudentById(long id);

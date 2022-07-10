@@ -51,6 +51,6 @@ public class CommentController {
 
     @GetMapping("/student/{id}/count")
     public Long count(@PathVariable long id) {
-        return commentService.count();
+        return commentService.count(id);
     }
 }
