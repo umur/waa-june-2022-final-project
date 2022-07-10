@@ -11,7 +11,8 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

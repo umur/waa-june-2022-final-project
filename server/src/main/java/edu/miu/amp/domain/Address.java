@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
+
 public class Address {
 
     private String city;

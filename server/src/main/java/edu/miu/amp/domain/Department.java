@@ -11,7 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @SQLDelete(sql = "UPDATE Department SET delete = true where id = ?")
 @Where(clause = "deleted=false")
 public class Department {
@@ -20,9 +21,6 @@ public class Department {
     private Integer id;
     private String departmentName;
     private Boolean delete = Boolean.FALSE;
-
-
-
 
 
 }

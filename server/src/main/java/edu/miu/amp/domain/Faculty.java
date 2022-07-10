@@ -9,11 +9,10 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor@NoArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Faculty extends User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne

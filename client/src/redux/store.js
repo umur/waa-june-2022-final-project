@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from "redux";
 import axiosMiddleware from "redux-axios-middleware";
 import thunk from "redux-thunk";
-import rootReducer from "./reducers";
+import rootReducer from "./reducers/rootReducer";
 import HttpService from "../services/HttpService";
 
 const setup = () => {
