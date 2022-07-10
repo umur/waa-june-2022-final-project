@@ -61,6 +61,13 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 }
+                {currentUser?.roles[0] === Role.FACULTY &&
+                    <li className="nav-item">
+                        <NavLink to="/applied-jobs" className="nav-link">
+                            Recently Applied Job
+                        </NavLink>
+                    </li>
+                }
 
             </div>
 

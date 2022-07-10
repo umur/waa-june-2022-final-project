@@ -78,6 +78,8 @@ const ProfileEdit = () => {
         }
     }, [])
 
+    console.log(user);
+
     if (!loading) {
         return (
             <div className="container mt-5">

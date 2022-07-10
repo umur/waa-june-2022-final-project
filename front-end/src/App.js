@@ -13,6 +13,7 @@ import { StudentPage } from './pages/users/StudentPage';
 import { StudentDetailPage } from './pages/users/StudentDetail';
 import { JobListPage } from './pages/job/JobListPage';
 import { JobsDetailPage } from './pages/job/JobDetailPage';
+import JobsRecent from './pages/job/JobRecent';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/student/:id' element={<StudentDetailPage />} />
           <Route path='/jobs' element={<JobListPage />} />
           <Route path='/job/:id' element={<JobsDetailPage />} />
+          <Route path='/applied-jobs' element={<JobsRecent />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/user/:id' element={<ProfileEdit />} />
           <Route path="/login" element={<LoginPage />} />

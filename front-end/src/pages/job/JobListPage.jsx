@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import job from '../../service/job'
 import tag from '../../service/tag'
-import jobTags from '../../service/tags'
 import useCollapse from 'react-collapsed'
 import ReactTags from 'react-tag-autocomplete'
 import Loading from '../../components/loading'
@@ -41,6 +40,7 @@ const JobListPage = () => {
         if (currentUser?.id) {
             job.findAll().then(resp => {
                 setJobList(resp.data)
+                setFilteredList(resp.data)
                 setIsLoaded(true)
             }).catch(err => {
                 console.log(err);
@@ -57,7 +57,19 @@ const JobListPage = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log("clicked search");
+        if (selectedFilter === 'all' && !searchQuery) {
+            return setFilteredList(jobList)
+        } else if (selectedFilter && searchQuery) {
+            if (selectedFilter === "company") {
+                return setFilteredList(jobList.filter((item) => item.company === searchQuery));
+            }
+            if (selectedFilter === "city") {
+                return setFilteredList(jobList.filter((item) => item.city === searchQuery));
+            }
+            if (selectedFilter === "state") {
+                return setFilteredList(jobList.filter((item) => item.states === searchQuery));
+            }
+        }
     }
 
     const handleSearchTag = (e) => {
@@ -108,7 +120,6 @@ const JobListPage = () => {
                                                 >
                                                     <option value="">Select</option>
                                                     <option value="all">All</option>
-                                                    <option value="tags">Filter by Tags</option>
                                                     <option value="company">Filter by Company Name</option>
                                                     <option value="city">Filter by City</option>
                                                     <option value="state">Filter by State</option>
@@ -168,7 +179,9 @@ const JobListPage = () => {
                                 <tr>
                                     <th scope='col'>#</th>
                                     <th scope='col'>Title</th>
-                                    <th scope='col'>Location</th>
+                                    <th scope='col'>Company</th>
+                                    <th scope='col'>City</th>
+                                    <th scope='col'>State</th>
                                     <th scope='col'>Salary</th>
                                     <th scope='col'></th>
                                 </tr>
@@ -178,9 +191,11 @@ const JobListPage = () => {
                                     filteredList.map((item, ind) =>
                                         <tr key={item.id}>
                                             <th scope='row'>{ind + 1}</th>
-                                            <td>{item.title}</td>
-                                            <td>{item.location}</td>
-                                            <td>{item.salary}</td>
+                                            <td>{item.title ?? ""}</td>
+                                            <td>{item.company ?? ""}</td>
+                                            <td>{item.city ?? ""}</td>
+                                            <td>{item.states ?? "-"}</td>
+                                            <td>${item.salary ?? ""}</td>
                                             <td>
                                                 <button
                                                     className="btn btn-info"

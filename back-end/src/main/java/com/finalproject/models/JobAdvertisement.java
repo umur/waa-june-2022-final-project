@@ -19,6 +19,9 @@ public class JobAdvertisement {
     private String benefit;
     @Size(max = 1000)
     private String description;
+    private String company;
+    private String states;
+    private String city;
 
 
     @ManyToMany
