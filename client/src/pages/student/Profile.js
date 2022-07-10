@@ -4,12 +4,12 @@ import { getUserProfile } from "../../redux/reducers/UserProfile/actions";
 
 function StudentProfile() {
   const dispatch = useDispatch();
-  const { userProfile } = useSelector((state) => state);
+  const userProfile = useSelector((state) => state.userProfile);
 
   useEffect(() => {
     dispatch(getUserProfile());
   }, []);
-  return <div>{userProfile}</div>;
+  return <div>{JSON.stringify(userProfile)}</div>;
 }
 
 export default StudentProfile;
