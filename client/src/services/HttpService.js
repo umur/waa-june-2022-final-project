@@ -1,15 +1,18 @@
 import axios from "axios";
 import UserService from "./UserService";
+import { API_SERVER_URL } from "../constants/api";
 
 const HttpMethods = {
-  GET: 'GET',
-  POST: 'POST',
-  DELETE: 'DELETE',
+  GET: "GET",
+  POST: "POST",
+  DELETE: "DELETE",
+  PUT: "PUT",
 };
 
 const _axios = axios.create();
 
 const configure = () => {
+  _axios.defaults.baseURL = API_SERVER_URL;
   _axios.interceptors.request.use((config) => {
     if (UserService.isLoggedIn()) {
       const cb = () => {
