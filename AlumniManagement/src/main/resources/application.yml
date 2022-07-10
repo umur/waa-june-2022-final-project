@@ -3,7 +3,7 @@ spring:
     name: AlumniManagement
 
   datasource:
-    password: root12345
+    password: 12345678
     url: jdbc:postgresql://localhost:5433/almuni-database
     username: postgres
 
