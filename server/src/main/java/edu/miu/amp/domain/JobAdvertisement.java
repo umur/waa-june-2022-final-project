@@ -13,9 +13,10 @@ import java.util.List;
 
 @Data
 @Entity
-@AllArgsConstructor@NoArgsConstructor
-@SQLDelete(sql = "UPDATE JobAdvertisement SET delete = true where id = ?")
-@Where(clause = "deleted=false")
+@AllArgsConstructor
+@NoArgsConstructor
+//@SQLDelete(sql = "UPDATE JobAdvertisement SET delete = true where id = ?")
+//@Where(clause = "deleted=false")
 public class JobAdvertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class JobAdvertisement {
     private String title;
 
     @Nullable
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
 
     private String description;
 
@@ -41,7 +42,7 @@ public class JobAdvertisement {
     private List<Tag> tags;
 
     @ManyToOne
-    @JoinColumn(name="createdBy")
+    @JoinColumn(name = "createdBy")
     private Student createdBy;
 
     @OneToMany

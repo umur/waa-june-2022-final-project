@@ -12,7 +12,7 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/api/job-advertisements")
+@RequestMapping("v1/api/job-advertisement")
 @CrossOrigin
 public class JobAdvertisementController {
     @Autowired
