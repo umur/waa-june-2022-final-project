@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allJobAdvertisement } from "../../store/reducers/JobAdvertisement";
+import { allJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
 import JobFilter from "./JobFilter";
 import JobListing from "./Listing";
 
