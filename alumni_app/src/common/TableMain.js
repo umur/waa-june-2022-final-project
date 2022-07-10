@@ -23,6 +23,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DetailsIcon from '@mui/icons-material/Details';
 import AddIcon from '@mui/icons-material/Add';
+import Spinner from './Spinner';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -95,11 +96,13 @@ export default function TableMain(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [rowData, setRowData] = React.useState([]);
     const navigate = useNavigate();
+    const [spinner, setSpinner] = React.useState(true);
     let uniqueKey = 1;
 
     const fetchData = async () => {
         let params = props.listParams.dataUrl + "/getAll?page=" + page + "&size=" + rowsPerPage + "&searchValue=";
         let result = await getRequest(params);
+        setSpinner(false);
         setRowData(result);
     }
 
@@ -202,43 +205,46 @@ export default function TableMain(props) {
     }
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 500 }} aria-label="pagination table">
-                <TableHead>
-                    <TableRow key={++uniqueKey}>
-                        {thData()}
-                        <TableCell key={++uniqueKey} style={{ width: 50 }} className="uppercase">
-                            <strong>    Actions </strong>
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {tdData()}
+        <>
+            {(spinner ? <Spinner></Spinner> : '')}
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 500 }} aria-label="pagination table">
+                    <TableHead>
+                        <TableRow key={++uniqueKey}>
+                            {thData()}
+                            <TableCell key={++uniqueKey} style={{ width: 50 }} className="uppercase">
+                                <strong>    Actions </strong>
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {tdData()}
 
-                </TableBody>
-                <TableFooter>
-                    <TableRow>
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                            colSpan={3}
-                            count={
-                                count
-                            }
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            SelectProps={{
-                                inputProps: {
-                                    'aria-label': 'rows per page',
-                                },
-                                native: true,
-                            }}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
-                        />
-                    </TableRow>
-                </TableFooter>
-            </Table>
-        </TableContainer>
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                colSpan={3}
+                                count={
+                                    count
+                                }
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                    inputProps: {
+                                        'aria-label': 'rows per page',
+                                    },
+                                    native: true,
+                                }}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}
+                            />
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+            </TableContainer>
+        </>
     );
 }

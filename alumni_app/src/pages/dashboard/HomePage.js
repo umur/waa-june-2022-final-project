@@ -16,7 +16,7 @@ export default function HomePage() {
                 </div>
             </div>
             <div>
-                    <TopJobAdd></TopJobAdd>
+                <TopJobAdd></TopJobAdd>
             </div>
         </>
 

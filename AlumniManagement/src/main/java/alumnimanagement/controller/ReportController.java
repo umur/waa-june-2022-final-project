@@ -6,6 +6,7 @@ import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Department;
 import alumnimanagement.entity.Student;
+import alumnimanagement.services.JobService;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -25,9 +26,8 @@ import java.util.stream.Collectors;
 public class ReportController {
 
     StudentService studentService;
+    JobService jobService;
     ModelMapper modelMapper;
-
-
 
     @GetMapping("/state")
     public List<DropdownDto> state() {
@@ -82,6 +82,11 @@ public class ReportController {
     @GetMapping("/studentByState")
     public List<ReportList> studentByState() {
         List<ReportList> list = studentService.StudentByState();
+        return list;
+    }
+    @GetMapping("/jobByState")
+    public List<ReportList> jobByState() {
+        List<ReportList> list = jobService.JobByState();
         return list;
     }
 }

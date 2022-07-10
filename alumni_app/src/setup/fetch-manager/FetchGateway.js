@@ -45,5 +45,29 @@ export async function postFileRequest(path, data) {
     } catch (error) {
         console.error(error);
     }
+}
 
+export async function deleteRequest(path) {
+    const fullURL = api_url + path;
+    try {
+        const response = await axios.delete(fullURL);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export async function putRequest(path, data) {
+    const fullURL = api_url + path;
+    try {
+        const response = await axios.put(fullURL, data, {
+            headers: {
+                // 'content-type': 'text/json'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
 }
