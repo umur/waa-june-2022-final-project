@@ -9,8 +9,10 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.util.List;
 
-@Data @Entity
-@AllArgsConstructor@NoArgsConstructor
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @SQLDelete(sql = "UPDATE JobApplication SET delete = true where id = ?")
 @Where(clause = "deleted=false")
 public class JobApplication {

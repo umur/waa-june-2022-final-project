@@ -3,8 +3,10 @@ package edu.miu.amp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,10 +21,18 @@ public class JobAdvertisement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String title;
+
+    @Nullable
+    @Column(columnDefinition="text")
+
     private String description;
+
+    @Nullable
     private String benefits;
 
     @Embedded
+    @Nullable
     private Address address;
 
     private String companyName;
@@ -30,8 +40,13 @@ public class JobAdvertisement {
     @ManyToMany
     private List<Tag> tags;
 
+    @ManyToOne
+    @JoinColumn(name="createdBy")
+    private Student createdBy;
+
     @OneToMany
     private List<JobApplication> jobApplicationList;
 
-    private boolean delete = Boolean.FALSE;
+    @ColumnDefault("false")
+    private boolean delete;
 }
