@@ -27,6 +27,7 @@ const initialValues = {
   paymentAmount: "",
   jobDesc: "",
   addBenefit: "",
+  jobTag:"",
 };
 
 
@@ -166,8 +167,8 @@ const handleInputChange = (e) => {
                      onChange={handleInputChange}
                   >
                     <MenuItem value="0- less than 100">0- less than 100</MenuItem>
-                    <MenuItem value={2}>100-1000</MenuItem>
-                    <MenuItem value={3}>more than 1000</MenuItem>
+                    <MenuItem value="100-1000">100-1000</MenuItem>
+                    <MenuItem value="more than 1000">more than 1000</MenuItem>
                   </Select>
                 </FormControl>
         </Grid>
@@ -204,12 +205,13 @@ const handleInputChange = (e) => {
                                 labelId="jobType"
                                 id="jobType"
                                 label="Job Type"
+                                name="jobType"
                                 value={values.jobType}
                                 onChange={handleInputChange}
                               >
-                                <MenuItem value={1}>Full-Time</MenuItem>
-                                <MenuItem value={2}>Part-Time</MenuItem>
-                                <MenuItem value={3}>Contract</MenuItem>
+                                <MenuItem value="Full-Time">Full-Time</MenuItem>
+                                <MenuItem value="Part-Time">Part-Time</MenuItem>
+                                <MenuItem value="Contract">Contract</MenuItem>
                               </Select>
                             </FormControl>
                     </Grid>
@@ -228,10 +230,13 @@ const handleInputChange = (e) => {
                 </Grid>
         <Grid item xs={12}>
                 <>
-                    < AutoCompleteSelect
-                    name = "jobTag"
-                    onChange={value => setValue(value)}
-                    dataUrl='/tags' ></AutoCompleteSelect >
+                < AutoCompleteSelect
+                        name="jobTag"
+                        onChange={value => setValue(value)}
+                        isMultiSelect={true}
+                        label={"Job Tag"}
+                        placeholder={"Eg. C#, Java, JavaScript"}
+                        dataUrl='/tags' ></AutoCompleteSelect >
                 </>
 
                 </Grid>

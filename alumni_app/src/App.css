@@ -52,3 +52,8 @@ thead>td {
 .additional-benefits {
     padding: 10px;
 }
+
+.list-header{
+    margin-top: 20px;
+    margin-bottom: 200px;
+}

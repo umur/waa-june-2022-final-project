@@ -15,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,8 +61,17 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<CommentDTO> commentByStudentId(long id) {
-        var result= commentRepo.commentByStudentId(id).stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
+
+        List<Comment> comments=commentRepo.commentByStudentId(id);
+        List<CommentDTO> result=new ArrayList<>();
+        for (Comment c:comments){
+            CommentDTO commentDTO=modelMapper.map(c,CommentDTO.class);
+            commentDTO.setCommentedBy(c.getFaculty().getFirstName());
+            result.add(commentDTO);
+        }
         return result;
+//        var result= commentRepo.commentByStudentId(id).stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
+//        return result;
     }
 
     @Override
