@@ -4,8 +4,9 @@ import ReactECharts from 'echarts-for-react';
 function BarChart() {
     return (
         <>
-
-            <h3 className="text-center"> JOB ADVERTISEMENTS PER LOCATION</h3>
+            <div className="text-center">
+                <strong > JOB ADVERTISEMENTS PER LOCATION</strong>
+            </div>
             <ReactECharts
                 option={{
                     xAxis: {

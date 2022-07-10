@@ -49,7 +49,7 @@ export default function StudentList() {
 
     return (
         <>
-          <span className="badge rounded-pill bg-primary"> Student List</span>
+          <span className="badge rounded-pill bg-primary mb-2"> Student List</span>
             <div className="row body-custom">
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
                     <div>

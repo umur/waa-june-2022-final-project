@@ -67,18 +67,19 @@ public class JobServiceImpl implements JobService {
         for(JobAdvertisement f : list)
         {
             JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
-            dto.setCity(f.getAddress().getCity());
             dto.setId(f.getId());
             dto.setState(f.getAddress().getState());
-            dto.setAddBenefit(f.getAddBenefit());
+
             dto.setJobDesc(f.getJobDesc());
             dto.setJobTitle(f.getJobTitle());
-            dto.setAddBenefit(f.getAddBenefit());
             dto.setCompanyName(f.getCompanyName());
-            dto.setCompanySize(f.getCompanySize());
             dto.setJobType(f.getJobType());
             dto.setNumOpening(f.getNumOpening());
-            dto.setPaymentAmount(f.getPaymentAmount());
+//            dto.setAddBenefit(f.getAddBenefit());
+//            dto.setCompanySize(f.getCompanySize());
+//            dto.setCity(f.getAddress().getCity());
+//            dto.setAddBenefit(f.getAddBenefit());
+//            dto.setPaymentAmount(f.getPaymentAmount());
             for(Tag t : f.getTags())
             {
                dto.setTag(dto.getTag()+ " " + t.getTitle());

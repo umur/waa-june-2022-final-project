@@ -3,12 +3,14 @@ import ReactECharts from 'echarts-for-react';
 
 function PieChart() {
     return (
-        <>        
-       
+        <>
+            <div className="text-center">
+                <strong > STUDENT DATA</strong>
+            </div>
             <ReactECharts
                 option={{
                     title: {
-                        text: 'STUDENT DATA',
+                        text: '',
                         subtext: 'TOTAL NUMBER OF STUDENTS PER STATES',
                         left: 'center'
                     },
