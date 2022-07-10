@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { postFileRequest } from "../setup/fetch-manager/FetchGateway";
 
 export default function FileUpload(props) {
-    const [selectedFile, setSelectedFile] = useState();
+    const [savedUrl, setSavedUrl] = useState();
 
     const fileSelectedHandler = (e) => {
         let file = e.target.files[0];
@@ -27,6 +27,7 @@ export default function FileUpload(props) {
                     'content-type': 'multipart/form-data'
                 }
             });
+            setSavedUrl(response.data);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -38,8 +39,8 @@ export default function FileUpload(props) {
         <>
             <div>
                 <label htmlFor="contained-button-file">
-                    <Input accept="*" id="contained-button-file" multiple type="file" onChange={fileSelectedHandler} />
-                    {/* <Button variant="contained" component="span" onClick={fileSelectedHandler}>
+                    <Input accept="*" id="contained-button-file" multiple type="file" onClick={props.getUrl(savedUrl)} onChange={fileSelectedHandler} />
+                    {/* <Button variant="contained" component="span" onClick={props.getUrl(savedUrl)}>
                         Save
                     </Button> */}
                 </label>
