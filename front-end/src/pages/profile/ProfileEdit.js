@@ -132,16 +132,6 @@ const ProfileEdit = () => {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="city">City</label>
-                            {/* {
-                                user.address != null &&
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="city"
-                                    defaultValue={user.address.city ?? ""}
-                                    onChange={(e) => handleChange(e)}
-                                    placeholder='City' />
-                            } */}
                             <input
                                 type="text"
                                 className="form-control"
