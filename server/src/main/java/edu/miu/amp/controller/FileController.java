@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public class FileController {
   private FileStorageService storageService;
 
   @PostMapping("/upload")
+  @RolesAllowed({"student", "faculty"})
   public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
     String message = "";
     try {
@@ -37,6 +39,7 @@ public class FileController {
   }
 
   @GetMapping("/files")
+  @RolesAllowed({"student", "faculty"})
   public ResponseEntity<List<ResponseFile>> getListFiles() {
     List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
       String fileDownloadUri = ServletUriComponentsBuilder
@@ -54,6 +57,7 @@ public class FileController {
   }
 
   @GetMapping("/files/{id}")
+  @RolesAllowed({"student", "faculty"})
   public ResponseEntity<byte[]> getFile(@PathVariable String id) {
     FileDB fileDB = storageService.getFile(id);
     return ResponseEntity.ok()

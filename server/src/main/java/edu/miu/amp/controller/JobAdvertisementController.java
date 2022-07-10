@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -18,28 +19,33 @@ public class JobAdvertisementController {
     private JobAdvertisementService jobAdvertisementService;
 
     @GetMapping
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<JobAdvertisementDto>> findAll(){
         return new ResponseEntity<>(jobAdvertisementService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<JobAdvertisementDto> getById(@PathVariable Integer id){
         return new ResponseEntity<>(jobAdvertisementService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
+    @RolesAllowed("student")
     public ResponseEntity<JobAdvertisementDto> create(@RequestBody JobAdvertisementDto jobAdvertisementDto){
         return new ResponseEntity<> (jobAdvertisementService.save(jobAdvertisementDto), HttpStatus.CREATED);
 
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed("student")
     public ResponseEntity<JobAdvertisementDto> update(@RequestBody JobAdvertisementDto jobAdvertisementDto, @PathVariable Integer id){
         jobAdvertisementDto.setId(id);
         return new ResponseEntity<>(jobAdvertisementService.save(jobAdvertisementDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed("student")
     public void delete(@PathVariable Integer id){
         jobAdvertisementService.remove(id);
     }
