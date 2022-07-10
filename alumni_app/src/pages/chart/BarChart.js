@@ -1,29 +1,59 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import ReactECharts from 'echarts-for-react';
+import { getRequest } from "../../setup/fetch-manager/FetchGateway";
 
 function BarChart() {
+    let [header, setHeader] = useState();
+    let [data, setData] = useState();
+
+    const fetchData = async () => {
+        let headerData = [];
+        let contentData = [];
+
+        let response = await getRequest('/reports/jobByState');
+        response.map((x) => {
+            headerData.push(x.name);
+            contentData.push(x.value);
+        })
+        setHeader(headerData);
+        setData(contentData);
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
+    let count =0;
+    let dataList = [];
+    if (header != undefined) {
+        dataList.push(
+            <>
+                <ReactECharts key={count++}
+                    option={{
+                        xAxis: {
+                            type: 'category',
+                            data: header
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                data: data,
+                                type: 'bar'
+                            }
+                        ]
+                    }}
+                />
+            </>
+
+        )
+    }
+
     return (
         <>
             <div className="text-center">
                 <strong > JOB ADVERTISEMENTS PER LOCATION</strong>
             </div>
-            <ReactECharts
-                option={{
-                    xAxis: {
-                        type: 'category',
-                        data: ['IOWA', 'WASHINGTON', 'ALASKA', 'CALIFORNIA', 'COLORADO', 'FLORIDA', 'KANSAS']
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: [
-                        {
-                            data: [120, 200, 150, 80, 70, 110, 130],
-                            type: 'bar'
-                        }
-                    ]
-                }}
-            />
+            {dataList}
         </>
     );
 }

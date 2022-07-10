@@ -3,6 +3,7 @@ package alumnimanagement.services;
 import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.entity.job.JobAdvertisement;
 
 import java.util.List;
@@ -23,4 +24,5 @@ public interface JobService {
     Long count();
 
     JobAdvertisementDTO findById(int id);
+    List<ReportList> JobByState();
 }
