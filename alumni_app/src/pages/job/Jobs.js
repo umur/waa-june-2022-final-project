@@ -11,7 +11,7 @@ const listParams = {
     'showEdit': false,
     'showDelete': true,
     'showAddComment': false,
-    'dataUrl': '/jobs',
+    'dataUrl': "/jobs/''/''/''/''",
     'addCommentUrl': '//',
     'editUrl': '',
     'deleteUrl': '/',
@@ -27,24 +27,26 @@ export default function Jobs() {
     const [listParamsD, setlistParamsD] = useState(listParams);
 
     const setValue = (name, value) => {
-        switch (name) {
-            case 'state':
-                setState(value[0].title);
-                break;
-            case 'city':
-                setCity(value[0].title);
-                break;
-            case 'tag':
-                setTag(value[0].title);
-                break;
-            case 'name':
-                setName(value[0].title);
-                break;
+        if (value[0] != null) {
+            switch (name) {
+                case 'state':
+                    setState(value[0].title);
+                    break;
+                case 'city':
+                    setCity(value[0].title);
+                    break;
+                case 'tag':
+                    setTag(value[0].title);
+                    break;
+                case 'name':
+                    setName(value[0].title);
+                    break;
+            }
         }
     }
 
     const reLoadList = () => {
-        const url = '/students/' + state + "/" + city + "/" + tag + "/" + name;
+        const url = '/jobs/' + state + "/" + city + "/" + tag + "/" + name;
         setlistParamsD({ ...listParamsD, 'dataUrl': url })
     }
 
@@ -97,12 +99,12 @@ export default function Jobs() {
                             dataUrl='/reports/studentName' ></AutoCompleteSelect >
                     </div>
                     <div>
-                        <Button variant="contained" color="success" onClick={reLoadList}>Search</Button>
+                        <Button variant="contained" color="primary" onClick={reLoadList}>Search</Button>
                     </div>
                 </Box>
             </div>
             <div className="list-table">
-                <TableMain listParams={listParams}></TableMain>
+                <TableMain listParams={listParamsD}></TableMain>
             </div>
         </>
     )

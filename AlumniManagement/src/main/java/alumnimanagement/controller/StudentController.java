@@ -50,6 +50,14 @@ public class StudentController {
     @GetMapping("/{state}/{city}/{major}/{studentName}/count")
     public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName)
     {
+        if(state.equals("undefined"))
+            state = "";
+        if(city.equals("undefined"))
+            city = "";
+        if(major.equals("undefined"))
+            major = "";
+        if(studentName.equals("undefined"))
+            studentName = "";
         return studentService.totalStudents();
     }
 

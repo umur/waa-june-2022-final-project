@@ -24,19 +24,21 @@ export default function StudentList() {
     const [listParamsD, setlistParamsD] = useState(listParams);
 
     const setValue = (name, value) => {
-        switch (name) {
-            case 'state':
-                setState(value[0].title);
-                break;
-            case 'city':
-                setCity(value[0].title);
-                break;
-            case 'major':
-                setMajor(value[0].title);
-                break;
-            case 'name':
-                setName(value[0].title);
-                break;
+        if (value[0] != null) {
+            switch (name) {
+                case 'state':
+                    setState(value[0].title);
+                    break;
+                case 'city':
+                    setCity(value[0].title);
+                    break;
+                case 'major':
+                    setMajor(value[0].title);
+                    break;
+                case 'name':
+                    setName(value[0].title);
+                    break;
+            }
         }
     }
 
