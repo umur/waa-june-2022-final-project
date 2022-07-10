@@ -122,7 +122,6 @@ function Menu() {
               </Link>
             );
           })}
-
         {/* Student Menu */}
         {studentRole &&
           studentMenu.map((menu) => {
@@ -139,7 +138,6 @@ function Menu() {
               </Link>
             );
           })}
-
         {/* Faculty Menu */}
         {facultyRole &&
           facultyMenu.map((menu) => {
@@ -157,8 +155,13 @@ function Menu() {
             );
           })}
 
+        <a
+          href="http://localhost:8081/realms/AMP/account/password"
+          className="list-group-item list-group-item-action "
+        >
+          Change Password
+        </a>
         <Link
-          key="100"
           to="/logout"
           className="list-group-item list-group-item-action "
           onClick={logout}
