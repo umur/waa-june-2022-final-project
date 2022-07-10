@@ -7,8 +7,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
+
 @RestController
 @RequestMapping("v1/api/students")
 @AllArgsConstructor
@@ -16,6 +19,13 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
+
+    @GetMapping("/profile")
+    @RolesAllowed("student")
+
+    public ResponseEntity<StudentDto> getMyProfile() {
+        return ResponseEntity.ok(this.studentService.getMyProfile());
+    }
 
     @GetMapping
     public ResponseEntity<List<StudentDto>> getAllStudents() {

@@ -10,11 +10,13 @@ import Registration from "./student/Registration";
 import JobListings from "../components/job/Listings";
 import AddJobHistory from "./student/AddJobHistory";
 
+import StudentProfile from "./student/Profile";
+
 export default function Router() {
   return (
     <div>
       <Routes>
-        <Route path="/student/profile" element={<UserProfile />}></Route>
+        <Route path="/student/profile" element={<StudentProfile />}></Route>
         <Route path="/faculty/profile" element={<UserProfile />}></Route>
 
         <Route

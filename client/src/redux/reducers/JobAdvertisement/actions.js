@@ -5,13 +5,12 @@ import {
 } from "./actionsTypes";
 
 import HttpService from "../../../services/HttpService";
-import UserService from "../../../services/UserService";
 
 export const allJobAdvertisement = () => ({
   type: LIST_JOB_ADVERTISEMENT,
   payload: {
     request: {
-      url: "/comments",
+      url: "/job-advertisement",
     },
   },
 });
