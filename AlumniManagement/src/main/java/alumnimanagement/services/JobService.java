@@ -23,4 +23,7 @@ public interface JobService {
     Long count();
 
     JobAdvertisementDTO findById(int id);
+
+    List<JobAdvertisementDTO> findStudentJobList(long id, int page, int size, String searchValue);
+    Long countById(long id);
 }

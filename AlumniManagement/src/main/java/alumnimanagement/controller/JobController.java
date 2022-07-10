@@ -65,4 +65,17 @@ public class JobController {
         return jobService.findById(id);
     }
 
+    @GetMapping("/{id}/getAll")
+    public List<JobAdvertisementDTO> findStudentJobList(@PathVariable long id,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = jobService.findStudentJobList(id,page,size,searchValue);
+        return result;
+    }
+
+    @GetMapping("/{id}/count")
+    public Long count(long id)
+    {
+        return jobService.countById(id);
+    }
+
 }
