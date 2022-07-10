@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Map.of;
+
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
@@ -30,15 +32,17 @@ public class LoginController {
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginReq loginReq) {
         log.info("{}", loginReq);
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginReq.username(), loginReq.password()));
-
-        List<String> roles = userRepository.findByEmail(loginReq.username())
-                .map(User::getRoles)
-                .map(r -> r.stream().map(Role::getRole).toList())
-                .orElseThrow(RuntimeException::new);
+        User user = userRepository.findByEmail(loginReq.username()).orElseThrow(RuntimeException::new);
+        List<String> roles = user.getRoles()
+                .stream()
+                .map(Role::getRole)
+                .toList();
 
         var token = jwtHelper.createToken(loginReq.username(), roles);
 
-        return ResponseEntity.ok(Map.of("access_token", token));
+        return ResponseEntity.ok(of("access_token", token,
+                "username", user.getEmail(),
+                "userType", user.getUserType().name()));
     }
 
 
