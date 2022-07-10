@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Data@Entity@AllArgsConstructor@NoArgsConstructor
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
