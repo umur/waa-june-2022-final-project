@@ -9,20 +9,23 @@ import { Provider } from "react-redux";
 
 import "./App.css";
 import Registration from "./pages/faculty/Registration";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import Menu from "./components/Menu";
+import Body from "./pages/layout/Body";
+import PageSection from "./pages/layout/PageSection";
 
 const reduxStore = store.setup();
 
 function App() {
   return (
-    <div>
-      <Provider store={reduxStore}>
-        <BrowserRouter>
-          <Header></Header>
-          <Router></Router>
-          <Footer></Footer>
-        </BrowserRouter>
-      </Provider>
-    </div>
+    <Provider store={reduxStore}>
+      <BrowserRouter>
+        <Header></Header>
+        <Body></Body>
+        <Footer></Footer>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
