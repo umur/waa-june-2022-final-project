@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-//@Transactional
+@Transactional
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
