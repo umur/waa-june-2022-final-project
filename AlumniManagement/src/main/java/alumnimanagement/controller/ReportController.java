@@ -6,6 +6,7 @@ import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Department;
 import alumnimanagement.entity.Student;
+import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.services.JobService;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
@@ -75,6 +76,18 @@ public class ReportController {
             dto.setTitle(s.getFirstName()+" "+s.getLastName());
             list.add(dto);
 
+        }
+        return list;
+    }
+
+    @GetMapping("/companyName")
+    public List<DropdownDto> companyName() {
+        List<DropdownDto> list = new ArrayList<>();
+        List<String> ad=jobService.findAllCompany();
+        for(String s: ad){
+            DropdownDto dto= modelMapper.map(s,DropdownDto.class);
+            dto.setTitle(s);
+            list.add(dto);
         }
         return list;
     }

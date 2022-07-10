@@ -42,6 +42,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<String> findAllCompany() {
+        return jobRepo.findAllByCompanyNames();
+    }
+
+    @Override
     public void update(JobAdvertisementDTO jobAdvertisementDTO, int id) {
         jobAdvertisementDTO.setId(id);
         jobRepo.save(modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class));
@@ -62,52 +67,62 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String state, String city, String tag, String name) {
-//        Pageable pageable = PageRequest.of(page, size);
-//        List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
-//        List<JobAdvertisementListDTO> dtos = new ArrayList<>();
-//        for(JobAdvertisement f : list)
-//        {
-//            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
-//            dto.setId(f.getId());
-//            dto.setState(f.getAddress().getState());
-//
-//            dto.setJobDesc(f.getJobDesc());
-//            dto.setJobTitle(f.getJobTitle());
-//            dto.setCompanyName(f.getCompanyName());
-//            dto.setJobType(f.getJobType());
-//            dto.setNumOpening(f.getNumOpening());
-////            dto.setAddBenefit(f.getAddBenefit());
-////            dto.setCompanySize(f.getCompanySize());
-////            dto.setCity(f.getAddress().getCity());
-////            dto.setAddBenefit(f.getAddBenefit());
-////            dto.setPaymentAmount(f.getPaymentAmount());
-//            for(Tag t : f.getTags())
-//            {
-//               dto.setTag(dto.getTag()+ " " + t.getTitle());
-//            }
-//            dtos.add(dto);
-//        }
+        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
+            return findByFilter(state,city,tag,name);
+        }
+
+        Pageable pageable = PageRequest.of(page, size);
+        List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
+        List<JobAdvertisementListDTO> dtos = new ArrayList<>();
+        for(JobAdvertisement f : list)
+        {
+            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
+            dto.setId(f.getId());
+            dto.setState(f.getAddress().getState());
+
+            dto.setJobDesc(f.getJobDesc());
+            dto.setJobTitle(f.getJobTitle());
+            dto.setCompanyName(f.getCompanyName());
+            dto.setJobType(f.getJobType());
+            dto.setNumOpening(f.getNumOpening());
+            for(Tag t : f.getTags())
+            {
+               dto.setTag(dto.getTag()+ " " + t.getTitle());
+            }
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
+    @Override
+    public Long count(String state, String city, String tag, String name) {
+        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
+            return findByFilter(state,city,tag,name).stream().count();
+        }
+        Long count = jobRepo.count();
+        return count;
+    }
+
+    public List<JobAdvertisementListDTO> findByFilter( String state, String city, String tag, String name)
+    {
         List<JobAdvertisement> jobs=jobRepo.findAll().stream().toList();
         List<JobAdvertisementListDTO> jobListDto=new ArrayList<>();
 
         for (JobAdvertisement job: jobs){
-            if(job.getAddress().getState().equals(state)||job.getAddress().getCity().equals(city)||job.getJobTag().equals(tag)||job.getCompanyName().equals(name)){
+            String jobTag = "";
+            if(job.getJobTag() != null)
+            {
+                jobTag = job.getJobTag();
+            }
+            if(job.getAddress().getState().equals(state)||jobTag.equals(tag)||job.getAddress().getCity().equals(city)||job.getCompanyName().equals(name)){
                 JobAdvertisementListDTO jobDto=modelMapper.map(job, JobAdvertisementListDTO.class);
                 jobDto.setTag(job.getJobTag());
                 jobDto.setState(job.getAddress().getState());
                 jobListDto.add(jobDto);
             }
         }
-
         return jobListDto;
     }
-
-    @Override
-    public Long count() {
-        Long count = jobRepo.count();
-        return count;
-    }
-
     @Override
     public JobAdvertisementDTO findById(int id) {
         return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);

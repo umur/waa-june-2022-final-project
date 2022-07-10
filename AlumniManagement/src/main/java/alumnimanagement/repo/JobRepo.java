@@ -15,4 +15,7 @@ public interface JobRepo extends JpaRepository<JobAdvertisement, Integer> {
 //findAllByOrderByIdAsc()
     @Query("SELECT A.state as title, count(S.id) as id FROM Address A JOIN  JobAdvertisement S ON S.address.id = A.id group by A.state")
     List<Object[]> JobByState();
+
+    @Query("SELECT distinct(A.companyName) from JobAdvertisement  A order by A.companyName desc")
+    List<String> findAllByCompanyNames();
 }
