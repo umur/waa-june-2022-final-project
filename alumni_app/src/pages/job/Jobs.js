@@ -24,6 +24,7 @@ export default function Jobs() {
     const [city, setCity] = useState();
     const [tag, setTag] = useState();
     const [name, setName] = useState();
+    const [listParamsD, setlistParamsD] = useState(listParams);
 
     const setValue = (name, value) => {
         switch (name) {
@@ -40,6 +41,11 @@ export default function Jobs() {
                 setName(value[0].title);
                 break;
         }
+    }
+
+    const reLoadList = () => {
+        const url = '/students/' + state + "/" + city + "/" + tag + "/" + name;
+        setlistParamsD({ ...listParamsD, 'dataUrl': url })
     }
 
     return (
@@ -91,7 +97,7 @@ export default function Jobs() {
                             dataUrl='/reports/studentName' ></AutoCompleteSelect >
                     </div>
                     <div>
-                        <Button variant="contained" color="success" >Search</Button>
+                        <Button variant="contained" color="success" onClick={reLoadList}>Search</Button>
                     </div>
                 </Box>
             </div>

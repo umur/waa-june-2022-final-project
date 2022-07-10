@@ -42,6 +42,7 @@ export default function StudentList() {
 
     const reLoadList = () => {
         const url = '/students/' + state + "/" + city + "/" + major + "/" + name;
+        setlistParamsD({ ...listParamsD, 'dataUrl': url })
     }
 
     return (
