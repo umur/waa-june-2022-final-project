@@ -164,7 +164,7 @@ export default function TableMain(props) {
                         <TableCell style={{ width: 50 }}>
                             {(props.listParams.showEdit ?
                                 <EditIcon onClick={() => { navigate(props.listParams.editUrl + data.id) }} 
-                                className="pointer" color="success">
+                                className="pointer" color="success" >
                                     Edit
                                 </EditIcon>
                                 : ''

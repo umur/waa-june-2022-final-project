@@ -51,17 +51,20 @@ export default function Jobs() {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate("/Jobs/newJob")}
-        >
-          Add Job
-        </Button>
+      <div>
+        <span className="badge rounded-pill bg-primary"> Job List </span>
+
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate("/Jobs/newJob")}
+          >
+            Add Job
+          </Button>
+        </div>
       </div>
 
-      <span className="list-header"> Job List </span>
 
       <div className="row body-custom">
         <Box sx={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>

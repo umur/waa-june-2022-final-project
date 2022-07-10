@@ -18,7 +18,7 @@ export default function HomePage() {
                 <div>
                     <div className="list-group">
                         <a href="#" className="list-group-item list-group-item-action bold text-center">
-                            <strong>Last Top 10 Job Advertisement </strong></a>
+                            <strong>LAST TOP 10 JOB ADVERTISEMENTS </strong></a>
                         <a href="#" className="list-group-item list-group-item-action list-group-item-primary">This is a primary list group item</a>
                         <a href="#" className="list-group-item list-group-item-action list-group-item-secondary">This is a secondary list group item</a>
                         <a href="#" className="list-group-item list-group-item-action list-group-item-success">This is a success list group item</a>

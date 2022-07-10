@@ -18,7 +18,8 @@ const listParams = {
 export default function FacultyList() {
     return (
         <>
-            Faculty List
+           
+            <span className="badge rounded-pill bg-primary"> Faculty List </span>
             <div className="list-table">
                 <TableMain listParams={listParams}></TableMain>
             </div>

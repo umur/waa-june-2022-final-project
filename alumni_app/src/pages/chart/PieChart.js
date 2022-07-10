@@ -8,8 +8,8 @@ function PieChart() {
             <ReactECharts
                 option={{
                     title: {
-                        text: 'Student Data',
-                        subtext: 'total number of students per states',
+                        text: 'STUDENT DATA',
+                        subtext: 'TOTAL NUMBER OF STUDENTS PER STATES',
                         left: 'center'
                     },
                     tooltip: {

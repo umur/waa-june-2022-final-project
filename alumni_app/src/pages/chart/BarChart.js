@@ -5,7 +5,7 @@ function BarChart() {
     return (
         <>
 
-            <h3 className="text-center"> Job Advertisements Per Location</h3>
+            <h3 className="text-center"> JOB ADVERTISEMENTS PER LOCATION</h3>
             <ReactECharts
                 option={{
                     xAxis: {
