@@ -230,12 +230,14 @@ export default function CreateJob() {
         </Grid>
         <Grid item xs={12}>
           <>
-            <AutoCompleteSelect
-              name="jobTag"
-              onChange={(value) => setValue(value)}
-              dataUrl="/tags"
-            ></AutoCompleteSelect>
-          </>
+            < AutoCompleteSelect
+                    name="jobTag"
+                    onChange={value => setValue(value)}
+                    isMultiSelect={true}
+                    label={"Job Tag"}
+                    placeholder={"Eg. C#, Java, JavaScript"}
+                    dataUrl='/tags' ></AutoCompleteSelect >
+            </>
         </Grid>
         <Grid item xs={12}>
           <TextField

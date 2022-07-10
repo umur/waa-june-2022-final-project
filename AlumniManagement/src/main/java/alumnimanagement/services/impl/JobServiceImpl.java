@@ -93,4 +93,9 @@ public class JobServiceImpl implements JobService {
         Long count = jobRepo.count();
         return count;
     }
+
+    @Override
+    public JobAdvertisementDTO findById(int id) {
+        return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);
+    }
 }

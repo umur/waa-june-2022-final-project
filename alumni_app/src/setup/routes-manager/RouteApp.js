@@ -9,11 +9,10 @@ import StudentList from "../../pages/student/StudentList";
 import Profile from "../../pages/profile/Profile";
 import StudentDetail from "../../pages/student/StudentDetail";
 import CreateJob from "../../pages/job/CreateJob";
-import AutoCompleteSelect from "../../common/AutoCompleteSelect";
-import TestAuto from "../../common/testAuto";
 import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
+import JobDetails from "../../pages/job/JobDetails";
 
 export default function RouteApp() {
   return (
@@ -30,9 +29,9 @@ export default function RouteApp() {
         <Route path="/StudentDetails/:id" element={<StudentDetail />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/reset-password" element={<ChangePassword />}></Route>
-        <Route path="/as" element={<TestAuto />}></Route>
         <Route path="/Jobs/newJob" element={<CreateJob />}></Route>
         <Route path="/FileUpload" element={<FileUpload />}></Route>
+        <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
       </Routes>
     </>
   );

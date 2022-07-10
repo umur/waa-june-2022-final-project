@@ -20,7 +20,7 @@ export default function AutoCompleteSelect(props) {
         <>
             {
                 (arrayData != undefined ?
-                    <>
+                    <>{(props.isMultiSelect ?
                         <Autocomplete
                             multiple
                             id="fixed-tags-demo"
@@ -38,9 +38,34 @@ export default function AutoCompleteSelect(props) {
                             getOptionLabel={(option) => option.title}
                             style={{ width: 730 }}
                             renderInput={(params) => (
-                                <TextField {...params} label="Job Tag" placeholder="Eg. C#, Java, JavaScript" />
+                                <TextField {...params} label={props.label} placeholder={props.placeholder} />
                             )}
                         />
+                        :
+                        <Autocomplete
+                            disablePortal
+                            id="fixed-tags-demo"
+                            value={value}
+                            onChange={(event, newValue) => {
+                                setValue([
+                                    newValue
+                                ]);
+                                props.onChange([
+                                    newValue
+                                ])
+                            }
+                            }
+                            options={arrayData}
+                            getOptionLabel={(option) => option.title}
+                            style={{ width: 250 }}
+                            renderInput={(params) => (
+                                <TextField {...params} label={props.label} placeholder={props.placeholder} />
+                            )}
+                        />
+                    )
+
+                    }
+
                     </>
                     : ''
                 )
