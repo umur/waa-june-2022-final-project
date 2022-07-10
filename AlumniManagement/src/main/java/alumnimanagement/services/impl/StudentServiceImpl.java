@@ -112,7 +112,7 @@ public class StudentServiceImpl implements StudentService {
 
         for(Student s: students){
             String sName=s.getFirstName()+" "+s.getLastName();
-            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.equals(studentName)){
+            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
                 StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
                 dto1.setState(s.getAddress().getState());
                 dto1.setCity(s.getAddress().getCity());
