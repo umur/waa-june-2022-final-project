@@ -41,4 +41,9 @@ public class JobController {
     public Long count() {
         return jobService.count();
     }
+
+    @GetMapping("/{id}")
+    public JobAdvertisementDTO getJobsById(@PathVariable int id){
+        return jobService.findById(id);
+    }
 }
