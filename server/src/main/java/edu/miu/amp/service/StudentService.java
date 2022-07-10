@@ -8,6 +8,8 @@ public interface StudentService {
 
     StudentDto save(StudentDto studentDto);
 
+    StudentDto getMyProfile();
+
     List<StudentDto> findAll();
 
     StudentDto update(StudentDto studentDto, Integer id);

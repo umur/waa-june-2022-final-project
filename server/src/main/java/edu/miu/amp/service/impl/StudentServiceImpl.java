@@ -3,7 +3,9 @@ package edu.miu.amp.service.impl;
 import edu.miu.amp.domain.Student;
 import edu.miu.amp.dto.StudentDto;
 import edu.miu.amp.exception.ResourceNotFoundException;
+import edu.miu.amp.helper.UserPrincipal;
 import edu.miu.amp.repository.StudentRepo;
+import edu.miu.amp.repository.UserRepo;
 import edu.miu.amp.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,12 +25,26 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepo studentRepo;
 
     @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
     public StudentDto save(StudentDto studentDto) {
         Student savedStudent = studentRepo.save(modelMapper.map(studentDto, Student.class));
         return modelMapper.map(savedStudent, StudentDto.class);
+    }
+
+    @Override
+    public StudentDto getMyProfile() {
+        var authUser =UserPrincipal.getAuthUser();
+
+        var user = userRepo.findByUserName(authUser.getUserName()).orElse( null );
+
+        var student =  studentRepo.findById(user.getId()).get();
+        return modelMapper.map(student, StudentDto.class);
+
     }
 
     @Override

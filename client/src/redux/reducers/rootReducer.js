@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 
-import JobAdvertisement from "./JobAdvertisement/reducer";
+import jobAdvertisement from "./JobAdvertisement/reducer";
+import userProfile from "./UserProfile/reducer";
 
 export default combineReducers({
-  JobAdvertisement,
+  jobAdvertisement,
+  userProfile,
 });
