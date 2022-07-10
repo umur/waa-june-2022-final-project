@@ -48,7 +48,7 @@ public class StudentController {
 //    }
 
     @GetMapping("/{state}/{city}/{major}/{studentName}/getAll")
-    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName)
+    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
         if(state.equals("undefined"))
             state = "";
@@ -58,7 +58,7 @@ public class StudentController {
             major = "";
         if(studentName.equals("undefined"))
             studentName = "";
-        var result = studentService.findAllByParam(5,5,state, city, major,studentName);
+        var result = studentService.findAllByParam(page,size,state, city, major,studentName);
         return result;
     }
 
