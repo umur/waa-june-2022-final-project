@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -16,14 +18,16 @@ import org.springframework.beans.factory.annotation.Value;
 @RequestMapping("/files")
 @CrossOrigin
 public class FileController {
-    @Value("${file.upload-dir}")
-    private String FILE_DIRECTORY;
-
     @PostMapping("/uploadFile")
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file,@RequestParam String type,@RequestParam long id)
             throws IOException {
 
+        var currentLocation = System.getProperty("user.dir");
+        Path path = Paths.get(currentLocation);
+        String FILE_DIRECTORY = path.getParent()+ "/alumni_app/public/";
+
         File newDirectory = new File(FILE_DIRECTORY, type);
+
         if(!newDirectory.exists())
         {
             newDirectory.mkdir();
@@ -34,12 +38,12 @@ public class FileController {
                 newDirectory2.mkdir();
             }
         }
-        String fullPath = FILE_DIRECTORY+"/"+type+"/"+id+"/";
-        File myFile = new File(fullPath+file.getOriginalFilename());
+        String fullPath = FILE_DIRECTORY+"/"+type+"/"+id+"/"+file.getOriginalFilename();
+        File myFile = new File(fullPath);
         myFile.createNewFile();
         FileOutputStream fos =new FileOutputStream(myFile);
         fos.write(file.getBytes());
         fos.close();
-        return new ResponseEntity<Object>(fullPath+file.getOriginalFilename(), HttpStatus.OK);
+        return new ResponseEntity<Object>(fullPath, HttpStatus.OK);
     }
 }

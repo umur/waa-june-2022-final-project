@@ -3,6 +3,7 @@ package alumnimanagement.services.impl;
 import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.entity.Faculty;
 import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.entity.job.Tag;
@@ -67,18 +68,19 @@ public class JobServiceImpl implements JobService {
         for(JobAdvertisement f : list)
         {
             JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
-            dto.setCity(f.getAddress().getCity());
             dto.setId(f.getId());
             dto.setState(f.getAddress().getState());
-            dto.setAddBenefit(f.getAddBenefit());
+
             dto.setJobDesc(f.getJobDesc());
             dto.setJobTitle(f.getJobTitle());
-            dto.setAddBenefit(f.getAddBenefit());
             dto.setCompanyName(f.getCompanyName());
-            dto.setCompanySize(f.getCompanySize());
             dto.setJobType(f.getJobType());
             dto.setNumOpening(f.getNumOpening());
-            dto.setPaymentAmount(f.getPaymentAmount());
+//            dto.setAddBenefit(f.getAddBenefit());
+//            dto.setCompanySize(f.getCompanySize());
+//            dto.setCity(f.getAddress().getCity());
+//            dto.setAddBenefit(f.getAddBenefit());
+//            dto.setPaymentAmount(f.getPaymentAmount());
             for(Tag t : f.getTags())
             {
                dto.setTag(dto.getTag()+ " " + t.getTitle());
@@ -97,6 +99,21 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobAdvertisementDTO findById(int id) {
         return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);
+    }
+
+    @Override
+    public List<ReportList> JobByState() {
+        var result = jobRepo.JobByState();
+        List<ReportList> result2 = new ArrayList<>();
+        for(Object[] d : result)
+        {
+            Long id =(Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
     }
 
     @Override

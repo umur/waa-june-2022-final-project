@@ -10,5 +10,9 @@ public interface CommentRepo extends JpaRepository<Comment, Long> {
 
 
     @Query("select c from Comment c where c.student.id=:stId")
-    List<Comment> commentByStudentId(@Param("stId") long sid);
+    List<Comment> commentByStudentId(@Param("stId") long id);
+
+    @Query("select count(c) from Comment c where c.student.id=:id")
+    long countById(@Param("id") long id);
+
 }

@@ -1,5 +1,7 @@
 package alumnimanagement.services;
 
+import alumnimanagement.dto.DropdownDto;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
 
@@ -13,9 +15,11 @@ public interface StudentService {
     List<StudentDTO> findAll();
 
     void remove(long id);
-    List<StudentListDto> findAllByParam(int page, int size, String searchValue);
+    List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName);
     Long totalStudents();
 
     StudentDTO findStudentById(long id);
+
+    List<ReportList> StudentByState();
 
 }

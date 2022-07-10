@@ -37,7 +37,6 @@ export default function StudentDetail(props) {
 
     }
     return (
-
         <div>
             <div>
                 <div className="list-group">
