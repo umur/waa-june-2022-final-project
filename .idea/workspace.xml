@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db69d841-24e3-4d01-894e-76c793e07e1d" name="Changes" comment="" />
+    <list default="true" id="db69d841-24e3-4d01-894e-76c793e07e1d" name="Changes" comment="Added cross origin" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,6 +95,14 @@
       <option name="presentableId" value="Default" />
       <updated>1657388204103</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added cross origin">
+      <created>1657478819989</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657478819989</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,5 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added cross origin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cross origin" />
   </component>
 </project>
