@@ -25,4 +25,7 @@ public class User {
     @JoinTable
     private List<Role> roles;
 
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
 }

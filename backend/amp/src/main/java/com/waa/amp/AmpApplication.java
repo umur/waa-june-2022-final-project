@@ -2,6 +2,7 @@ package com.waa.amp;
 
 import com.waa.amp.entity.Role;
 import com.waa.amp.entity.User;
+import com.waa.amp.entity.UserType;
 import com.waa.amp.repository.RoleRepository;
 import com.waa.amp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class AmpApplication {
 	public CommandLineRunner commandLineRunner() {
 		return args -> {
 			var role = roleRepository.save(new Role(null, "ADMIN"));
-			var user = userRepository.save(new User(null, "admin", "admin", List.of(role)));
+			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN));
 		};
 	}
 
