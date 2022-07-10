@@ -27,7 +27,7 @@ public class AmpApplication {
 	public CommandLineRunner commandLineRunner() {
 		return args -> {
 			var role = roleRepository.save(new Role(null, "ADMIN"));
-			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN));
+			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN, true));
 		};
 	}
 

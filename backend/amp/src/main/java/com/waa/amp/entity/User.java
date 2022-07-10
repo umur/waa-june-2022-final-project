@@ -28,4 +28,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    private Boolean active = false;
+
 }

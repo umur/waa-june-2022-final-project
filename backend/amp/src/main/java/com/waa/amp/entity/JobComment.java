@@ -30,4 +30,9 @@ public class JobComment {
     @JoinColumn
     private List<Comment> comments = new ArrayList<>();
 
+    public JobComment(Faculty commentedBy, Job job, Comment comment) {
+        this.commentedBy = commentedBy;
+        this.job = job;
+        this.comments.add(comment);
+    }
 }
