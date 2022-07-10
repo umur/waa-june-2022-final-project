@@ -55,7 +55,22 @@ thead>td {
     padding: 10px;
 }
 
-.list-header{
+.list-header {
     margin-top: 20px;
     margin-bottom: 200px;
+}
+
+.loader {
+    color: #3f51b5;
+    width: 20rem;
+    height: 20rem;
+    position: fixed;
+    /* Sit on top of the page content */
+    /* Hidden by default */
+    /* Full height (cover the whole page) */
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
