@@ -51,13 +51,13 @@ public class StudentController {
     public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
         if(state.equals("undefined"))
-            state = "";
+            state = "''";
         if(city.equals("undefined"))
-            city = "";
+            city = "''";
         if(major.equals("undefined"))
-            major = "";
+            major = "''";
         if(studentName.equals("undefined"))
-            studentName = "";
+            studentName = "''";
         var result = studentService.findAllByParam(page,size,state, city, major,studentName);
         return result;
     }
