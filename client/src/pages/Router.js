@@ -11,67 +11,31 @@ import JobListings from "../components/job/Listings";
 import AddJobHistory from "./student/AddJobHistory";
 
 export default function Router() {
-  const initialState = {
-    listings: [
-      {
-        id: 1,
-        title: "test",
-        aboutUs: "about us",
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has ",
-      },
-      {
-        id: 2,
-        title: "test2",
-        aboutUs: "about us",
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has ",
-      },
-      {
-        id: 3,
-        title: "test3",
-        aboutUs: "about us",
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-      },
-    ],
-  };
-  let [jobListingState, setJobListingState] = useState(initialState);
-
   return (
     <div>
       <Routes>
-        <Route path="/user-profile" element={<UserProfile />}>
-          My Profile
-        </Route>
-        <Route path="/add-new-advertisement" element={<Advertisement />}>
-          Add New Advertisement
-        </Route>
-        <Route path="/dashboard" element={<Dashboard />}>
-          Dashboard
-        </Route>
+        <Route path="/student/profile" element={<UserProfile />}></Route>
+        <Route path="/faculty/profile" element={<UserProfile />}></Route>
 
-        <Route path="/faculty/search-student" element={<SearchStudent />}>
-          {" "}
-          Search Student
-        </Route>
+        <Route
+          path="student/job-advertisement/add"
+          element={<Advertisement />}
+        />
+        <Route path="/student/dashboard" element={<Dashboard />} />
+        <Route path="/faculty/dashboard" element={<Dashboard />} />
 
-        <Route path="/student/registration" element={<Registration />}>
-          {" "}
-          Registration
-        </Route>
+        <Route path="/faculty/student-list" element={<SearchStudent />} />
+
+        <Route path="/student/profile/update" element={<Registration />} />
         <Route
-          path="/job-listings"
-          element={<JobListings listings={jobListingState.listings} />}
-        >
-          Job Listings
-        </Route>
-        <Route
-          path="/faculty/registration"
+          path="/faculty/profile/update"
           element={<FacultyRegistration />}
-        ></Route>
+        />
 
-        <Route path="/add-jobhistory" element={<AddJobHistory />}>
+        <Route path="/student/job-advertisement" element={<JobListings />} />
+        <Route path="/faculty/job-advertisement" element={<JobListings />} />
+
+        <Route path="/student/job-history/add" element={<AddJobHistory />}>
           Job Listings
         </Route>
       </Routes>
