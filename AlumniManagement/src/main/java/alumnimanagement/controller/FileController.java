@@ -40,6 +40,6 @@ public class FileController {
         FileOutputStream fos =new FileOutputStream(myFile);
         fos.write(file.getBytes());
         fos.close();
-        return new ResponseEntity<Object>("The File Uploaded Successfully", HttpStatus.OK);
+        return new ResponseEntity<Object>(fullPath+file.getOriginalFilename(), HttpStatus.OK);
     }
 }
