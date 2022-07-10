@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Fron-End",
+        "location": "California",
+        "salary": 120000,
+        "description": "We are hiring a remote Shopify Front End Developer to expand our growing team! Our warehouse is based in Ohio, and we are the leading retailer of landscaping tools. We have seen major growth in our business over this year and expect a busy Q2 ahead. Join a team of experienced Shopify developers and work closely with our CTO. You'll be designing, and developing custom themes using JavaScript, HTML, and CSS.",
+        "benefits": "401k matching 4% Dental insurance Remote Health insurance PTO Parental leave Retirement pension Vision insurance",
+        "tags": [
+            {
+                "id": 1,
+                "name": "web",
+                "id": 2,
+                "name": "javascript",
+                "id": 3,
+                "name": "java"
+            }
+        ],
+        "company": "Facebook"
+    },
+    {
+        "id": 2,
+        "title": "Java Back-End",
+        "location": "Texas",
+        "salary": 110000,
+        "description": "Calypso is seeking Java Backend Developer: This position will primary be responsible to interface with key stakeholders; apply technical proficiency across different stages of the Software Development Life Cycle including Requirements Elicitation, Application Architecture definition and Design; play an important role in creating the high level design artifacts; to deliver high quality code deliverables for a module, lead validation for all types of testing and support activities related to implementation, transition and warranty; part of a learning culture, where teamwork and collaboration are encouraged, excellence is rewarded, and diversity is respected and valued.",
+        "benefits": "401k matching 4% Dental insurance Remote Health insurance PTO Parental leave Retirement pension Vision insurance",
+        "tags": [
+            {
+                "id": 1,
+                "name": "restful api",
+                "id": 2,
+                "name": "java"
+            }
+        ],
+        "company": "Google"
+    }
+]

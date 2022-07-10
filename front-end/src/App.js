@@ -11,6 +11,8 @@ import HomePage from './pages/home/HomePage';
 import { UsersPage } from './pages/admin/UsersPage';
 import { StudentPage } from './pages/users/StudentPage';
 import { StudentDetailPage } from './pages/users/StudentDetail';
+import { JobListPage } from './pages/job/JobListPage';
+import { JobsDetailPage } from './pages/job/JobDetailPage';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path='/users' element={<UsersPage />} />
           <Route path='/students' element={<StudentPage />} />
           <Route path='/student/:id' element={<StudentDetailPage />} />
+          <Route path='/jobs' element={<JobListPage />} />
+          <Route path='/job/:id' element={<JobsDetailPage />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/user/:id' element={<ProfileEdit />} />
           <Route path="/login" element={<LoginPage />} />

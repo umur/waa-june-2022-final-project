@@ -3,54 +3,40 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useCollapse from 'react-collapsed'
 import { useSelector } from 'react-redux';
+import student from '../../service/student'
 
-const StudentDetailPage = (props) => {
+const StudentDetailPage = () => {
 
     const currentUser = useSelector(state => state.user)
-    const params = useParams();
-
-    const [student, setStudent] = useState({});
+    const [userStudent, setStudent] = useState({});
     const [post, setPost] = useState({});
-    const [comments, setComments] = useState([])
     const [isLoaded, setIsLoaded] = useState(false);
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
-    const students = [
-        {
-            "id": 1, "Role": "Student", "firstName": "John", "lastName": "Doe", "email": "john@gmail.com", "active": true,
-            "address": { "id": 1, "street": "106 S D S", "city": "Fairfield", "state": "IA", "zip": "52556" },
-            "major": "Compro", "studentId": "613799"
-        },
-        {
-            "id": 2, "Role": "Student", "firstName": "Jahna", "lastName": "Clara", "email": "john@gmail.com", "active": false,
-            "address": { "id": 2, "street": "107 S D S", "city": "Fairfield", "state": "IA", "zip": "52557" },
-            "major": "MBA", "studentId": "614800"
-        }
-    ]
-
-    const comment = [
-        {
-            "id": 1, "student_id": 1, "faculty_id": 1, "comment": "He is a good student", "commenter": "Faculty2"
-        },
-        {
-            "id": 2, "student_id": 1, "faculty_id": 2, "comment": "I like him", "commenter": "Faculty1"
-        },
-        {
-            "id": 3, "student_id": 2, "faculty_id": 2, "comment": "Bullshit!", "commenter": "Faculty1"
-        },
-    ]
+    const param = useParams();
 
     useEffect(() => {
-        setStudent(students.filter((item) => item.id == params.id))
-        setComments(comment.filter((item) => item.student_id == params.id))
-        setIsLoaded(true)
+        if (currentUser?.id) {
+            student.findById(currentUser.id).then(resp => {
+                setStudent(resp.data)
+                setIsLoaded(true)
+            }).catch(err => {
+                console.log(err);
+            })
+        }
     }, [])
-
 
     const handlePost = (e) => {
         e.preventDefault();
-        // console.log(post);
-        // need to implement post to comment db
+
+        if (currentUser?.id) {
+            const newPost = { comment: post, commenter: currentUser.username }
+            student.postComment(newPost, param.id).then(resp => {
+                console.log(resp.data);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
     }
 
     if (!isLoaded) {
@@ -72,14 +58,14 @@ const StudentDetailPage = (props) => {
                             </div>
                         </div>
                         <div className="card-body">
-                            <h4>First Name: {student[0].firstName ?? ""}</h4>
-                            <h4>Last Name: {student[0].lastName ?? ""}</h4>
-                            <h4>Email: {student[0].email ?? ""}</h4>
-                            <h4>Major: {student[0].major ?? ""}</h4>
-                            <h4>City: {student[0].address.city ?? ""}</h4>
-                            <h4>Street: {student[0].address.street ?? ""}</h4>
-                            <h4>State: {student[0].address.state ?? ""}</h4>
-                            <h4>Zip: {student[0].address.zip ?? ""}</h4>
+                            <h4>First Name: {userStudent.firstName ?? ""}</h4>
+                            <h4>Last Name: {userStudent.lastName ?? ""}</h4>
+                            <h4>Email: {userStudent.email ?? ""}</h4>
+                            <h4>Major: {userStudent.major ?? ""}</h4>
+                            <h4>City: {userStudent.address.city ?? ""}</h4>
+                            <h4>Street: {userStudent.address.street ?? ""}</h4>
+                            <h4>State: {userStudent.address.state ?? ""}</h4>
+                            <h4>Zip: {userStudent.address.zip ?? ""}</h4>
                         </div>
                     </div>
                     <div className="card mt-3">
@@ -128,10 +114,12 @@ const StudentDetailPage = (props) => {
                             <div className="row">
                                 <div className="col-12">
                                     {
-                                        comments.map((item, ind) =>
-                                            <div className="card-header mb-2" key={item.id}>
-                                                <h6><u>{item.commenter}</u></h6>
-                                                {item.comment}
+                                        userStudent.student.comments.map((item, ind) =>
+                                            <div className="card-header mb-2" key={item.id ?? ""}>
+                                                <h6><u>{item.commenter ?? ""}</u></h6>
+                                                <span>{item.comment ?? ""}</span>
+                                                <br />
+                                                <span>{item.postTime ?? ""}</span>
                                             </div>
                                         )
                                     }
@@ -144,7 +132,6 @@ const StudentDetailPage = (props) => {
             </div >
         )
     }
-
 }
 
 export { StudentDetailPage }

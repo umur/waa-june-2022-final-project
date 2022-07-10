@@ -4,28 +4,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer studentId;
-    private Double gpa;
-    private String major;
+    private String commenter;
+    @Column(nullable = false, length = 400)
+    private String comment;
 
-    @OneToOne
+    private LocalDateTime postTime;
+
+    @ManyToOne
     @JsonIgnore
-    @ToString.Exclude
-    private User user;
+    private Student student;
 
-    @OneToMany(mappedBy = "student")
-    private List<Comments> comments;
 }

@@ -33,7 +33,7 @@ const NavBar = () => {
 
                 {currentUser?.roles[0] === Role.STUDENT &&
                     <li className="nav-item">
-                        <NavLink to="/profile" className="nav-link">
+                        <NavLink to="/jobs" className="nav-link">
                             Job Advertisement
                         </NavLink>
                     </li>

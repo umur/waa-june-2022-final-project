@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.finalproject.models.Student;
+import com.finalproject.models.*;
 import com.finalproject.payload.request.LoginRequest;
 import com.finalproject.payload.request.SignupRequest;
 import com.finalproject.payload.response.JwtResponse;
 import com.finalproject.payload.response.MessageResponse;
+import com.finalproject.repository.AddressRepository;
 import com.finalproject.repository.RoleRepository;
 import com.finalproject.repository.StudentRepo;
 import com.finalproject.repository.UserRepository;
@@ -32,10 +33,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.finalproject.models.ERole;
-import com.finalproject.models.Role;
-import com.finalproject.models.User;
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -52,6 +49,8 @@ public class AuthController {
   @Autowired
   StudentRepo studentRepo;
 
+  @Autowired
+  AddressRepository addressRepo;
   @Autowired
   PasswordEncoder encoder;
 
@@ -72,14 +71,10 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    if (roles.get(0) == "ROLE_STUDENT") {
-//        if (studentRepo.findByUser_Id(userDetails.getId())==null) {
-//          Student newStudent = new Student();
-//          var user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException("Error: User is not found."));
-//          newStudent.setUser(user);
-//          studentRepo.save(newStudent);
-//        }
-    }
+
+    var user = userRepository.findById(userDetails.getId());
+    user.get().setLast_logged(LocalDateTime.now());
+    userRepository.save(user.get());
 
     return ResponseEntity.ok(new JwtResponse(jwt,
                          userDetails.getId(), 
@@ -142,7 +137,18 @@ public class AuthController {
     user.setRoles(roles);
     user.setActive(true);
 
-    userRepository.save(user);
+    User user1 = userRepository.save(user);
+    // Create new student
+    if (roles.stream().toList().get(0).getName().equals(ERole.ROLE_STUDENT)) {
+      Student stu = new Student();
+      stu.setUser(user1);
+      studentRepo.save(stu);
+    }
+
+    // Create new address
+    Address address = new Address();
+    address.setUser(user1);
+    addressRepo.save(address);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
