@@ -1,5 +1,7 @@
 package alumnimanagement.services;
 
+import alumnimanagement.dto.DropdownDto;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
 
@@ -17,5 +19,7 @@ public interface StudentService {
     Long totalStudents();
 
     StudentDTO findStudentById(long id);
+
+    List<ReportList> StudentByState();
 
 }

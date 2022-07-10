@@ -1,5 +1,7 @@
 package alumnimanagement.services.impl;
 
+import alumnimanagement.dto.DropdownDto;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.entity.Address;
@@ -63,6 +65,20 @@ public class StudentServiceImpl implements StudentService {
         return modelMapper.map(s,StudentDTO.class);
     }
 
+    @Override
+    public List<ReportList> StudentByState() {
+        var result = studentRepo.StudentByState();
+        List<ReportList> result2 = new ArrayList<>();
+        for(Object[] d : result)
+        {
+            Long id =(Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
+    }
 
 
     @Override

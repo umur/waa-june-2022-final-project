@@ -7,7 +7,6 @@ export default function TopJobAdd() {
 
     const fetchData = async () => {
         let response = await getRequest('/jobs/getLastTop10');
-        debugger
         setListData(response);
     }
     useEffect(() => {

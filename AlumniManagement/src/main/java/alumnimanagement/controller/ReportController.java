@@ -1,6 +1,7 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.DropdownDto;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Department;
@@ -75,6 +76,12 @@ public class ReportController {
             list.add(dto);
 
         }
+        return list;
+    }
+
+    @GetMapping("/studentByState")
+    public List<ReportList> studentByState() {
+        List<ReportList> list = studentService.StudentByState();
         return list;
     }
 }

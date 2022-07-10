@@ -1,13 +1,23 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import ReactECharts from 'echarts-for-react';
+import { getRequest } from "../../setup/fetch-manager/FetchGateway";
+
 
 function PieChart() {
-    return (
-        <>
-            <div className="text-center">
-                <strong > STUDENT DATA</strong>
-            </div>
-            <ReactECharts
+    let [listData, setListData] = useState();
+
+    const fetchData = async () => {
+        let response = await getRequest('/reports/studentByState');
+        setListData(response);
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
+    let countVal = 0;
+    let result = []
+    if (listData != undefined) {
+        result.push(
+            <ReactECharts key={countVal++}
                 option={{
                     title: {
                         text: '',
@@ -26,13 +36,7 @@ function PieChart() {
                             name: 'Access From',
                             type: 'pie',
                             radius: '50%',
-                            data: [
-                                { value: 1048, name: 'CALIFORNIA' },
-                                { value: 735, name: 'IOWA' },
-                                { value: 580, name: 'FLORIDA' },
-                                { value: 484, name: 'KANSAS' },
-                                { value: 300, name: 'COLORADO' }
-                            ],
+                            data: listData,
                             emphasis: {
                                 itemStyle: {
                                     shadowBlur: 10,
@@ -44,6 +48,15 @@ function PieChart() {
                     ]
                 }}
             />
+        )
+    }
+
+    return (
+        <>
+            <div className="text-center">
+                <strong > STUDENT DATA</strong>
+            </div>
+            {result}
         </>
 
     );
