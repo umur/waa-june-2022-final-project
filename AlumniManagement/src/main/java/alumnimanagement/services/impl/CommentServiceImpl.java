@@ -14,9 +14,11 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -32,11 +34,18 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void create(CommentDTO comment) {
-        Comment comment1=modelMapper.map(comment, Comment.class);
+        Comment comment1=new Comment();
+        comment1.setId(comment.getId());
+        comment1.setComment(comment.getComment());
+        long userID =Helper.getLoggedUserId();
+        Optional<Faculty> result =facultyRepo.findById(userID);
+        //Comment comment1=modelMapper.map(comment, Comment.class);
         Student stu =studentRepo.findById(comment.getStudentId()).get();
         comment1.setStudent(stu);
-        Faculty faculty=facultyRepo.findById(Helper.getLoggedUserId()).get();
-        comment1.setFaculty(faculty);
+        if(result.isPresent()) {
+            Faculty faculty = result.get();
+            comment1.setFaculty(faculty);
+        }
 
         commentRepo.save(comment1);
     }
@@ -75,8 +84,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Long count() {
-        return commentRepo.count();
+    public Long count(long id) {
+        return commentRepo.countById(id);
     }
 
 
