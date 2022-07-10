@@ -141,7 +141,9 @@ export default function TableMain(props) {
     const thData = () => {
         return column.map((data) => {
             if (data != 'id')
-                return <TableCell key={data} style={{ width: 50 }} className="uppercase">{data}</TableCell>
+                return <TableCell key={data} style={{ width: 50 }} className="uppercase">
+                    <strong> {data}</strong>
+                </TableCell>
         })
     }
 
@@ -163,8 +165,8 @@ export default function TableMain(props) {
                     }
                         <TableCell style={{ width: 50 }}>
                             {(props.listParams.showEdit ?
-                                <EditIcon onClick={() => { navigate(props.listParams.editUrl + data.id) }} 
-                                className="pointer" color="success" >
+                                <EditIcon onClick={() => { navigate(props.listParams.editUrl + data.id) }}
+                                    className="pointer" color="success" >
                                     Edit
                                 </EditIcon>
                                 : ''
@@ -205,7 +207,9 @@ export default function TableMain(props) {
                 <TableHead>
                     <TableRow key={++uniqueKey}>
                         {thData()}
-                        <TableCell key={++uniqueKey} style={{ width: 50 }} className="uppercase">Actions</TableCell>
+                        <TableCell key={++uniqueKey} style={{ width: 50 }} className="uppercase">
+                            <strong>    Actions </strong>
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

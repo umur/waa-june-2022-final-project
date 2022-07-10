@@ -26,30 +26,12 @@ export default function StudentDetail(props) {
     let displayData = [];
     if (studentState != undefined) {
         displayData.push(
-            <div><Typography variant="h5">
-                <label>First Name: </label>
-                <label>{studentState.firstName}</label>
-                <br></br>
-                <label>Last Name: </label>
-                <label>{studentState.lastName}</label>
-                <br></br>
-                <label>Email: </label>
-                <label>{studentState.email}</label>
-                <br></br>
-                <label>State: </label>
-                <label>{studentState.address.state}</label>
-                <br></br>
-                <label>City: </label>
-                <label>{studentState.address.city}</label>
-            </Typography>;
-
-
-
-                {/* <Typography variant="h6" color="inherit" noWrap>
-                            <StepLabel >Name: </StepLabel>
-                            <StepLabel>Hari Lal</StepLabel>
-                        </Typography> */}
-
+            <div className="pointer">
+                <span href="#" className="list-group-item list-group-item-action list-group-item-primary">First Name : {studentState.firstName}</span>
+                <span href="#" className="list-group-item list-group-item-action list-group-item-success">Last Name : {studentState.lastName}</span>
+                <span href="#" className="list-group-item list-group-item-action list-group-item-warning">Email : {studentState.email}</span>
+                <span href="#" className="list-group-item list-group-item-action list-group-item-danger">State : {studentState.state}</span>
+                <span href="#" className="list-group-item list-group-item-action list-group-item-info">City : {studentState.city}</span>
             </div>
         )
 
@@ -57,15 +39,13 @@ export default function StudentDetail(props) {
     return (
 
         <div>
-            <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-                <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-                    <Typography component="h1" variant="h4" align="center">
-                        Student Detail
-                    </Typography>
-                    {displayData}
-                </Paper>
-
-            </Container>
+            <div>
+                <div className="list-group">
+                    <a href="#" className="list-group-item list-group-item-action bold text-center">
+                        <strong className="primary">STUDENT DETAIL</strong></a>
+                    <strong>   {displayData}</strong>
+                </div>
+            </div>
         </div>
     )
 
