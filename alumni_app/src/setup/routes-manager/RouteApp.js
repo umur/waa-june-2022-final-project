@@ -13,7 +13,7 @@ import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
 import JobDetails from "../../pages/job/JobDetails";
-
+import Cv from "../../pages/Cv"
 
 export default function RouteApp() {
   return (
@@ -31,8 +31,10 @@ export default function RouteApp() {
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/reset-password" element={<ChangePassword />}></Route>
         <Route path="/Jobs/newJob" element={<CreateJob />}></Route>
-        <Route path="/FileUpload" element={<FileUpload />}></Route>
         <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
+        <Route path="/FileUpload" element={<FileUpload />}></Route>
+        <Route path="/cv" element={<Cv />}></Route>
+        
       </Routes>
     </>
   );
