@@ -12,8 +12,8 @@ const listParams = {
     'dataUrl': "/students/''/''/''/''",
     'addCommentUrl': '/Comments/',
     'editUrl': '',
-    'deleteUrl': '/StudentDelete',
-    'detailUrl': '/StudentDetails'
+    'deleteUrl': '/StudentDelete/',
+    'detailUrl': '/StudentDetails/'
 }
 
 export default function StudentList() {

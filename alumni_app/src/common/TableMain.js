@@ -18,8 +18,11 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { TableHead } from '@material-ui/core';
 import { getRequest } from '../setup/fetch-manager/FetchGateway';
 import { Button } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DetailsIcon from '@mui/icons-material/Details';
+import AddIcon from '@mui/icons-material/Add';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -160,19 +163,30 @@ export default function TableMain(props) {
                     }
                         <TableCell style={{ width: 50 }}>
                             {(props.listParams.showEdit ?
-                                <Button onClick={() => { navigate(props.listParams.editUrl + data.id) }} variant="contained" color="success" className='button-custom'>Edit</Button>
+                                <EditIcon onClick={() => { navigate(props.listParams.editUrl + data.id) }} 
+                                className="pointer" color="success">
+                                    Edit
+                                </EditIcon>
                                 : ''
                             )}
                             {(props.listParams.showDelete ?
-                                <Button onClick={() => { navigate(props.listParams.deleteUrl + data.id) }} variant="contained" color="warning" className='button-custom'>Delete</Button>
+                                <DeleteIcon onClick={() => { navigate(props.listParams.deleteUrl + data.id) }}
+                                    className='pointer' color="warning">Delete
+                                </DeleteIcon>
                                 : ''
                             )}
                             {(props.listParams.showDetail ?
-                                <Button onClick={() => { navigate(props.listParams.detailUrl + data.id) }} variant="contained" color="secondary" className='button-custom'>Detail</Button>
+                                <DetailsIcon onClick={() => { navigate(props.listParams.detailUrl + data.id) }}
+                                    className='pointer' color="secondary">
+                                    Detail
+                                </DetailsIcon>
                                 : ''
                             )}
                             {(props.listParams.showAddComment ?
-                                <Button onClick={() => { navigate(props.listParams.addCommentUrl + data.id) }} variant="contained" color="primary" className='button-custom'>Comment</Button>
+                                <AddIcon onClick={() => { navigate(props.listParams.addCommentUrl + data.id) }}
+                                    className='pointer' color="primary">
+                                    Comment
+                                </AddIcon>
                                 :
                                 ''
                             )}
