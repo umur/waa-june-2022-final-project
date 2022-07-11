@@ -4,6 +4,7 @@ import alumnimanagement.dto.DropdownDto;
 import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
+import alumnimanagement.dto.UpdateCVDTO;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Student;
 import alumnimanagement.repo.StudentRepo;
@@ -71,23 +72,33 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO findStudentById(long id) {
-        Student s= studentRepo.findById(id).get();
-        return modelMapper.map(s,StudentDTO.class);
+        Student s = studentRepo.findById(id).get();
+        return modelMapper.map(s, StudentDTO.class);
     }
 
     @Override
     public List<ReportList> StudentByState() {
         var result = studentRepo.StudentByState();
         List<ReportList> result2 = new ArrayList<>();
-        for(Object[] d : result)
-        {
-            Long id =(Long) d[1];
+        for (Object[] d : result) {
+            Long id = (Long) d[1];
             ReportList dto = new ReportList();
             dto.value = id;
             dto.name = (String) d[0];
             result2.add(dto);
         }
         return result2;
+    }
+
+    @Override
+    public void updateStudentCV(long id, UpdateCVDTO updateCVDTO) {
+        Student s = studentRepo.findById(id).get();
+        s.setCvLink(updateCVDTO.getCvLink());
+        s.setJobExperienceList(updateCVDTO.getJobExperienceList());
+
+        System.out.println(s);
+        studentRepo.save(s);
+//        System.out.println(id + "   "+ updateCVDTO.toString());
     }
 
     @Override
@@ -152,6 +163,4 @@ public class StudentServiceImpl implements StudentService {
         Student target= studentRepo.findById(id).get();
         target.setDeleted(true);
     }
-
-
 }

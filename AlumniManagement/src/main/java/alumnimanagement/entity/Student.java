@@ -1,13 +1,15 @@
 package alumnimanagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import alumnimanagement.entity.helper.JobExperience;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@ToString
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +21,12 @@ public class Student {
     private Boolean active;
     private long userId;
     private boolean isDeleted;
+
+    private String cvLink;
+
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn
+    private List<JobExperience> jobExperienceList;
 
     @OneToOne
     @JoinColumn(name = "id_major")
