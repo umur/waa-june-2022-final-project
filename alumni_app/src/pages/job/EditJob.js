@@ -50,7 +50,8 @@ export default function EditJob() {
   const updateData = async () => { 
     let params = "/jobs/updateJob/"+ jobID; 
     let result = await putRequest(params, values); 
-    navigate("/Jobs"); 
+    //navigate("/Jobs"); 
+    alert(result);
   };
 
   const getData = async () => {
