@@ -61,7 +61,7 @@ export default function CreateJob() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    debugger;
+    
     console.log(e.target);
     setValues({
       ...values,
@@ -75,7 +75,7 @@ export default function CreateJob() {
 
   
   const getUrl=(e)=>{
-    debugger
+    
   }
   //const [companySize, setCompanySize] = React.useState('');
   //

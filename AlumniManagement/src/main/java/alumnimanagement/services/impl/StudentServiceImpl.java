@@ -4,6 +4,7 @@ import alumnimanagement.dto.DropdownDto;
 import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
+import alumnimanagement.dto.UpdateCVDTO;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Student;
 import alumnimanagement.repo.StudentRepo;
@@ -46,11 +47,18 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> findAll() {
-        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().map(student -> {
+//        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().map(student -> {
+//            return modelMapper.map(student, StudentDTO.class);
+//        }).toList();
+//
+//        return studentDTOS;
+
+        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().filter(student -> !(student.isDeleted())).map(student -> {
             return modelMapper.map(student, StudentDTO.class);
         }).toList();
 
         return studentDTOS;
+
     }
 
     @Override
@@ -64,13 +72,39 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO findStudentById(long id) {
-        Student s= studentRepo.findById(id).get();
-        return modelMapper.map(s,StudentDTO.class);
+        Student s = studentRepo.findById(id).get();
+        return modelMapper.map(s, StudentDTO.class);
     }
 
     @Override
     public List<ReportList> StudentByState() {
         var result = studentRepo.StudentByState();
+        List<ReportList> result2 = new ArrayList<>();
+        for (Object[] d : result) {
+            Long id = (Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
+    }
+
+    @Override
+    public void updateStudentCV(long id, UpdateCVDTO updateCVDTO) {
+        Student s = studentRepo.findById(id).get();
+        s.setCvLink(updateCVDTO.getCvLink());
+        s.setJobExperienceList(updateCVDTO.getJobExperienceList());
+
+        System.out.println(s);
+        studentRepo.save(s);
+//        System.out.println(id + "   "+ updateCVDTO.toString());
+    }
+
+    @Override
+    public List<ReportList> findByStateCity(String state) {
+
+        var result = studentRepo.StudentByCity(state.toUpperCase());
         List<ReportList> result2 = new ArrayList<>();
         for(Object[] d : result)
         {
@@ -81,11 +115,6 @@ public class StudentServiceImpl implements StudentService {
             result2.add(dto);
         }
         return result2;
-    }
-
-    @Override
-    public List<Object[]> findByStateCity(String state) {
-        return studentRepo.StudentByCity(state);
     }
 
 
@@ -99,14 +128,16 @@ public class StudentServiceImpl implements StudentService {
         List<StudentListDto> studentListDtos = new ArrayList<>();
         for(Student r : student)
         {
-            StudentListDto dtp = new StudentListDto();
-            dtp.setEmail(r.getEmail());
-            dtp.setFirstName(r.getFirstName());
-            dtp.setLastName(r.getLastName());
-            dtp.setCity(r.getAddress().getCity());
-            dtp.setState(r.getAddress().getState());
-            dtp.setId(r.getId());
-            studentListDtos.add(dtp);
+            if(!r.isDeleted()) {
+                StudentListDto dtp = new StudentListDto();
+                dtp.setEmail(r.getEmail());
+                dtp.setFirstName(r.getFirstName());
+                dtp.setLastName(r.getLastName());
+                dtp.setCity(r.getAddress().getCity());
+                dtp.setState(r.getAddress().getState());
+                dtp.setId(r.getId());
+                studentListDtos.add(dtp);
+            }
         }
         return studentListDtos;
     }
@@ -118,7 +149,7 @@ public class StudentServiceImpl implements StudentService {
 
         for(Student s: students){
             String sName=s.getFirstName()+" "+s.getLastName();
-            if(s.getId() == id||s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
+            if(!s.isDeleted()||s.getId() == id||s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
                 StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
                 dto1.setState(s.getAddress().getState());
                 dto1.setCity(s.getAddress().getCity());
@@ -129,8 +160,7 @@ public class StudentServiceImpl implements StudentService {
     }
     @Override
     public void remove(long id) {
-        studentRepo.deleteById(id);
+        Student target= studentRepo.findById(id).get();
+        target.setDeleted(true);
     }
-
-
 }

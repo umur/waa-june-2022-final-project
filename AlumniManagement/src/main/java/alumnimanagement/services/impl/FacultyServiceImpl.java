@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -44,13 +45,14 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public List<FacultyDTO> findAll() {
-        List<FacultyDTO> facultyDTOS = facultyRepo.findAll().stream().map(faculty -> modelMapper.map(faculty, FacultyDTO.class)).toList();
+        List<FacultyDTO> facultyDTOS = facultyRepo.findAll().stream().filter(faculty -> !(faculty.isDeleted())).map(faculty ->
+                modelMapper.map(faculty, FacultyDTO.class)).toList();
         return facultyDTOS;
     }
 
     @Override
     public void remove(long id) {
-        facultyRepo.deleteById(id);
+        facultyRepo.findById(id).get().setDeleted(true);
 
     }
 
@@ -61,15 +63,17 @@ public class FacultyServiceImpl implements FacultyService {
         List<FacultyListDto> dtos = new ArrayList<>();
         for(Faculty f : facultyList)
         {
-            FacultyListDto facultyListDto = new FacultyListDto();
-            facultyListDto.setCity(f.getAddress().getCity());
-            facultyListDto.setEmail(f.getEmail());
-            facultyListDto.setId(f.getId());
-            facultyListDto.setFirstName(f.getFirstName());
-            facultyListDto.setLastName(f.getLastName());
-            facultyListDto.setState(f.getAddress().getState());
-            facultyListDto.setDepartment(f.getDepartment());
-            dtos.add(facultyListDto);
+            if(!f.isDeleted()) {
+                FacultyListDto facultyListDto = new FacultyListDto();
+                facultyListDto.setCity(f.getAddress().getCity());
+                facultyListDto.setEmail(f.getEmail());
+                facultyListDto.setId(f.getId());
+                facultyListDto.setFirstName(f.getFirstName());
+                facultyListDto.setLastName(f.getLastName());
+                facultyListDto.setState(f.getAddress().getState());
+                facultyListDto.setDepartment(f.getDepartment());
+                dtos.add(facultyListDto);
+            }
         }
         return dtos;
     }

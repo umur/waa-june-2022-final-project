@@ -19,6 +19,7 @@ import java.util.List;
 public class JobAdvertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private int id;
 
     private String jobTitle;

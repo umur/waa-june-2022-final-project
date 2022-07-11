@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import ReactECharts from 'echarts-for-react';
 import { getRequest } from "../../setup/fetch-manager/FetchGateway";
 
-function BarChart() {
+function BarChart(props) {
     let [header, setHeader] = useState();
     let [data, setData] = useState();
 
@@ -10,7 +10,7 @@ function BarChart() {
         let headerData = [];
         let contentData = [];
 
-        let response = await getRequest('/reports/jobByState');
+        let response = await getRequest(props.dataUrl);
         response.map((x) => {
             headerData.push(x.name);
             contentData.push(x.value);
@@ -21,7 +21,7 @@ function BarChart() {
     useEffect(() => {
         fetchData();
     }, [])
-    let count =0;
+    let count = 0;
     let dataList = [];
     if (header != undefined) {
         dataList.push(

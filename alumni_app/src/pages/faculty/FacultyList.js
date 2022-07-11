@@ -11,14 +11,14 @@ const listParams = {
     'dataUrl': '/faculties',
     'addCommentUrl': '//',
     'editUrl': '',
-    'deleteUrl': '/',
+    'deleteUrl': '/faculties/',
     'detailUrl': '/'
 }
 
 export default function FacultyList() {
     return (
         <>
-           
+
             <span className="badge rounded-pill bg-primary"> Faculty List </span>
             <div className="list-table">
                 <TableMain listParams={listParams}></TableMain>

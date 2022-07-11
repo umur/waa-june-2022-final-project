@@ -29,7 +29,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void create(JobAdvertisementDTO job) {
-        jobRepo.save(modelMapper.map(job, JobAdvertisement.class));
+        var result = modelMapper.map(job, JobAdvertisement.class);
+        jobRepo.save(result);
     }
 
     @Override
@@ -48,8 +49,9 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void update(JobAdvertisementDTO jobAdvertisementDTO, int id) {
-        jobAdvertisementDTO.setId(id);
-        jobRepo.save(modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class));
+        var result =modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class);
+        result.setId(id);
+        jobRepo.save(result);
     }
 
     @Override
@@ -78,12 +80,14 @@ public class JobServiceImpl implements JobService {
         {
             JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
             dto.setId(f.getId());
-            dto.setState(f.getAddress().getState());
+            if(f.getAddress() != null) {
+                dto.setState(f.getAddress().getState());
+                dto.setCity(f.getAddress().getCity());
+            }
             dto.setJobDesc(f.getJobDesc());
             dto.setJobTitle(f.getJobTitle());
             dto.setCompanyName(f.getCompanyName());
             dto.setJobType(f.getJobType());
-            dto.setCity(f.getAddress().getCity());
             dto.setTag(f.getJobTag());
             for(Tag t : f.getTags())
             {

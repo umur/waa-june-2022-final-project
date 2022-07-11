@@ -23,6 +23,10 @@ export default function ProfileMenu() {
     navigate("/reset-password");
   };
 
+  const handleUploadCV= () =>{
+    navigate("/cv");
+  }
+
   const handleLogout = () => {};
 
   return (
@@ -42,6 +46,14 @@ export default function ProfileMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
+        <MenuItem
+          onClick={handleUploadCV}
+          LinkComponent={Link}
+          href="/cv"
+        >
+          Upload CV
+        </MenuItem>
+
         <MenuItem
           onClick={handleEditProfile}
           LinkComponent={Link}

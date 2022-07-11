@@ -18,7 +18,10 @@ public class JobController {
     private final JobService jobService;
 
     @PostMapping("/newJob")
-    public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.create(jobAdvertisementDTO);}
+    public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO)
+    {
+        jobService.create(jobAdvertisementDTO);
+    }
 
     @GetMapping()
     public List<JobAdvertisementDTO> findAll() {
@@ -76,5 +79,11 @@ public class JobController {
     {
         return jobService.countById(id);
     }
+
+    @PutMapping("/updateJob/{jobId}")
+    public void updateJob(@PathVariable int jobId, @RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.update(jobAdvertisementDTO, jobId);}
+
+
+
 
 }

@@ -2,6 +2,7 @@ package alumnimanagement.controller;
 
 import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.StudentListDto;
+import alumnimanagement.dto.UpdateCVDTO;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class StudentController {
     public ResponseEntity<?> createStudent(@RequestBody StudentDTO studentDTO) {
         System.out.println("Student is created");
         studentService.create(studentDTO);
-        return new ResponseEntity(studentDTO, HttpStatus.OK);
+        return new ResponseEntity<>(studentDTO, HttpStatus.OK);
 
     }
 
@@ -82,8 +83,13 @@ public class StudentController {
         return studentService.findStudentById(id);
     }
 
-    @GetMapping("/states/{stateName}")
-    public List<Object[]> findByStatesCity(@RequestParam String stateName ){
-        return studentService.findByStateCity(stateName);
+    @PostMapping("/cv/{id}")
+    public UpdateCVDTO updateCV(@PathVariable long id, @RequestBody UpdateCVDTO updateCVDTO){
+        System.out.println("here==================================" + id);
+        System.out.println(updateCVDTO);
+        studentService.updateStudentCV(id, updateCVDTO);
+        return updateCVDTO;
     }
+
+
 }
