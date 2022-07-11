@@ -62,15 +62,9 @@ public class AppliedJobServiceImpl implements AppliedJobService {
 
     @Override
     public List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int jobId){
-        var jobList = appliedJobRepo.findAllByJobAdvertisementId(jobId);
-        List<AppliedStudentsDTO> studentDTOS = new ArrayList<>();
-        for (AppliedJob appliedJob : jobList) {
-            try {
-                studentDTOS.add(modelMapper.map(appliedJob.getStudent(), AppliedStudentsDTO.class));
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return  studentDTOS;
+        return appliedJobRepo.findAllByJobAdvertisementId(jobId)
+                .stream()
+                .map(appliedJob -> modelMapper.map(appliedJob.getStudent(), AppliedStudentsDTO.class))
+                .toList();
     }
 }
