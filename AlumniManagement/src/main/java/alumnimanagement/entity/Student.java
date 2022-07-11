@@ -18,6 +18,7 @@ public class Student {
     private double gpa;
     private Boolean active;
     private long userId;
+    private boolean isDeleted;
 
     @OneToOne
     @JoinColumn(name = "id_major")

@@ -2,6 +2,7 @@ package alumnimanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +21,8 @@ public class Faculty {
     private String department;
     private LocalDateTime lastLoggedInAt;
     private Boolean active;
+
+    private boolean isDeleted;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_address")
