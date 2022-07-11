@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
 import JobFilter from "./JobFilter";
@@ -12,12 +12,24 @@ export default function JobListings(props) {
     dispatch(allJobAdvertisement());
   }, []);
 
+  // console.log(jobAdvertisement)
+  const initialState = jobAdvertisement;
+  const [jobState, setJobState] = useState(initialState);
+  console.log(jobState)
+
+  let handleFilterChange = (data) => {
+    setJobState(data)
+    console.log(jobState)
+  }
+
   return (
     <>
-      <JobFilter></JobFilter>
+      <JobFilter handleFilterChange={handleFilterChange}></JobFilter>
       <div className="container">
-        {jobAdvertisement &&
-          jobAdvertisement.map((job) => {
+
+      {/* {JSON.stringify(jobState)} */}
+        {jobState &&
+          jobState.map((job) => {
             return (
               <JobListing
                 key={job.id}
