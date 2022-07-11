@@ -37,6 +37,15 @@ public class JobsController {
         return jobService.findAll();
     }
 
+    @GetMapping("/countByCity")
+    public Integer countByCity(@RequestParam String city) {
+        return jobService.countByCity(city);
+    }
+
+    @GetMapping("/countByState")
+    public Integer countByState(@RequestParam String state) {
+        return jobService.countByState(state);
+    }
 
     // pop out the recent added data
     @GetMapping("/addedrecent")

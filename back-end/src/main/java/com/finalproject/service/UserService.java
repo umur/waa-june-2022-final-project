@@ -10,4 +10,6 @@ public interface UserService {
 
     void changePass(long id, PasswordChangeRequest pwrreq);
 
+    User findBYUserName( String name);
+
 }

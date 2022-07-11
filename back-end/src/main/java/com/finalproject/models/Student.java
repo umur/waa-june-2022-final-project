@@ -29,7 +29,7 @@ public class Student {
     private User user;
 
     @OneToOne
-//    @ToString.Exclude
+    @ToString.Exclude
     private Address address;
 
 //new added
@@ -37,6 +37,7 @@ public class Student {
     @ToString.Exclude
     private JobHistory jobHistory;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "student")
     private  JobAdvertisement jobAdvertisement;
 

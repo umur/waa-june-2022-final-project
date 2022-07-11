@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
         user.get().setPassword(encoder.encode(pwrreq.getPassword()));
         userRepo.save(user.get());
     }
+
+    // added
+    @Override
+    public User findBYUserName(String name) {
+        return userRepo.findByUsername(name).orElseThrow();
+    }
 }

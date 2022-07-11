@@ -27,9 +27,9 @@ public class JobAdvertisement {
     private String city;
    @Column(insertable = false)
 
-   private boolean mark_delete;
+   private boolean mark_delete = false;
 
-
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name ="jobs_tags",
         joinColumns = @JoinColumn(name = "jobs_id"),

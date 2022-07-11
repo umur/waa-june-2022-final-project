@@ -19,6 +19,7 @@ public interface StudentService {
     Student getByStudentId(Integer id) throws Exception;
     List<Student> getByName(String name);
     void deleteStudent(Long id);
-
-
+    Integer countByCity(String  city);
+    Integer countByState(String  state);
+    void updateProfile(Student student,Long id);
 }

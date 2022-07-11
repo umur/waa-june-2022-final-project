@@ -57,8 +57,8 @@ public class User {
 
   // softDelete
 
-  @Column(insertable = true)
-  private boolean soft_deleted;
+  @Column(insertable = false)
+  private boolean soft_deleted = false;
 
   public boolean isSoft_deleted() {
     return soft_deleted;
@@ -71,9 +71,12 @@ public class User {
   @Column(name="logged_at")
   private LocalDateTime last_logged;
 
+  @ToString.Exclude
+
   @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
   private Address address;
 
+  @ToString.Exclude
   @OneToOne(mappedBy = "user")
   private Student student;
   public User() {

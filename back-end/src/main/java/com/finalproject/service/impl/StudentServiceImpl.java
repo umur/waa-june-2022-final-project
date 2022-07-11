@@ -134,5 +134,30 @@ public class StudentServiceImpl implements StudentService {
         n.setSoft_deleted(true);
     }
 
+    @Override
+    public Integer countByCity(String city) {
+        return studentRepo.countAllByAddress_City(city);
+    }
+
+    @Override
+    public Integer countByState(String state) {
+        return studentRepo.countAllByAddress_State(state);
+    }
+
+    // updating his profile
+    @Override
+    public void updateProfile(Student student,Long id) {
+
+        var  old =studentRepo.findById(id).orElseThrow();
+        old.setId(student.getId());
+        old.setFirstName(student.getFirstName());
+        old.setLastName(student.getLastName());
+        old.setGpa(student.getGpa());
+        old.setAddress(student.getAddress());
+        old.setMajor(student.getMajor());
+        old.setJobHistory(student.getJobHistory());
+      studentRepo.save(old);
+    }
+
 }
 

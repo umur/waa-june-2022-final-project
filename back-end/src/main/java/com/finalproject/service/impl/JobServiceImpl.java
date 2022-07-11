@@ -35,7 +35,8 @@ public class JobServiceImpl implements JobService {
     @Override
     public List<JobAdvertisement> findRecent() {
         List<JobAdvertisement> holder = new ArrayList<>();
-        holder = jobRepo.findAllByPostedDate(10).stream().filter(k -> k.isMark_delete() != true).collect(Collectors.toList());
+        holder = jobRepo.findAllByPostedDate().stream().filter(k -> k.isMark_delete() != true).limit(10).collect(Collectors.toList());
+        System.out.println(holder);
         return holder;
     }
 
@@ -44,10 +45,7 @@ public class JobServiceImpl implements JobService {
         return jobRepo.findById(id).orElseThrow();
     }
 
-    @Override
-    public List<JobAdvertisement> findRecentApplied() {
-        return jobRepo.findAllRecentApplied(10);
-    }
+
 
     @Override
     public List<JobAdvertisement> findByCity(String city) {
@@ -70,6 +68,7 @@ public class JobServiceImpl implements JobService {
         List<JobAdvertisement> holder =new ArrayList<>();
         holder =  jobRepo.findAllByTags_name(tag).stream().filter(k->k.isMark_delete()!=true).collect(Collectors.toList());
         return holder;
+
 
     }
 
@@ -98,8 +97,15 @@ public class JobServiceImpl implements JobService {
 
     }
 
+    @Override
+    public Integer countByState(String state) {
+        return jobRepo.countAllByStates(state);
+    }
 
-
+    @Override
+    public Integer countByCity(String city) {
+        return jobRepo.countAllByCity(city);
+    }
 
 
 }

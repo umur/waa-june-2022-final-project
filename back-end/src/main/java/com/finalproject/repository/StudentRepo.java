@@ -21,6 +21,13 @@ public interface StudentRepo extends CrudRepository<Student, Long> {
     List<Student>findAllByAddress_State(String state);
     List<Student>findAllByFirstName(String name);
 
+    // for charts
+
+    Integer countAllByAddress_City(String city);
+    Integer countAllByAddress_State(String city);
+
+
+
 
 
 

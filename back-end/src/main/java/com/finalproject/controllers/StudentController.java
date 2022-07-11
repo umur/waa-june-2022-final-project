@@ -4,9 +4,12 @@ import com.finalproject.models.Student;
 import com.finalproject.models.User;
 import com.finalproject.payload.request.PostRequest;
 import com.finalproject.payload.response.MessageResponse;
+import com.finalproject.security.services.UserDetailsImpl;
 import com.finalproject.service.StudentService;
+import com.finalproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,12 +23,26 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    UserService userService; /// added
+
 
     // list all the  students
     @GetMapping
     public List<User> findAll() {
         return studentService.findAllStudent();
     }
+
+
+    @GetMapping("/countByCity")
+    public Integer countByCity(@RequestParam String city) throws Exception {
+        return studentService.countByCity(city);
+    }
+    @GetMapping("/countByState")
+    public Integer countByState(@RequestParam String state) throws Exception {
+        return studentService.countByState(state);
+    }
+
 
     // get student by id
 
@@ -80,6 +97,20 @@ public class StudentController {
     @PostMapping("/delete/{id}")
     public void deleted(@PathVariable Long id){
         studentService.deleteStudent(id);
+    }
+
+ // newly added
+    @PutMapping("/profile")
+    public void updateProfile(@RequestBody Student student ) {
+        Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (pr instanceof UserDetailsImpl) {
+            String username = ((UserDetailsImpl) pr).getUsername();
+            var n =userService.findBYUserName(username).getStudent();
+
+            studentService.updateProfile(student , n.getId());
+        } else {
+            throw new SecurityException("could not reseted");
+        }
     }
 
 
