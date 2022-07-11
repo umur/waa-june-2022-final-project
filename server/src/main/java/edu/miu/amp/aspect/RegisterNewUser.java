@@ -10,8 +10,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.keycloak.KeycloakPrincipal;
-import org.keycloak.adapters.springsecurity.account.SimpleKeycloakAccount;
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,9 +18,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
-import java.util.Date;
 
 
 @Aspect
@@ -60,7 +56,7 @@ public class RegisterNewUser {
                     newUser.setUserName(token.getPreferredUsername());
                     newUser.setFirstName(token.getName());
                     newUser.setLastName(token.getFamilyName());
-                    facultyRepository.saveAndFlush(newUser);
+                    facultyRepository.save(newUser);
                 }
                 if (roles.contains("student")) {
                     var newUser = new Student();
@@ -69,7 +65,7 @@ public class RegisterNewUser {
                     newUser.setFirstName(token.getName());
                     newUser.setLastName(token.getFamilyName());
 
-                    studentRepo.saveAndFlush(newUser);
+                    studentRepo.save(newUser);
                 }
             }
         }
