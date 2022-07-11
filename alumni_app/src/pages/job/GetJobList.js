@@ -12,7 +12,7 @@ export default function GetJobList() {
     dataUrl: "/jobs/" + id,
     addCommentUrl: "//",
     editUrl: "",
-    deleteUrl: "/",
+    deleteUrl: "",
     detailUrl: "/",
   };
   debugger;
