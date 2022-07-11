@@ -35,7 +35,7 @@ INSERT INTO job_advertisement (id,add_benefit,company_name,job_desc,job_title,st
 INSERT INTO job_advertisement (id,add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address) VALUES (11,'good salary with bonus',' INfo','Top level developer needed in Infosys','.Net Developer',2,10,16516,2);
 
 
-INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_at, last_name, password, id_address) VALUES (1, true,'cs','faculty@miu.edu','Bibek','2022-01-15','Thokar','admin123',1);
+INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_at, last_name, password, id_address, is_deleted) VALUES (1, true,'cs','faculty@miu.edu','Bibek','2022-01-15','Thokar','admin123',1, false);
 
 INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (1, 'Extraordinary Student',true,false,1,1);
 INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (2, 'Good boy.',true,false,1,1);
