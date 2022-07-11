@@ -17,7 +17,6 @@ export default function HomePage() {
         switch (name) {
             case 'state':
                 setState(title);
-                setDataUrl('/reports/studentByCity/'+title)
                 break;
         }
     }
@@ -27,7 +26,7 @@ export default function HomePage() {
             <div className='border'>
                 <div className='row'>
                     <div className="col-6">
-                        <BarChart dataUrl={dataUrl}></BarChart>
+                        <BarChart dataUrl={'/reports/jobByState'}></BarChart>
                     </div>
                     <div className="col-6">
                         <PieChart></PieChart>

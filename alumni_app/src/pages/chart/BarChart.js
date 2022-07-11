@@ -11,7 +11,6 @@ function BarChart(props) {
         let contentData = [];
 
         let response = await getRequest(props.dataUrl);
-        debugger
         response.map((x) => {
             headerData.push(x.name);
             contentData.push(x.value);
