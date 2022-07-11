@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
+import { getFacultyProfile, getUserProfile } from "../../redux/reducers/UserProfile/actions";
 
 import FileUploadPage from '../../pages/FileUploadPage';
+import { useDispatch, useSelector } from "react-redux";
+
 
 export default function FacultyProfile() {
-    const initialState = { email: "pnaira@miu.edu", password: "1234", role: "faculty", firstName: "Premchand", lastName: "Nair", address: "Linclon Street, Nebraska" }
-    const [facultyProfile, setfacultyProfile] = useState(initialState);
-
-    // const username = getUsername();
-    // useEffect(() => {
-    //     get();
-    // }, []);
+    const dispatch = useDispatch();
+    const userProfile = useSelector((state) => state.userProfile);
+    
+    useEffect(() => {
+        dispatch(getFacultyProfile());
+    }, []);
     return (
         <Container>
             <Breadcrumb name="Basic Information" />
@@ -32,27 +34,22 @@ export default function FacultyProfile() {
                                                     {/* <Link to={`update/${facultyProfile?.id}`}><i className='fas fa-edit text-primary ml-2'></i></Link> */}
                                                 </p>
                                                 <p className="font-italic mb-1">
-                                                    Name: {facultyProfile?.firstName + " " + facultyProfile?.lastName}
-                                                </p>
-                                                <p className="font-italic mb-1">
-                                                    Role: {facultyProfile?.role}
+                                                    Name: {userProfile?.firstName + " " + userProfile?.lastName}
                                                 </p>
                                                 <p className="font-italic mb-0">
-                                                    Email: {facultyProfile?.email}
+                                                    Email: {userProfile?.email}
                                                 </p>
                                                 <p className='font-italic mb-0'>
-                                                    Address: {facultyProfile?.address}
+                                                    Address: {userProfile?.address}
                                                 </p>
-
-
                                             </div>
                                         </div>
 
-                                        <FileUploadPage/>
+                                        <FileUploadPage />
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </Col>
                     </Row>
                     <br />

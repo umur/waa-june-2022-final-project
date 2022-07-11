@@ -2,7 +2,10 @@ package edu.miu.amp.service.impl;
 
 import edu.miu.amp.domain.Faculty;
 import edu.miu.amp.dto.FacultyDto;
+import edu.miu.amp.dto.StudentDto;
+import edu.miu.amp.helper.UserPrincipal;
 import edu.miu.amp.repository.FacultyRepository;
+import edu.miu.amp.repository.UserRepo;
 import edu.miu.amp.service.FacultyService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,19 @@ public class FacultyServiceImpl implements FacultyService {
     private FacultyRepository facultyRepository;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private UserRepo userRepo;
+
+    @Override
+    public FacultyDto getMyProfile() {
+        var authUser = UserPrincipal.getAuthUser();
+
+        var user = userRepo.findByUserName(authUser.getUserName()).orElse( null );
+
+        var faculty =  facultyRepository.findById(user.getId()).get();
+        return modelMapper.map(faculty, FacultyDto.class);
+    }
 
     @Override
     public List<FacultyDto> findAll() {

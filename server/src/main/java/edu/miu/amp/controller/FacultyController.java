@@ -1,6 +1,7 @@
 package edu.miu.amp.controller;
 
 import edu.miu.amp.dto.FacultyDto;
+import edu.miu.amp.dto.StudentDto;
 import edu.miu.amp.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,13 @@ public class FacultyController {
 
     @Autowired
     private FacultyService facultyService;
+
+    @GetMapping("/profile")
+    @RolesAllowed("faculty")
+
+    public ResponseEntity<FacultyDto> getMyProfile() {
+        return ResponseEntity.ok(this.facultyService.getMyProfile());
+    }
 
     @GetMapping
     @RolesAllowed("faculty")

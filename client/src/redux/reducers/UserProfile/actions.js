@@ -8,3 +8,12 @@ export const getUserProfile = () => ({
     },
   },
 });
+
+export const getFacultyProfile = () => ({
+  type: GET_USER_PROFILE,
+  payload: {
+    request: {
+      url: "/faculties/profile"
+    }
+  }
+})
