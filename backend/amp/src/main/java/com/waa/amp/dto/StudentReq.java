@@ -6,7 +6,5 @@ public record StudentReq(
         String lastname,
         String password,
         String major,
-        String gpa,
-        String LastLoggedInAt,
-        String active
+        String gpa
 ) {}
