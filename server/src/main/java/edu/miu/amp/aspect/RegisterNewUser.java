@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 
 
@@ -35,6 +36,7 @@ public class RegisterNewUser {
     @Autowired
     private StudentRepo studentRepo;
 
+
     @Before("@annotation(org.springframework.web.bind.annotation.GetMapping) || " +
             "@annotation(org.springframework.web.bind.annotation.PostMapping) || " +
             "@annotation(org.springframework.web.bind.annotation.PutMapping ) ||" +
@@ -49,8 +51,6 @@ public class RegisterNewUser {
 
             var existingUser = userRepo.findByUserName(token.getPreferredUsername()).orElse(null);
 
-            System.out.println("Checking new user");
-
             var roles = token.getRealmAccess().getRoles();
 
             if (existingUser == null) {
@@ -60,7 +60,7 @@ public class RegisterNewUser {
                     newUser.setUserName(token.getPreferredUsername());
                     newUser.setFirstName(token.getName());
                     newUser.setLastName(token.getFamilyName());
-                    facultyRepository.save(newUser);
+                    facultyRepository.saveAndFlush(newUser);
                 }
                 if (roles.contains("student")) {
                     var newUser = new Student();
@@ -68,7 +68,8 @@ public class RegisterNewUser {
                     newUser.setUserName(token.getPreferredUsername());
                     newUser.setFirstName(token.getName());
                     newUser.setLastName(token.getFamilyName());
-                    studentRepo.save(newUser);
+
+                    studentRepo.saveAndFlush(newUser);
                 }
             }
         }
