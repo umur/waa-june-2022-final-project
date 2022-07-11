@@ -35,6 +35,13 @@ function Menu() {
 
   const studentMenu = [
     {
+      id: 10,
+      name: "Dashboard",
+      icon: "none",
+      url: "dashboard",
+      active: false,
+    },
+    {
       id: 1,
       name: "Job Lists",
       icon: "none",
@@ -50,7 +57,7 @@ function Menu() {
     },
     {
       id: 3,
-      name: "Add Job Advertisement",
+      name: "Create Job Ad",
       icon: "none",
       url: "job-advertisement/add",
       active: false,
@@ -72,6 +79,13 @@ function Menu() {
   ];
 
   const facultyMenu = [
+    {
+      id: 10,
+      name: "Dashboard",
+      icon: "none",
+      url: "dashboard",
+      active: false,
+    },
     {
       id: 1,
       name: "Job List",
@@ -100,7 +114,7 @@ function Menu() {
   const facultyRole = UserService.hasRole(["faculty"]);
 
   const logout = () => {
-    // UserService.doLogout();
+    UserService.doLogout();
   };
 
   return (
