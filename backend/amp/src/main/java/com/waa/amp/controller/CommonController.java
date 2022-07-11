@@ -1,5 +1,7 @@
 package com.waa.amp.controller;
 
+import com.waa.amp.dto.JobSearchReq;
+import com.waa.amp.service.JobService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,11 @@ import java.util.Map;
 @CrossOrigin
 public class CommonController {
 
-    @GetMapping("/student-search")
-    public ResponseEntity<?> studentSearch(@RequestParam Map<String, String> param) {
+    private final JobService jobService;
 
-        return null;
+    @PostMapping("/search-job")
+    public ResponseEntity<?> studentSearch(@RequestBody JobSearchReq jobSearchReq) {
+        return ResponseEntity.ok(Map.of("results", jobService.searchJob(jobSearchReq)));
     }
 
 }

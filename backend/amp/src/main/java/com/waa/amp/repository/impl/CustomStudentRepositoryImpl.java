@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+import static com.waa.amp.utils.Utils.isNotBlank;
+
 @RequiredArgsConstructor
 @Slf4j
 public class CustomStudentRepositoryImpl implements CustomStudentRepository {
@@ -19,18 +21,18 @@ public class CustomStudentRepositoryImpl implements CustomStudentRepository {
     public List<Student> searchStudent(StudentSearchReq studentSearchReq) {
         String sql = " select * from student where 1 = 1 ";
 
-        if (isBlank(studentSearchReq.city())) {
+        if (isNotBlank(studentSearchReq.city())) {
             sql += " and city = '" + studentSearchReq.city() + "' ";
         }
-        if (isBlank(studentSearchReq.major())) {
+        if (isNotBlank(studentSearchReq.major())) {
             sql += " and major = '" + studentSearchReq.major() + "' ";
         }
 
-        if (isBlank(studentSearchReq.firstname())) {
+        if (isNotBlank(studentSearchReq.firstname())) {
             sql += " and firstname = '" + studentSearchReq.firstname() + "' ";
         }
 
-        if (isBlank(studentSearchReq.lastname())) {
+        if (isNotBlank(studentSearchReq.lastname())) {
             sql += " and lastname = '" + studentSearchReq.lastname() + "' ";
         }
 
@@ -41,7 +43,5 @@ public class CustomStudentRepositoryImpl implements CustomStudentRepository {
         return resultList;
     }
 
-    private boolean isBlank(String str) {
-        return str != null && !str.isBlank();
-    }
+
 }
