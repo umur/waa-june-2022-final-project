@@ -53,6 +53,16 @@ VALUES (10018, 'Test', 'Faculty 10018', 'testfaculty18@gmail.com', 'testfaculty1
 INSERT INTO users (id, first_name, last_name, email, user_name)
 VALUES (10019, 'Test', 'Faculty 10019', 'testfaculty19@gmail.com', 'testfaculty19');
 
+INSERT INTO FACULTY(id)
+VALUES (10011),
+       (10012),
+       (10013),
+       (10014),
+       (10015),
+       (10016),
+       (10017),
+       (10018),
+       (10019);
 
 -- Add job tags
 INSERT INTO tag(id,tag_name)
@@ -318,3 +328,49 @@ VALUES (10004, TRUE, 'ECE');
 
 INSERT INTO department (id, delete, department_name)
 VALUES (10005, FALSE, 'Arts');
+
+--Add comment dataset
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10001, 'great work, keep it up', TRUE, 10001, 10011);
+
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10002, 'excellent work', FALSE, 10002, 10012);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10003, 'Impressive results.', TRUE, 10003, 10011);
+
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10004, 'Keep up the great work.', FALSE, 10004, 10013);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10005, 'Bravo!', TRUE, 10005, 10014);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10006, 'You nailed it!', FALSE, 10006, 10015);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10007, 'You are genius.', TRUE, 10007, 10016);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10008, 'great work, keep it up', FALSE, 10008, 10017);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10009, 'Well done, you can do it better.', TRUE, 10009, 10018);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10010, 'Keep up the momentum.', FALSE, 10010, 10019);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10011, 'You will do great next time. Work hard.', TRUE, 10001, 10011);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10012, 'great work, keep it up', FALSE, 10001, 10011);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10013, 'Great job my dear student', TRUE, 10002, 10012);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10014, 'You are genius.', FALSE, 10002, 10012);
