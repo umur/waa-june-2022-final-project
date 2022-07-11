@@ -17,33 +17,50 @@ import Cv from "../../pages/cv/Cv"
 import SubmitJob from "../../pages/job/SubmitJob";
 import EditJob from "../../pages/job/EditJob";
 import GetJobList from "../../pages/job/GetJobList";
+import Login from "../../pages/sign-in/Login";
+import { Dashboard } from "@material-ui/icons";
+import { isAuthorized } from "../auth/Auth";
 
 export default function RouteApp() {
-  return (
-    <>
+
+  const isAuthorize = isAuthorized();
+
+  if (!isAuthorize) {
+    return (
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/Students" element={<StudentList />}></Route>
-        <Route path="/Faculties" element={<FacultyList />}></Route>
-        <Route path="/AddComment/:id" element={<AddComment />}></Route>
-        <Route path="/Jobs" element={<Jobs />}></Route>
-        <Route path="/Comments/:id" element={<CommentList />}></Route>
-        <Route path="/Jobs" element={<CreateJob />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-        <Route path="/StudentDetails/:id" element={<StudentDetail />}></Route>
-        <Route path="/Profile" element={<Profile />}></Route>
-        <Route path="/reset-password" element={<ChangePassword />}></Route>
-        <Route path="/Jobs/newJob" element={<CreateJob />}></Route>
-        <Route path="/Jobs/:id" element={<GetJobList />}></Route>
-        <Route path="/FileUpload" element={<FileUpload />}></Route>
-        <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
-        <Route path="/cv" element={<Cv />}></Route>
-        <Route path="/Jobs/:studentID/:jobID" element={<EditJob />}></Route>
-        <Route
-          path="/JobDetails/additional/:id"
-          element={<SubmitJob />}
-        ></Route>
+        <Route path="/Login" element={<Login />}></Route>
+        <Route path="*" element={<Login />}></Route>
       </Routes>
-    </>
-  );
+    )
+  }
+  else {
+    return (
+      <>
+        <Routes>
+          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/Students" element={<StudentList />}></Route>
+          <Route path="/Faculties" element={<FacultyList />}></Route>
+          <Route path="/AddComment/:id" element={<AddComment />}></Route>
+          <Route path="/Jobs" element={<Jobs />}></Route>
+          <Route path="/Comments/:id" element={<CommentList />}></Route>
+          <Route path="/Jobs" element={<CreateJob />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+          <Route path="/StudentDetails/:id" element={<StudentDetail />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
+          <Route path="/reset-password" element={<ChangePassword />}></Route>
+          <Route path="/Jobs/newJob" element={<CreateJob />}></Route>
+          <Route path="/Jobs/:id" element={<GetJobList />}></Route>
+          <Route path="/FileUpload" element={<FileUpload />}></Route>
+          <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
+          <Route path="/cv" element={<Cv />}></Route>
+          <Route path="/Jobs/:studentID/:jobID" element={<EditJob />}></Route>
+          <Route
+            path="/JobDetails/additional/:id"
+            element={<SubmitJob />}
+          ></Route>
+        </Routes>
+      </>
+    );
+  }
 }

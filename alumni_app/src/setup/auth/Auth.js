@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-export function RoleBasePermission() {
+export function roleBasePermission() {
     let [userRole, setUserRole] = useState('Admin')
     switch (userRole) {
         case 'Admin':
@@ -14,7 +14,12 @@ export function RoleBasePermission() {
     return 0;
 }
 
-export function CurentLoggedUser() {
+export function curentLoggedUser() {
     let [loggedUser, setLoggedUser] = useState(1);
     return loggedUser;
+}
+
+export function isAuthorized() {
+    let [isAuthorized, setIsAuthorized] = useState(false);
+    return isAuthorized;
 }

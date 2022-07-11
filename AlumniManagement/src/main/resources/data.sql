@@ -1,3 +1,6 @@
+INSERT INTO user_auth(role,is_active,password,username) VALUES
+('ADMIN',true,'$2a$10$FLna.MvoHiTYxmHqvw980euM5aldO1lcZNDNGhrHDRuQQXYCmdiau','ashish@miu.edu');
+
 INSERT INTO department (id,department_name) VALUES (1,'Development');
 INSERT INTO department (id,department_name) VALUES (2,'Quality Assistance');
 INSERT INTO department (id,department_name) VALUES (3,'Teaching Assistance');
@@ -52,6 +55,7 @@ INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_a
 INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (1, 'Extraordinary Student',true,false,1,1);
 INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (2, 'Good boy.',true,false,1,1);
 INSERT INTO comment (id, comment, is_active, is_deleted, faculty_id, student_id) VALUES (3, 'Fresh boy',true,false,1,2);
+
 
 
 

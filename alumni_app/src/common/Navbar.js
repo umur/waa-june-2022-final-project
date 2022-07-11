@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../pages/dashboard/Header";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router";
-
+import { Navigate } from "react-router-dom";
+import { isAuthorized } from "../setup/auth/Auth";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,21 +17,25 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const classes = useStyles();
     const navigate = useNavigate();
-
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit">
-                        <span onClick={() => { navigate('/') }} className="pointer">  Alumini Management Portal</span>
-                    </Typography>
-                    <IconButton edge="start"
-                        className={classes.root}
-                        color="inherit" aria-label="menu">
-                        <Header></Header>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+    const isAuthorize = isAuthorized();
+    if (!isAuthorize) {
+        return (<></>);
+    } else {
+        return (
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar variant="dense">
+                        <Typography variant="h6" color="inherit">
+                            <span onClick={() => { navigate('/') }} className="pointer">  Alumini Management Portal</span>
+                        </Typography>
+                        <IconButton edge="start"
+                            className={classes.root}
+                            color="inherit" aria-label="menu">
+                            <Header></Header>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
