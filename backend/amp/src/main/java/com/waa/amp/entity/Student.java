@@ -23,12 +23,14 @@ public class Student {
 
     private String email;
 
-    private String firstName;
+    private String firstname;
 
     private String lastname;
 
     private String major;
 
     private String gpa;
+
+    private String city;
 
 }
