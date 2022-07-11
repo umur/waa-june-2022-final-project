@@ -32,22 +32,19 @@ export default function Jobs() {
     if (value[0] != null) {
       title = value[0].title;
     }
-
-    if (value[0] != null) {
-      switch (name) {
-        case "state":
-          setState(title);
-          break;
-        case "city":
-          setCity(title);
-          break;
-        case "tag":
-          setTag(title);
-          break;
-        case "name":
-          setName(title);
-          break;
-      }
+    switch (name) {
+      case "state":
+        setState(title);
+        break;
+      case "city":
+        setCity(title);
+        break;
+      case "tag":
+        setTag(title);
+        break;
+      case "name":
+        setName(title);
+        break;
     }
   };
 

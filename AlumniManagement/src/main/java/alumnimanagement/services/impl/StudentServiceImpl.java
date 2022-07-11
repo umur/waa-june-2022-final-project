@@ -87,7 +87,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName) {
        if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
-            return findByFilter(state,city,major,studentName);
+            return findByFilter(state,city,major,studentName).stream().skip(page*size).limit(5).toList();
        }
         Long id = Helper.getLoggedUserId();
         var a = Helper.getCurrentDate();

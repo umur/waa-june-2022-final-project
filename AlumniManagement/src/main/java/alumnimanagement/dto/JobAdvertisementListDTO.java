@@ -11,9 +11,8 @@ public class JobAdvertisementListDTO {
     private String jobTitle;
     private String jobDesc;
     private String companyName;
-    private int numOpening;
     private String jobType;
-    private LocalDateTime publishDate;
+    private String city;
     private String state;
     private String tag;
 }
