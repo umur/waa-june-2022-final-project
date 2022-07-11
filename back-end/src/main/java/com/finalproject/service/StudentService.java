@@ -17,6 +17,8 @@ public interface StudentService {
     List<Student>getByState(String state);
     List<Student>getByMajor(String major);
     Student getByStudentId(Integer id);
+    List<Student> getByName(String name);
+    void applied(Student student );
 
 
 }

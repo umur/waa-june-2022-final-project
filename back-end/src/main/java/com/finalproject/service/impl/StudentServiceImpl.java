@@ -33,13 +33,15 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<User> findAllStudent() {
         List<User> allUserStudents = new ArrayList<>();
-        userRepo.findAll().forEach(user -> {
-            ERole role = user.getRoles().stream().toList().get(0).getName();
-            if (role == ERole.ROLE_STUDENT) {
-                allUserStudents.add(user);
-            }
-        });
-        return allUserStudents;
+
+        return  userRepo.findAll();
+//        userRepo.findAll().forEach(user -> {
+//            ERole role = user.getRoles().stream().toList().get(0).getName();
+//            if (role == ERole.ROLE_STUDENT) {
+//                allUserStudents.add(user);
+//            }
+//        });
+//        return allUserStudents;
     }
 
     @Override
@@ -82,4 +84,12 @@ public class StudentServiceImpl implements StudentService {
     public Student getByStudentId(Integer id) {
         return studentRepo.findByStudentId(id);
     }
+
+    @Override
+    public List<Student> getByName(String name) {
+        return studentRepo.findAllByFirstName(name);
+    }
+
+
 }
+

@@ -46,13 +46,25 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<JobAdvertisement> findAllByTag(String tag) {
+        return jobRepo.findAllByTags_name(tag);
+    }
+
+    @Override
     public List<JobAdvertisement> findByCompany(String company) {
-        return findByCompany(company);
+        return jobRepo.findAllByCompany(company);
     }
 
     @Override
     public void postJobAdvert(JobAdvertisement jobAdvertisement, Student st ) {
         jobAdvertisement.setStudent(st);
         jobRepo.save(jobAdvertisement);
+    }
+
+    @Override
+    public void deleteJob(Student student) {
+
+        student.setJobAdvertisement(null);
+
     }
 }

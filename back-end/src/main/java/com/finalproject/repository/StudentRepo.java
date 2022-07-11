@@ -14,11 +14,13 @@ public interface StudentRepo extends CrudRepository<Student, Long> {
     User findByUser_Id(Long id);
 
 
+
      Student findByStudentId(Integer id);
     List<Student>findAllByMajor(String major);
     List<Student >findAllByAddress_City(String city);
     List<Student>findAllByAddress_State(String state);
-//    List<Student>findAllByName()
+    List<Student>findAllByFirstName(String name);
+
 
 
 

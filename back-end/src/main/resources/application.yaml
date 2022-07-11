@@ -2,15 +2,15 @@ spring:
   application:
     name: spring-security-demo-1
   datasource:
-    password: 1
-    url: jdbc:postgresql://localhost:5455/spring-data-demo
-    username: postgres
+    password: root
+    url: jdbc:mysql://localhost/public?useSSL=false&serverTimezone=America/Chicago
+    username: root
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect:  org.hibernate.dialect.MySQL5Dialect
         format_sql: true
     show-sql: false
     defer-datasource-initialization: true
@@ -18,8 +18,8 @@ spring:
     init:
       mode: always
 server:
-  port: 8080
+  port: 9000
 subo8:
   app:
     jwtSecret: SecretKey!
-    jwtExpirationMs: '9000000'
+    jwtExpirationMs: '900000'

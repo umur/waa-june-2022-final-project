@@ -30,11 +30,16 @@ public class StudentController {
         return studentService.findById(id);
     }
 
-    @GetMapping("/studentId")
-    public Student  findById(@RequestParam  Integer id) {
+    @GetMapping("/ByStudent_Id/{id}")
+    public Student  findById(@PathVariable  Integer id) {
         return studentService.getByStudentId(id);
     }
 
+
+    @GetMapping("/name")
+    public List<Student> findById(@RequestParam String name) {
+        return studentService.getByName(name);
+    }
     @GetMapping("/city")
     public List< Student> findByCity(@RequestParam String city) {
         return studentService.getByCity(city);
@@ -54,4 +59,6 @@ public class StudentController {
         studentService.post(postRequest, id);
         return ResponseEntity.ok(new MessageResponse("Commented posted successfully!"));
     }
+
+
 }

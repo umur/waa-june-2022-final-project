@@ -18,6 +18,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer studentId;
+    private String firstName;
+    private String lastName;
     private Double gpa;
     private String major;
 
@@ -38,6 +40,10 @@ public class Student {
     @OneToOne(mappedBy = "student")
     private  JobAdvertisement jobAdvertisement;
 
+    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(mappedBy = "student")
     private List<Comments> comments;
+
+
 }

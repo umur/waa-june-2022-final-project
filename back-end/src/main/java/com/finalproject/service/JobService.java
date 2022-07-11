@@ -11,7 +11,9 @@ public interface JobService {
     List<JobAdvertisement>findRecentApplied();
     List<JobAdvertisement>findByCity(String city);
     List<JobAdvertisement>findByState(String states);
+    List<JobAdvertisement>findAllByTag(String  tag);
     List<JobAdvertisement>findByCompany(String company);
     void postJobAdvert(JobAdvertisement jobAdvertisement, Student student  );
+    void deleteJob(Student student);
 
 }

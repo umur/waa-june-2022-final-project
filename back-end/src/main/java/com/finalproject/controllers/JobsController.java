@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/jobs")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class JobsController {
 
     @Autowired
@@ -22,7 +22,10 @@ public class JobsController {
 
     @Autowired
 
-    private StudentService student ;// new added
+    private StudentService student;// new added
+
+
+    // All the Job List
 
     @GetMapping
     public List<JobAdvertisement> findAll() {
@@ -30,40 +33,46 @@ public class JobsController {
     }
 
 
-
-//
-    @GetMapping
+    // pop out the recent added data
+    @GetMapping("/addedrecent")
     public List<JobAdvertisement> RecentTenAdded() {
+        return jobService.findRecent();
+    }
 
-        return jobService.findRecent();}
-
-
-
+// Addmin can see how many data of applied
     @GetMapping("/applied")
     public List<JobAdvertisement> RecentApplied() {
 
         return null;
 
     }
+ //searching by city
     @GetMapping("/bycity")
     public List<JobAdvertisement> findAllByCity(@RequestParam String city) {
 
-        return jobService.findByCity(city);}
-
+        return jobService.findByCity(city);
+    }
+  // searching by state
     @GetMapping("/byState")
-    public List<JobAdvertisement >findAllByState(String state) {
+    public List<JobAdvertisement> findAllByState(@RequestParam String state) {
 
-        return jobService.findByState(state);}
-
+        return jobService.findByState(state);
+    }
+// searching by tag
     @GetMapping("/bytag")
-    public List<JobAdvertisement> findAllByTag(@RequestParam String  tag) {
+    public List<JobAdvertisement> findAllByTag(@RequestParam String tag) {
 
-        return null ;}
+        return jobService.findAllByTag(tag);
+    }
+  // searching by company name
     @GetMapping("/Company")
     public List<JobAdvertisement> findAllByCompanyName(@RequestParam String name) {
 
-        return jobService.findByCompany(name);}
+        return jobService.findByCompany(name);
+    }
 
+
+    // student can make advertisement
     @PostMapping("/save")
     public void createJobAdvert(@RequestBody JobAdvertisement jobOpening) {
 
@@ -75,8 +84,11 @@ public class JobsController {
 
         }
     }
+
+//     updating advertisement
+
     @PutMapping
-    public void updateJobOpening(@RequestBody JobAdvertisement job, Long id) {
+    public void updateJobOpening(@RequestBody JobAdvertisement job) {
         Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (pr instanceof UserDetailsImpl) {
             Long studentId = ((UserDetailsImpl) pr).getId();
@@ -85,8 +97,16 @@ public class JobsController {
 
         }
     }
+
+
+    // deleting advertisement
     @DeleteMapping
     public void deleteJobOpening(@RequestParam Long id) {
-
+        Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (pr instanceof UserDetailsImpl) {
+            Long studentId = ((UserDetailsImpl) pr).getId();
+            var n = student.getbyId(studentId);
+            jobService.deleteJob(n);
+        }
     }
 }
