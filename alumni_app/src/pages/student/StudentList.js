@@ -12,7 +12,7 @@ const listParams = {
     'dataUrl': "/students/''/''/''/''/''",
     'addCommentUrl': '/Comments/',
     'editUrl': '',
-    'deleteUrl': '/StudentDelete/',
+    'deleteUrl': '/students/',
     'detailUrl': '/StudentDetails/'
 }
 

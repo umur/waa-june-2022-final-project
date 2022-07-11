@@ -46,11 +46,18 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> findAll() {
-        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().map(student -> {
+//        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().map(student -> {
+//            return modelMapper.map(student, StudentDTO.class);
+//        }).toList();
+//
+//        return studentDTOS;
+
+        List<StudentDTO> studentDTOS = studentRepo.findAll().stream().filter(student -> !(student.isDeleted())).map(student -> {
             return modelMapper.map(student, StudentDTO.class);
         }).toList();
 
         return studentDTOS;
+
     }
 
     @Override
@@ -124,7 +131,8 @@ public class StudentServiceImpl implements StudentService {
     }
     @Override
     public void remove(long id) {
-        studentRepo.deleteById(id);
+        Student target= studentRepo.findById(id).get();
+        target.setDeleted(true);
     }
 
 

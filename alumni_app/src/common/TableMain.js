@@ -16,7 +16,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { TableHead } from '@material-ui/core';
-import { getRequest } from '../setup/fetch-manager/FetchGateway';
+import { deleteRequest, getRequest } from '../setup/fetch-manager/FetchGateway';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router';
 import EditIcon from '@mui/icons-material/Edit';
@@ -150,6 +150,12 @@ export default function TableMain(props) {
         })
     }
 
+
+    const deleteData = async (e) => {
+        let response = await deleteRequest(e);
+        fetchData();
+    }
+
     // get table row data
     const tdData = () => {
         if (rowData == undefined) {
@@ -175,7 +181,7 @@ export default function TableMain(props) {
                                 : ''
                             )}
                             {(props.listParams.showDelete ?
-                                <DeleteIcon onClick={() => { navigate(props.listParams.deleteUrl + data.id) }}
+                                <DeleteIcon onClick={() => { deleteData(props.listParams.deleteUrl + data.id) }}
                                     className='pointer' color="warning">Delete
                                 </DeleteIcon>
                                 : ''
