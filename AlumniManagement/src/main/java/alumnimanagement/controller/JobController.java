@@ -18,7 +18,10 @@ public class JobController {
     private final JobService jobService;
 
     @PostMapping("/newJob")
-    public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.create(jobAdvertisementDTO);}
+    public void addJobPost(@RequestBody JobAdvertisementDTO jobAdvertisementDTO)
+    {
+        jobService.create(jobAdvertisementDTO);
+    }
 
     @GetMapping()
     public List<JobAdvertisementDTO> findAll() {
