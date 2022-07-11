@@ -66,4 +66,8 @@ public class StudentService {
 
         return studentRepository.save(student);
     }
+
+    public Student getById(Long id) {
+        return studentRepository.findByIdAndUser(id, userService.getLoggedUser());
+    }
 }
