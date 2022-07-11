@@ -32,6 +32,7 @@ public class JobAdvertisement {
     private String jobType;
     private String jobTag;
     private float paymentAmount;
+    private boolean isDeleted;
 
 
     //todo @OneToOne

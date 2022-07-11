@@ -36,7 +36,7 @@ public class JobServiceImpl implements JobService {
     @Override
     public List<JobAdvertisementDTO> getAll() {
         return jobRepo.findAll()
-                .stream()
+                .stream().filter(job->!job.isDeleted())
                 .map((jobAdvertisement ->
                         modelMapper.map(jobAdvertisement, JobAdvertisementDTO.class)))
                 .toList();
@@ -56,7 +56,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void delete(int id) {
-        jobRepo.deleteById(id);
+        jobRepo.findById(id).get().setDeleted(true);
     }
 
     @Override
@@ -78,22 +78,23 @@ public class JobServiceImpl implements JobService {
         List<JobAdvertisementListDTO> dtos = new ArrayList<>();
         for(JobAdvertisement f : list)
         {
-            JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
-            dto.setId(f.getId());
-            if(f.getAddress() != null) {
-                dto.setState(f.getAddress().getState());
-                dto.setCity(f.getAddress().getCity());
+            if(!f.isDeleted()) {
+                JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
+                dto.setId(f.getId());
+                if (f.getAddress() != null) {
+                    dto.setState(f.getAddress().getState());
+                    dto.setCity(f.getAddress().getCity());
+                }
+                dto.setJobDesc(f.getJobDesc());
+                dto.setJobTitle(f.getJobTitle());
+                dto.setCompanyName(f.getCompanyName());
+                dto.setJobType(f.getJobType());
+                dto.setTag(f.getJobTag());
+                for (Tag t : f.getTags()) {
+                    dto.setTag(dto.getTag() + " " + t.getTitle());
+                }
+                dtos.add(dto);
             }
-            dto.setJobDesc(f.getJobDesc());
-            dto.setJobTitle(f.getJobTitle());
-            dto.setCompanyName(f.getCompanyName());
-            dto.setJobType(f.getJobType());
-            dto.setTag(f.getJobTag());
-            for(Tag t : f.getTags())
-            {
-               dto.setTag(dto.getTag()+ " " + t.getTitle());
-            }
-            dtos.add(dto);
         }
         return dtos;
     }
@@ -113,26 +114,26 @@ public class JobServiceImpl implements JobService {
         List<JobAdvertisementListDTO> jobListDto=new ArrayList<>();
 
         for (JobAdvertisement job: jobs){
-            String jobTag = "";
-            if(job.getJobTag() != null)
-            {
-                jobTag = job.getJobTag();
-            }
-            if(job.getAddress().getState().equals(state)||jobTag.equals(tag)||job.getAddress().getCity().equals(city)||job.getCompanyName().equals(name)){
-                JobAdvertisementListDTO dto=modelMapper.map(job, JobAdvertisementListDTO.class);
-                dto.setId(job.getId());
-                dto.setState(job.getAddress().getState());
-                dto.setJobDesc(job.getJobDesc());
-                dto.setJobTitle(job.getJobTitle());
-                dto.setCompanyName(job.getCompanyName());
-                dto.setJobType(job.getJobType());
-                dto.setCity(job.getAddress().getCity());
-                dto.setTag(job.getJobTag());
-                for(Tag t : job.getTags())
-                {
-                    dto.setTag(dto.getTag()+ " " + t.getTitle());
+            if(!job.isDeleted()) {
+                String jobTag = "";
+                if (job.getJobTag() != null) {
+                    jobTag = job.getJobTag();
                 }
-                jobListDto.add(dto);
+                if (job.getAddress().getState().equals(state) || jobTag.equals(tag) || job.getAddress().getCity().equals(city) || job.getCompanyName().equals(name)) {
+                    JobAdvertisementListDTO dto = modelMapper.map(job, JobAdvertisementListDTO.class);
+                    dto.setId(job.getId());
+                    dto.setState(job.getAddress().getState());
+                    dto.setJobDesc(job.getJobDesc());
+                    dto.setJobTitle(job.getJobTitle());
+                    dto.setCompanyName(job.getCompanyName());
+                    dto.setJobType(job.getJobType());
+                    dto.setCity(job.getAddress().getCity());
+                    dto.setTag(job.getJobTag());
+                    for (Tag t : job.getTags()) {
+                        dto.setTag(dto.getTag() + " " + t.getTitle());
+                    }
+                    jobListDto.add(dto);
+                }
             }
         }
         return jobListDto;
