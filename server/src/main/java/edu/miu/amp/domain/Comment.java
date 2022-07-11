@@ -18,6 +18,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String comment;
+
     @ColumnDefault("false")
     private Boolean deleted;
 
