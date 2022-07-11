@@ -16,7 +16,6 @@ function AddJobHistory() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   const dispatch = useDispatch();
-  const { jobHistory } = useSelector((state) => state);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +54,6 @@ function AddJobHistory() {
 
   return (
     <div className="col-8 offset-2">
-      {JSON.stringify(jobHistory)}
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="mb-3 col-12">

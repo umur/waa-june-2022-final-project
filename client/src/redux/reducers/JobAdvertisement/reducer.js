@@ -6,13 +6,18 @@ import {
 
 import { SUCCESS_SUFFIX } from "redux-axios-middleware";
 
-const jobAdvertisementReducer = (state = [], action) => {
+const jobAdvertisementReducer = (state = { jobAdvertisement: [] }, action) => {
   switch (action.type) {
     case LIST_JOB_ADVERTISEMENT + SUCCESS_SUFFIX:
-      return action.payload.data;
-
+      return {
+        ...state,
+        jobAdvertisement: [...action.payload.data],
+      };
     case ADD_JOB_ADVERTISEMENT + SUCCESS_SUFFIX:
-      return action.payload.data;
+      return {
+        ...state,
+        jobAdvertisement: [...state.jobAdvertisement, action.payload.data],
+      };
 
     case DELETE_JOB_ADVERTISEMENT:
       return state.filter((job) => job.id !== action.payload.job.id);
