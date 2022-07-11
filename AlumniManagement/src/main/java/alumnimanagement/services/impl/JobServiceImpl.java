@@ -9,6 +9,7 @@ import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.entity.job.Tag;
 import alumnimanagement.repo.JobRepo;
 import alumnimanagement.services.JobService;
+import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +30,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void create(JobAdvertisementDTO job) {
+        job.setPublishDate(Helper.getCurrentDate());
         var result = modelMapper.map(job, JobAdvertisement.class);
         jobRepo.save(result);
     }
