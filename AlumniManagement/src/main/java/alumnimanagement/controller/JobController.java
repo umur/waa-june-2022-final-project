@@ -2,12 +2,14 @@ package alumnimanagement.controller;
 
 import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.services.JobService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -84,6 +86,10 @@ public class JobController {
     public void updateJob(@PathVariable int jobId, @RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.update(jobAdvertisementDTO, jobId);}
 
 
+    @GetMapping("/getByTags")
+    public List<ReportList> getJobsByTags(){
+        return jobService.findByTags();
 
+    }
 
 }

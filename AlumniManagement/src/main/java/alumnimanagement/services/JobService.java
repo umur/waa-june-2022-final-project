@@ -7,6 +7,7 @@ import alumnimanagement.dto.ReportList;
 import alumnimanagement.entity.job.JobAdvertisement;
 
 import java.util.List;
+import java.util.Map;
 
 public interface JobService {
 
@@ -29,4 +30,6 @@ public interface JobService {
 
     List<JobAdvertisementDTO> findStudentJobList(long id, int page, int size, String searchValue);
     Long countById(long id);
+
+    List<ReportList>findByTags();
 }

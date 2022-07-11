@@ -18,4 +18,7 @@ public interface JobRepo extends JpaRepository<JobAdvertisement, Integer> {
 
     @Query("SELECT distinct(A.companyName) from JobAdvertisement  A order by A.companyName desc")
     List<String> findAllByCompanyNames();
+
+    @Query("select J.jobTag as jobtag from JobAdvertisement J  WHERE J.jobTag is not null")
+    List<String> findByTags();
 }
