@@ -9,37 +9,68 @@ import SearchStudent from "./faculty/SearchStudent";
 import Registration from "./student/Registration";
 import JobListings from "../components/job/Listings";
 import AddJobHistory from "./student/AddJobHistory";
+import PageNotFound from "./404";
 
 import StudentProfile from "./student/Profile";
+import UserService from "../services/UserService";
 
 export default function Router() {
   return (
     <div>
       <Routes>
-        <Route path="/student/profile" element={<StudentProfile />}></Route>
-        <Route path="/faculty/profile" element={<UserProfile />}></Route>
+        {/* Admin Routes */}
+        {UserService.hasRole(["admin"]) && {}}
 
-        <Route
-          path="student/job-advertisement/add"
-          element={<Advertisement />}
-        />
-        <Route path="/student/dashboard" element={<Dashboard />} />
-        <Route path="/faculty/dashboard" element={<Dashboard />} />
+        {/* Student Routes */}
+        {UserService.hasRole(["student"]) && (
+          <>
+            <Route path="/" element={<StudentProfile />} />
 
-        <Route path="/faculty/student-list" element={<SearchStudent />} />
+            <Route path="/student/profile" element={<StudentProfile />} />
+            <Route path="/student/dashboard" element={<Dashboard />} />
 
-        <Route path="/student/profile/update" element={<Registration />} />
-        <Route
-          path="/faculty/profile/update"
-          element={<FacultyRegistration />}
-        />
+            <Route
+              path="student/job-advertisement/add"
+              element={<Advertisement />}
+            />
+            <Route path="/student/profile/update" element={<Registration />} />
+            <Route
+              path="/student/job-advertisement"
+              element={<JobListings />}
+            />
 
-        <Route path="/student/job-advertisement" element={<JobListings />} />
-        <Route path="/faculty/job-advertisement" element={<JobListings />} />
+            <Route
+              path="/student/job-history/add"
+              element={<AddJobHistory />}
+            />
+          </>
+        )}
 
-        <Route path="/student/job-history/add" element={<AddJobHistory />}>
-          Job Listings
-        </Route>
+        {/* Faculty Routes */}
+
+        {UserService.hasRole(["faculty"]) && (
+          <>
+            <Route path="/" element={<UserProfile />} />
+
+            <Route path="/faculty/profile" element={<UserProfile />} />
+
+            <Route path="/faculty/dashboard" element={<Dashboard />} />
+
+            <Route path="/faculty/student-list" element={<SearchStudent />} />
+
+            <Route
+              path="/faculty/profile/update"
+              element={<FacultyRegistration />}
+            />
+
+            <Route
+              path="/faculty/job-advertisement"
+              element={<JobListings />}
+            />
+          </>
+        )}
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
