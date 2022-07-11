@@ -38,7 +38,7 @@ export default function RouteApp() {
         <Route path="/JobDetails/:id" element={<JobDetails />}></Route>
         <Route path="/FileUpload" element={<FileUpload />}></Route>
         <Route path="/cv" element={<Cv />}></Route>
-
+        <Route path="/Jobs/:studentID/:jobID" element={<EditJob />}></Route>
       </Routes>
     </>
   );
