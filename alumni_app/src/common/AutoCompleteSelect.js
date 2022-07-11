@@ -34,9 +34,11 @@ export default function AutoCompleteSelect(props) {
                                 ])
                             }
                             }
+                            name={props.name}
                             options={arrayData}
                             getOptionLabel={(option) => option.title}
                             style={{ width: 730 }}
+                            key={1}
                             renderInput={(params) => (
                                 <TextField {...params} label={props.label} placeholder={props.placeholder} />
                             )}
@@ -56,8 +58,10 @@ export default function AutoCompleteSelect(props) {
                             }
                             }
                             options={arrayData}
+                            name={props.name}
                             getOptionLabel={(option) => option.title}
                             style={{ width: 250 }}
+                            key={2}
                             renderInput={(params) => (
                                 <TextField {...params} label={props.label} placeholder={props.placeholder} />
                             )}

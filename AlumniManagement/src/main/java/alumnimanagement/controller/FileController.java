@@ -44,6 +44,6 @@ public class FileController {
         FileOutputStream fos =new FileOutputStream(myFile);
         fos.write(file.getBytes());
         fos.close();
-        return new ResponseEntity<Object>(fullPath, HttpStatus.OK);
+        return new ResponseEntity<Object>("/alumni_app/public/"+file.getOriginalFilename(), HttpStatus.OK);
     }
 }

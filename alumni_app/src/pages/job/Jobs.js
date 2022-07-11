@@ -28,21 +28,23 @@ export default function Jobs() {
   const id = "2";
 
   const setValue = (name, value) => {
+    let title = 'undefined';
     if (value[0] != null) {
-      switch (name) {
-        case "state":
-          setState(value[0].title);
-          break;
-        case "city":
-          setCity(value[0].title);
-          break;
-        case "tag":
-          setTag(value[0].title);
-          break;
-        case "name":
-          setName(value[0].title);
-          break;
-      }
+      title = value[0].title;
+    }
+    switch (name) {
+      case "state":
+        setState(title);
+        break;
+      case "city":
+        setCity(title);
+        break;
+      case "tag":
+        setTag(title);
+        break;
+      case "name":
+        setName(title);
+        break;
     }
   };
 
@@ -113,7 +115,7 @@ export default function Jobs() {
               isMultiSelect={false}
               label={"Company Name"}
               placeholder={"Eg. messi, ronaldo, pele"}
-              dataUrl="/reports/studentName"
+              dataUrl="/reports/companyName"
             ></AutoCompleteSelect>
           </div>
           <div>
