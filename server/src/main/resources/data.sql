@@ -244,3 +244,61 @@ VALUES (10014, 'Great company I have ever worked in my life.', 'Google','2022-01
 
 INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date)
 VALUES (10015, 'Feeling like I am valued and seen.', 'Microsoft','2011-01-10', 'Retiring my career!','2020-06-10');
+
+
+--Job Application data
+--fields: id, deleted, job_advertisement_id
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10001, TRUE, 10002);
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10002, false, 10003);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10003, true, 10003);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10004, true, 10001);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10005, true, 10001);
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10006, FALSE, 10002);
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10007, true, 10001);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10008, true, 10001);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10009, FALSE, 10011);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10010, TRUE, 10011);
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10011, FALSE, 10002);
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10012, FALSE, 10011);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10013, true, 10010);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10014, FALSE, 10010);
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id)
+VALUES (10015, true, 10011);
