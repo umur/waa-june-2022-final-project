@@ -9,4 +9,7 @@ public interface UserService {
     List<User> findAll();
 
     void changePass(long id, PasswordChangeRequest pwrreq);
+
+    User findBYUserName( String name);
+
 }
