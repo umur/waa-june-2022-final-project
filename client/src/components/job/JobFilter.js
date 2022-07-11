@@ -6,7 +6,7 @@ import { allJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actio
 
 export default function JobFilter(props) {
   const dispatch = useDispatch();
-  const { jobAdvertisement } = useSelector((state) => state);
+  const { jobAdvertisement } = useSelector((state) => state.jobAdvertisement);
 
   useEffect(() => {
     dispatch(allJobAdvertisement());
