@@ -12,22 +12,16 @@ export default function JobListings(props) {
     dispatch(allJobAdvertisement());
   }, []);
 
-  // console.log(jobAdvertisement)
-  const initialState = jobAdvertisement;
-  const [jobState, setJobState] = useState(initialState);
-  console.log(jobState)
+  const [jobState, setJobState] = useState([]);
 
   let handleFilterChange = (data) => {
-    setJobState(data)
-    console.log(jobState)
-  }
+    setJobState(data);
+  };
 
   return (
     <>
       <JobFilter handleFilterChange={handleFilterChange}></JobFilter>
       <div className="container">
-
-      {/* {JSON.stringify(jobState)} */}
         {jobState &&
           jobState.map((job) => {
             return (
