@@ -1,13 +1,19 @@
 package com.waa.amp.controller;
 
 import com.waa.amp.dto.JobSearchReq;
+import com.waa.amp.entity.Job;
+import com.waa.amp.entity.Tag;
+import com.waa.amp.service.CommentService;
 import com.waa.amp.service.JobService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
+
+import static java.util.Map.of;
 
 @RestController
 @RequestMapping("/api/v1/common")
@@ -17,10 +23,15 @@ import java.util.Map;
 public class CommonController {
 
     private final JobService jobService;
+    private final CommentService commentService;
 
     @PostMapping("/search-job")
     public ResponseEntity<?> studentSearch(@RequestBody JobSearchReq jobSearchReq) {
         return ResponseEntity.ok(Map.of("results", jobService.searchJob(jobSearchReq)));
     }
 
+    @GetMapping("/getAllTag")
+    public ResponseEntity<Map<String, List<Tag>>> getTag() {
+        return ResponseEntity.ok(of("tagList", commentService.allTag()));
+    }
 }

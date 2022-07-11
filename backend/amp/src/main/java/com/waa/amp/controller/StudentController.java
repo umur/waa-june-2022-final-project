@@ -8,6 +8,7 @@ import com.waa.amp.entity.JobApply;
 import com.waa.amp.entity.Student;
 import com.waa.amp.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ import static java.util.Map.of;
 @RestController
 @RequestMapping("/api/v1/student")
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin("*")
 public class StudentController {
 
     private final StudentService studentService;
