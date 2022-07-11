@@ -1,11 +1,10 @@
 package com.waa.amp.service;
 
+import com.waa.amp.dto.JobApplyReq;
 import com.waa.amp.dto.JobReq;
 import com.waa.amp.dto.StudentReq;
-import com.waa.amp.entity.Job;
-import com.waa.amp.entity.Student;
-import com.waa.amp.entity.Tag;
-import com.waa.amp.entity.User;
+import com.waa.amp.entity.*;
+import com.waa.amp.repository.JobApplyRepository;
 import com.waa.amp.repository.JobRepository;
 import com.waa.amp.repository.StudentRepository;
 import com.waa.amp.repository.TagRepository;
@@ -24,6 +23,7 @@ public class StudentService {
     private final TagRepository tagRepository;
 
     private final StudentRepository studentRepository;
+    private final JobApplyRepository jobApplyRepository;
 
     public Job postJob(JobReq jobReq) {
 
@@ -69,5 +69,9 @@ public class StudentService {
 
     public Student getById(Long id) {
         return studentRepository.findByIdAndUser(id, userService.getLoggedUser());
+    }
+
+    public JobApply applyJob(JobApplyReq jobApplyReq) {
+        return jobApplyRepository.save(new JobApply(null, userService.getLoggedUser(), jobRepository.findById(jobApplyReq.jobId()).orElseThrow(RuntimeException::new)));
     }
 }

@@ -1,8 +1,10 @@
 package com.waa.amp.controller;
 
+import com.waa.amp.dto.JobApplyReq;
 import com.waa.amp.dto.JobReq;
 import com.waa.amp.dto.StudentReq;
 import com.waa.amp.entity.Job;
+import com.waa.amp.entity.JobApply;
 import com.waa.amp.entity.Student;
 import com.waa.amp.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +47,10 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudent(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.getById(id));
+    }
+
+    @PostMapping("/apply-job")
+    public ResponseEntity<JobApply> applyJob(JobApplyReq jobApplyReq) {
+        return ResponseEntity.ok(studentService.applyJob(jobApplyReq));
     }
 }
