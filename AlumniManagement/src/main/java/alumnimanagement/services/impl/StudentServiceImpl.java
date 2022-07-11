@@ -94,6 +94,22 @@ public class StudentServiceImpl implements StudentService {
 //        System.out.println(id + "   "+ updateCVDTO.toString());
     }
 
+    @Override
+    public List<ReportList> findByStateCity(String state) {
+
+        var result = studentRepo.StudentByCity(state.toUpperCase());
+        List<ReportList> result2 = new ArrayList<>();
+        for(Object[] d : result)
+        {
+            Long id =(Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
+    }
+
 
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName,long id) {

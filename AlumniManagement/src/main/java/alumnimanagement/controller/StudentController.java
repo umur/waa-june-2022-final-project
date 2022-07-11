@@ -90,4 +90,6 @@ public class StudentController {
         studentService.updateStudentCV(id, updateCVDTO);
         return updateCVDTO;
     }
+
+
 }

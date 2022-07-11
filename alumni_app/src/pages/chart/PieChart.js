@@ -3,16 +3,17 @@ import ReactECharts from 'echarts-for-react';
 import { getRequest } from "../../setup/fetch-manager/FetchGateway";
 
 
-function PieChart() {
+function PieChart(props) {
     let [listData, setListData] = useState();
 
     const fetchData = async () => {
-        let response = await getRequest('/reports/studentByState');
+        let response = await getRequest(props.dataUrl);
         setListData(response);
     }
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [props])
+    
     let countVal = 0;
     let result = []
     if (listData != undefined) {

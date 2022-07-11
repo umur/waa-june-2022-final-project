@@ -20,4 +20,6 @@ public interface StudentService {
     List<ReportList> StudentByState();
 
     void updateStudentCV(long id, UpdateCVDTO updateCVDTO);
+    List<ReportList> findByStateCity(String state);
+
 }

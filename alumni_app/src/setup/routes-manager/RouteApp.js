@@ -14,6 +14,7 @@ import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
 import JobDetails from "../../pages/job/JobDetails";
 import Cv from "../../pages/cv/Cv"
+import SubmitJob from "../../pages/job/SubmitJob";
 import EditJob from "../../pages/job/EditJob";
 import GetJobList from "../../pages/job/GetJobList";
 
@@ -39,6 +40,10 @@ export default function RouteApp() {
         <Route path="/FileUpload" element={<FileUpload />}></Route>
         <Route path="/cv" element={<Cv />}></Route>
         <Route path="/Jobs/:studentID/:jobID" element={<EditJob />}></Route>
+        <Route
+          path="/JobDetails/additional/:id"
+          element={<SubmitJob />}
+        ></Route>
       </Routes>
     </>
   );

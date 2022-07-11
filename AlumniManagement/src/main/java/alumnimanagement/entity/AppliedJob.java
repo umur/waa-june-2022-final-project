@@ -11,10 +11,11 @@ import java.time.LocalDateTime;
 public class AppliedJob {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private LocalDateTime appliedDate;
     private Boolean isActive;
     private Boolean isDeleted;
+    private String additionalComment;
 
     @OneToOne()
     @JoinColumn(name = "id_student")
