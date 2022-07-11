@@ -19,6 +19,7 @@ public class Faculty extends User {
     private Department department;
 
     @OneToMany
+    @JoinColumn(name = "faculty_id")
     private List<Comment> commentList;
 
 

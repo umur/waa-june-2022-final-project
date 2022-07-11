@@ -12,14 +12,14 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/api/job-advertisement")
+@RequestMapping("v1/api/job-advertisements")
 @CrossOrigin
 public class JobAdvertisementController {
     @Autowired
     private JobAdvertisementService jobAdvertisementService;
 
     @GetMapping
-    @RolesAllowed({"student", "faculty"})
+//    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<JobAdvertisementDto>> findAll(){
         return new ResponseEntity<>(jobAdvertisementService.findAll(), HttpStatus.OK);
     }
@@ -30,8 +30,14 @@ public class JobAdvertisementController {
         return new ResponseEntity<>(jobAdvertisementService.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/last10Advertisements")
+    public ResponseEntity<List<JobAdvertisementDto>> findLast10Advertisement(){
+        return new ResponseEntity<>(jobAdvertisementService.findFirst10Advertisement(), HttpStatus.OK);
+    }
+
+
     @PostMapping
-    @RolesAllowed("student")
+//    @RolesAllowed("student")
     public ResponseEntity<JobAdvertisementDto> create(@RequestBody JobAdvertisementDto jobAdvertisementDto){
         return new ResponseEntity<> (jobAdvertisementService.save(jobAdvertisementDto), HttpStatus.CREATED);
 
@@ -45,7 +51,7 @@ public class JobAdvertisementController {
     }
 
     @DeleteMapping("/{id}")
-    @RolesAllowed("student")
+//    @RolesAllowed("student")
     public void delete(@PathVariable Integer id){
         jobAdvertisementService.remove(id);
     }

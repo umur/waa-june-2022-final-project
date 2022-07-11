@@ -15,3 +15,9 @@ code {
 p.error {
   color: red;
 }
+
+.page-not-found > div {
+  margin: auto;
+  text-align: center;
+  font-size: 60px;
+}

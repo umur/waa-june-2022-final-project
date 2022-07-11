@@ -45,9 +45,9 @@ public class JobAdvertisement {
     @JoinColumn(name = "createdBy")
     private Student createdBy;
 
-    @OneToMany
+    @OneToMany(mappedBy = "jobAdvertisement")
     private List<JobApplication> jobApplicationList;
 
-    @ColumnDefault("false")
-    private boolean delete;
+//    @ColumnDefault("false")
+//    private boolean delete;
 }

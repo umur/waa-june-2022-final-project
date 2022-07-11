@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -6,7 +6,7 @@ import JobListing from "./Listing";
 
 export default function JobListings(props) {
   const dispatch = useDispatch();
-  const { jobAdvertisement } = useSelector((state) => state);
+  const { jobAdvertisement } = useSelector((state) => state.jobAdvertisement);
 
   useEffect(() => {
     dispatch(allJobAdvertisement());
@@ -21,20 +21,23 @@ export default function JobListings(props) {
   return (
     <>
       <JobFilter handleFilterChange={handleFilterChange}></JobFilter>
-      <div className="container">
+
+      <div className="row">
         {jobState &&
-          jobState.map((job) => {
-            return (
-              <JobListing
-                key={job.id}
-                id={job.id}
-                title={job.title}
-                benefits={job.benefits}
-                description={job.description}
-                address={job.address}
-              />
-            );
-          })}{" "}
+          [...jobState]
+            .sort((x, y) => (x.id > y.id ? 1 : -1))
+            .map((job) => {
+              return (
+                <JobListing
+                  key={job.id}
+                  id={job.id}
+                  title={job.title}
+                  benefits={job.benefits}
+                  description={job.description}
+                  address={job.address}
+                />
+              );
+            })}{" "}
       </div>
     </>
   );
