@@ -3,6 +3,7 @@ package com.waa.amp.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,5 +30,7 @@ public class User {
     private UserType userType;
 
     private Boolean active = false;
+
+    private LocalDateTime lastLoggedInTime;
 
 }

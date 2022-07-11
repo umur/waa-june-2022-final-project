@@ -29,9 +29,9 @@ public class AmpApplication {
 			var role = roleRepository.save(new Role(null, "ADMIN"));
 			var roleStudent = roleRepository.save(new Role(null, "STUDENT"));
 			var roleFaculty = roleRepository.save(new Role(null, "FACULTY"));
-			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN, true));
-			var userStudent = userRepository.save(new User(null, "student", "student", List.of(roleStudent), UserType.STUDENT, true));
-			var userFaculty = userRepository.save(new User(null, "faculty", "faculty", List.of(roleFaculty), UserType.FACULTY, true));
+			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN, true, null));
+			var userStudent = userRepository.save(new User(null, "student", "student", List.of(roleStudent), UserType.STUDENT, true, null));
+			var userFaculty = userRepository.save(new User(null, "faculty", "faculty", List.of(roleFaculty), UserType.FACULTY, true, null));
 		};
 	}
 

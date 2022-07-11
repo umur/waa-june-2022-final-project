@@ -21,12 +21,14 @@ public class Student {
     @OneToOne
     private User user;
 
-    private String state;
+    private String email;
 
-    private String city;
+    private String firstName;
+
+    private String lastname;
 
     private String major;
 
-    private String name;
+    private String gpa;
 
 }
