@@ -302,3 +302,19 @@ VALUES (10014, FALSE, 10010);
 
 INSERT INTO job_application (id, deleted, job_advertisement_id)
 VALUES (10015, true, 10011);
+
+--Add data in Department table
+INSERT INTO department (id, delete, department_name)
+VALUES (10001, TRUE, 'COMPRO');
+
+INSERT INTO department (id, delete, department_name)
+VALUES (10002, FALSE, 'MBA');
+
+INSERT INTO department (id, delete, department_name)
+VALUES (10003, TRUE, 'CSE');
+
+INSERT INTO department (id, delete, department_name)
+VALUES (10004, TRUE, 'ECE');
+
+INSERT INTO department (id, delete, department_name)
+VALUES (10005, FALSE, 'Arts');
