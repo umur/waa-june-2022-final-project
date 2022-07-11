@@ -58,6 +58,15 @@ export default function HomePage() {
               title={"Faculty Data"}
             ></PieChart>
           </div>
+
+          <div className="col-6">
+            <PieChart
+              dataUrl={"/jobs/getByTags"}
+              subtext={"Tags statistics"}
+              name={"Jobs as per tags"}
+              title={"Tags Data"}
+            ></PieChart>
+          </div>
         </div>
       </div>
     </>
