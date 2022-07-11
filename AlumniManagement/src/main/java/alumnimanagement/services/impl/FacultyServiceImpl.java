@@ -2,9 +2,9 @@ package alumnimanagement.services.impl;
 
 import alumnimanagement.dto.FacultyDTO;
 import alumnimanagement.dto.FacultyListDto;
+import alumnimanagement.dto.ReportList;
 import alumnimanagement.entity.Address;
 import alumnimanagement.entity.Faculty;
-import alumnimanagement.entity.Student;
 import alumnimanagement.repo.FacultyRepo;
 import alumnimanagement.services.FacultyService;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -61,9 +60,8 @@ public class FacultyServiceImpl implements FacultyService {
         Pageable pageable = PageRequest.of(page, size);
         List<Faculty> facultyList = facultyRepo.findAll(pageable).stream().toList();
         List<FacultyListDto> dtos = new ArrayList<>();
-        for(Faculty f : facultyList)
-        {
-            if(!f.isDeleted()) {
+        for (Faculty f : facultyList) {
+            if (!f.isDeleted()) {
                 FacultyListDto facultyListDto = new FacultyListDto();
                 facultyListDto.setCity(f.getAddress().getCity());
                 facultyListDto.setEmail(f.getEmail());
@@ -82,5 +80,20 @@ public class FacultyServiceImpl implements FacultyService {
     public Long count() {
         Long count = facultyRepo.count();
         return count;
+    }
+
+    @Override
+    public List<ReportList> facultyByDepartment() {
+        var result = facultyRepo.facultyByDepartment();
+        List<ReportList> result2 = new ArrayList<>();
+        for (Object[] d : result) {
+            Long id = (Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
+
     }
 }
