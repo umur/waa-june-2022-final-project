@@ -5,7 +5,7 @@ import TableMain from "../../common/TableMain";
 export default function GetJobList() {
   const { id } = useParams();
   const listParams = {
-    showDetail: false,
+    showDetail: true,
     showEdit: true,
     showDelete: true,
     showAddComment: false,
