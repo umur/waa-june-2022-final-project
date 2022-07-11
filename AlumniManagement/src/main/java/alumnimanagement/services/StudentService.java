@@ -22,4 +22,6 @@ public interface StudentService {
 
     List<ReportList> StudentByState();
 
+    List<Object[]> findByStateCity(String state);
+
 }

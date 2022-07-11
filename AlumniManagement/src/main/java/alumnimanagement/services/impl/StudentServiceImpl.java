@@ -83,6 +83,11 @@ public class StudentServiceImpl implements StudentService {
         return result2;
     }
 
+    @Override
+    public List<Object[]> findByStateCity(String state) {
+        return studentRepo.StudentByCity(state);
+    }
+
 
     @Override
     public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName,long id) {
