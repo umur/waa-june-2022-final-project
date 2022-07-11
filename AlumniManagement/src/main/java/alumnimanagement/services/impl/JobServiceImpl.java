@@ -49,8 +49,13 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void update(JobAdvertisementDTO jobAdvertisementDTO, int id) {
+        var data = jobRepo.findById(id).get();
         var result =modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class);
         result.setId(id);
+        result.setStudent(data.getStudent());
+        result.setDeleted(false);
+        result.setPublishDate(data.getPublishDate());
+        //todo set file location to result from data if not changed from dto
         jobRepo.save(result);
     }
 

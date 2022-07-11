@@ -81,14 +81,13 @@ public class JobController {
     }
 
     @PutMapping("/updateJob/{jobId}")
-    public void updateJob(@PathVariable int jobId, @RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.update(jobAdvertisementDTO, jobId);}
+    public void updateJob(@PathVariable int jobId, @RequestBody JobAdvertisementDTO jobAdvertisementDTO){
+        System.out.println("here ==================================="+ jobId);
+        jobService.update(jobAdvertisementDTO, jobId);
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
         jobService.delete(id);
     }
-
-
-
-
 }
