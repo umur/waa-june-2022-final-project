@@ -29,7 +29,7 @@ public class JobAdvertisement {
 
    private boolean mark_delete = false;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name ="jobs_tags",
         joinColumns = @JoinColumn(name = "jobs_id"),
