@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useParams } from "react-router";
-import { getRequest, postRequest } from "../../setup/fetch-manager/FetchGateway";
+import { getRequest, putRequest } from "../../setup/fetch-manager/FetchGateway";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import { useNavigate } from "react-router";
 import FileUpload from "../../common/FileUpload";
@@ -47,10 +47,10 @@ export default function EditJob() {
     });
   };
 
-  const postData = async () => {
-    let params = "/jobs/newJob";
-    let result = await postRequest(params, values);
-    navigate("/Jobs");
+  const updateData = async () => { 
+    let params = "/jobs/updateJob/"+ jobID; 
+    let result = await putRequest(params, values); 
+    navigate("/Jobs"); 
   };
 
   const getData = async () => {
@@ -236,7 +236,7 @@ export default function EditJob() {
               <Button variant="contained" type="reset" onClick={handleReset}>
                 Reset
               </Button>
-              <Button onClick={postData} variant="contained" color="primary">
+              <Button onClick={updateData} variant="contained" color="primary">
                 Edit Job
               </Button>
             </div>

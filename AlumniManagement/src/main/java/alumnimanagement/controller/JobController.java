@@ -77,7 +77,7 @@ public class JobController {
         return jobService.countById(id);
     }
 
-    @PutMapping("/updateJob")
+    @PutMapping("/updateJob/{jobId}")
     public void updateJob(@PathVariable int jobId, @RequestBody JobAdvertisementDTO jobAdvertisementDTO){jobService.update(jobAdvertisementDTO, jobId);}
 
 
