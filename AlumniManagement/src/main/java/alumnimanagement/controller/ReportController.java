@@ -80,6 +80,18 @@ public class ReportController {
         return list;
     }
 
+    @GetMapping("/studentId")
+    public List<DropdownDto> studentId() {
+        List<DropdownDto> list = new ArrayList<>();
+        List<StudentDTO> students=studentService.findAll();
+        for(StudentDTO s: students){
+            DropdownDto dto= modelMapper.map(s,DropdownDto.class);
+            dto.setTitle(s.getId()+"");
+            list.add(dto);
+        }
+        return list;
+    }
+
     @GetMapping("/companyName")
     public List<DropdownDto> companyName() {
         List<DropdownDto> list = new ArrayList<>();
