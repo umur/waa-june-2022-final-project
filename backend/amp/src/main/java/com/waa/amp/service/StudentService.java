@@ -3,6 +3,7 @@ package com.waa.amp.service;
 import com.waa.amp.dto.JobReq;
 import com.waa.amp.entity.Job;
 import com.waa.amp.entity.Tag;
+import com.waa.amp.entity.User;
 import com.waa.amp.repository.JobRepository;
 import com.waa.amp.repository.TagRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,5 +39,10 @@ public class StudentService {
         );
 
         return jobRepository.save(job);
+    }
+
+    public List<Job> getJob() {
+        User loggedUser = userService.getLoggedUser();
+        return jobRepository.findAllByPostedBy(loggedUser);
     }
 }
