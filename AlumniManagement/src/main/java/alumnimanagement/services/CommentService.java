@@ -17,5 +17,5 @@ public interface CommentService {
 
     List<CommentDTO> commentByStudentId(long id);
 
-    Long count();
+    Long count(long id);
 }

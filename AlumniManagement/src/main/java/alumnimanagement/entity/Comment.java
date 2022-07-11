@@ -1,5 +1,7 @@
 package alumnimanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,9 +19,12 @@ public class Comment {
     private boolean isDeleted;
 
     @ManyToOne
+    @JsonBackReference
     private Faculty faculty;
 
+
     @ManyToOne
+//    @JsonBackReference
     private Student student;
 
 

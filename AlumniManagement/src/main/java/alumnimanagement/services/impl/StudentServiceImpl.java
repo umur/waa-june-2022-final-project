@@ -54,8 +54,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Long totalStudents() {
+    public Long totalStudents(String state, String city, String major, String studentName) {
         Long count = studentRepo.count();
+        if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
+            return findByFilter(state,city,major,studentName).stream().count();
+        }
         return count;
     }
 
@@ -82,8 +85,10 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public List<StudentListDto> findAllByParam(int page, int size, String searchValue) {
-//        List<Student> student = studentRepo.findAll().stream().toList();
+    public List<StudentListDto> findAllByParam(int page, int size, String state, String city, String major, String studentName) {
+       if(!state.equals("''")||!city.equals("''")||!major.equals("''")||!studentName.equals("''")){
+            return findByFilter(state,city,major,studentName);
+       }
         Long id = Helper.getLoggedUserId();
         var a = Helper.getCurrentDate();
         Pageable pageable = PageRequest.of(page, size);
@@ -103,8 +108,26 @@ public class StudentServiceImpl implements StudentService {
         return studentListDtos;
     }
 
+    public List<StudentListDto> findByFilter(String state, String city, String major, String studentName)
+    {
+        List<Student> students=studentRepo.findAll().stream().toList();
+        List<StudentListDto> dto=new ArrayList<>();
+
+        for(Student s: students){
+            String sName=s.getFirstName()+" "+s.getLastName();
+            if(s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
+                StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
+                dto1.setState(s.getAddress().getState());
+                dto1.setCity(s.getAddress().getCity());
+                dto.add(dto1);
+            }
+        }
+        return  dto;
+    }
     @Override
     public void remove(long id) {
         studentRepo.deleteById(id);
     }
+
+
 }

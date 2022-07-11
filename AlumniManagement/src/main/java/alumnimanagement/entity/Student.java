@@ -1,8 +1,10 @@
 package alumnimanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +27,10 @@ public class Student {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_address")
     private Address address;
+
+//    @OneToMany
+//    @JsonManagedReference
+//    private List<Comment> comment;
 
 
 }

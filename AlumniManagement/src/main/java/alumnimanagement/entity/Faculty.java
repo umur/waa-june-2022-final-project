@@ -1,5 +1,7 @@
 package alumnimanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,7 +25,9 @@ public class Faculty {
     @JoinColumn(name = "id_address")
     private Address address;
 
+
     @OneToMany(mappedBy = "faculty")
+    @JsonManagedReference
     private List<Comment> comments;
 
 

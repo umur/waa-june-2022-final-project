@@ -25,20 +25,27 @@ export default function Jobs() {
   const [name, setName] = useState();
   const [listParamsD, setlistParamsD] = useState(listParams);
 
+  const id = "2";
+
   const setValue = (name, value) => {
+    let title = 'undefined';
+    if (value[0] != null) {
+      title = value[0].title;
+    }
+
     if (value[0] != null) {
       switch (name) {
         case "state":
-          setState(value[0].title);
+          setState(title);
           break;
         case "city":
-          setCity(value[0].title);
+          setCity(title);
           break;
         case "tag":
-          setTag(value[0].title);
+          setTag(title);
           break;
         case "name":
-          setName(value[0].title);
+          setName(title);
           break;
       }
     }
@@ -58,13 +65,19 @@ export default function Jobs() {
           <Button
             variant="contained"
             color="primary"
+            onClick={() => navigate("/Jobs/" + id)}
+          >
+            Edit Job
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             onClick={() => navigate("/Jobs/newJob")}
           >
             Add Job
           </Button>
         </div>
       </div>
-
 
       <div className="row body-custom">
         <Box sx={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>
@@ -105,7 +118,7 @@ export default function Jobs() {
               isMultiSelect={false}
               label={"Company Name"}
               placeholder={"Eg. messi, ronaldo, pele"}
-              dataUrl="/reports/studentName"
+              dataUrl="/reports/companyName"
             ></AutoCompleteSelect>
           </div>
           <div>

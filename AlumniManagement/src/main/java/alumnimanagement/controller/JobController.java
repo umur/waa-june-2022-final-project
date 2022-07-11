@@ -30,19 +30,18 @@ public class JobController {
         return jobService.findLastTop10Advertisement();
     }
 
-
     @GetMapping("/{state}/{city}/{tag}/{name}/getAll")
-    public List<JobAdvertisementListDTO> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    public List<JobAdvertisementListDTO> getAll(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
         if(state.equals("undefined"))
-            state = "";
+            state = "''";
         if(city.equals("undefined"))
-            city = "";
+            city = "''";
         if(tag.equals("undefined"))
-            tag = "";
+            tag = "''";
         if(name.equals("undefined"))
-            name = "";
-        var result = jobService.findAllByParam(page,size,searchValue);
+            name = "''";
+        var result = jobService.findAllByParam(page,size,state, city, tag, name);
         return result;
     }
 
@@ -50,19 +49,32 @@ public class JobController {
     public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String tag,@PathVariable String name)
     {
         if(state.equals("undefined"))
-            state = "";
+            state = "''";
         if(city.equals("undefined"))
-            city = "";
+            city = "''";
         if(tag.equals("undefined"))
-            tag = "";
+            tag = "''";
         if(name.equals("undefined"))
-            name = "";
-        return jobService.count();
+            name = "''";
+        return jobService.count(state, city, tag, name);
     }
 
     @GetMapping("/{id}")
     public JobAdvertisementDTO getJobsById(@PathVariable int id){
         return jobService.findById(id);
+    }
+
+    @GetMapping("/{id}/getAll")
+    public List<JobAdvertisementDTO> findStudentJobList(@PathVariable long id,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    {
+        var result = jobService.findStudentJobList(id,page,size,searchValue);
+        return result;
+    }
+
+    @GetMapping("/{id}/count")
+    public Long count(long id)
+    {
+        return jobService.countById(id);
     }
 
 }
