@@ -13,7 +13,6 @@ import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
 import JobDetails from "../../pages/job/JobDetails";
-import EditJob from "../../pages/job/EditJob";
 import GetJobList from "../../pages/job/GetJobList";
 
 export default function RouteApp() {

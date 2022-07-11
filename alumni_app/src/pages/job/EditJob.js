@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useParams } from "react-router";
-import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import { putRequest } from "../../setup/fetch-manager/FetchGateway";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
@@ -51,9 +51,9 @@ export default function EditJob() {
 
   const { id } = useParams();
 
-  const postData = async () => {
-    let params = "/jobs/newJob";
-    let result = await postRequest(params, values);
+  const updateData = async () => {
+    let params = "/jobs/updateJob";
+    let result = await putRequest(params, values);
     navigate("/Jobs");
   };
 
@@ -71,6 +71,10 @@ export default function EditJob() {
 
   const handleReset = (e) => {
     setValues(initialValues);
+  };
+
+  const getUrl = (e) => {
+    debugger;
   };
 
   //const [companySize, setCompanySize] = React.useState('');
@@ -277,7 +281,11 @@ export default function EditJob() {
                 Upload Job details document
               </InputLabel>
               <br />
-              <FileUpload folderName="Job" id={1}></FileUpload>
+              <FileUpload
+                folderName="Job"
+                id={1}
+                getUrl={getUrl.bind(this)}
+              ></FileUpload>
             </>
           </Grid>
           <Grid item xs={12}>
@@ -292,7 +300,7 @@ export default function EditJob() {
               <Button variant="contained" type="reset" onClick={handleReset}>
                 Reset
               </Button>
-              <Button onClick={postData} variant="contained" color="primary">
+              <Button onClick={updateData} variant="contained" color="primary">
                 Edit Job
               </Button>
             </div>
