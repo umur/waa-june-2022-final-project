@@ -32,8 +32,8 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/{state}/{city}/{major}/{studentName}/getAll")
-    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
+    @GetMapping("/{state}/{city}/{major}/{studentName}/{studentId}/getAll")
+    public List<StudentListDto> findAllStudent(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@PathVariable String studentId,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue)
     {
         if(state.equals("undefined"))
             state = "''";
@@ -43,12 +43,15 @@ public class StudentController {
             major = "''";
         if(studentName.equals("undefined"))
             studentName = "''";
-        var result = studentService.findAllByParam(page,size,state, city, major,studentName);
+        long stuId=0L;
+        if(!studentId.equals("undefined")&& !studentId.equals("''") && !studentId.equals(""))
+            stuId = Long.parseLong(studentId);
+        var result = studentService.findAllByParam(page,size,state, city, major,studentName,stuId);
         return result;
     }
 
-    @GetMapping("/{state}/{city}/{major}/{studentName}/count")
-    public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName)
+    @GetMapping("/{state}/{city}/{major}/{studentName}/{studentId}/count")
+    public Long count(@PathVariable String state, @PathVariable String city,@PathVariable String major,@PathVariable String studentName,@PathVariable String studentId)
     {
         if(state.equals("undefined"))
             state = "''";
@@ -58,7 +61,10 @@ public class StudentController {
             major = "''";
         if(studentName.equals("undefined"))
             studentName = "''";
-        return studentService.totalStudents(state, city, major,studentName);
+        long stuId=0L;
+        if(!studentId.equals("undefined")&& !studentId.equals("''") && !studentId.equals(""))
+            stuId = Long.parseLong(studentId);
+        return studentService.totalStudents(state, city, major,studentName,stuId);
     }
 
     @PutMapping("/{id}")
