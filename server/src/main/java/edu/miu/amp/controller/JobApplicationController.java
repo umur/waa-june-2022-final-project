@@ -1,4 +1,5 @@
 package edu.miu.amp.controller;
+import edu.miu.amp.dto.JobAdvertisementDto;
 import edu.miu.amp.dto.JobApplicationDto;
 import edu.miu.amp.service.JobApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class JobApplicationController {
     private JobApplicationService jobApplicationService;
 
     @GetMapping
-    @RolesAllowed("student")
+//    @RolesAllowed("student")
     public ResponseEntity<List<JobApplicationDto>> findAll(){
         return new ResponseEntity<>(jobApplicationService.findAll(), HttpStatus.OK);
     }
@@ -27,6 +28,11 @@ public class JobApplicationController {
     @RolesAllowed("student")
     public ResponseEntity<JobApplicationDto> getById(@PathVariable Integer id){
         return new ResponseEntity<>(jobApplicationService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/last10-job-application")
+    public ResponseEntity<List<JobApplicationDto>> findLast10JobApplied(){
+        return new ResponseEntity<>(jobApplicationService.Top10JobApplicant(), HttpStatus.OK);
     }
 
     @PostMapping

@@ -68,7 +68,9 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     @Override
     public List<JobAdvertisementDto> findFirst10Advertisement() {
-        var result = jobAdvertisementRepository.findTop10ByOrderById();
+        var result = jobAdvertisementRepository.findTop10ByOrderByIdDesc();
+
+     
         List<JobAdvertisementDto> jobAdvertisement = ((result))
                 .stream()
                 .map(ja -> toDto(ja))
@@ -78,6 +80,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     }
 
     public JobAdvertisementDto toDto(JobAdvertisement jobAdvertisement) {
+
         JobAdvertisementDto jobAdvertisementDto = modelMapper.map(jobAdvertisement, JobAdvertisementDto.class);
         return jobAdvertisementDto;
     }
