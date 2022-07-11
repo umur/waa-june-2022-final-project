@@ -12,5 +12,5 @@ import java.util.List;
 public interface AppliedJobRepo extends JpaRepository<AppliedJob, Long> {
 //    @Query("Select * from ")
     List<AppliedJob> findAllByStudentId(Long id);
-
+    List<AppliedJob> findAllByJobAdvertisementId(int jobId);
 }

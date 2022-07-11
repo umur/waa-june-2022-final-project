@@ -19,6 +19,7 @@ public class JobAdvertisementDTO {
     private String jobTag;
     private float paymentAmount;
     private LocalDateTime publishDate;
+    private String jobDescFilePath;
 
     //todo Address address;
     private AddressDTO addressDTO;

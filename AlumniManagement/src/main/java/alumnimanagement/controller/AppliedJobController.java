@@ -1,6 +1,7 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.AppliedJobDTO;
+import alumnimanagement.dto.AppliedStudentsDTO;
 import alumnimanagement.services.AppliedJobService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,12 @@ public class AppliedJobController {
     @DeleteMapping("/{appliedJobId}")
     public void removeAppliedJob(@PathVariable Long appliedJobId) {
         appliedJobService.remove(appliedJobId);
+    }
+
+    @GetMapping("/by/{jobId}")
+    public List<AppliedStudentsDTO> findStudentsAppliedToJob(@PathVariable int jobId) {
+        System.out.println("here==========================>");
+        return appliedJobService.findStudentsJobAppliedToJob(jobId);
     }
 
 }
