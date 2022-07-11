@@ -9,7 +9,7 @@ const listParams = {
     'showEdit': true,
     'showDelete': true,
     'showAddComment': true,
-    'dataUrl': "/students/''/''/''/''",
+    'dataUrl': "/students/''/''/''/''/''",
     'addCommentUrl': '/Comments/',
     'editUrl': '',
     'deleteUrl': '/StudentDelete/',
@@ -21,6 +21,7 @@ export default function StudentList() {
     const [city, setCity] = useState();
     const [major, setMajor] = useState();
     const [name, setName] = useState();
+    const [id, setId] = useState();
     const [listParamsD, setlistParamsD] = useState(listParams);
 
     const setValue = (name, value) => {
@@ -41,17 +42,23 @@ export default function StudentList() {
             case 'name':
                 setName(title);
                 break;
+            case 'studentId':
+                setId(title);
+                break;
         }
     }
 
     const reLoadList = () => {
-        const url = '/students/' + state + "/" + city + "/" + major + "/" + name;
+        const url = '/students/' + state + "/" + city + "/" + major + "/" + name + "/" + id;
         setlistParamsD({ ...listParamsD, 'dataUrl': url })
     }
 
     return (
         <>
             <span className="badge rounded-pill bg-primary mb-2"> Student List</span>
+            <div className="float-end mt-4">
+                <Button variant="contained" color="success" onClick={reLoadList}>Search</Button>
+            </div>
             <div className="row body-custom">
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
                     <div>
@@ -91,8 +98,15 @@ export default function StudentList() {
                             dataUrl='/reports/studentName' ></AutoCompleteSelect >
                     </div>
                     <div>
-                        <Button variant="contained" color="success" onClick={reLoadList}>Search</Button>
+                        < AutoCompleteSelect
+                            name="studentId"
+                            onChange={value => setValue('studentId', value)}
+                            isMultiSelect={false}
+                            label={"Student Id"}
+                            placeholder={"1,2,3"}
+                            dataUrl='/reports/studentId' ></AutoCompleteSelect >
                     </div>
+
                 </Box>
             </div>
 

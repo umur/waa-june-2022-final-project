@@ -42,6 +42,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<String> findAllCompany() {
+        return jobRepo.findAllByCompanyNames();
+    }
+
+    @Override
     public void update(JobAdvertisementDTO jobAdvertisementDTO, int id) {
         jobAdvertisementDTO.setId(id);
         jobRepo.save(modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class));
@@ -61,7 +66,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String searchValue) {
+    public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String state, String city, String tag, String name) {
+        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
+            return findByFilter(state,city,tag,name).stream().skip(page*size).limit(5).toList();
+        }
+
         Pageable pageable = PageRequest.of(page, size);
         List<JobAdvertisement> list = jobRepo.findAll(pageable).stream().toList();
         List<JobAdvertisementListDTO> dtos = new ArrayList<>();
@@ -70,17 +79,12 @@ public class JobServiceImpl implements JobService {
             JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
             dto.setId(f.getId());
             dto.setState(f.getAddress().getState());
-
             dto.setJobDesc(f.getJobDesc());
             dto.setJobTitle(f.getJobTitle());
             dto.setCompanyName(f.getCompanyName());
             dto.setJobType(f.getJobType());
-            dto.setNumOpening(f.getNumOpening());
-//            dto.setAddBenefit(f.getAddBenefit());
-//            dto.setCompanySize(f.getCompanySize());
-//            dto.setCity(f.getAddress().getCity());
-//            dto.setAddBenefit(f.getAddBenefit());
-//            dto.setPaymentAmount(f.getPaymentAmount());
+            dto.setCity(f.getAddress().getCity());
+            dto.setTag(f.getJobTag());
             for(Tag t : f.getTags())
             {
                dto.setTag(dto.getTag()+ " " + t.getTitle());
@@ -91,11 +95,44 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Long count() {
+    public Long count(String state, String city, String tag, String name) {
+        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
+            return findByFilter(state,city,tag,name).stream().count();
+        }
         Long count = jobRepo.count();
         return count;
     }
 
+    public List<JobAdvertisementListDTO> findByFilter( String state, String city, String tag, String name)
+    {
+        List<JobAdvertisement> jobs=jobRepo.findAll().stream().toList();
+        List<JobAdvertisementListDTO> jobListDto=new ArrayList<>();
+
+        for (JobAdvertisement job: jobs){
+            String jobTag = "";
+            if(job.getJobTag() != null)
+            {
+                jobTag = job.getJobTag();
+            }
+            if(job.getAddress().getState().equals(state)||jobTag.equals(tag)||job.getAddress().getCity().equals(city)||job.getCompanyName().equals(name)){
+                JobAdvertisementListDTO dto=modelMapper.map(job, JobAdvertisementListDTO.class);
+                dto.setId(job.getId());
+                dto.setState(job.getAddress().getState());
+                dto.setJobDesc(job.getJobDesc());
+                dto.setJobTitle(job.getJobTitle());
+                dto.setCompanyName(job.getCompanyName());
+                dto.setJobType(job.getJobType());
+                dto.setCity(job.getAddress().getCity());
+                dto.setTag(job.getJobTag());
+                for(Tag t : job.getTags())
+                {
+                    dto.setTag(dto.getTag()+ " " + t.getTitle());
+                }
+                jobListDto.add(dto);
+            }
+        }
+        return jobListDto;
+    }
     @Override
     public JobAdvertisementDTO findById(int id) {
         return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);
