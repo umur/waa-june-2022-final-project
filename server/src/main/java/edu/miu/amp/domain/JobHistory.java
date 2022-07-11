@@ -29,6 +29,7 @@ public class JobHistory {
     @Column(name = "reason_to_leave")
     private String reasonToLeave;
 
+    @Column(name = "comments")
     private String comment;
 
     @ManyToMany
