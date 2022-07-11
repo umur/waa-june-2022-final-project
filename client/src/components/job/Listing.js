@@ -2,9 +2,11 @@ import React from "react";
 import { Card, Stack, Button } from "react-bootstrap";
 export default function JobListing(props) {
   return (
-    <div className="container">
+    <div className="col-6">
       <Card border="primary">
-        <Card.Header>{props.title}</Card.Header>
+        <Card.Header>
+          {props.title} {props.id}
+        </Card.Header>
         <Card.Body>
           <Card.Title>
             {props.address

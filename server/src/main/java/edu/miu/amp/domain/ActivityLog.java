@@ -18,9 +18,8 @@ public class ActivityLog {
 
     private Date createdAt;
 
+    @Column(length = 10485760)
     private String message;
-
-
 
 
 }

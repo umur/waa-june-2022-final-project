@@ -26,15 +26,20 @@ export default function Header() {
           <Nav className="me-auto"></Nav>
 
           <div className="notification-container">
-            <FontAwesomeIcon className="fa-solid fa-bell" size="xs" />
+            <FontAwesomeIcon
+              name=""
+              style={{ color: "white" }}
+              className="fa-solid fa-bell"
+              size="lg"
+            />
           </div>
 
           <span className="navbar-text navbar-right">
-            Signed in as {UserService.getUsername()}
+            {UserService.getUsername()}
           </span>
 
           <button
-            className="btn btn-success navbar-btn navbar-right"
+            className="btn btn-info navbar-btn navbar-right"
             style={{ marginRight: 0 }}
             onClick={() => UserService.doLogout()}
           >
