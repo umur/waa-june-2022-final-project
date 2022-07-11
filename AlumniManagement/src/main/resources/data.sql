@@ -18,20 +18,20 @@ INSERT INTO address (id,city,state) VALUES (12,'Bharatpur','ALASKA');
 INSERT INTO address (id,city,state) VALUES (13,'Walling','KANSAS');
 INSERT INTO address (id,city,state) VALUES (14,'Patan','FLORIDA');
 
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (1,'apokhrel@miu.edu','Ashish','Pokhrel',1,4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (2,'pbudhathoki@miu.edu','Puskar','Budhatoki',12,4,2,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (3,'spageni@miu.edu','Saugat','Pageni',13,4,3,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (4,'akc@miu.edu','Anand','Kc',14,4,4,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki',5,4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (6,'sp666@miu.edu','Sudip2','Budhatoki2',6,4,2,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (7,'apokhrel777@miu.edu','Ashish','Pokhrel',1,4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (8,'pbudhathoki8888@miu.edu','Puskar','Budhatoki',2,4,2,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (9,'spageni9999@miu.edu','Saugat','Pageni',3,4,3,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (10,'akc10010@miu.edu','Anand','Kc',4,4,4,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (11,'ram@miu.edu','Ram','raj',1,4,1,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (12,'shyam@miu.edu','Shyam','Budhatoki',2,4,2,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (13,'hari@miu.edu','Hari','Pageni',3,4,3,1);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id) VALUES (14,'ramesh@miu.edu','rames','VAi',4,4,4,1);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (1,'apokhrel@miu.edu','Ashish','Pokhrel',1,4,1,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (2,'pbudhathoki@miu.edu','Puskar','Budhatoki',12,4,2,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (3,'spageni@miu.edu','Saugat','Pageni',13,4,3,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (4,'akc@miu.edu','Anand','Kc',14,4,4,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki',5,4,1,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (6,'sp666@miu.edu','Sudip2','Budhatoki2',6,4,2,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (7,'apokhrel777@miu.edu','Ashish','Pokhrel',1,4,1,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (8,'pbudhathoki8888@miu.edu','Puskar','Budhatoki',2,4,2,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (9,'spageni9999@miu.edu','Saugat','Pageni',3,4,3,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (10,'akc10010@miu.edu','Anand','Kc',4,4,4,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (11,'ram@miu.edu','Ram','raj',1,4,1,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (12,'shyam@miu.edu','Shyam','Budhatoki',2,4,2,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (13,'hari@miu.edu','Hari','Pageni',3,4,3,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (14,'ramesh@miu.edu','rames','VAi',4,4,4,1,false);
 
 
 INSERT INTO job_advertisement (id,add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address) VALUES (1,'good salary with bonus','Infosys','Mid level java developer needed in Infosys','java Developer',1,5,1231,1);
