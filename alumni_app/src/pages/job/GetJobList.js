@@ -13,7 +13,7 @@ export default function GetJobList() {
     addCommentUrl: "//",
     editUrl: "",
     deleteUrl: "/",
-    detailUrl: "/",
+    detailUrl: "/jobs/" + id + "/",
   };
   debugger;
   const [listParamsD, setParams] = useState(listParams);
