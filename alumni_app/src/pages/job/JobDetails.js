@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Typography } from "@material-ui/core";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Paper from "@mui/material/Paper";
 import { getRequest } from "../../setup/fetch-manager/FetchGateway";
 import { Link } from "react-router-dom";
+import SubmitJob from "./SubmitJob";
 // import Pdf from "../../job-description/sample-job-description.pdf";
 
 const JobDetails = () => {
   const { id } = useParams();
+  let navigate = useNavigate();
   const [jobDetailsState, setJobDetailsState] = useState();
 
   let fetchData = async () => {
     let response = await getRequest("/jobs/" + id);
     setJobDetailsState(response);
-    console.log("Job Details " + response);
   };
   useEffect(() => {
     fetchData();
@@ -33,6 +34,9 @@ const JobDetails = () => {
                 variant="contained"
                 className="apply-button"
                 color="primary"
+                onClick={() => {
+                  navigate("/JobDetails/additional/" + id);
+                }}
               >
                 Apply Now
               </Button>

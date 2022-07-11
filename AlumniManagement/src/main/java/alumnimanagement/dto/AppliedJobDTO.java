@@ -8,10 +8,11 @@ import java.time.LocalDateTime;
 
 @Data
 public class AppliedJobDTO {
-    private long id;
+
     private LocalDateTime appliedDate;
     private Boolean isActive;
     private Boolean isDeleted;
-    private Student student;
-    private JobAdvertisement jobAdvertisement;
+    private long id_student;
+    private String additionalComment;
+    private int id_job;
 }

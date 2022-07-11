@@ -10,11 +10,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/jobs/apply")
 @AllArgsConstructor
+@CrossOrigin
 public class AppliedJobController {
     private final AppliedJobService appliedJobService;
 
     @PostMapping
-    public void createJobApply(AppliedJobDTO appliedJobDTO) {
+    public void createJobApply(@RequestBody AppliedJobDTO appliedJobDTO) {
+        System.out.println(appliedJobDTO);
         appliedJobService.create(appliedJobDTO);
     }
 
