@@ -14,6 +14,6 @@ public interface StudentRepo extends JpaRepository<Student, Long> {
     @Query("SELECT A.state as title, count(S.id) as id FROM Address A JOIN  Student  S ON S.address.id = A.id group by A.state")
     List<Object[]> StudentByState();
 
-    @Query("SELECT A.city as title, count(S.id) as id FROM Address A JOIN  Student  S ON S.address.id = A.id WHERE A.state=:state group by A.city")
+    @Query("SELECT A.city as title, count(S.id) as id FROM Address A JOIN  Student  S ON S.address.id = A.id WHERE A.state like %:state% group by A.city")
     List<Object[]> StudentByCity(@Param("state") String state);
 }

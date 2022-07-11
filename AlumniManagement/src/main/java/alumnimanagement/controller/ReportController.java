@@ -11,10 +11,7 @@ import alumnimanagement.services.JobService;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,4 +111,10 @@ public class ReportController {
         List<ReportList> list = jobService.JobByState();
         return list;
     }
+
+    @GetMapping("/studentByCity/{stateName}")
+    public List<ReportList> findByStatesCity(@PathVariable String stateName ){
+        return studentService.findByStateCity(stateName);
+    }
+
 }

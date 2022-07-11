@@ -7,6 +7,8 @@ import AutoCompleteSelect from '../../common/AutoCompleteSelect';
 
 export default function HomePage() {
     const [state, setState] = useState();
+    const [dataUrl, setDataUrl] = useState('/reports/studentByCity/Iowa');
+
     const setValue = (name, value) => {
         let title = 'undefined';
         if (value[0] != null) {
@@ -15,6 +17,7 @@ export default function HomePage() {
         switch (name) {
             case 'state':
                 setState(title);
+                setDataUrl('/reports/studentByCity/'+title)
                 break;
         }
     }
@@ -24,7 +27,7 @@ export default function HomePage() {
             <div className='border'>
                 <div className='row'>
                     <div className="col-6">
-                        <BarChart dataUrl={'/reports/jobByState'}></BarChart>
+                        <BarChart dataUrl={dataUrl}></BarChart>
                     </div>
                     <div className="col-6">
                         <PieChart></PieChart>

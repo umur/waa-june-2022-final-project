@@ -84,8 +84,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Object[]> findByStateCity(String state) {
-        return studentRepo.StudentByCity(state);
+    public List<ReportList> findByStateCity(String state) {
+
+        var result = studentRepo.StudentByCity(state.toUpperCase());
+        List<ReportList> result2 = new ArrayList<>();
+        for(Object[] d : result)
+        {
+            Long id =(Long) d[1];
+            ReportList dto = new ReportList();
+            dto.value = id;
+            dto.name = (String) d[0];
+            result2.add(dto);
+        }
+        return result2;
     }
 
 

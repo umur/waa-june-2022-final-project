@@ -11,6 +11,7 @@ function BarChart(props) {
         let contentData = [];
 
         let response = await getRequest(props.dataUrl);
+        debugger
         response.map((x) => {
             headerData.push(x.name);
             contentData.push(x.value);
@@ -21,7 +22,7 @@ function BarChart(props) {
     useEffect(() => {
         fetchData();
     }, [])
-    let count =0;
+    let count = 0;
     let dataList = [];
     if (header != undefined) {
         dataList.push(
