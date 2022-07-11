@@ -23,6 +23,7 @@ public class JobApplication {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "job_Advertisement_id")
     private JobAdvertisement jobAdvertisement;
 
     @ManyToMany

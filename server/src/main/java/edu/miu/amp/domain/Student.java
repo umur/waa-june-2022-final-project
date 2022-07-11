@@ -28,4 +28,8 @@ public class Student extends User {
     @OneToMany(mappedBy = "createdBy")
     private List<JobAdvertisement> jobAdvertisementList;
 
+    @OneToMany
+    @JoinColumn(name = "student_id")
+    private List<Comment> commentList;
+
 }
