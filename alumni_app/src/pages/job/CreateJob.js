@@ -61,7 +61,7 @@ export default function CreateJob() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     console.log(e.target);
     setValues({
       ...values,
@@ -73,10 +73,17 @@ export default function CreateJob() {
     setValues(initialValues);
   };
 
-  
-  const getUrl=(e)=>{
-    
-  }
+  const getUrl = (e) => {
+    if (e != undefined) {
+      debugger;
+      let urlfilePath = "";
+      urlfilePath = e;
+      setValues({
+        ...values,
+        jobDescFilePath: urlfilePath,
+      });
+    }
+  };
   //const [companySize, setCompanySize] = React.useState('');
   //
   //  const handleChangeCompanySize = (event) => {
@@ -281,7 +288,11 @@ export default function CreateJob() {
                 Upload Job details document
               </InputLabel>
               <br />
-              <FileUpload folderName="Job" id={1} getUrl={getUrl.bind(this)}></FileUpload>
+              <FileUpload
+                folderName="Job"
+                id={1}
+                getUrl={getUrl.bind(this)}
+              ></FileUpload>
             </>
           </Grid>
           <Grid item xs={12}>
