@@ -11,11 +11,13 @@ import java.util.List;
 
 @Repository
 public interface JobRepo extends CrudRepository<JobAdvertisement, Long> {
-    @Query(value = "select  f.* from JobAdvertisement as f order by f.postedDate desc LIMIT=:limit", nativeQuery = true)
+
+    @Query(value="select  u.* from JobAdvertisement as u, order by u.postedDate desc LIMIT =:limit", nativeQuery=true)
+   // @Query(value = "select  f.* from JobAdvertisement as f order by f.postedDate desc LIMIT=:limit", nativeQuery = true)
     List<JobAdvertisement> findAllByPostedDate(@Param("limit") int limit);
     @Query(value = "select f.*  from JobAdvertisement as f  order by f.countApplication desc LIMIT=:limit",nativeQuery = true)
     List<JobAdvertisement>findAllRecentApplied(@Param("limit")  int limit);
-@Query(value = "select  f from JobAdvertisement as f JOIN f.tags as r  where r.name=:name",nativeQuery = true)
+//@Query(value = "select  f from JobAdvertisement as f JOIN f.tags as r  where r.name=:name",nativeQuery = true)
     List<JobAdvertisement>findAllByTags_name(String  name);
 
 

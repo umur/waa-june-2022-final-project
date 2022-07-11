@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AppliedRepository extends CrudRepository<Applied ,Long> {
+
+
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,9 +33,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<User> findAllStudent() {
-        List<User> allUserStudents = new ArrayList<>();
 
-        return  userRepo.findAll();
+        List<User> holder = new ArrayList<>();
+        holder = userRepo.findAll().stream().filter(k -> k.isSoft_deleted() != true).collect(Collectors.toList());
+        return holder;
+    }
 //        userRepo.findAll().forEach(user -> {
 //            ERole role = user.getRoles().stream().toList().get(0).getName();
 //            if (role == ERole.ROLE_STUDENT) {
@@ -42,16 +45,31 @@ public class StudentServiceImpl implements StudentService {
 //            }
 //        });
 //        return allUserStudents;
+
+
+    @Override
+    public User findById(long id) throws Exception {
+
+        var n=  userRepo.findById(id).orElseThrow(() -> new RuntimeException("Error: User not found"));
+
+        if(!n.isSoft_deleted()){
+            return n;
+        }
+    else {
+        throw  new Exception("already deleted ");
+        }
     }
 
     @Override
-    public User findById(long id) {
-        return userRepo.findById(id).orElseThrow(() -> new RuntimeException("Error: User not found"));
-    }
+    public Student getbyId(Long id) throws Exception {
+        var n= studentRepo.findById(id).orElseThrow();
 
-    @Override
-    public Student getbyId(Long id) {
-        return studentRepo.findById(id).orElseThrow();
+        if(!n.getUser().isSoft_deleted()){
+            return n;
+        }
+        else {
+            throw new Exception("already deleted ");
+        }
     }
 
     @Override
@@ -67,29 +85,54 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getByCity(String city) {
-        return studentRepo.findAllByAddress_City(city);
+
+        List<Student>  holder = new ArrayList<>();
+        holder = studentRepo.findAllByAddress_City(city).stream().filter(k -> k.getUser().isSoft_deleted() != true).collect(Collectors.toList());
+        return holder;
     }
 
     @Override
     public List<Student> getByState(String state) {
-        return studentRepo.findAllByAddress_State(state);
+        List<Student>  holder = new ArrayList<>();
+        holder = studentRepo.findAllByAddress_State(state).stream().filter(k -> k.getUser().isSoft_deleted() != true).collect(Collectors.toList());
+        return holder;
     }
 
     @Override
     public List<Student> getByMajor(String major) {
-        return studentRepo.findAllByMajor(major);
+        List<Student>  holder = new ArrayList<>();
+        holder = studentRepo.findAllByMajor(major).stream().filter(k -> k.getUser().isSoft_deleted() != true).collect(Collectors.toList());
+        return holder;
     }
 
     @Override
-    public Student getByStudentId(Integer id) {
-        return studentRepo.findByStudentId(id);
+    public Student getByStudentId(Integer id) throws Exception {
+
+        var n= studentRepo.findByStudentId(id);
+   if(!n.getUser().isSoft_deleted()){
+
+    return  n;
+   }
+    else {
+
+        throw new Exception("student could  be deleted ");
+   }
     }
 
     @Override
     public List<Student> getByName(String name) {
-        return studentRepo.findAllByFirstName(name);
+       List<Student>  holder = new ArrayList<>();
+        holder =studentRepo.findAllByFirstName(name).stream().filter(k->k.getUser().isSoft_deleted()!=true).collect(Collectors.toList());
+        return holder;
     }
 
+
+
+    @Override
+    public void deleteStudent(Long id) {
+        var n= userRepo.findById(id).orElseThrow();
+        n.setSoft_deleted(true);
+    }
 
 }
 

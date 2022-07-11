@@ -1,8 +1,10 @@
 package com.finalproject.controllers;
 
+import com.finalproject.models.Applied;
 import com.finalproject.models.JobAdvertisement;
 import com.finalproject.models.Student;
 import com.finalproject.security.services.UserDetailsImpl;
+import com.finalproject.service.AppliedService;
 import com.finalproject.service.JobService;
 import com.finalproject.service.StudentService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -19,6 +21,9 @@ public class JobsController {
 
     @Autowired
     JobService jobService;
+
+    @Autowired
+    AppliedService  appl;
 
     @Autowired
 
@@ -40,7 +45,7 @@ public class JobsController {
     }
 
 // Addmin can see how many data of applied
-    @GetMapping("/applied")
+    @GetMapping("/appliedjobs")
     public List<JobAdvertisement> RecentApplied() {
 
         return null;
@@ -74,7 +79,7 @@ public class JobsController {
 
     // student can make advertisement
     @PostMapping("/save")
-    public void createJobAdvert(@RequestBody JobAdvertisement jobOpening) {
+    public void createJobAdvert(@RequestBody JobAdvertisement jobOpening) throws Exception {
 
         Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (pr instanceof UserDetailsImpl) {
@@ -85,10 +90,13 @@ public class JobsController {
         }
     }
 
+
+
+
 //     updating advertisement
 
     @PutMapping
-    public void updateJobOpening(@RequestBody JobAdvertisement job) {
+    public void updateJobOpening(@RequestBody JobAdvertisement job) throws Exception {
         Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (pr instanceof UserDetailsImpl) {
             Long studentId = ((UserDetailsImpl) pr).getId();
@@ -101,12 +109,24 @@ public class JobsController {
 
     // deleting advertisement
     @DeleteMapping
-    public void deleteJobOpening(@RequestParam Long id) {
+    public void deleteJobOpening(@RequestParam Long id) throws Exception {
         Object pr = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (pr instanceof UserDetailsImpl) {
             Long studentId = ((UserDetailsImpl) pr).getId();
             var n = student.getbyId(studentId);
             jobService.deleteJob(n);
         }
+    }
+
+    // applied completed   from get the  id from the  current pressed  job
+
+    // forward to this link
+    @PostMapping("/apply/{id}")
+    public void applyJobAdvert(@PathVariable long id, @RequestBody Applied applied) {
+
+       var  g  = jobService.getById(id);
+
+       appl.ApplyJob(applied,g);
+
     }
 }

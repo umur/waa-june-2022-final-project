@@ -55,6 +55,19 @@ public class User {
 
   private String lastName;
 
+  // softDelete
+
+  @Column(insertable = true)
+  private boolean soft_deleted;
+
+  public boolean isSoft_deleted() {
+    return soft_deleted;
+  }
+
+  public void setSoft_deleted(boolean soft_deleted) {
+    this.soft_deleted = soft_deleted;
+  }
+
   @Column(name="logged_at")
   private LocalDateTime last_logged;
 

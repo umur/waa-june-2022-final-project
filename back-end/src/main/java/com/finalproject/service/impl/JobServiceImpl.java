@@ -2,6 +2,7 @@ package com.finalproject.service.impl;
 
 import com.finalproject.models.JobAdvertisement;
 import com.finalproject.models.Student;
+import com.finalproject.repository.AppliedRepository;
 import com.finalproject.repository.JobRepo;
 import com.finalproject.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JobServiceImpl implements JobService {
@@ -16,18 +18,30 @@ public class JobServiceImpl implements JobService {
     @Autowired
     private JobRepo jobRepo;
 
+    @Autowired
+
+    private AppliedRepository applied;
+
     @Override
     public List<JobAdvertisement> findAll() {
         List<JobAdvertisement> jobs = new ArrayList<>();
         jobRepo.findAll().forEach(job-> {
             jobs.add(job);
         });
-        return jobs;
+
+        return jobs.stream().filter(o->o.isMark_delete()!=true).collect(Collectors.toList());
     }
 
     @Override
     public List<JobAdvertisement> findRecent() {
-        return jobRepo.findAllRecentApplied(10);
+        List<JobAdvertisement> holder = new ArrayList<>();
+        holder = jobRepo.findAllByPostedDate(10).stream().filter(k -> k.isMark_delete() != true).collect(Collectors.toList());
+        return holder;
+    }
+
+    @Override
+    public JobAdvertisement getById(Long id) {
+        return jobRepo.findById(id).orElseThrow();
     }
 
     @Override
@@ -37,22 +51,33 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobAdvertisement> findByCity(String city) {
-        return jobRepo.findAllByCity(city);
+        List<JobAdvertisement> holder =new ArrayList<>();
+        holder =  jobRepo.findAllByCity(city).stream().filter(k->k.isMark_delete()!=true).collect(Collectors.toList());
+        return holder;
+
     }
 
     @Override
     public List<JobAdvertisement> findByState(String states) {
-        return jobRepo.findAllByStates(states);
+        List<JobAdvertisement> holder =new ArrayList<>();
+        holder =  jobRepo.findAllByStates(states).stream().filter(k->k.isMark_delete()!=true).collect(Collectors.toList());
+        return holder;
     }
 
     @Override
     public List<JobAdvertisement> findAllByTag(String tag) {
-        return jobRepo.findAllByTags_name(tag);
+
+        List<JobAdvertisement> holder =new ArrayList<>();
+        holder =  jobRepo.findAllByTags_name(tag).stream().filter(k->k.isMark_delete()!=true).collect(Collectors.toList());
+        return holder;
+
     }
 
     @Override
     public List<JobAdvertisement> findByCompany(String company) {
-        return jobRepo.findAllByCompany(company);
+        List<JobAdvertisement> holder =new ArrayList<>();
+      holder =  jobRepo.findAllByCompany(company).stream().filter(k->k.isMark_delete()!=true).collect(Collectors.toList());
+      return holder;
     }
 
     @Override
@@ -64,7 +89,17 @@ public class JobServiceImpl implements JobService {
     @Override
     public void deleteJob(Student student) {
 
-        student.setJobAdvertisement(null);
+       if(student.getJobAdvertisement()!=null);{
+
+         var n= student.getJobAdvertisement();
+         n.setMark_delete(true);
+
+        }
 
     }
+
+
+
+
+
 }
