@@ -2,6 +2,7 @@ import { Divider, List, makeStyles } from "@material-ui/core";
 import { ListItem, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import { RoleBasePermission } from "../../setup/auth/RoleBasePermission";
 import ProfileMenu from "../profile/ProfileMenu";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const role = RoleBasePermission();
+  let viewData = [];
+
   return (
     <div className="">
       <Stack
@@ -36,9 +40,11 @@ export default function Header() {
         <ListItem>
           <Link to="/Students" className={classes.link}>Student</Link>
         </ListItem>
-        <ListItem>
-          <Link to="/Faculties" className={classes.link}> Faculty </Link>
-        </ListItem>
+        {(role != 3 ?
+          <ListItem>
+            <Link to="/Faculties" className={classes.link}> Faculty </Link>
+          </ListItem> : ''
+        )}
         <ListItem>
           <Link to="/Jobs" className={classes.link}>Jobs</Link>
         </ListItem>
