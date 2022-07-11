@@ -1,9 +1,11 @@
 package com.waa.amp.controller;
 
 import com.waa.amp.dto.CommentReq;
+import com.waa.amp.dto.StatRes;
 import com.waa.amp.dto.StudentSearchReq;
 import com.waa.amp.entity.Student;
 import com.waa.amp.service.CommentService;
+import com.waa.amp.service.JobService;
 import com.waa.amp.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class FacultyController {
 
     private final CommentService commentService;
     private final StudentService studentService;
+    private final JobService jobService;
 
     @PostMapping("/post-comment")
     public ResponseEntity<Map<String, Long>> postComment(@RequestBody CommentReq commentReq){
@@ -35,4 +38,8 @@ public class FacultyController {
         return ResponseEntity.ok(of("resutls", studentService.searchStudent(studentSearchReq)));
     }
 
+    @GetMapping("/stat")
+    public ResponseEntity<StatRes> getStat() {
+        return ResponseEntity.ok(jobService.stat());
+    }
 }
