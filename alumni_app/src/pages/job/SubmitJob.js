@@ -5,30 +5,45 @@ import { postRequest } from "../../setup/fetch-manager/FetchGateway";
 import { useNavigate } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@material-ui/core/Button";
-
-const initialValues = {
-  addComment: "",
-};
+import { useParams } from "react-router";
 
 export default function SubmitJob() {
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const postData = async () => {
-    let params = "/jobs/apply";
-    let result = await postRequest(params, values);
-    navigate("/Jobs");
+  const initialValues = {
+    addComment: "",
   };
 
   const [values, setValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    debugger;
-    console.log(e.target);
+    // debugger;
+    // console.log(e.target);
     setValues({
       ...values,
       [name]: value,
     });
+  };
+
+  let appliedJobDto = {
+    appliedDate: "",
+    isActive: true,
+    isDeleted: false,
+    id_student: 1,
+    additionalComment: values.addComment != null ? values.addComment : "",
+    id_job: id,
+  };
+
+  const postData = async () => {
+    let params = "/jobs/apply";
+    let result = await postRequest(params, appliedJobDto);
+    navigate("/Jobs");
+  };
+
+  const handleButtonClick = () => {
+    postData();
   };
 
   return (
@@ -53,7 +68,11 @@ export default function SubmitJob() {
         </Grid>
         <Grid item xs={12}>
           <div>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleButtonClick}
+            >
               Submit Application
             </Button>
           </div>

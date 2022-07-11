@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@material-ui/core/Button";
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useParams } from "react-router";
-import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import { getRequest, putRequest } from "../../setup/fetch-manager/FetchGateway";
 import AutoCompleteSelect from "../../common/AutoCompleteSelect";
-import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router";
 import FileUpload from "../../common/FileUpload";
 import Container from "@mui/material/Container";
@@ -36,7 +32,9 @@ const initialValues = {
 
 export default function EditJob() {
   const navigate = useNavigate();
+  const {studentID, jobID } = useParams();
   const [selectValue, setSelectValue] = useState();
+  const [values, setValues] = useState(initialValues);
 
   const setValue = (value) => {
     let tagvalues = "";
@@ -49,19 +47,21 @@ export default function EditJob() {
     });
   };
 
-  const { id } = useParams();
-
-  const postData = async () => {
-    let params = "/jobs/newJob";
-    let result = await postRequest(params, values);
-    navigate("/Jobs");
+  const updateData = async () => { 
+    let params = "/jobs/updateJob/"+ jobID; 
+    let result = await putRequest(params, values); 
+    navigate("/Jobs"); 
   };
 
-  const [values, setValues] = useState(initialValues);
+  const getData = async () => {
+    let link = "/jobs/"+jobID;
+    let response = await getRequest(link);
+    debugger
+    setValues(response);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    debugger;
     console.log(e.target);
     setValues({
       ...values,
@@ -73,21 +73,14 @@ export default function EditJob() {
     setValues(initialValues);
   };
 
-  const getUrl = (e) => {
-    debugger;
-  };
+  const getUrl=(e)=>{
+    setSelectValue(e);
+  }
+  
+  useEffect(()=>{
+    getData();
+  }, []);
 
-  //const [companySize, setCompanySize] = React.useState('');
-  //
-  //  const handleChangeCompanySize = (event) => {
-  //    setCompanySize(event.target.value);
-  //  };
-  //
-  //  const [jobType, setJobType] = React.useState('');
-  //
-  //    const handleChangeJobType = (event) => {
-  //      setJobType(event.target.value);
-  //    };
   return (
     <React.Fragment>
       <Container maxWidth="xl">
@@ -95,59 +88,6 @@ export default function EditJob() {
           Edit Job Post
         </Typography>
         <Grid container spacing={3}>
-          {/*
-//        <Grid item xs={12} sm={6}>
-//          <TextField
-//            required
-//            id="firstName"
-//            name="firstName"
-//            label="First name"
-//            fullWidth
-//            autoComplete="given-name"
-//            variant="standard"
-//            value={values.firstName}
-//            onChange={handleInputChange}
-//          />
-//        </Grid>
-//        <Grid item xs={12} sm={6}>
-//          <TextField
-//            required
-//            id="lastName"
-//            name="lastName"
-//            label="Last name"
-//            fullWidth
-//            autoComplete="family-name"
-//            variant="standard"
-//            value={values.lastName}
-//            onChange={handleInputChange}
-//          />
-//        </Grid>
-//        <Grid item xs={6}>
-//                  <TextField
-//                    id="phoneNo"
-//                    name="phoneNo"
-//                    label="Phone Number"
-//                    fullWidth
-//                    autoComplete="phone-number"
-//                    variant="standard"
-//                    value={values.phoneNo}
-//                    onChange={handleInputChange}
-//                  />
-//                </Grid>
-//        <Grid item xs={6}>
-//                  <TextField
-//                    required
-//                    id="emailAddress"
-//                    name="emailAddress"
-//                    label="Email Address"
-//                    fullWidth
-//                    autoComplete="email-address"
-//                    variant="standard"
-//                    value={values.emailAddress}
-//                    onChange={handleInputChange}
-//                  />
-//                 </Grid>
-*/}
           <Grid item xs={6}>
             <TextField
               required
@@ -281,11 +221,7 @@ export default function EditJob() {
                 Upload Job details document
               </InputLabel>
               <br />
-              <FileUpload
-                folderName="Job"
-                id={1}
-                getUrl={getUrl.bind(this)}
-              ></FileUpload>
+              <FileUpload folderName="Job" id={1} getUrl={getUrl.bind(this)}></FileUpload>
             </>
           </Grid>
           <Grid item xs={12}>
@@ -300,7 +236,7 @@ export default function EditJob() {
               <Button variant="contained" type="reset" onClick={handleReset}>
                 Reset
               </Button>
-              <Button onClick={postData} variant="contained" color="primary">
+              <Button onClick={updateData} variant="contained" color="primary">
                 Edit Job
               </Button>
             </div>

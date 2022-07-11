@@ -1,9 +1,6 @@
 package alumnimanagement.services;
 
-import alumnimanagement.dto.DropdownDto;
-import alumnimanagement.dto.ReportList;
-import alumnimanagement.dto.StudentDTO;
-import alumnimanagement.dto.StudentListDto;
+import alumnimanagement.dto.*;
 
 import java.util.List;
 
@@ -21,5 +18,8 @@ public interface StudentService {
     StudentDTO findStudentById(long id);
 
     List<ReportList> StudentByState();
+
+    void updateStudentCV(long id, UpdateCVDTO updateCVDTO);
+    List<ReportList> findByStateCity(String state);
 
 }
