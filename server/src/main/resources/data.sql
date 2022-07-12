@@ -1,29 +1,29 @@
 -- Add Test student user
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete )
-VALUES (10001, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10002, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10003, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10004, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10005, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10006, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10007, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10008, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false);
-INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
-VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10001, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10002, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10003, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10004, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10005, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10006, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10007, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10008, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
 
 INSERT INTO STUDENT(id, gpa, days_to_search_job)
-VALUES (10001, 4.0, 10),
+VALUES (10001, 4.0, 30),
        (10002, 3.4, 20),
-       (10003, 3.0, 30),
+       (10003, 3.0, 30 ),
        (10004, 2.88, 45),
        (10005, 3.8, 15),
        (10006, 3.7, 50),
