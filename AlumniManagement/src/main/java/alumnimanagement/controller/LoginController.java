@@ -1,5 +1,6 @@
 package alumnimanagement.controller;
 
+import alumnimanagement.dto.UserDto;
 import alumnimanagement.entity.authUser.UserAuth;
 import alumnimanagement.jwt.JWTUtility;
 import alumnimanagement.services.impl.UserAuthServiceImpl;
@@ -45,4 +46,10 @@ public class LoginController {
         this.token = token;
         return token;
     }
+
+    @PostMapping("/register")
+    public String registerUser(@RequestBody UserDto userDto){
+        return " ";
+    }
+
 }
