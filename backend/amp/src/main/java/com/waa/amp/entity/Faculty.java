@@ -21,4 +21,15 @@ public class Faculty {
     @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
+    private String firstname;
+    private String lastname;
+    private String city;
+
+    public Faculty(User user, String firstname, String lastname, String city) {
+        this.user = user;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.city = city;
+    }
+
 }

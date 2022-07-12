@@ -35,7 +35,7 @@ public class LoginController {
         User user = userRepository.findByEmail(loginReq.username()).orElseThrow(RuntimeException::new);
         List<String> roles = user.getRoles()
                 .stream()
-                .map(Role::getRole)
+                .map(Role::getCode)
                 .toList();
 
         var token = jwtHelper.createToken(loginReq.username(), roles);

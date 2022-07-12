@@ -41,8 +41,8 @@ public class AmpApplication {
 			var job1 = jobRepository.save(new Job(null, "description 1", List.of(tag1, tag2), "Iowa", "FairField", "KForce", user));
 			var job2 = jobRepository.save(new Job(null, "description 2", List.of(tag4, tag3), "CA", "San Francisco", "Google", user));
 
-			studentRepository.save(new Student(null, userStudent, "email@email", "firstname", "lastname", "cs", "3.5", "Fairfield"));
-			studentRepository.save(new Student(null, userStudent, "anwar@email", "anwar", "hossian", "cs", "3.5", "Fairfield"));
+			studentRepository.save(new Student(null, userStudent, "username@username", "firstname", "lastname", "cs", "3.5", "Fairfield"));
+			studentRepository.save(new Student(null, userStudent, "anwar@username", "anwar", "hossian", "cs", "3.5", "Fairfield"));
 
 		};
 	}

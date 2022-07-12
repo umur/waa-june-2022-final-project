@@ -33,4 +33,10 @@ public class Student {
 
     private String city;
 
+    public Student(User user, String firstname, String lastname, String city) {
+        this.user = user;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.city = city;
+    }
 }
