@@ -24,6 +24,7 @@ public class FileController {
 
         var currentLocation = System.getProperty("user.dir");
         Path path = Paths.get(currentLocation);
+        //   Path FILE_DIRECTORY = Paths.get(currentLocation,"alumni_app","public");
         String FILE_DIRECTORY = path.getParent()+ "/alumni_app/public/";
 
         File newDirectory = new File(FILE_DIRECTORY, type);

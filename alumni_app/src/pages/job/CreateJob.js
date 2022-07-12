@@ -75,7 +75,6 @@ export default function CreateJob() {
 
   const getUrl = (e) => {
     if (e != undefined) {
-      debugger;
       let urlfilePath = "";
       urlfilePath = e;
       setValues({

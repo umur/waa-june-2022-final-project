@@ -4,6 +4,7 @@ import alumnimanagement.entity.authUser.AdminRole;
 import alumnimanagement.entity.authUser.StudentRole;
 import alumnimanagement.entity.authUser.UserAuth;
 import alumnimanagement.services.impl.UserAuthServiceImpl;
+import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class UaaController {
     @Autowired
     private UserAuthServiceImpl userService;
+
+//    @Autowired
+//    Helper helper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -74,5 +78,10 @@ public class UaaController {
     public String deleteById(@PathVariable Long id) {
         userService.deletById(id);
         return "Deleted Successfully";
+    }
+
+    @PutMapping
+    public void editUser(@RequestBody UserAuth userAuth){
+
     }
 }
