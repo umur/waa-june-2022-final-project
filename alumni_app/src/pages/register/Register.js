@@ -38,7 +38,7 @@ function Register() {
         } else {
             setPasswordMatched(true)
             await postRequestNoAuth(params, values);
-            console.log(values);
+            navigate('/')
         }
 
     }

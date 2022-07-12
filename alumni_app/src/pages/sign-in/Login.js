@@ -23,10 +23,22 @@ export default function Login() {
 
     const postData = async () => {
         Cookies.remove('token');
+        Cookies.remove('role');
+        Cookies.remove('id');
         let params = "/login";
         let result = await postRequestNoAuth(params, values);
-        setAuth(result)
-        Cookies.set('token', result)
+        if (result != undefined) {
+            setAuth(result.token)
+            Cookies.set('token', result.token);
+            Cookies.set('role', result.role);
+            Cookies.set('id', result.id);
+            Cookies.set('isAdmin', result.isAdmin);
+            Cookies.set('isStudent', result.isStudent);
+            Cookies.set('isFaculty', result.isFaculty);
+        }
+        else{
+            alert('Wrong info provided !')
+        }
     };
 
     return (

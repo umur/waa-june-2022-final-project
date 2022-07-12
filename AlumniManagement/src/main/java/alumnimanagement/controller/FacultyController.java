@@ -5,6 +5,7 @@ import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.services.FacultyService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/faculties")
 @CrossOrigin
+@PreAuthorize("hasPermission({'ADMIN','FACULTY'}, '')")
 public class FacultyController {
     private final FacultyService facultyService;
 

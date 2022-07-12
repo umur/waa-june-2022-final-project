@@ -2,6 +2,7 @@ package alumnimanagement.config;
 
 import alumnimanagement.entity.authUser.UserAuth;
 import alumnimanagement.repo.UserAuthRepo;
+import alumnimanagement.services.impl.UserAuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
@@ -12,10 +13,9 @@ import java.io.Serializable;
 @Service
 public class PermissionEvaluatorService implements PermissionEvaluator {
 
-    @Autowired
-    private UserAuthRepo userAuthRepo;
+    private UserAuthServiceImpl userAuthRepo;
 
-    public PermissionEvaluatorService(UserAuthRepo userAuthRepo) {
+    public PermissionEvaluatorService(UserAuthServiceImpl userAuthRepo) {
         this.userAuthRepo = userAuthRepo;
     }
 
@@ -26,7 +26,7 @@ public class PermissionEvaluatorService implements PermissionEvaluator {
         }
         String[] targetType = targetDomainObject.toString().replace('[', ' ').replace(']', ' ').trim().split(",");
         String userName = auth.getName();
-        UserAuth user = userAuthRepo.findByUsernameAndActive(userName);
+        UserAuth user = userAuthRepo.getUserByUserName(userName);
         for (int i = 0; i < targetType.length; i++) {
             if (user.getRole().toUpperCase().equals(targetType[i].toUpperCase()))
                 return true;

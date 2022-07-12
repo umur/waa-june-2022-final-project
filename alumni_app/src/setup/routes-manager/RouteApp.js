@@ -23,15 +23,23 @@ import { Dashboard } from "@material-ui/icons";
 import { isAuthorized } from "../auth/Auth";
 import { AUTHCONTEXT } from "../../App";
 import Register from "../../pages/register/Register";
+import Cookies from 'js-cookie';
 
 export default function RouteApp() {
+  const isFaculty = (Cookies.get('isFaculty') == "true" ? true : false);
+  const isAdmin = (Cookies.get('isAdmin') == "true" ? true : false);
+  const isStudent = (Cookies.get('isStudent') == "true" ? true : false);
+
   return (
     <>
       <Routes>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/Students" element={<StudentList />}></Route>
-        <Route path="/Faculties" element={<FacultyList />}></Route>
+        {(isFaculty || isAdmin ?
+          <Route path="/Faculties" element={<FacultyList />}></Route>
+          : ""
+        )}
         <Route path="/AddComment/:id" element={<AddComment />}></Route>
         <Route path="/Jobs" element={<Jobs />}></Route>
         <Route path="/Comments/:id" element={<CommentList />}></Route>
@@ -54,7 +62,7 @@ export default function RouteApp() {
           path="/JobDetails/additional/:id"
           element={<SubmitJob />}
         ></Route>
-          <Route path="/Register" element={<Register />}></Route>
+        <Route path="/Register" element={<Register />}></Route>
       </Routes>
     </>
   );

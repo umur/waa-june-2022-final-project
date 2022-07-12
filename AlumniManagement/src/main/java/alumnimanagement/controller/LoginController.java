@@ -1,5 +1,6 @@
 package alumnimanagement.controller;
 
+import alumnimanagement.dto.LoginResponse;
 import alumnimanagement.dto.UserDto;
 import alumnimanagement.entity.authUser.AdminRole;
 import alumnimanagement.entity.authUser.FacultyRole;
@@ -36,7 +37,7 @@ public class LoginController {
 
     private PasswordEncoder passwordEncoder;
     @PostMapping()
-    public String authenticate(@RequestBody UserAuth jwtRequest) throws Exception {
+    public LoginResponse authenticate(@RequestBody UserAuth jwtRequest) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -50,7 +51,23 @@ public class LoginController {
         final UserAuth user = userAuthService.getUserByUserName(jwtRequest.getUsername());
         final String token = jwtUtility.generateToken(user);
         this.token = token;
-        return token;
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.token = token;
+        loginResponse.id = user.getId();
+        loginResponse.Role = user.getRole();
+        switch (user.getRole().toUpperCase())
+        {
+            case "FACULTY":
+                loginResponse.isFaculty=true;
+                break;
+            case"STUDENT":
+                loginResponse.isStudent=true;
+                break;
+            case"ADMIN":
+                loginResponse.isAdmin=true;
+                break;
+        }
+        return loginResponse;
     }
 
     @PostMapping("/register")
