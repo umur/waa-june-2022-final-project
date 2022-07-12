@@ -55,12 +55,28 @@ public class User {
 
   private String lastName;
 
+  // softDelete
+
+  @Column(insertable = false)
+  private boolean soft_deleted = false;
+
+  public boolean isSoft_deleted() {
+    return soft_deleted;
+  }
+
+  public void setSoft_deleted(boolean soft_deleted) {
+    this.soft_deleted = soft_deleted;
+  }
+
   @Column(name="logged_at")
   private LocalDateTime last_logged;
+
+//  @ToString.Exclude
 
   @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
   private Address address;
 
+//  @ToString.Exclude
   @OneToOne(mappedBy = "user")
   private Student student;
   public User() {
