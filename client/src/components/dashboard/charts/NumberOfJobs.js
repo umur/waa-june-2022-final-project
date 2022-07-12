@@ -13,7 +13,7 @@ function NumberOfJobs() {
   }, []);
 
   const stateList = [
-    ...new Set(jobAdvertisement.map((data) => data.address.state)),
+    ...new Set(jobAdvertisement.map((data) => data.address?.state)),
   ];
 
   const jobAdvertisementData = stateList.map((x) => {
