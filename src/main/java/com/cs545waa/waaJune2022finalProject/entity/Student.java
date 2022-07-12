@@ -47,7 +47,7 @@ public class Student {
 
     //Display 10 most recently applied job advertisements.
     //Students can apply to the jobs.
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<JobApplication> jobApplications;
 
 

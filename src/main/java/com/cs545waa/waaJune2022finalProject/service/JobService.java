@@ -11,8 +11,8 @@ public interface JobService {
     public List<ApplicantDTO> getApplicants(Integer jobId);
     public void advertiseJob();
     public void applyToJob(Integer jobId,String username);
-
-    public List<JobAdvertisement> getJobAdvertisement(int limit, int offset);
-
+    public JobAdvertisementDto getJobById(Integer id);
+    public List<JobAdvertisementDto> getJobAdvertisements(int limit, int offset);
+    public List<JobAdvertisementDto> getJobAllAdvertisements();
     List<JobAdvertisementDto> filter(String tag, String state, String city, String companyName);
 }

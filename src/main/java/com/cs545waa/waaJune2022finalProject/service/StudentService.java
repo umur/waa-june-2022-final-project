@@ -13,8 +13,7 @@ public interface StudentService {
         void registerStudent(StudentDto dto);
 
         StudentDto getStudentByUsername(String username);
-        void addExperience(ProfessionalExperienceDto professionalExperienceDto);
-
+    void addExperience(ProfessionalExperienceDto professionalExperienceDto,String username);
     public CvDto getCV(Integer id);
 
 

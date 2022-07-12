@@ -1,10 +1,7 @@
 package com.cs545waa.waaJune2022finalProject.controller;
 
 
-import com.cs545waa.waaJune2022finalProject.dto.CvDto;
-import com.cs545waa.waaJune2022finalProject.dto.JobAdvertisementDto;
-import com.cs545waa.waaJune2022finalProject.dto.ProfessionalExperienceDto;
-import com.cs545waa.waaJune2022finalProject.dto.StudentDto;
+import com.cs545waa.waaJune2022finalProject.dto.*;
 import com.cs545waa.waaJune2022finalProject.service.CvService;
 import com.cs545waa.waaJune2022finalProject.service.StudentService;
 import lombok.AllArgsConstructor;
@@ -20,7 +17,7 @@ import java.util.List;
 @RequestMapping("/students")
 @Data
 @AllArgsConstructor
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("*")
 public class StudentController {
 
     StudentService studentService;
@@ -41,6 +38,7 @@ public class StudentController {
     public ResponseEntity<StudentDto> get(Principal principal){
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        System.out.println(username);
         return ResponseEntity.ok().body(studentService.getStudentByUsername(username));
     }
     @GetMapping("/get")
@@ -53,7 +51,7 @@ public class StudentController {
 
     //------------------------------ edit profile -------------
     @PutMapping("/save-profile")
-    public void saveProfile(@RequestBody StudentDto studentDto, Principal principal ) {
+    public ResponseEntity saveProfile(@RequestBody StudentDto studentDto, Principal principal ) {
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         int id = studentService.getStudentByUsername(
                 user
@@ -61,7 +59,15 @@ public class StudentController {
                 .getToken().getPreferredUsername()).getId();
 
         studentService.editProfile(studentDto, id);
+        return ResponseEntity.ok().build();
     }
+    //---------------------------get address---------
+    @GetMapping("/address")
+    public ResponseEntity<AddressDto> getStudentAddress(Principal principal){
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        return ResponseEntity.ok().body(studentService.getStudentByUsername(user.getKeycloakSecurityContext().getToken().getPreferredUsername()).getAddress());
+    }
+
     //------------------------------ get cv -------------
     // when student clicks edit cv or wants to create cv
 
@@ -73,8 +79,11 @@ public class StudentController {
     }
     // ---------------- add professional experience---------
     @PostMapping("/add-experience")
-    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto,Principal principal) {
-        studentService.addExperience(professionalExperienceDto);
+    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto, Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username = user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        studentService.addExperience(professionalExperienceDto, username);
+
     }
 }
 

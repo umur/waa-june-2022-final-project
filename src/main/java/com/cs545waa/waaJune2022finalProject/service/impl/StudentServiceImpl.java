@@ -46,13 +46,11 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public void addExperience(ProfessionalExperienceDto professionalExperienceDto) {
-//        ProfessionalExperience professionalExperience =
-//                modelMapper.map(professionalExperienceDto , ProfessionalExperience.class);
-//        Integer i =1;
-//        Cv cv = cvRepo.findAllById(i);
-//        cv.getProfessionalExperience().add(professionalExperience);
-//        cvRepo.save(cv);
+    public void addExperience(ProfessionalExperienceDto professionalExperienceDto, String username) {
+        ProfessionalExperience professionalExperience =
+                modelMapper.map(professionalExperienceDto , ProfessionalExperience.class);
+        professionalExperience.setStudent(studentRepo.getStudentByUsername(username));
+        studentRepo.getStudentByUsername(username).getProfessionalExperiences().add(professionalExperience);
 
     }
 

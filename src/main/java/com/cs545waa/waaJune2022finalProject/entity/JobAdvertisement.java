@@ -32,9 +32,9 @@ public class JobAdvertisement {
     @OneToMany(mappedBy = "jobAdvertisement")
     private List<JobApplication> jobApplications;
 
-    @OneToOne(mappedBy = "jobAd",fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.PERSIST,
-            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-            org.hibernate.annotations.CascadeType.DELETE})
+    @OneToOne(mappedBy = "jobAd",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    @Cascade({org.hibernate.annotations.CascadeType.PERSIST,
+//            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+//            org.hibernate.annotations.CascadeType.DELETE})
     private Address address;
 }

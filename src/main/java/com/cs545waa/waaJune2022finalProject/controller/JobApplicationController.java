@@ -1,10 +1,13 @@
 package com.cs545waa.waaJune2022finalProject.controller;
 
 import com.cs545waa.waaJune2022finalProject.dto.ApplicantDTO;
+import com.cs545waa.waaJune2022finalProject.dto.JobAdvertisementDto;
+import com.cs545waa.waaJune2022finalProject.dto.JobApplicationDTO;
 import com.cs545waa.waaJune2022finalProject.entity.JobAdvertisement;
 import com.cs545waa.waaJune2022finalProject.service.JobService;
 import lombok.AllArgsConstructor;
 import org.keycloak.KeycloakPrincipal;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
@@ -36,8 +39,12 @@ public class JobApplicationController {
     }
 
     //    -----------------------  get list of advertisements ---------
-    @GetMapping
-    public List<JobAdvertisement> getJobAdvertisements(int limit, int offset){
-        return jobService.getJobAdvertisement(limit,offset);
+
+    @GetMapping("")
+    public ResponseEntity<JobApplicationDTO> getJob(@RequestParam Integer jobId, Principal principal){
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        return null;
     }
+
 }

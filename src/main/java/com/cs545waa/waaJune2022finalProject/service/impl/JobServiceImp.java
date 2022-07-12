@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,9 +47,23 @@ public class JobServiceImp implements JobService {
     }
 
     @Override
-    public List<JobAdvertisement> getJobAdvertisement(int limit, int offset) {
+    public JobAdvertisementDto getJobById(Integer id) {
+        return modelMapper.map(jobRepo.findById(id).get(),JobAdvertisementDto.class);
+    }
+
+    @Override
+    public List<JobAdvertisementDto> getJobAdvertisements(int limit, int offset) {
         // return 10 jobs
         return null;
+    }
+    @Override
+    public List<JobAdvertisementDto> getJobAllAdvertisements() {
+        // return 10 jobs
+        List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
+         jobRepo.findAll().forEach( jobAdvertisement -> {
+            jobAdvertisementDtos.add(modelMapper.map(jobAdvertisement,JobAdvertisementDto.class));
+        });
+         return jobAdvertisementDtos;
     }
 
     @Override

@@ -26,4 +26,8 @@ public class JobAdvertisementController {
         return jobService.filter(tag, state, city, companyName);
     }
 
+    @GetMapping
+    public List<JobAdvertisementDto> getJobAdvertisements(){
+        return jobService.getJobAllAdvertisements();
+    }
 }

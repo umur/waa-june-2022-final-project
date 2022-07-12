@@ -18,7 +18,7 @@ public class CvDto {
     private float gpa;
     private List<ProfessionalExperience> professionalExperience;
     private List<EducationHistory> educationHistory;
-    private Address address;
+    private AddressDto address;
 
     private Department major;
 }
