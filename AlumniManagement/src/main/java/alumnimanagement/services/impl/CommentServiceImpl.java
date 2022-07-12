@@ -12,6 +12,7 @@ import alumnimanagement.services.CommentService;
 import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
@@ -32,12 +33,16 @@ public class CommentServiceImpl implements CommentService {
 
     private final FacultyRepo facultyRepo;
 
+    @Autowired
+    private Helper helper;
+
     @Override
     public void create(CommentDTO comment) {
         Comment comment1=new Comment();
         comment1.setId(comment.getId());
         comment1.setComment(comment.getComment());
-        long userID =Helper.getLoggedUserId();
+        //Helper helper = new Helper();
+        long userID =helper.getLoggedUserId();
         Optional<Faculty> result =facultyRepo.findById(userID);
         //Comment comment1=modelMapper.map(comment, Comment.class);
         Student stu =studentRepo.findById(comment.getStudentId()).get();

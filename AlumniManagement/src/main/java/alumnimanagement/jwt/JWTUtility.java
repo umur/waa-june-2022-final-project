@@ -40,7 +40,9 @@ public class JWTUtility {
 
     //for retrieving any information from token we will need the secret key
     public Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        var a = Jwts.parser().setSigningKey(secretKey);
+        var b = a.parseClaimsJws(token).getBody();
+        return  b;
     }
 
 
@@ -82,4 +84,5 @@ public class JWTUtility {
             return false;
         return (!isTokenExpired(token));
     }
+
 }
