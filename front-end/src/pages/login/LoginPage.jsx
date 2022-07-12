@@ -55,7 +55,11 @@ const LoginPage = () => {
             navigate('/profile');
         }).catch(err => {
             console.log(err);
-            setErrorMessage(err.response.data.message);
+            if (err.response.status === 500) {
+                setErrorMessage("Oops something wrong!")
+            } else {
+                setErrorMessage(err.response.data.message);
+            }
             setLoading(false);
         })
     }

@@ -26,8 +26,11 @@ const StudentDetailPage = () => {
         }
     }, [])
 
+
+    console.log(userStudent);
+
     const handlePost = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         if (currentUser?.id) {
             const newPost = { comment: post, commenter: currentUser.username }

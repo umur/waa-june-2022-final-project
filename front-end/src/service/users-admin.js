@@ -10,7 +10,15 @@ class UserService {
     }
 
     changePass(id, request) {
-        return axios.put(BASE_URL + '/users' + id, request, { headers: authHeader() })
+        return axios.put(BASE_URL + '/users/' + id, request, { headers: authHeader() })
+    }
+
+    deactivate(id) {
+        return axios.put(BASE_URL + '/users/deactivate/' + id, id, { headers: authHeader() })
+    }
+
+    activate(id) {
+        return axios.put(BASE_URL + '/users/activate/' + id, id, { headers: authHeader() })
     }
 }
 

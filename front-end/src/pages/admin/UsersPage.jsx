@@ -1,17 +1,19 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading';
 import usersAdmin from '../../service/users-admin';
-import Modal from 'react-bootstrap/Modal'
 import { ChangePassword } from '../../components/changePassword';
 
 const UsersPage = () => {
     const [usersList, setUsersList] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false)
+    const [errorMessage, setErrorMessage] = useState()
     const currentUser = useSelector(state => state.user)
+
+    const saveComponent = useRef();
 
     const navigate = useNavigate()
 
@@ -20,17 +22,39 @@ const UsersPage = () => {
             usersAdmin.findAll().then(resp => {
                 setUsersList(resp.data.filter((item) => item.roles[0].name != 'ROLE_ADMIN'))
                 setIsLoaded(true)
+            }).catch((err) => {
+                setErrorMessage('Unexpected error!')
+                console.log(err);
             })
         }
     }, [])
 
-    const onClickedReset = (e, id) => {
-        console.log(e);
-        console.log(id);
-        // if (currentUser?.id) {
-        //     usersAdmin.changePass(id, )
-        // }
+    const updatePassword = (id) => {
+        saveComponent.current?.showPasswordModal(id);
     }
+
+    const deActivate = (id) => {
+        if (currentUser?.id) {
+            usersAdmin.deactivate(id).then(resp => {
+                console.log(resp.data);
+            }).catch((err) => {
+                setErrorMessage('Unexpected error!')
+                console.log(err);
+            })
+        }
+    }
+
+    const activate = (id) => {
+        if (currentUser?.id) {
+            usersAdmin.activate(id).then(resp => {
+                console.log(resp.data);
+            }).catch((err) => {
+                setErrorMessage('Unexpected error!')
+                console.log(err);
+            })
+        }
+    }
+
 
     if (!isLoaded) {
         return (
@@ -71,16 +95,20 @@ const UsersPage = () => {
                                             <td>{item.active ? 'Yes' : 'No'}
                                             </td>
                                             <td>
-                                                <button
-                                                    onClick={(e) => {
-                                                        onClickedReset(e, item.id)
-                                                    }}
-                                                    className="btn btn-primary me-1">
-                                                    Reset password
-                                                </button>
-                                                {
-                                                    item.active ? <button className="btn btn-danger">Deactivate</button> : <button className="btn btn-info">Activate</button>
-                                                }
+                                                <form>
+                                                    <button
+                                                        onClick={() => updatePassword(item.id)}
+                                                        className="btn btn-primary me-1">
+                                                        Reset password
+                                                    </button>
+
+                                                    {
+                                                        item.active ?
+                                                            <button type="submit" onClick={() => deActivate(item.id)} className="btn btn-danger">Deactivate</button>
+                                                            :
+                                                            <button onClick={() => activate(item.id)} className="btn btn-info">Activate</button>
+                                                    }
+                                                </form>
                                             </td>
                                         </tr>
                                     )}
@@ -89,8 +117,7 @@ const UsersPage = () => {
                         </div>
                     </div>
                 </div>
-
-                <ChangePassword></ChangePassword>
+                <ChangePassword ref={saveComponent}></ChangePassword>
             </div>
         )
     }
