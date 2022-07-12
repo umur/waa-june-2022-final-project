@@ -13,12 +13,12 @@ function StudentProfile() {
   const userProfile = useSelector((state) => state.userProfile);
   const jobHistory = useSelector((state) => state.jobHistory);
 
+  console.log(jobHistory)
+  console.log(userProfile)
   useEffect(() => {
     dispatch(getUserProfile());
     dispatch(getJobHistoryById(userProfile.id));
   }, []);
-  console.log(jobHistory)
-  console.log(userProfile)
   // const jobHistory = [
   //   {
   //     id: 1,
@@ -72,18 +72,20 @@ function StudentProfile() {
           </Row>
           <br />
 
-          <h3>Job History</h3>
-          <div className='container'>{
 
-            // jobHistory.map(history => {
-            //   return (
-            //     <JobHistoryInfo
-            //       key={history.id}
-            //       companyName={history.companyName}
-            //       startDate={history.startDate}
-            //       endDate={history.endDate}></JobHistoryInfo>
-            //   )
-            // })
+          <h3>Job History</h3>
+          <div>{ jobHistory.length > 0 ? (
+
+            jobHistory?.map(history => {
+              return (
+                <JobHistoryInfo
+                  key={history?.id}
+                  companyName={history?.companyName}
+                  startDate={history?.startDate}
+                  endDate={history?.endDate}></JobHistoryInfo>
+              )
+            })  
+          ) : null
           }
           </div>
         </Container>

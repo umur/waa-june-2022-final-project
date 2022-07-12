@@ -16,7 +16,7 @@ export const getJobHistoryById = (id) => ({
   type: GET_JOB_HISTORY,
   payload: {
     request: {
-      url: "/job-history/" +1,
+      url: "students/"+10001+"/job-history",
       method: HttpService.HttpMethods.GET
     }
   }
