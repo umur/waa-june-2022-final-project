@@ -26,7 +26,7 @@ public class Student extends User {
     @Nullable
     private String CVFile;
 
-    @ManyToOne/**/
+    @ManyToOne(fetch = FetchType.EAGER)
     private Department department;
 
     @OneToMany(mappedBy = "createdBy")

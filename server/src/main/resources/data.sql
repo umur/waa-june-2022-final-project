@@ -1,3 +1,21 @@
+
+--Add data in Department table
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10001, FALSE, 'COMPRO');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10002, FALSE, 'MBA');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10003, FALSE, 'CSE');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10004, FALSE, 'ECE');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10005, FALSE, 'Arts');
+
+
 -- Add Test student user
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
 VALUES (10001, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
@@ -20,17 +38,17 @@ VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9'
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
 VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
 
-INSERT INTO STUDENT(id, gpa, days_to_search_job)
-VALUES (10001, 4.0, 30),
-       (10002, 3.4, 20),
-       (10003, 3.0, 30 ),
-       (10004, 2.88, 45),
-       (10005, 3.8, 15),
-       (10006, 3.7, 50),
-       (10007, 3.7, 30),
-       (10008, 3.8, 20),
-       (10009, 4.0, 12),
-       (10010, 3.10, 40);
+INSERT INTO STUDENT(id, gpa, days_to_search_job,department_id)
+VALUES (10001, 4.0, 30, 10001),
+       (10002, 3.4, 20,10001),
+       (10003, 3.0, 30 ,10002),
+       (10004, 2.88, 45,10003),
+       (10005, 3.8, 15,10002),
+       (10006, 2.3, 50,10004),
+       (10007, 3.7, 30,10001),
+       (10008, 3.8, 20,10002),
+       (10009, 4.0, 12,10003),
+       (10010, 3.10, 40,10003);
 
 -- Add test faculty user
 
@@ -341,22 +359,6 @@ VALUES (10015, true, 10011, '2010-10-25');
 
 
 
---Add data in Department table
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10001, FALSE, 'COMPRO');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10002, FALSE, 'MBA');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10003, FALSE, 'CSE');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10004, FALSE, 'ECE');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10005, FALSE, 'Arts');
-
 --Add comment dataset
 
 INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
@@ -402,3 +404,19 @@ VALUES (10013, 'Great job my dear student', TRUE, 10002, 10012);
 
 INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
 VALUES (10014, 'You are genius.', FALSE, 10002, 10012);
+
+
+-- Please donot remove this seq
+select setval('comment_id_seq', max(id)) from comment;
+select setval('job_advertisement_id_seq', max(id)) from job_advertisement;
+select setval('job_application_id_seq', max(id)) from job_application;
+select setval('job_history_id_seq', max(id)) from job_history;
+select setval('tag_id_seq', max(id)) from tag;
+select setval('users_id_seq', max(id)) from users;
+
+
+
+
+
+
+

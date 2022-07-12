@@ -1,5 +1,19 @@
-import { ADD_JOB_HISTORY, EDIT_JOB_HISTORY, GET_JOB_HISTORY } from "./actionsTypes";
+import {
+  ADD_JOB_HISTORY,
+  EDIT_JOB_HISTORY,
+  GET_JOB_HISTORY,
+  JOB_HISTORY_LIST,
+} from "./actionsTypes";
 import HttpService from "../../../services/HttpService";
+
+export const getJobHistoryList = (data) => ({
+  type: JOB_HISTORY_LIST,
+  payload: {
+    request: {
+      url: "/job-history",
+    },
+  },
+});
 
 export const addJobHistory = (data) => ({
   type: ADD_JOB_HISTORY,
@@ -16,11 +30,11 @@ export const getJobHistoryById = (id) => ({
   type: GET_JOB_HISTORY,
   payload: {
     request: {
-      url: "students/"+10001+"/job-history",
-      method: HttpService.HttpMethods.GET
-    }
-  }
-})
+      url: "students/" + 10001 + "/job-history",
+      method: HttpService.HttpMethods.GET,
+    },
+  },
+});
 
 export const editJobHistory = (data) => ({
   type: EDIT_JOB_HISTORY,
@@ -28,7 +42,7 @@ export const editJobHistory = (data) => ({
     request: {
       url: `/job-history/${data.id}`,
       method: HttpService.HttpMethods.PUT,
-      data: data
-    }
-  }
-})
+      data: data,
+    },
+  },
+});
