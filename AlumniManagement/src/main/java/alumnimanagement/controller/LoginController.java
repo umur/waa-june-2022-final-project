@@ -1,6 +1,7 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.LoginResponse;
+import alumnimanagement.dto.StudentDTO;
 import alumnimanagement.dto.UserDto;
 import alumnimanagement.entity.authUser.AdminRole;
 import alumnimanagement.entity.authUser.FacultyRole;

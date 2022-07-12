@@ -1,9 +1,7 @@
 package alumnimanagement.config;
 
 import alumnimanagement.entity.authUser.UserAuth;
-import alumnimanagement.repo.UserAuthRepo;
 import alumnimanagement.services.impl.UserAuthServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

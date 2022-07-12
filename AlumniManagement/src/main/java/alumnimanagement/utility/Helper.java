@@ -21,18 +21,28 @@ public class Helper {
     private  JWTUtility jwtUtility;
 
 
-    private Long getClaims(String token)
+    private Claims getClaims(String token)
     {
         Claims claims = jwtUtility.getAllClaimsFromToken(token);
-        String claimId =claims.get("id").toString();
-        long id= Long.parseLong(claimId);
-        return id;
+        return  claims;
     }
     public Long getLoggedUserId()
     {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         var token = authentication.getCredentials();
-        return getClaims(token.toString());
+        Claims claims = getClaims(token.toString());
+        String claimId =claims.get("id").toString();
+        long id= Long.parseLong(claimId);
+        return id;
+    }
+
+    public String getLoggedUserRole()
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var token = authentication.getCredentials();
+        Claims claims = getClaims(token.toString());
+        String role =claims.get("role").toString();
+        return role;
     }
 
     public static LocalDateTime getCurrentDate()

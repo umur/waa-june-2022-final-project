@@ -56,7 +56,7 @@ public class JWTUtility {
     //generate token for user
     public String generateToken(UserAuth user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("roles", user.getRole());
+        claims.put("role", user.getRole());
         claims.put("id",user.getId());
         claims.put("userName",user.getUsername());
         return doGenerateToken(claims, user.getUsername());
