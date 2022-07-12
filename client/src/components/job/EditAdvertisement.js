@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { addJobAdvertisement, editJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
+import { editJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
 import { useLocation } from "react-router-dom";
 
 export default function EditAdvertisement() {
@@ -23,7 +23,6 @@ export default function EditAdvertisement() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(formValues)
     setFormValues({
       ...formValues,
       [name]: value,
@@ -39,7 +38,6 @@ export default function EditAdvertisement() {
   const navigate = useNavigate();
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues)
       dispatch(editJobAdvertisement(formValues));
       navigate("/student/job-advertisement");
     }

@@ -1,4 +1,4 @@
-import { ADD_JOB_HISTORY, GET_JOB_HISTORY } from "./actionsTypes";
+import { ADD_JOB_HISTORY, EDIT_JOB_HISTORY, GET_JOB_HISTORY } from "./actionsTypes";
 import HttpService from "../../../services/HttpService";
 
 export const addJobHistory = (data) => ({
@@ -18,6 +18,17 @@ export const getJobHistoryById = (id) => ({
     request: {
       url: "students/"+10001+"/job-history",
       method: HttpService.HttpMethods.GET
+    }
+  }
+})
+
+export const editJobHistory = (data) => ({
+  type: EDIT_JOB_HISTORY,
+  payload: {
+    request: {
+      url: `/job-history/${data.id}`,
+      method: HttpService.HttpMethods.PUT,
+      data: data
     }
   }
 })

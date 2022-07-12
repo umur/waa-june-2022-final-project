@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import JobListing from "../job/Listing";
+import JobListing from "../job/ListingTop10";
 import { useEffect } from "react";
 import Table from "react-bootstrap/Table";
 

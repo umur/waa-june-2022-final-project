@@ -1,23 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { getUserProfile } from "../../redux/reducers/UserProfile/actions";
-import { Breadcrumb, Container, Row, Col, Card } from "react-bootstrap";
-import logo from "../../../src/logo.svg";
 
-import JobHistoryInfo from "../../components/profiles/JobHistoryInfo";
-import FileUploadPage from "../../pages/FileUploadPage";
+import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
+import JobHistoryInfo from '../../components/profiles/JobHistoryInfo';
+import FileUploadPage from '../../pages/FileUploadPage';
+
 import { getJobHistoryById } from "../../redux/reducers/JobHistory/actions";
+import image from '../../../src/userprofile.png'
 
 function StudentProfile() {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.userProfile);
   const jobHistory = useSelector((state) => state.jobHistory);
-
+  
   useEffect(() => {
     dispatch(getUserProfile());
     dispatch(getJobHistoryById(userProfile?.id));
   }, []);
-
+  
   return (
     <Container>
       <Breadcrumb name="Basic Information" />
@@ -25,7 +26,7 @@ function StudentProfile() {
         <Container fluid="lg">
           <Row>
             <Col md={{ span: 3 }}>
-              <img src={logo} alt="user-image" />
+              <img src={image} alt="user-image" width="250px" height="250px"/>
             </Col>
             <Col md={{ span: 6 }}>
               <div className="row d-flex justify-content-center align-items-center h-100">
@@ -52,7 +53,7 @@ function StudentProfile() {
                         </p>
                       </div>
                     </div>
-                    <FileUploadPage />
+                    {/* <FileUploadPage /> */}
                   </div>
                 </div>
               </div>
@@ -60,20 +61,26 @@ function StudentProfile() {
           </Row>
           <br />
 
-          <h3>Job History</h3>
-          <div>
-            {jobHistory.length > 0
-              ? jobHistory?.map((history) => {
-                  return (
-                    <JobHistoryInfo
-                      key={history?.id}
-                      companyName={history?.companyName}
-                      startDate={history?.startDate}
-                      endDate={history?.endDate}
-                    ></JobHistoryInfo>
-                  );
-                })
-              : null}
+
+
+          <h3 className="text-center">Job History</h3>
+          <div>{ jobHistory.length > 0 ? (
+
+            jobHistory?.map(history => {
+              return (
+                <JobHistoryInfo
+                  key={history?.id}
+                  id={history?.id}
+                  companyName={history?.companyName}
+                  startDate={history?.startDate}
+                  endDate={history?.endDate}
+                  reasonToLeave={history?.reasonToLeave}
+                  comment={history?.comment}></JobHistoryInfo>
+              )
+            })  
+          ) : null
+          }
+          
           </div>
         </Container>
       </section>
