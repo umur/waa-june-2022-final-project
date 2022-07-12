@@ -31,6 +31,7 @@ public class JobAdvertisementController {
     }
 
     @GetMapping("/last10Advertisements")
+//    @RolesAllowed({"faculty"})
     public ResponseEntity<List<JobAdvertisementDto>> findLast10Advertisement(){
         return new ResponseEntity<>(jobAdvertisementService.findFirst10Advertisement(), HttpStatus.OK);
     }
