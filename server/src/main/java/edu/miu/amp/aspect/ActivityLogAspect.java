@@ -62,7 +62,7 @@ public class ActivityLogAspect {
             exitLog.setCreatedAt(new Date());
 
             exitLog.setMessage(String.format("Exit: %s.%s() with result = %s", joinPoint.getSignature().getDeclaringTypeName(),
-                    joinPoint.getSignature().getName(), result.toString()));
+                    joinPoint.getSignature().getName(), result != null ? result.toString() : ""));
             activityLogRepo.save(exitLog);
 
             return result;
