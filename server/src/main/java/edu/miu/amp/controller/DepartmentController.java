@@ -18,13 +18,13 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping
-//    @RolesAllowed({"student", "faculty"})
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<DepartmentDto>> findAll() {
         return new ResponseEntity<>(departmentService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-//    @RolesAllowed({"student", "faculty"})
+    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<DepartmentDto> getById(@PathVariable Integer id) {
         return new ResponseEntity<>(departmentService.findById(id), HttpStatus.OK);
     }
@@ -44,7 +44,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/{id}")
-//    @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public void delete(@PathVariable Integer id) {
         departmentService.remove(id);
     }

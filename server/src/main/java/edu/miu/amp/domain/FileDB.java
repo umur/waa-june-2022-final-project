@@ -1,11 +1,15 @@
 package edu.miu.amp.domain;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "files")
+@SQLDelete(sql = "UPDATE files SET is_delete = true WHERE id=?")
+@Where(clause = "is_delete = false")
 public class FileDB {
   @Id
   @GeneratedValue(generator = "uuid")
@@ -15,6 +19,9 @@ public class FileDB {
   private String type;
   @Lob
   private byte[] data;
+
+  @Column(name = "is_delete")
+  private boolean delete;
   public FileDB() {
   }
   public FileDB(String name, String type, byte[] data) {

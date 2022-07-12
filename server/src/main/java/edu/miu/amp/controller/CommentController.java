@@ -22,7 +22,7 @@ public class CommentController {
     }
 
     @GetMapping
-//    @RolesAllowed("faculty")
+    @RolesAllowed("faculty")
 
     public ResponseEntity<List<CommentDto>> getAllComment() {
         var res = commentService.getAllComment();
@@ -59,7 +59,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/{id}")
-//    @RolesAllowed("faculty")
+    @RolesAllowed("faculty")
 
     public void deleteComment(@PathVariable(name = "id") Integer id) {
 

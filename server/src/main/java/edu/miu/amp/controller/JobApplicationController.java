@@ -19,7 +19,7 @@ public class JobApplicationController {
     private JobApplicationService jobApplicationService;
 
     @GetMapping
-//    @RolesAllowed("student")
+    @RolesAllowed("student")
     public ResponseEntity<List<JobApplicationDto>> findAll(){
         return new ResponseEntity<>(jobApplicationService.findAll(), HttpStatus.OK);
     }
