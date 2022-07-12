@@ -1,8 +1,9 @@
+import { Col, Row } from "react-bootstrap";
 
 export default function JobHistoryInfo(props) {
     return (
-        <div>
-            <div className="card col-md-5 col-md-offset-5">
+        <Row>
+            <Col md={{span:8 ,offset:2}}>
                 <div className="card-body">
                     <h5 className="card-title">{props.companyName}</h5>
                 </div>
@@ -10,8 +11,8 @@ export default function JobHistoryInfo(props) {
                     <li className="list-group-item">Start Date: {props.startDate}</li>
                     <li className="list-group-item">End Date: {props.endDate}</li>
                 </ul>
-            </div>
+            </Col>
             <br />
-        </div>
+        </Row>
     )
 }
