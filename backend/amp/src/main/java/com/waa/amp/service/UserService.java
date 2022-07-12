@@ -1,5 +1,6 @@
 package com.waa.amp.service;
 
+import com.waa.amp.dto.ActiveUserReq;
 import com.waa.amp.entity.User;
 import com.waa.amp.repository.UserRepository;
 import com.waa.amp.security.AmpUserDetails;
@@ -26,5 +27,11 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public void activateUser(ActiveUserReq activeUserReq) {
+        User user = userRepository.findById(activeUserReq.userId()).orElseThrow(() -> new RuntimeException("No user found"));
+        user.setActive(activeUserReq.active());
+        userRepository.save(user);
     }
 }

@@ -1,5 +1,6 @@
 package com.waa.amp.controller;
 
+import com.waa.amp.dto.ActiveUserReq;
 import com.waa.amp.entity.User;
 import com.waa.amp.service.FacultyService;
 import com.waa.amp.service.UserService;
@@ -36,6 +37,12 @@ public class AdminController {
     @GetMapping("/get-user")
     public ResponseEntity<?> getAllUser() {
         return ResponseEntity.ok(of("data", userService.getAllUsers()));
+    }
+
+    @PostMapping("/active-user")
+    public ResponseEntity<?> activateUser(@RequestBody ActiveUserReq activeUserReq) {
+        userService.activateUser(activeUserReq);
+        return ResponseEntity.ok(of("data", "ok"));
     }
 
 }
