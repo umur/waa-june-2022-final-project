@@ -1,5 +1,6 @@
 package edu.miu.amp.controller;
 
+import edu.miu.amp.dto.JobHistoryDto;
 import edu.miu.amp.dto.StudentDto;
 import edu.miu.amp.dto.response.ApiResponse;
 import edu.miu.amp.service.StudentService;
@@ -31,6 +32,12 @@ public class StudentController {
     @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<StudentDto>> getAllStudents() {
         return ResponseEntity.ok(this.studentService.findAll());
+    }
+
+    @GetMapping("/{id}/job-history")
+    @RolesAllowed({"student", "faculty"})
+    public ResponseEntity<List<JobHistoryDto>> getStudentJobHistory(@PathVariable Integer id) {
+        return ResponseEntity.ok(this.studentService.getStudentJobHistory(id));
     }
 
     @GetMapping("/{id}")

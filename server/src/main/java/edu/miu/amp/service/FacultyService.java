@@ -1,10 +1,12 @@
 package edu.miu.amp.service;
 
 import edu.miu.amp.dto.FacultyDto;
+import edu.miu.amp.dto.StudentDto;
 
 import java.util.List;
 
 public interface FacultyService {
+    FacultyDto getMyProfile();
     List<FacultyDto> findAll();
 
     FacultyDto save(FacultyDto facultyDto);

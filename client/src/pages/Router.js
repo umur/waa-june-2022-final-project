@@ -13,6 +13,7 @@ import PageNotFound from "./404";
 
 import StudentProfile from "./student/Profile";
 import UserService from "../services/UserService";
+import FacultyProfile from "./faculty/Profile";
 
 export default function Router() {
   return (
@@ -24,7 +25,7 @@ export default function Router() {
         {/* Student Routes */}
         {UserService.hasRole(["student"]) && (
           <>
-            <Route path="/" element={<StudentProfile />} />
+            <Route path="/" element={<Dashboard />} />
 
             <Route path="/student/profile" element={<StudentProfile />} />
             <Route path="/student/dashboard" element={<Dashboard />} />
@@ -52,7 +53,7 @@ export default function Router() {
           <>
             <Route path="/" element={<UserProfile />} />
 
-            <Route path="/faculty/profile" element={<UserProfile />} />
+            <Route path="/faculty/profile" element={<FacultyProfile />} />
 
             <Route path="/faculty/dashboard" element={<Dashboard />} />
 
