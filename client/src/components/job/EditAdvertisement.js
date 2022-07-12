@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 export default function EditAdvertisement() {
   const location = useLocation();
   const initialValues = {
+    id: location.state?.id,
     title: location.state?.title,
     location: location.state?.location,
     responsibilities: location.state?.description,
@@ -52,9 +53,9 @@ export default function EditAdvertisement() {
     if (!values.location) {
       errors.location = "Location required";
     }
-    if (!values.aboutUs) {
-      errors.aboutUs = "About Us required";
-    }
+    // if (!values.aboutUs) {
+    //   errors.aboutUs = "About Us required";
+    // }
 
     if (!values.responsibilities) {
       errors.responsibilities = "Responsibilities required";

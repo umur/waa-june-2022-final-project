@@ -5,7 +5,7 @@ export default function JobListing(props) {
   const navigate = useNavigate();
 
   const handleJobEdit  = () => {
-    navigate('/student/job-advertisement/edit', {state:{title:props.title, location: props.address.city + "," + props.address.state, description: props.description, benefits: props.benefits}})
+    navigate('/student/job-advertisement/edit', {state:{id:props.id,title:props.title, location: props.address.city + "," + props.address.state, description: props.description, benefits: props.benefits}})
   }
   return (
     <div className="col-6">
