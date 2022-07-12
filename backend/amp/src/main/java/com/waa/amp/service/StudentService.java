@@ -114,4 +114,8 @@ public class StudentService {
     public List<Student> allStudent() {
         return studentRepository.findAll();
     }
+
+    public Student getLoggedInStudent() {
+        return studentRepository.findByUser(userService.getLoggedUser());
+    }
 }

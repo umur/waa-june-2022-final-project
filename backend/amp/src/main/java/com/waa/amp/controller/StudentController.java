@@ -59,4 +59,9 @@ public class StudentController {
     public ResponseEntity<JobApply> applyJob(JobApplyReq jobApplyReq) {
         return ResponseEntity.ok(studentService.applyJob(jobApplyReq));
     }
+
+    @GetMapping
+    public ResponseEntity<Student> getStudent() {
+        return ResponseEntity.ok(studentService.getLoggedInStudent());
+    }
 }

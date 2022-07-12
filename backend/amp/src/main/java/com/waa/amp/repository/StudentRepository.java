@@ -10,4 +10,6 @@ public interface StudentRepository extends JpaRepository<Student, Long>, CustomS
 
     Student findByIdAndUser(Long id, User user);
 
+    Student findByUser(User user);
+
 }
