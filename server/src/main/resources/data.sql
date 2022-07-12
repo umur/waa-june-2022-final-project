@@ -79,19 +79,6 @@ VALUES (10001,'devops'),
 
 -- JOB advertisement data
 
---INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
---VALUES (10001, 10001),
---       (10001, 10002),
---       (10001, 10004),
---       (10001, 10006);
---
---
---INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
---VALUES (10002, 10001),
---       (10002, 10003),
---       (10002, 10008),
---       (10002, 10006);
-
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by)
 VALUES (10001, 'Fairfield', 'Iowa', '52557', 'Software Engineering II', 'Braintrust', 'N/A',
@@ -207,6 +194,36 @@ INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefi
 VALUES (10020, 'Redmond', 'Washington', '376854',  'Devops Engineer', 'Amazon', 'N/A',
         'We are looking for passionate, hard-working, and talented DevOps Engineers who have experience supporting innovative, mission critical, high volume applications. You will have an enormous opportunity to work within multiple systems researching and identifying the common issues, and driving the teams towards resolution to have a positive impact on customer experience. This job requires you to hit the ground running and your ability to learn quickly and work on disparate and overlapping tasks will define your success. As a DevOps Engineer, you will be a part of 24X7 teams Oncall rotation.',
         10001);
+
+-- Add job advertisement tags list data
+INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
+VALUES (10001, 10001),
+       (10001, 10002),
+       (10001, 10004),
+       (10002, 10006),
+       (10002, 10003),
+       (10002, 10008),
+       (10003, 10006),
+       (10003, 10003),
+       (10003, 10008),
+       (10004, 10001),
+       (10004, 10002),
+       (10004, 10002),
+       (10004, 10006),
+       (10005, 10003),
+       (10005, 10003),
+       (10005, 10006),
+       (10006, 10004),
+       (10006, 10001),
+       (10006, 10002),
+       (10007, 10004),
+       (10007, 10005),
+       (10008, 10004),
+       (10008, 10005),
+       (10008, 10006),
+       (10009, 10002);
+
+
 
 --Adding job history dataset
 
