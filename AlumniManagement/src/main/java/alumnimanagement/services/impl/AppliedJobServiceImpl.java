@@ -1,6 +1,9 @@
 package alumnimanagement.services.impl;
 
 import alumnimanagement.dto.AppliedJobDTO;
+import alumnimanagement.dto.AppliedStudentsDTO;
+import alumnimanagement.dto.StudentDTO;
+import alumnimanagement.dto.StudentListDto;
 import alumnimanagement.entity.AppliedJob;
 import alumnimanagement.entity.Student;
 import alumnimanagement.entity.job.JobAdvertisement;
@@ -14,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -54,5 +58,13 @@ public class AppliedJobServiceImpl implements AppliedJobService {
 
         return appliedJobRepo.findAllByStudentId(studentId).
                 stream().map(appliedJob -> modelMapper.map(appliedJob, AppliedJobDTO.class)).toList();
+    }
+
+    @Override
+    public List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int jobId){
+        return appliedJobRepo.findAllByJobAdvertisementId(jobId)
+                .stream()
+                .map(appliedJob -> modelMapper.map(appliedJob.getStudent(), AppliedStudentsDTO.class))
+                .toList();
     }
 }

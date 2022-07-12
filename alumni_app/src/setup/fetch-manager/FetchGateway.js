@@ -71,14 +71,13 @@ export async function deleteRequest(path) {
 
 export async function putRequest(path, data) {
     const fullURL = api_url + path;
-    try {
-        const response = await axios.put(fullURL, data, {
-            headers: {
-                // 'content-type': 'text/json'
-            }
+
+    axios.put(fullURL, data)
+        .then(response => response)
+        .catch(error => {
+            
+            console.error('There was an error!', error);
         });
-        return response.data;
-    } catch (error) {
-        console.error(error);
-    }
+
+    
 }
