@@ -17,7 +17,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/login")
@@ -34,7 +33,6 @@ public class LoginController {
     private UserAuthServiceImpl userAuthService;
 
     private String token;
-
 
     private PasswordEncoder passwordEncoder;
     @PostMapping()
