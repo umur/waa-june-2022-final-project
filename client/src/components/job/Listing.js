@@ -18,7 +18,7 @@ export default function JobListing(props) {
   return (
     <tr>
       <td>{props.id}</td>
-      <td>{props.title}</td>
+      <td>{props.title.substring(0, 40) + "..."}</td>
       <td>{props.address?.city}</td>
     </tr>
   );

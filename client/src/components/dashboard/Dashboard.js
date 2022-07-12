@@ -21,6 +21,16 @@ function Dashboard() {
   return (
     <div className="container">
       <div className="row">
+        <div className="col-6">
+          <Last10JobAdvertisement />
+        </div>
+
+        <div className="col-6">
+          <Last10Appliedjobs />
+        </div>
+      </div>
+
+      <div className="row">
         <div className="col-md-6">
           <NumberOfJobs />
         </div>
@@ -37,16 +47,6 @@ function Dashboard() {
 
         <div className="col-md-6">
           <TagPieChart />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
-          <Last10JobAdvertisement />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
-          <Last10Appliedjobs />
         </div>
       </div>
 
