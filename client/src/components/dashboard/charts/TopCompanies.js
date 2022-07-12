@@ -1,10 +1,10 @@
 import ReactECharts from "echarts-for-react";
 
-function NumberOfStudents(props) {
+function TopCompanies() {
   const option = {
     title: {
-      text: "Number Of Student",
-      subtext: "Per Location",
+      text: "Top Companies ",
+      subtext: "based on student work history",
       left: "center",
     },
     tooltip: {
@@ -20,11 +20,11 @@ function NumberOfStudents(props) {
         type: "pie",
         radius: "50%",
         data: [
-          { value: 100, name: "Iowa" },
-          { value: 150, name: "Chicago" },
-          { value: 40, name: "New York" },
-          { value: 500, name: "San Franscisco" },
-          { value: 1000, name: "Texas" },
+          { value: 10, name: "Google" },
+          { value: 50, name: "Apple" },
+          { value: 100, name: "Microsoft" },
+          { value: 200, name: "Walmart" },
+          { value: 40, name: "KForce" },
         ],
         emphasis: {
           itemStyle: {
@@ -50,4 +50,4 @@ function NumberOfStudents(props) {
   );
 }
 
-export default NumberOfStudents;
+export default TopCompanies;

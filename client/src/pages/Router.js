@@ -14,6 +14,9 @@ import PageNotFound from "./404";
 import StudentProfile from "./student/Profile";
 import UserService from "../services/UserService";
 import FacultyProfile from "./faculty/Profile";
+import JobMarket from "../components/dashboard/JobMarket";
+import TopCompaniesDashboard from "../components/dashboard/TopCompaniesDashboard";
+import StudentStatistic from "../components/dashboard/StudentStatistic";
 
 export default function Router() {
   return (
@@ -22,13 +25,27 @@ export default function Router() {
         {/* Admin Routes */}
         {UserService.hasRole(["admin"]) && {}}
 
+        {UserService.hasRole(["admin", "student", "faculty"]) && (
+          <>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/dashboard/student-statistic"
+              element={<StudentStatistic />}
+            />
+            <Route path="/dashboard/job-market" element={<JobMarket />} />
+            <Route
+              path="/dashboard/top-companies"
+              element={<TopCompaniesDashboard />}
+            />
+          </>
+        )}
+
         {/* Student Routes */}
         {UserService.hasRole(["student"]) && (
           <>
             <Route path="/" element={<Dashboard />} />
 
             <Route path="/student/profile" element={<StudentProfile />} />
-            <Route path="/student/dashboard" element={<Dashboard />} />
 
             <Route
               path="student/job-advertisement/add"
@@ -54,8 +71,6 @@ export default function Router() {
             <Route path="/" element={<UserProfile />} />
 
             <Route path="/faculty/profile" element={<FacultyProfile />} />
-
-            <Route path="/faculty/dashboard" element={<Dashboard />} />
 
             <Route path="/faculty/student-list" element={<SearchStudent />} />
 
