@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import UserService from "../../services/UserService";
+import "./index.css";
 
 function Menu() {
   const adminMenu = [
@@ -34,13 +35,6 @@ function Menu() {
   ];
 
   const studentMenu = [
-    {
-      id: 10,
-      name: "Dashboard",
-      icon: "none",
-      url: "dashboard",
-      active: false,
-    },
     {
       id: 1,
       name: "Job Lists",
@@ -80,13 +74,6 @@ function Menu() {
 
   const facultyMenu = [
     {
-      id: 10,
-      name: "Dashboard",
-      icon: "none",
-      url: "dashboard",
-      active: false,
-    },
-    {
       id: 1,
       name: "Job List",
       icon: "none",
@@ -109,6 +96,37 @@ function Menu() {
     },
   ];
 
+  const CommonDashboard = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: "none",
+      url: "dashboard",
+      active: false,
+    },
+    {
+      id: 2,
+      name: "Student Statistics",
+      icon: "none",
+      url: "dashboard/student-statistic",
+      active: false,
+    },
+    {
+      id: 3,
+      name: "Job Market",
+      icon: "none",
+      url: "dashboard/job-market",
+      active: false,
+    },
+    {
+      id: 4,
+      name: "Top Companies",
+      icon: "none",
+      url: "dashboard/top-companies",
+      active: false,
+    },
+  ];
+
   const adminRole = UserService.hasRole(["admin"]);
   const studentRole = UserService.hasRole(["student"]);
   const facultyRole = UserService.hasRole(["faculty"]);
@@ -119,6 +137,22 @@ function Menu() {
 
   return (
     <div className="col-2 side-menu">
+      <div className="list-group menu-group">
+        {CommonDashboard.map((menu) => {
+          return (
+            <Link
+              key={menu.id}
+              to={"/" + menu.url}
+              className={
+                "list-group-item list-group-item-action " +
+                (menu.active ? "active" : "")
+              }
+            >
+              {menu.name}
+            </Link>
+          );
+        })}
+      </div>
       <div className="list-group">
         {/* Admin Menu */}
         {adminRole &&

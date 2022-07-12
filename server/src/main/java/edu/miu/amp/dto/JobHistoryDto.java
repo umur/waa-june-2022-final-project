@@ -12,4 +12,5 @@ public class JobHistoryDto {
     private LocalDate endDate;
     private String reasonToLeave;
     private String comment;
+    private boolean delete;
 }

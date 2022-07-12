@@ -1,10 +1,10 @@
 import ReactECharts from "echarts-for-react";
 
-function NumberOfStudents(props) {
+function NumberOfStudentsPerCity(props) {
   const option = {
     title: {
       text: "Number Of Student",
-      subtext: "Per Location",
+      subtext: "Per City",
       left: "center",
     },
     tooltip: {
@@ -50,4 +50,4 @@ function NumberOfStudents(props) {
   );
 }
 
-export default NumberOfStudents;
+export default NumberOfStudentsPerCity;

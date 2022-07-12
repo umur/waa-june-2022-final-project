@@ -6,26 +6,16 @@ import JobSearchTime from "./charts/JobSearchTime";
 import TagPieChart from "./charts/TagPieChart";
 import TagPerLocation from "./charts/TagPerLocation";
 import NumberOfStudentsPerCity from "./charts/NumberOfStudentsPerCity";
-import JobApplicationRate from "./charts/JobApplicationRate";
+import JobApplicationRate from "./charts/JobAdvertisementRate";
 import JobAdvertisementRate from "./charts/JobAdvertisementRate";
 import TopCompanies from "./charts/TopCompanies";
 import StudentDepartment from "./charts/StudentDepartment";
 
-function Dashboard() {
+function StudentStatistic() {
   const option = {};
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <NumberOfJobs />
-        </div>
-
-        <div className="col-md-6">
-          <JobSearchTime />
-        </div>
-      </div>
-
       <div className="row">
         <div className="col-md-6">
           <NumberOfStudents />
@@ -34,31 +24,7 @@ function Dashboard() {
         <div className="col-md-6">
           <NumberOfStudentsPerCity />
         </div>
-
-        <div className="col-md-6">
-          <TagPieChart />
-        </div>
-      </div>
-      <div className="row">
         <div className="col-md-12">
-          <TagPerLocation />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-6">
-          <JobApplicationRate />
-        </div>
-        <div className="col-md-6">
-          <JobAdvertisementRate />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-6">
-          <TopCompanies />
-        </div>
-        <div className="col-md-6">
           <StudentDepartment />
         </div>
       </div>
@@ -66,4 +32,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default StudentStatistic;
