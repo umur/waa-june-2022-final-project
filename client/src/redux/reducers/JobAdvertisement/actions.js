@@ -2,6 +2,7 @@ import {
   LIST_JOB_ADVERTISEMENT,
   ADD_JOB_ADVERTISEMENT,
   DELETE_JOB_ADVERTISEMENT,
+  EDIT_JOB_ADVERTISEMENT,
 } from "./actionsTypes";
 
 import HttpService from "../../../services/HttpService";
@@ -27,6 +28,21 @@ export const addJobAdvertisement = (job) => {
     },
   };
 };
+
+export const editJobAdvertisement = (job) => {
+  console.log(job)
+  return {
+    type: EDIT_JOB_ADVERTISEMENT,
+    payload: {
+      job, 
+      request: {
+        url: `/job-advertisements/${job.id}`,
+        method: HttpService.HttpMethods.PUT,
+        data: job
+      }
+    }
+  }
+}
 
 export const deleteJobAdvertisement = (job) => {
   return {

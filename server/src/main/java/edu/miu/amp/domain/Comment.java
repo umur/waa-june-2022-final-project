@@ -11,16 +11,18 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 
-@SQLDelete(sql = "UPDATE comment SET is_deleted = true WHERE id=?")
-@Where(clause = "deleted = false")
+@SQLDelete(sql = "UPDATE comment SET delete = true WHERE id=?")
+@Where(clause = "delete = false")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String comment;
 
+    // @Column(name = "is_delete")
     private Boolean deleted;
 
 }

@@ -13,11 +13,9 @@ function StudentProfile() {
   const userProfile = useSelector((state) => state.userProfile);
   const jobHistory = useSelector((state) => state.jobHistory);
 
-  console.log(jobHistory);
-  console.log(userProfile);
   useEffect(() => {
     dispatch(getUserProfile());
-    dispatch(getJobHistoryById(userProfile.id));
+    dispatch(getJobHistoryById(userProfile?.id));
   }, []);
 
   return (
