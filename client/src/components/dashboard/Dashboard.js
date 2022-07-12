@@ -32,12 +32,13 @@ function Dashboard() {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-6">
-          <Last10Appliedjobs />
-        </div>
-
-        <div className="col-md-6">
+        <div className="col-md-12">
           <Last10JobAdvertisement />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <Last10Appliedjobs />
         </div>
       </div>
     </div>
