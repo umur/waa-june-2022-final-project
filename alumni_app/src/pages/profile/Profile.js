@@ -57,7 +57,7 @@ const Profile = () => {
   };
 
   const postData = async () => {
-    let params = "";
+    let params = "/auth/profile";
     let result = await putRequest(params, values);
     navigate("/Jobs");
   };
