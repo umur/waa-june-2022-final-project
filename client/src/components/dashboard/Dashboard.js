@@ -35,7 +35,6 @@ function Dashboard() {
           <NumberOfStudents />
         </div>
 
-
         <div className="col-md-6">
           <TagPieChart />
         </div>
@@ -48,7 +47,10 @@ function Dashboard() {
       <div className="row">
         <div className="col-md-12">
           <Last10Appliedjobs />
+        </div>
+      </div>
 
+      <div className="row">
         <div className="col-md-6">
           <NumberOfStudentsPerCity />
         </div>
@@ -78,7 +80,6 @@ function Dashboard() {
         </div>
         <div className="col-md-6">
           <StudentDepartment />
-
         </div>
       </div>
     </div>

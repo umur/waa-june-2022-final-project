@@ -8,8 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "files")
-@SQLDelete(sql = "UPDATE files SET is_delete = true WHERE id=?")
-@Where(clause = "is_delete = false")
+
 public class FileDB {
   @Id
   @GeneratedValue(generator = "uuid")
@@ -20,8 +19,6 @@ public class FileDB {
   @Lob
   private byte[] data;
 
-  @Column(name = "is_delete")
-  private boolean delete;
   public FileDB() {
   }
   public FileDB(String name, String type, byte[] data) {
