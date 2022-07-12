@@ -6,4 +6,5 @@ import lombok.Data;
 public class DepartmentDto {
     private Integer id;
     private String departmentName;
+    private boolean delete;
 }

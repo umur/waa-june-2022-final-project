@@ -25,7 +25,7 @@ public class JobHistoryController {
     }
 
     @GetMapping
-    @RolesAllowed({"student", "faculty"})
+//    @RolesAllowed({"student", "faculty"})
     public ResponseEntity<List<JobHistoryDto>> getAllJobHistory() {
         var res = jobHistoryService.getAllJobHistory();
         return new ResponseEntity<>(res, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class JobHistoryController {
     }
 
     @DeleteMapping("/{id}")
-    @RolesAllowed({"student", "faculty"})
+//    @RolesAllowed({"student", "faculty"})
     public void deleteJobHistory(@PathVariable(name = "id") Integer id) {
 
         jobHistoryService.deleteJobHistory(id);

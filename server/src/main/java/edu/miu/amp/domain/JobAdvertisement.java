@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-//@SQLDelete(sql = "UPDATE JobAdvertisement SET delete = true where id = ?")
+//@SQLDelete(sql = "UPDATE job_advertisement SET delete = true where id = ?")
 //@Where(clause = "deleted=false")
 public class JobAdvertisement {
     @Id
@@ -48,6 +48,6 @@ public class JobAdvertisement {
     @OneToMany(mappedBy = "jobAdvertisement")
     private List<JobApplication> jobApplicationList;
 
-//    @ColumnDefault("false")
-//    private boolean delete;
+    @ColumnDefault("false")
+    private boolean delete;
 }

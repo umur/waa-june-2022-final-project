@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-//@SQLDelete(sql = "UPDATE JobApplication SET delete = true where id = ?")
+//@SQLDelete(sql = "UPDATE job_application SET delete = true where id = ?")
 //@Where(clause = "deleted=false")
 public class JobApplication {
     @Id
