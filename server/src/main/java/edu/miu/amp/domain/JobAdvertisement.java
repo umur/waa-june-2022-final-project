@@ -3,7 +3,6 @@ package edu.miu.amp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.lang.Nullable;
@@ -47,7 +46,6 @@ public class JobAdvertisement {
 
     @OneToMany(mappedBy = "jobAdvertisement")
     private List<JobApplication> jobApplicationList;
-
 
     private boolean deleted;
 }

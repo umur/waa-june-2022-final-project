@@ -293,61 +293,62 @@ VALUES (10015, 'Feeling like I am valued and seen.', 'Microsoft','2011-01-10', '
 
 
 --Job Application data
---fields: id, deleted, job_advertisement_id
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10001, TRUE, 10002);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10001, TRUE, 10002, '2022-01-01');
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10002, false, 10003);
-
-
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10003, TRUE, 10003);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10002, false, 10003, '2018-05-15');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10004, TRUE, 10001);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10003, TRUE, 10003, '2019-12-15');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10005, FALSE, 10001);
-
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10006, FALSE, 10002);
-
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10007, true, 10001);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10004, TRUE, 10001, '2012-11-10');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10008, true, 10001);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10005, FALSE, 10001, '2022-01-12');
+
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10006, FALSE, 10002,'2022-02-13');
+
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10007, true, 10001,'2020-03-10');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10009, FALSE, 10011);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10008, true, 10001,'2021-12-10');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10010, TRUE, 10011);
-
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10011, FALSE, 10002);
-
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10012, FALSE, 10011);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10009, FALSE, 10011, '2017-08-25');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10013, true, 10010);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10010, TRUE, 10011,'2018-04-20');
+
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10011, FALSE, 10002,'2022-06-15');
+
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10012, FALSE, 10011, '2015-08-05');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10014, FALSE, 10010);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10013, true, 10010,'2020-08-25');
 
 
-INSERT INTO job_application (id, deleted, job_advertisement_id)
-VALUES (10015, true, 10011);
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10014, FALSE, 10010,'2021-10-20');
+
+
+INSERT INTO job_application (id, deleted, job_advertisement_id, job_applied_date)
+VALUES (10015, true, 10011, '2010-10-25');
+
+
 
 --Add data in Department table
 INSERT INTO department (id, is_delete, department_name)

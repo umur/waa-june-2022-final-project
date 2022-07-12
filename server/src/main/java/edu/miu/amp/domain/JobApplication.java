@@ -3,11 +3,11 @@ package edu.miu.amp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -29,7 +29,8 @@ public class JobApplication {
     @ManyToMany
     private List<Student> studentList;
 
-
     private boolean deleted;
 
+    @Column(name = "job_applied_date")
+    private LocalDate jobAppliedDate;
 }
