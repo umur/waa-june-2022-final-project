@@ -10,6 +10,7 @@ import com.cs545waa.waaJune2022finalProject.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.keycloak.KeycloakPrincipal;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -19,7 +20,7 @@ import java.util.List;
 @RequestMapping("/students")
 @Data
 @AllArgsConstructor
-
+//@CrossOrigin(origins = "http://localhost:3000")
 public class StudentController {
 
     StudentService studentService;
@@ -37,17 +38,27 @@ public class StudentController {
 
     // --------------------   get student -----------------------
     @GetMapping
-    public StudentDto get(Principal principal){
+    public ResponseEntity<StudentDto> get(Principal principal){
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
-        return studentService.getStudentByUsername(username);
+        return ResponseEntity.ok().body(studentService.getStudentByUsername(username));
+    }
+    @GetMapping("/get")
+    public ResponseEntity<String> getStudents(Principal principal){
+
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        return ResponseEntity.ok().body("HI");
     }
 
     //------------------------------ edit profile -------------
     @PutMapping("/save-profile")
-    public void saveProfile(@RequestBody StudentDto studentDto, Principal principal) {
+    public void saveProfile(@RequestBody StudentDto studentDto, Principal principal ) {
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
-        int id = Integer.valueOf(user.getKeycloakSecurityContext().getToken().getId());
+        int id = studentService.getStudentByUsername(
+                user
+                .getKeycloakSecurityContext()
+                .getToken().getPreferredUsername()).getId();
 
         studentService.editProfile(studentDto, id);
     }
@@ -62,7 +73,7 @@ public class StudentController {
     }
     // ---------------- add professional experience---------
     @PostMapping("/add-experience")
-    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto) {
+    public void addExperience(@RequestBody ProfessionalExperienceDto professionalExperienceDto,Principal principal) {
         studentService.addExperience(professionalExperienceDto);
     }
 }

@@ -18,7 +18,7 @@ public class FacultyDto {
 
     private String email;
 
-    private Department department;
+    private DepartmentDTO department;
 
     @JsonManagedReference(value = "faculty")
     private AddressDto address;

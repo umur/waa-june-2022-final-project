@@ -25,24 +25,20 @@ public class StudentDto {
     private String email;
     private String username;
 
-     @JsonManagedReference(value = "stu")
-    private AddressDto address;
+     @JsonManagedReference(value = "mailingAddress")
+     private AddressDto address;
 
-    private Department major;
+    private DepartmentDTO major;
 
-    private List<ProfessionalExperience> professionalExperiances;
+   @JsonManagedReference(value = "applications")
+    private List<JobApplicationDTO> jobApplications;
 
-    @ManyToMany
-    private List<JobAdvertisementDto> jobApplicationsDto;
+    @JsonManagedReference(value = "advertisements")
+    private List<JobAdvertisementDto> jobAdvertisements;
 
-    @OneToMany
-    private List<JobAdvertisementDto> jobAdvertisementsDto;
+    @JsonManagedReference(value = "experiences")
+    private List<ProfessionalExperienceDto> professionalExperiences;
 
-    @OneToMany
-    private List<ProfessionalExperienceDto> professionalExperiencesDto;
-
-//    @OneToOne
-//    private Cv cv;
 }
 
 

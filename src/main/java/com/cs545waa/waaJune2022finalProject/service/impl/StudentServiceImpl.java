@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
         //studentRepo.save(student);
         studentDto.setId(id);
         studentRepo.save(modelMapper.map(studentDto, Student.class));
-        addressRepo.save(modelMapper.map(studentDto.getAddress(), Address.class));
+        //addressRepo.save(modelMapper.map(studentDto.getAddress(), Address.class));
         
     }
 

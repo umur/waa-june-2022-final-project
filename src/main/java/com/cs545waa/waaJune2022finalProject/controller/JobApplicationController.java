@@ -20,14 +20,14 @@ public class JobApplicationController {
     //    -------------------- get applicants -------------------
 
     @GetMapping("/applicants")
-    public List<ApplicantDTO> getApplicants(@RequestBody Integer jobId){
+    public List<ApplicantDTO> getApplicants(@RequestBody int jobId){
         return jobService.getApplicants(jobId);
     }
 
 
     //    -------------------- apply for a job -------------------
     @PostMapping("/apply")
-    public void applyToJob(@RequestBody Integer jobId, Principal principal){
+    public void applyToJob(@RequestParam Integer jobId, Principal principal){
 
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();

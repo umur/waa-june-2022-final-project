@@ -29,8 +29,8 @@ public class JobAdvertisement {
     @ManyToOne
     private Student student;
 
-    @ManyToMany(mappedBy = "jobApplications")
-    private List<Student> students;
+    @OneToMany(mappedBy = "jobAdvertisement")
+    private List<JobApplication> jobApplications;
 
     @OneToOne(mappedBy = "jobAd",fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.PERSIST,

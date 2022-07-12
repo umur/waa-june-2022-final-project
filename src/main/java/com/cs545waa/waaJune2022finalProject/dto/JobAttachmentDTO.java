@@ -12,6 +12,6 @@ public class JobAttachmentDTO {
     private String name;
     // cloud url of the file
     private String url;
-    @JsonBackReference
+    @JsonBackReference(value = "attach")
     private JobAdvertisementDto jobAdvertisement;
 }

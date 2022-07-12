@@ -32,10 +32,7 @@ public class Student {
     private float gpa;
 
 
-    @OneToOne(mappedBy = "student",fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.PERSIST,
-            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-    org.hibernate.annotations.CascadeType.DELETE})
+    @OneToOne(mappedBy = "student",fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private Address address;
 
     @ManyToOne
@@ -45,18 +42,17 @@ public class Student {
     private boolean active;
 
     //Students can add job advertisements
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private List<JobAdvertisement> jobAdvertisements;
 
     //Display 10 most recently applied job advertisements.
     //Students can apply to the jobs.
-    @ManyToMany
-    @JoinTable(name = "JobApplication")
-    private List<JobAdvertisement> jobApplications;
+    @OneToMany(mappedBy = "student")
+    private List<JobApplication> jobApplications;
 
 
 
-    @OneToMany(mappedBy="student")
+    @OneToMany(mappedBy="student",fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private List<ProfessionalExperience> professionalExperiences;
 
 

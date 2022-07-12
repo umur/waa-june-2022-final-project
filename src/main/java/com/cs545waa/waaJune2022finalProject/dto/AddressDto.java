@@ -19,11 +19,11 @@ public class AddressDto {
     private String city;
     private String state;
     private int zip;
- @JsonBackReference(value = "stu")
+ @JsonBackReference(value = "mailingAddress")
     private StudentDto student;
     @JsonBackReference(value = "faculty")
-    FacultyDto faculty;
-    @JsonBackReference(value = "attach")
-    JobAdvertisementDto jobAd;
+    private FacultyDto faculty;
+   @JsonBackReference(value = "dutyStation")
+   private JobAdvertisementDto jobAdvertisement;
 }
 

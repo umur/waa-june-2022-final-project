@@ -3,6 +3,7 @@ package com.cs545waa.waaJune2022finalProject.service.impl;
 import com.cs545waa.waaJune2022finalProject.dto.ApplicantDTO;
 import com.cs545waa.waaJune2022finalProject.dto.JobAdvertisementDto;
 import com.cs545waa.waaJune2022finalProject.entity.JobAdvertisement;
+import com.cs545waa.waaJune2022finalProject.entity.JobApplication;
 import com.cs545waa.waaJune2022finalProject.entity.Student;
 import com.cs545waa.waaJune2022finalProject.repository.JobRepo;
 import com.cs545waa.waaJune2022finalProject.repository.StudentRepo;
@@ -12,19 +13,21 @@ import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class JobServiceImp implements JobService {
     private final JobRepo jobRepo;
     private final StudentRepo studentRepo;
     private final ModelMapper modelMapper;
     @Override
     public List<ApplicantDTO> getApplicants(Integer jobId) {
-       return jobRepo.findById(jobId).get().getStudents()
+       return jobRepo.findById(jobId).get().getJobApplications()
                 .stream()
                 .map(applicant->modelMapper.map(applicant,ApplicantDTO.class))
                .collect(Collectors.toList());
@@ -37,7 +40,9 @@ public class JobServiceImp implements JobService {
     @Override
     public void applyToJob(Integer jobId,String username){
         Student st = studentRepo.getStudentByUsername(username);
-        jobRepo.findById(jobId).get().getStudents().add(st);
+        JobAdvertisement job=jobRepo.findById(jobId).get();
+        //job.getJobApplications().add(st);
+        st.getJobApplications().add(new JobApplication(null,st,job));
     }
 
     @Override
