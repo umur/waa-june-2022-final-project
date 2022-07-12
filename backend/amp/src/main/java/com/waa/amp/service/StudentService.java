@@ -49,6 +49,30 @@ public class StudentService {
         return jobRepository.save(job);
     }
 
+    public Job updateJob(Long id, JobReq jobReq) {
+        Job job = jobRepository.findByIdAndPostedBy(id, userService.getLoggedUser()).orElseThrow(() -> new RuntimeException("This is not your job"));
+
+        List<Tag> tags = new ArrayList<>();
+
+        for (String it : jobReq.tag()) {
+            var t = tagRepository.findByTags(it);
+            tags.add(t);
+        }
+
+        job.setTags(tags);
+
+        var updatedJob = new Job(id,
+                jobReq.description(),
+                tags,
+                jobReq.state(),
+                jobReq.city(),
+                jobReq.companyName(),
+                userService.getLoggedUser()
+        );
+
+        return jobRepository.save(updatedJob);
+    }
+
     public List<Job> getJob() {
         User loggedUser = userService.getLoggedUser();
         return jobRepository.findAllByPostedBy(loggedUser);

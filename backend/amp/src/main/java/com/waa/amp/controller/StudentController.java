@@ -30,6 +30,11 @@ public class StudentController {
         return ResponseEntity.ok(studentService.postJob(jobReq));
     }
 
+    @PutMapping("/post-job/{id}")
+    public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody JobReq jobReq) {
+        return ResponseEntity.ok(studentService.updateJob(id, jobReq));
+    }
+
     @GetMapping("/get-job")
     public ResponseEntity<Map<String, List<Job>>> getJob() {
         return ResponseEntity.ok(of("jobList", studentService.getJob()));
