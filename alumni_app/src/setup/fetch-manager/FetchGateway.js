@@ -5,20 +5,20 @@ import Cookies from 'js-cookie';
 const api_url = 'http://localhost:8085';
 
 export async function getRequest(path) {
-    const auth = 'Bearer '+ Cookies.get('token');
+    const auth = 'Bearer ' + Cookies.get('token');
     const fullURL = api_url + path;
     try {
         const config = {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc2hpc2hAbWl1LmVkdSIsInJvbGVzIjoiQURNSU4iLCJpZCI6MSwidXNlck5hbWUiOiJhc2hpc2hAbWl1LmVkdSIsImV4cCI6MTY1NzYwMDI2NywiaWF0IjoxNjU3NTgyMjY3fQ.5IILwfiqnI02cOoV4M_sLlDMWq5udmaqXie1m597uMW4Fv5RhSzLBYzRUOmNcpc8YYa3pNKSz34BOsVA6GYBiA',
+                Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc2hpc2hAbWl1LmVkdSIsInJvbGVzIjoiQURNSU4iLCJpZCI6MSwidXNlck5hbWUiOiJhc2hpc2hAbWl1LmVkdSIsImV4cCI6MTY1NzYxNjc0MiwiaWF0IjoxNjU3NTk4NzQyfQ.n3Hrsd6u9nBvkza7TBeZGntLG0zQ95cAP23kywy93U3aTWPYfpCOr-nFEhR_K-7yHm6KoRPiKD06im5ZmfVvXg'
             },
-          };
+        };
 
         const response = await axios.get(fullURL, config);
         return response.data;
     } catch (error) {
-        let as =error;
-        debugger
+        let as = error;
+        // if (error.code == "ERR_NETWORK") {Cookies.remove('token') }
         console.error(error);
     }
 
@@ -75,9 +75,9 @@ export async function putRequest(path, data) {
     axios.put(fullURL, data)
         .then(response => response)
         .catch(error => {
-            
+
             console.error('There was an error!', error);
         });
 
-    
+
 }
