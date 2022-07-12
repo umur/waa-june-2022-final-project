@@ -36,7 +36,12 @@ public class FacultyController {
 
     @PostMapping("/search-student")
     public ResponseEntity<Map<String, List<Student>>> searchStudent(@RequestBody StudentSearchReq studentSearchReq) {
-        return ResponseEntity.ok(of("resutls", studentService.searchStudent(studentSearchReq)));
+        return ResponseEntity.ok(of("data", studentService.searchStudent(studentSearchReq)));
+    }
+
+    @GetMapping("/all-student")
+    public ResponseEntity<Map<String, List<Student>>> allStudent() {
+        return ResponseEntity.ok(of("data", studentService.allStudent()));
     }
 
     @GetMapping("/stat")

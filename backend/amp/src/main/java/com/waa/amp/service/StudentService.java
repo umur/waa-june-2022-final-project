@@ -110,4 +110,8 @@ public class StudentService {
     public List<Student> searchStudent(StudentSearchReq studentSearchReq) {
         return studentRepository.searchStudent(studentSearchReq);
     }
+
+    public List<Student> allStudent() {
+        return studentRepository.findAll();
+    }
 }
