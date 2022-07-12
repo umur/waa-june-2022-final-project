@@ -15,18 +15,22 @@ INSERT INTO public.tags("name")VALUES('web-development');
 INSERT INTO public.tags("name")VALUES('react');
 INSERT INTO public.tags("name")VALUES('spring-boot');
 
-INSERT INTO public.users(email, "password", username, first_name, last_name, logged_at)
-VALUES('subo@gmail.com', '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student', 'George', 'Bush', '2022-07-09 10:22:49.828');
-INSERT INTO public.users(email, "password", username, first_name, last_name, logged_at)
-VALUES('stu1@gmail.com', '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student1', 'Steve', 'Nash', '2022-07-10 19:26:49.828');
-INSERT INTO public.users(email, "password", username, first_name, last_name, logged_at)
-VALUES('stu2@gmail.com', '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student2', 'David', 'You', '2022-07-07 12:25:49.828');
+-- INSERT INTO public.users
+-- (account_non_locked, email, failed_attempt, first_name, is_active, last_name, logged_at, lock_time, "password", username)
+-- VALUES(true, '', 0, '', true, '', '', '', '', '');
 
-INSERT INTO public.users(email, "password", username)
-VALUES('faculty@gmail.com', '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'faculty');
+INSERT INTO public.users(account_non_locked, email, failed_attempt,"password", username, first_name, last_name, logged_at)
+VALUES(true, 'subo@gmail.com', 0, '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student', 'George', 'Bush', '2022-07-09 10:22:49.828');
+INSERT INTO public.users(account_non_locked, email, failed_attempt,"password", username, first_name, last_name, logged_at)
+VALUES(true, 'stu1@gmail.com', 0, '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student1', 'Steve', 'Nash', '2022-07-10 19:26:49.828');
+INSERT INTO public.users(account_non_locked, email, failed_attempt,"password", username, first_name, last_name, logged_at)
+VALUES(true, 'stu2@gmail.com', 0, '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'student2', 'David', 'You', '2022-07-07 12:25:49.828');
 
-INSERT INTO public.users(email, "password", username)
-VALUES('admin@gmail.com', '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'admin');
+INSERT INTO public.users(account_non_locked, email, failed_attempt,"password", username)
+VALUES(true, 'faculty@gmail.com', 0, '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'faculty');
+
+INSERT INTO public.users(account_non_locked, email, failed_attempt,"password", username)
+VALUES(true, 'admin@gmail.com', 0, '$2a$10$u8WolM01.f6TXBWzgctoQ.33R72LEYFnsetQCmvmgD4g5QWRoeTqe', 'admin');
 
 INSERT INTO public.user_roles(user_id, role_id)VALUES(1, 3);
 INSERT INTO public.user_roles(user_id, role_id)VALUES(2, 3);

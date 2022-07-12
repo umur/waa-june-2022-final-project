@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class AcitivityLog {
+public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -23,8 +23,7 @@ public class AcitivityLog {
     private String operation;
     private double duration;
 
-    public AcitivityLog(Date date, String operation, double duration) {
-        this.getId();
+    public ActivityLog(Date date, String operation, long duration) {
         this.date = date;
         this.operation = operation;
         this.duration = duration;

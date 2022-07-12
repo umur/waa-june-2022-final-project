@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,6 +64,15 @@ public class User {
 
   @OneToOne(mappedBy = "user")
   private Student student;
+
+  @Column(name = "account_non_locked",  columnDefinition = "BOOLEAN DEFAULT true")
+  private boolean accountNonLocked;
+
+  @Column(name = "failed_attempt")
+  private int failedAttempt;
+
+  @Column(name = "lock_time")
+  private Date lockTime;
   public User() {
   }
 

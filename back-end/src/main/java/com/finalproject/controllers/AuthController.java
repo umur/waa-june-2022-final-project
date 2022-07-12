@@ -1,10 +1,7 @@
 package com.finalproject.controllers;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -60,27 +57,35 @@ public class AuthController {
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-    Authentication authentication = authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+    String userName = loginRequest.getUsername();
+    Optional<User> user1 = userRepository.findByUsername(userName);
+    Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-    SecurityContextHolder.getContext().setAuthentication(authentication);
-    String jwt = jwtUtils.generateJwtToken(authentication);
-    
-    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-    List<String> roles = userDetails.getAuthorities().stream()
-        .map(item -> item.getAuthority())
-        .collect(Collectors.toList());
+    if (user1.isPresent() && user1.get().isAccountNonLocked()) {
+      System.out.println("yes its fine user");
 
+      SecurityContextHolder.getContext().setAuthentication(authentication);
+      String jwt = jwtUtils.generateJwtToken(authentication);
 
-    var user = userRepository.findById(userDetails.getId());
-    user.get().setLast_logged(LocalDateTime.now());
-    userRepository.save(user.get());
+      UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+      List<String> roles = userDetails.getAuthorities().stream()
+              .map(item -> item.getAuthority())
+              .collect(Collectors.toList());
 
-    return ResponseEntity.ok(new JwtResponse(jwt,
-                         userDetails.getId(), 
-                         userDetails.getUsername(), 
-                         userDetails.getEmail(), 
-                         roles));
+      var user = userRepository.findById(userDetails.getId());
+      user.get().setLast_logged(LocalDateTime.now());
+      userRepository.save(user.get());
+
+      return ResponseEntity.ok(new JwtResponse(jwt,
+              userDetails.getId(),
+              userDetails.getUsername(),
+              userDetails.getEmail(),
+              roles));
+    } else if (user1.isPresent() && !user1.get().isAccountNonLocked()) {
+        return ResponseEntity.badRequest().body(new MessageResponse("Error: Account is locked"));
+    } else {
+       return ResponseEntity.badRequest().body(new MessageResponse("Error: User is not found!"));
+    }
   }
 
   @PostMapping("/signup")
@@ -136,6 +141,7 @@ public class AuthController {
 
     user.setRoles(roles);
     user.setActive(true);
+    user.setFailedAttempt(0);
 
     User user1 = userRepository.save(user);
     // Create new student

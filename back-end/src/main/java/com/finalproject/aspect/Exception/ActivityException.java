@@ -1,7 +1,7 @@
 package com.finalproject.aspect.Exception;
 
-public class OffensiveException extends RuntimeException{
-    public OffensiveException(String message) {
+public class ActivityException extends RuntimeException{
+    public ActivityException(String message) {
         super(message);
     }
 }

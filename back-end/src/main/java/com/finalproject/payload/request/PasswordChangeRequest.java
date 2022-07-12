@@ -7,7 +7,11 @@ import javax.validation.constraints.Size;
 
 @Data
 public class PasswordChangeRequest {
-    @NotBlank
-    @Size(max=24)
+//    @NotBlank
+//    @Size(max=24)
     private String password;
+
+    public PasswordChangeRequest() {
+
+    }
 }

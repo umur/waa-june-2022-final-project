@@ -28,4 +28,16 @@ public class UsersController {
         userService.changePass(id, pwrreq);
         return ResponseEntity.ok(new MessageResponse("Changed successfully"));
     }
+    @CrossOrigin(origins = "*")
+    @PutMapping("/deactivate/{id}")
+    public ResponseEntity<?> deActivate(@PathVariable long id) {
+        userService.deActivate(id);
+        return ResponseEntity.ok(new MessageResponse("Deactivated successfully"));
+    }
+    @CrossOrigin(origins = "*")
+    @PutMapping("/activate/{id}")
+    public ResponseEntity<?> activate(@PathVariable long id) {
+        userService.activate(id);
+        return ResponseEntity.ok(new MessageResponse("Activated successfully"));
+    }
 }
