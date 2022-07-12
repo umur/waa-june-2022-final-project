@@ -43,7 +43,7 @@ function Register() {
     }
     return (
         <div className="">
-            <section className="" >
+            <section className="mt-4" >
                 <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-lg-12 col-xl-11">
                         <div className="card text-black" >
@@ -83,7 +83,7 @@ function Register() {
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center ">
                                                 <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input
@@ -111,7 +111,7 @@ function Register() {
                                             </div>
 
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            <div className="d-flex flex-row align-items-center ">
                                                 <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <select
