@@ -3,6 +3,7 @@ package com.waa.amp.controller;
 import com.waa.amp.dto.CommentReq;
 import com.waa.amp.dto.StatRes;
 import com.waa.amp.dto.StudentSearchReq;
+import com.waa.amp.entity.Job;
 import com.waa.amp.entity.Student;
 import com.waa.amp.service.CommentService;
 import com.waa.amp.service.JobService;
@@ -41,5 +42,10 @@ public class FacultyController {
     @GetMapping("/stat")
     public ResponseEntity<StatRes> getStat() {
         return ResponseEntity.ok(jobService.stat());
+    }
+
+    @GetMapping("/get-job")
+    public ResponseEntity<Map<String, List<Job>>> getJob() {
+        return ResponseEntity.ok(of("jobList", studentService.getALlJob()));
     }
 }

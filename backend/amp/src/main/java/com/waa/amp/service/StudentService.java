@@ -54,6 +54,10 @@ public class StudentService {
         return jobRepository.findAllByPostedBy(loggedUser);
     }
 
+    public List<Job> getALlJob(){
+        return jobRepository.findAll();
+    }
+
     public Student createStudent(StudentReq studentReq) {
         return updateStudent(null, studentReq);
     }
