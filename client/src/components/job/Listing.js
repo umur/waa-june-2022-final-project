@@ -8,9 +8,4 @@ export default function JobListing(props) {
       <td>{props.address?.city}</td>
     </tr>
   );
-
-  // {props.address
-  //   ? props.address.city + "," + props.address.state
-  //   : ""}
-  //   );
 }
