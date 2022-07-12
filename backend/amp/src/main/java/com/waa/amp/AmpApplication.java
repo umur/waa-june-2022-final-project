@@ -1,9 +1,7 @@
 package com.waa.amp;
 
-import com.waa.amp.entity.Role;
-import com.waa.amp.entity.Tag;
-import com.waa.amp.entity.User;
-import com.waa.amp.entity.UserType;
+import com.waa.amp.entity.*;
+import com.waa.amp.repository.JobRepository;
 import com.waa.amp.repository.RoleRepository;
 import com.waa.amp.repository.TagRepository;
 import com.waa.amp.repository.UserRepository;
@@ -22,6 +20,7 @@ public class AmpApplication {
 	private final UserRepository userRepository;
 	private final RoleRepository roleRepository;
 	private final TagRepository tagRepository;
+	private final JobRepository jobRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AmpApplication.class, args);
@@ -39,6 +38,10 @@ public class AmpApplication {
 			var tag2 = tagRepository.save(new Tag(null, "Tag 2"));
 			var tag3 = tagRepository.save(new Tag(null, "Tag 3"));
 			var tag4 = tagRepository.save(new Tag(null, "Tag 4"));
+
+			var job1 = jobRepository.save(new Job(null, "description 1", List.of(tag1, tag2), "Iowa", "FairField", "KForce", user));
+			var job2 = jobRepository.save(new Job(null, "description 2", List.of(tag4, tag3), "CA", "San Francisco", "Google", user));
+
 		};
 	}
 }
