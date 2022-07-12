@@ -2,16 +2,34 @@ import ReactECharts from "echarts-for-react";
 
 function JobAdvertisementRate(props) {
   const option = {
+    title: {
+      text: "Job Advertisement Rate",
+      subtext: "per month",
+      left: "center",
+    },
     xAxis: {
       type: "category",
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      data: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
     },
     yAxis: {
       type: "value",
     },
     series: [
       {
-        data: [150, 230, 224, 218, 135, 147, 260],
+        data: [5, 6, 7, 3, 5, 4, 6, 8, 12, 24, 22, 32],
         type: "line",
       },
     ],

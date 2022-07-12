@@ -3,8 +3,8 @@ import ReactECharts from "echarts-for-react";
 function StudentDepartment() {
   const option = {
     title: {
-      text: "Job Tags",
-      subtext: "",
+      text: "Number Of Student",
+      subtext: "Per department",
       left: "center",
     },
     tooltip: {
@@ -20,11 +20,9 @@ function StudentDepartment() {
         type: "pie",
         radius: "50%",
         data: [
-          { value: 10, name: "DevOps" },
-          { value: 50, name: "Sr Engineering" },
-          { value: 100, name: "React Frontend" },
-          { value: 200, name: "Java Developer" },
-          { value: 40, name: "Dot Net Developer" },
+          { value: 500, name: "Compro" },
+          { value: 50, name: "MBA" },
+          { value: 100, name: "MSD" },
         ],
         emphasis: {
           itemStyle: {
