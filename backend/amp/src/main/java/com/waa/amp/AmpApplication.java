@@ -1,10 +1,7 @@
 package com.waa.amp;
 
 import com.waa.amp.entity.*;
-import com.waa.amp.repository.JobRepository;
-import com.waa.amp.repository.RoleRepository;
-import com.waa.amp.repository.TagRepository;
-import com.waa.amp.repository.UserRepository;
+import com.waa.amp.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +18,8 @@ public class AmpApplication {
 	private final RoleRepository roleRepository;
 	private final TagRepository tagRepository;
 	private final JobRepository jobRepository;
+
+	private final StudentRepository studentRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AmpApplication.class, args);
@@ -41,6 +40,9 @@ public class AmpApplication {
 
 			var job1 = jobRepository.save(new Job(null, "description 1", List.of(tag1, tag2), "Iowa", "FairField", "KForce", user));
 			var job2 = jobRepository.save(new Job(null, "description 2", List.of(tag4, tag3), "CA", "San Francisco", "Google", user));
+
+			studentRepository.save(new Student(null, userStudent, "email@email", "firstname", "lastname", "cs", "3.5", "Fairfield"));
+			studentRepository.save(new Student(null, userStudent, "anwar@email", "anwar", "hossian", "cs", "3.5", "Fairfield"));
 
 		};
 	}
