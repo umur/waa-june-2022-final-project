@@ -10,6 +10,9 @@ export default function JobHistoryInfo(props) {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">Start Date: {props.startDate}</li>
                     <li className="list-group-item">End Date: {props.endDate}</li>
+                    <li className="list-group-item">Reason of Leaving: {props.reasonToLeave}</li>
+                    <li className="list-group-item">Comments: {props.comment}</li>
+
                 </ul>
             </Col>
             <br />
