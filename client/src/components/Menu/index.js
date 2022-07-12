@@ -56,13 +56,13 @@ function Menu() {
       url: "job-advertisement/add",
       active: false,
     },
-    {
-      id: 4,
-      name: "Job Applicant List",
-      icon: "none",
-      url: "job-applicant",
-      active: false,
-    },
+    // {
+    //   id: 4,
+    //   name: "Job Applicant List",
+    //   icon: "none",
+    //   url: "job-applicant",
+    //   active: false,
+    // },
     {
       id: 5,
       name: "Add Job History",
