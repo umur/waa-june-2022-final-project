@@ -19,4 +19,8 @@ public interface JobRepo extends JpaRepository<JobAdvertisement, Integer> {
 
     @Query("select J.jobTag as jobtag from JobAdvertisement J  WHERE J.jobTag is not null")
     List<String> findByTags();
+
+    //@Query("select A.state,j.jobTag from Address A left join JobAdvertisement j on j.address.id = A.id where j.jobTag is not null")
+
+    List<JobAdvertisement> findJobAdvertisementsByAddressStateContaining(String state);
 }

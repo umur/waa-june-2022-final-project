@@ -3,11 +3,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Avatar } from "@material-ui/core";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+import { AUTHCONTEXT } from "../../App";
 
 export default function ProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const {setAuth} = React.useContext(AUTHCONTEXT)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,7 +30,10 @@ export default function ProfileMenu() {
     navigate("/cv");
   }
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    Cookies.remove('token');
+    setAuth(undefined);
+  };
 
   return (
     <div>

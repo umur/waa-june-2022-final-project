@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../pages/dashboard/Header";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router";
-
+import { AUTHCONTEXT } from "../App";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const classes = useStyles();
     const navigate = useNavigate();
-
     return (
         <div className={classes.root}>
             <AppBar position="static">

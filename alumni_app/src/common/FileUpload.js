@@ -2,6 +2,7 @@ import { Button, Input } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { postFileRequest } from "../setup/fetch-manager/FetchGateway";
+import Cookies from 'js-cookie';
 
 export default function FileUpload(props) {
     const [savedUrl, setSavedUrl] = useState();
@@ -15,7 +16,7 @@ export default function FileUpload(props) {
     const postFileRequest = async (data) => {
         const api_url = 'http://localhost:8085/files/uploadFile';
         const fullURL = api_url;
-
+        const auth = 'Bearer ' + Cookies.get('token');
         let formData = new FormData();
         formData.append('file', data);
         formData.append('type', props.folderName);
@@ -24,6 +25,7 @@ export default function FileUpload(props) {
         try {
             const response = await axios.post(fullURL, formData, {
                 headers: {
+                    'Authorization': auth,
                     'content-type': 'multipart/form-data'
                 }
             });
