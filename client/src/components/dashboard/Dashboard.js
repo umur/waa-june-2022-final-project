@@ -19,6 +19,16 @@ function Dashboard() {
   return (
     <div className="container">
       <div className="row">
+        <div className="col-6">
+          <Last10JobAdvertisement />
+        </div>
+
+        <div className="col-6">
+          <Last10Appliedjobs />
+        </div>
+      </div>
+
+      {/* <div className="row">
         <div className="col-md-6">
           <NumberOfJobs />
         </div>
@@ -26,9 +36,9 @@ function Dashboard() {
         <div className="col-md-6">
           <JobSearchTime />
         </div>
-      </div>
+      </div> */}
 
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-6">
           <NumberOfStudents />
         </div>
@@ -36,19 +46,9 @@ function Dashboard() {
         <div className="col-md-6">
           <TagPieChart />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
-          <Last10JobAdvertisement />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
-          <Last10Appliedjobs />
-        </div>
-      </div>
+      </div> */}
 
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-6">
           <NumberOfStudentsPerCity />
         </div>
@@ -56,30 +56,24 @@ function Dashboard() {
         <div className="col-md-6">
           <TagPieChart />
         </div>
-      </div>
+      </div> */}
       <div className="row">
-        <div className="col-md-12">
-          <TagPerLocation />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-6">
-          <JobApplicationRate />
-        </div>
         <div className="col-md-6">
           <JobAdvertisementRate />
         </div>
+        <div className="col-md-6">
+          <JobApplicationRate />
+        </div>
       </div>
 
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-6">
           <TopCompanies />
         </div>
         <div className="col-md-6">
           <StudentDepartment />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
