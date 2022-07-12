@@ -20,7 +20,7 @@ import static java.util.Map.of;
 @RequestMapping("/api/v1/common")
 @Slf4j
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin("*")
 public class CommonController {
 
     private final JobService jobService;
