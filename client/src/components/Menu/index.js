@@ -56,13 +56,13 @@ function Menu() {
       url: "job-advertisement/add",
       active: false,
     },
-    {
-      id: 4,
-      name: "Job Applicant List",
-      icon: "none",
-      url: "job-applicant",
-      active: false,
-    },
+    // {
+    //   id: 4,
+    //   name: "Job Applicant List",
+    //   icon: "none",
+    //   url: "job-applicant",
+    //   active: false,
+    // },
     {
       id: 5,
       name: "Add Job History",
@@ -202,6 +202,14 @@ function Menu() {
               </Link>
             );
           })}
+
+        <a
+          href="http://localhost:8081/realms/AMP/account/"
+          className="list-group-item list-group-item-action "
+        >
+          {" "}
+          Update Profile{" "}
+        </a>
 
         <a
           href="http://localhost:8081/realms/AMP/account/password"

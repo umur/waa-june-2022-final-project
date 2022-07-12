@@ -4,6 +4,8 @@ import NumberOfStudents from "./charts/NumberOfStudents";
 import NumberOfJobs from "./charts/NumberOfJobs";
 import JobSearchTime from "./charts/JobSearchTime";
 import TagPieChart from "./charts/TagPieChart";
+import Last10Appliedjobs from "./Last10AppliedJob";
+import Last10JobAdvertisement from "./Last10JobAdvertisement";
 import TagPerLocation from "./charts/TagPerLocation";
 import NumberOfStudentsPerCity from "./charts/NumberOfStudentsPerCity";
 import JobApplicationRate from "./charts/JobApplicationRate";
@@ -31,6 +33,22 @@ function Dashboard() {
           <NumberOfStudents />
         </div>
 
+        <div className="col-md-6">
+          <TagPieChart />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <Last10JobAdvertisement />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <Last10Appliedjobs />
+        </div>
+      </div>
+
+      <div className="row">
         <div className="col-md-6">
           <NumberOfStudentsPerCity />
         </div>
@@ -65,5 +83,4 @@ function Dashboard() {
     </div>
   );
 }
-
 export default Dashboard;

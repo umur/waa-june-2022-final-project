@@ -11,7 +11,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 
 @SQLDelete(sql = "UPDATE comment SET delete = true WHERE id=?")
 @Where(clause = "delete = false")
@@ -21,7 +22,7 @@ public class Comment {
     private Integer id;
     private String comment;
 
-//    @Column(name = "is_delete")
+    // @Column(name = "is_delete")
     private Boolean deleted;
 
 }
