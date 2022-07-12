@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import { postRequest, postRequestNoAuth } from "../../setup/fetch-manager/FetchGateway";
 import Cookies from 'js-cookie';
 import { AUTHCONTEXT } from "../../App";
 import { useNavigate } from "react-router";
@@ -11,8 +11,8 @@ const initialValues = {
 
 export default function Login() {
     const [values, setValues] = useState(initialValues);
-    const {setAuth} = useContext(AUTHCONTEXT)
-    const navigate =useNavigate();
+    const { setAuth } = useContext(AUTHCONTEXT)
+    const navigate = useNavigate();
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setValues({
@@ -23,10 +23,22 @@ export default function Login() {
 
     const postData = async () => {
         Cookies.remove('token');
+        Cookies.remove('role');
+        Cookies.remove('id');
         let params = "/login";
-        let result = await postRequest(params, values);
-        setAuth(result)
-        Cookies.set('token', result)
+        let result = await postRequestNoAuth(params, values);
+        if (result != undefined) {
+            setAuth(result.token)
+            Cookies.set('token', result.token);
+            Cookies.set('role', result.role);
+            Cookies.set('id', result.id);
+            Cookies.set('isAdmin', result.isAdmin);
+            Cookies.set('isStudent', result.isStudent);
+            Cookies.set('isFaculty', result.isFaculty);
+        }
+        else{
+            alert('Wrong info provided !')
+        }
     };
 
     return (
@@ -69,7 +81,7 @@ export default function Login() {
                                 <div className="text-center text-lg-start mt-4 pt-2">
                                     <button type="button" className="btn btn-primary btn-lg" onClick={postData}>Login</button>
                                     <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                                        className="link-danger" onClick={()=>{navigate("/Register")}}>Register</a></p>
+                                        className="link-danger" onClick={() => { navigate("/Register") }}>Register</a></p>
                                 </div>
 
                             </form>

@@ -10,8 +10,10 @@ import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.services.FacultyService;
 import alumnimanagement.services.JobService;
 import alumnimanagement.services.StudentService;
+import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,8 +32,11 @@ public class ReportController {
     FacultyService facultyService;
     ModelMapper modelMapper;
 
+    @Autowired
+    Helper helper;
     @GetMapping("/state")
     public List<DropdownDto> state() {
+        helper.getLoggedUserId();
         List<DropdownDto> list = new ArrayList<>();
         List<StudentDTO> students=studentService.findAll();
         for(StudentDTO s: students){

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Routes } from "react-router";
 import AddComment from "../../pages/comment/AddComment";
 import ChangePassword from "../../pages/dashboard/change-password/ChangePassword";
@@ -13,24 +13,33 @@ import Jobs from "../../pages/job/Jobs";
 import FileUpload from "../../common/FileUpload";
 import CommentList from "../../pages/comment/CommentList";
 import JobDetails from "../../pages/job/JobDetails";
-import Cv from "../../pages/cv/Cv"
+import Cv from "../../pages/cv/Cv";
 import SubmitJob from "../../pages/job/SubmitJob";
 import EditJob from "../../pages/job/EditJob";
 import GetJobList from "../../pages/job/GetJobList";
+import ViewApplicant from "../../pages/job/ViewApplicant";
 import Login from "../../pages/sign-in/Login";
 import { Dashboard } from "@material-ui/icons";
 import { isAuthorized } from "../auth/Auth";
 import { AUTHCONTEXT } from "../../App";
 import Register from "../../pages/register/Register";
+import Cookies from 'js-cookie';
 
 export default function RouteApp() {
+  const isFaculty = (Cookies.get('isFaculty') == "true" ? true : false);
+  const isAdmin = (Cookies.get('isAdmin') == "true" ? true : false);
+  const isStudent = (Cookies.get('isStudent') == "true" ? true : false);
+
   return (
     <>
       <Routes>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/Students" element={<StudentList />}></Route>
-        <Route path="/Faculties" element={<FacultyList />}></Route>
+        {(isFaculty || isAdmin ?
+          <Route path="/Faculties" element={<FacultyList />}></Route>
+          : ""
+        )}
         <Route path="/AddComment/:id" element={<AddComment />}></Route>
         <Route path="/Jobs" element={<Jobs />}></Route>
         <Route path="/Comments/:id" element={<CommentList />}></Route>
@@ -46,10 +55,14 @@ export default function RouteApp() {
         <Route path="/cv" element={<Cv />}></Route>
         <Route path="/Jobs/:studentID/:jobID" element={<EditJob />}></Route>
         <Route
+          path="/Jobs/:studentID/Applicants/:jobID"
+          element={<ViewApplicant />}
+        ></Route>
+        <Route
           path="/JobDetails/additional/:id"
           element={<SubmitJob />}
         ></Route>
-          <Route path="/Register" element={<Register />}></Route>
+        <Route path="/Register" element={<Register />}></Route>
       </Routes>
     </>
   );

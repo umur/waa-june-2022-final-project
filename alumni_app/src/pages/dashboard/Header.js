@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { roleBasePermission } from "../../setup/auth/Auth";
 import ProfileMenu from "../profile/ProfileMenu";
+import Cookies from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
   navlinks: {
@@ -26,7 +27,10 @@ export default function Header() {
   const classes = useStyles();
   const role = roleBasePermission();
   let viewData = [];
-
+  const isFaculty = (Cookies.get('isFaculty') == "true" ? true : false);
+  const isAdmin = (Cookies.get('isAdmin') == "true" ? true : false);
+  const isStudent = (Cookies.get('isStudent') == "true" ? true : false);
+  
   return (
     <div className="">
       <Stack
@@ -40,7 +44,7 @@ export default function Header() {
         <ListItem>
           <Link to="/Students" className={classes.link}>Student</Link>
         </ListItem>
-        {(role != 3 ?
+        {(isFaculty || isAdmin ?
           <ListItem>
             <Link to="/Faculties" className={classes.link}> Faculty </Link>
           </ListItem> : ''

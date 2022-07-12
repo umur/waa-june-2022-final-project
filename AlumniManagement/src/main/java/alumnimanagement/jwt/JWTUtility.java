@@ -40,7 +40,9 @@ public class JWTUtility {
 
     //for retrieving any information from token we will need the secret key
     public Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        var a = Jwts.parser().setSigningKey(secretKey);
+        var b = a.parseClaimsJws(token).getBody();
+        return  b;
     }
 
 
@@ -54,7 +56,7 @@ public class JWTUtility {
     //generate token for user
     public String generateToken(UserAuth user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("roles", user.getRole());
+        claims.put("role", user.getRole());
         claims.put("id",user.getId());
         claims.put("userName",user.getUsername());
         return doGenerateToken(claims, user.getUsername());
@@ -82,4 +84,5 @@ public class JWTUtility {
             return false;
         return (!isTokenExpired(token));
     }
+
 }

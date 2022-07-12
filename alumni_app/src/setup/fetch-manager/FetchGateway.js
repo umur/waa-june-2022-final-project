@@ -26,12 +26,22 @@ export async function getRequest(path) {
 
 export async function postRequest(path, data) {
     const fullURL = api_url + path;
+    const auth = 'Bearer ' + Cookies.get('token');
     try {
         const response = await axios.post(fullURL, data, {
             headers: {
-                // 'content-type': 'text/json'
+                'Authorization': auth
             }
         });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+export async function postRequestNoAuth(path, data) {
+    const fullURL = api_url + path;
+    try {
+        const response = await axios.post(fullURL, data);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -60,8 +70,15 @@ export async function postFileRequest(path, data) {
 
 export async function deleteRequest(path) {
     const fullURL = api_url + path;
+    const auth = 'Bearer ' + Cookies.get('token');
     try {
-        const response = await axios.delete(fullURL);
+        const config = {
+            headers: {
+                Authorization: auth
+            },
+        };
+
+        const response = await axios.delete(fullURL, config);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -71,8 +88,13 @@ export async function deleteRequest(path) {
 
 export async function putRequest(path, data) {
     const fullURL = api_url + path;
-
-    axios.put(fullURL, data)
+    const auth = 'Bearer ' + Cookies.get('token');
+    const config = {
+        headers: {
+            Authorization: auth
+        },
+    };
+    axios.put(fullURL, data, config)
         .then(response => response)
         .catch(error => {
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { postRequest, postRequestNoAuth } from "../../setup/fetch-manager/FetchGateway";
 
 const initialvalues = {
     name: "",
@@ -31,13 +32,13 @@ function Register() {
     }
 
     const postData = async () => {
-        let params = "/register";
+        let params = "/login/register";
         if (values.password1 != values.password2) {
             setPasswordMatched(false)
         } else {
             setPasswordMatched(true)
-            await axios.post(params, values);
-            console.log(values);
+            await postRequestNoAuth(params, values);
+            navigate('/')
         }
 
     }
