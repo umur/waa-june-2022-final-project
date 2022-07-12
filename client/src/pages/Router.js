@@ -14,6 +14,7 @@ import PageNotFound from "./404";
 import StudentProfile from "./student/Profile";
 import UserService from "../services/UserService";
 import FacultyProfile from "./faculty/Profile";
+import Last10JobAdvertisement from "../components/dashboard/Last10JobAdvertisement";
 
 export default function Router() {
   return (
@@ -71,6 +72,10 @@ export default function Router() {
           </>
         )}
 
+        {/* <Route
+          path="/last-ten-advertisement"
+          element={<Last10JobAdvertisement />}
+        /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
