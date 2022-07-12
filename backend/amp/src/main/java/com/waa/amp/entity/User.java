@@ -22,8 +22,7 @@ public class User {
 
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
     @Enumerated(EnumType.STRING)
