@@ -14,6 +14,8 @@ import alumnimanagement.services.AppliedJobService;
 import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -61,10 +63,18 @@ public class AppliedJobServiceImpl implements AppliedJobService {
     }
 
     @Override
-    public List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int jobId){
+    public List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int jobId,int page, int size, String searchValue){
+        Pageable pageable = PageRequest.of(page, size);
         return appliedJobRepo.findAllByJobAdvertisementId(jobId)
                 .stream()
                 .map(appliedJob -> modelMapper.map(appliedJob.getStudent(), AppliedStudentsDTO.class))
                 .toList();
+    }
+
+
+    @Override
+    public Long countById(int id) {
+        Long count = appliedJobRepo.countByJobAdvertisementId(id);
+        return count;
     }
 }

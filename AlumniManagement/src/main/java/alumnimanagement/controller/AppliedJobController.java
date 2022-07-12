@@ -31,10 +31,18 @@ public class AppliedJobController {
         appliedJobService.remove(appliedJobId);
     }
 
-    @GetMapping("/by/{jobId}")
-    public List<AppliedStudentsDTO> findStudentsAppliedToJob(@PathVariable int jobId) {
+    @GetMapping("/by/{jobId}/getAll")
+    public List<AppliedStudentsDTO> findStudentsAppliedToJob(@PathVariable int jobId,@RequestParam int page, @RequestParam int size, @RequestParam String searchValue) {
         System.out.println("here==========================>");
-        return appliedJobService.findStudentsJobAppliedToJob(jobId);
+        return appliedJobService.findStudentsJobAppliedToJob(jobId,page,size,searchValue);
     }
+
+    @GetMapping("/by/{jobId}/count")
+    public Long count(int id)
+    {
+        return appliedJobService.countById(id);
+    }
+
+
 
 }
