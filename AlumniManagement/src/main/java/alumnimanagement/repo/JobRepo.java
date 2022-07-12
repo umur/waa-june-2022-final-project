@@ -16,4 +16,7 @@ public interface JobRepo extends JpaRepository<JobAdvertisement, Integer> {
     List<String> findAllByCompanyNames();
 
     List<JobAdvertisement> findAllByStudentId(long id);
+
+    @Query("select J.jobTag as jobtag from JobAdvertisement J  WHERE J.jobTag is not null")
+    List<String> findByTags();
 }

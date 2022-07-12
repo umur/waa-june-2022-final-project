@@ -13,7 +13,7 @@ const listParams = {
   dataUrl: "/jobs/''/''/''/''",
   addCommentUrl: "//",
   editUrl: "",
-  deleteUrl: "/",
+  deleteUrl: "/jobs/",
   detailUrl: "/JobDetails/",
 };
 

@@ -3,6 +3,11 @@ package alumnimanagement.controller;
 import alumnimanagement.dto.DropdownDto;
 import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentDTO;
+import alumnimanagement.entity.Address;
+import alumnimanagement.entity.Department;
+import alumnimanagement.entity.Student;
+import alumnimanagement.entity.job.JobAdvertisement;
+import alumnimanagement.services.FacultyService;
 import alumnimanagement.services.JobService;
 import alumnimanagement.services.StudentService;
 import lombok.AllArgsConstructor;
@@ -21,6 +26,8 @@ public class ReportController {
 
     StudentService studentService;
     JobService jobService;
+
+    FacultyService facultyService;
     ModelMapper modelMapper;
 
     @GetMapping("/state")
@@ -112,5 +119,11 @@ public class ReportController {
     public List<ReportList> findByStatesCity(@PathVariable String stateName ){
         return studentService.findByStateCity(stateName);
     }
+
+    @GetMapping("/facultyByDepartment")
+    public List<ReportList> findFacultyByDepartment(){
+        return facultyService.facultyByDepartment();
+    }
+
 
 }

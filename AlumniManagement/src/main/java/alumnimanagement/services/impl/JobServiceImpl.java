@@ -1,10 +1,8 @@
 package alumnimanagement.services.impl;
 
-import alumnimanagement.dto.FacultyListDto;
 import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
 import alumnimanagement.dto.ReportList;
-import alumnimanagement.entity.Faculty;
 import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.entity.job.Tag;
 import alumnimanagement.repo.JobRepo;
@@ -18,7 +16,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -30,7 +30,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void create(JobAdvertisementDTO job) {
-        job.setPublishDate(Helper.getCurrentDate());
         var result = modelMapper.map(job, JobAdvertisement.class);
         jobRepo.save(result);
     }
@@ -51,8 +50,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void update(JobAdvertisementDTO jobAdvertisementDTO, int id) {
+        var result = modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class);
         var data = jobRepo.findById(id).get();
-        var result =modelMapper.map(jobAdvertisementDTO, JobAdvertisement.class);
         result.setId(id);
         result.setStudent(data.getStudent());
         result.setDeleted(false);
@@ -76,8 +75,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobAdvertisementListDTO> findAllByParam(int page, int size, String state, String city, String tag, String name) {
-        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
-            return findByFilter(state,city,tag,name).stream().skip(page*size).limit(5).toList();
+        if (!state.equals("''") || !city.equals("''") || !tag.equals("''") || !name.equals("''")) {
+            return findByFilter(state, city, tag, name).stream().skip(page * size).limit(5).toList();
         }
 
         Pageable pageable = PageRequest.of(page, size);
@@ -108,18 +107,16 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Long count(String state, String city, String tag, String name) {
-        if(!state.equals("''")||!city.equals("''")||!tag.equals("''")||!name.equals("''")){
-            return findByFilter(state,city,tag,name).stream().count();
+        if (!state.equals("''") || !city.equals("''") || !tag.equals("''") || !name.equals("''")) {
+            return findByFilter(state, city, tag, name).stream().count();
         }
         Long count = jobRepo.count();
         return count;
     }
 
-    public List<JobAdvertisementListDTO> findByFilter( String state, String city, String tag, String name)
-    {
-        List<JobAdvertisement> jobs=jobRepo.findAll().stream().toList();
-        List<JobAdvertisementListDTO> jobListDto=new ArrayList<>();
-
+    public List<JobAdvertisementListDTO> findByFilter(String state, String city, String tag, String name) {
+        List<JobAdvertisement> jobs = jobRepo.findAll().stream().toList();
+        List<JobAdvertisementListDTO> jobListDto = new ArrayList<>();
         for (JobAdvertisement job: jobs){
             if(!job.isDeleted()) {
                 String jobTag = "";
@@ -135,9 +132,10 @@ public class JobServiceImpl implements JobService {
                     dto.setCompanyName(job.getCompanyName());
                     dto.setJobType(job.getJobType());
                     dto.setCity(job.getAddress().getCity());
-                    dto.setTag(job.getJobTag());
-                    for (Tag t : job.getTags()) {
-                        dto.setTag(dto.getTag() + " " + t.getTitle());
+                    if (job.getJobTag() != null) {
+                        for (Tag t : job.getTags()) {
+                            dto.setTag(dto.getTag() + " " + t.getTitle());
+                        }
                     }
                     jobListDto.add(dto);
                 }
@@ -145,18 +143,18 @@ public class JobServiceImpl implements JobService {
         }
         return jobListDto;
     }
+
     @Override
     public JobAdvertisementDTO findById(int id) {
-        return modelMapper.map( jobRepo.findById(id),JobAdvertisementDTO.class);
+        return modelMapper.map(jobRepo.findById(id), JobAdvertisementDTO.class);
     }
 
     @Override
     public List<ReportList> JobByState() {
         var result = jobRepo.JobByState();
         List<ReportList> result2 = new ArrayList<>();
-        for(Object[] d : result)
-        {
-            Long id =(Long) d[1];
+        for (Object[] d : result) {
+            Long id = (Long) d[1];
             ReportList dto = new ReportList();
             dto.value = id;
             dto.name = (String) d[0];
@@ -166,11 +164,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<JobAdvertisementDTO> findStudentJobList(long id,int page, int size, String searchValue) {
+    public List<JobAdvertisementDTO> findStudentJobList(long id, int page, int size, String searchValue) {
 
         Pageable pageable = PageRequest.of(page, size);
         return jobRepo.findAllByStudentId(id).stream()
-                .map(jobadv->modelMapper.map(jobadv,JobAdvertisementDTO.class))
+                .map(jobadv -> modelMapper.map(jobadv, JobAdvertisementDTO.class))
                 .toList();
     }
 
@@ -178,5 +176,32 @@ public class JobServiceImpl implements JobService {
     public Long countById(long id) {
         Long count = jobRepo.countByStudentId(id);
         return count;
+    }
+
+    @Override
+    public List<ReportList>  findByTags() {
+        var data = jobRepo.findByTags();
+        Map<String, Integer> map = new HashMap<>();
+        for (String s : data) {
+            String[] splitArr = s.split(",");
+            for (String str : splitArr) {
+                if (map.containsKey(str)) {
+                    map.put(str,map.get(str)+1);
+                }else{
+                    map.put(str,1);
+                }
+            }
+        }
+        List<ReportList> result2 = new ArrayList<>();
+        for(Map.Entry<String,Integer> set :
+                map.entrySet()){
+            ReportList dto = new ReportList();
+            long i = set.getValue();
+            dto.value = i;
+            dto.name = set.getKey();
+            result2.add(dto);
+
+        }
+        return result2;
     }
 }
