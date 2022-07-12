@@ -34,6 +34,7 @@ VALUES (10001),
 
 -- Add test faculty user
 
+
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
 VALUES (10011, 'Test', 'Faculty 10011', 'testfaculty11@gmail.com', 'testfaculty11', false);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
@@ -53,6 +54,7 @@ VALUES (10018, 'Test', 'Faculty 10018', 'testfaculty18@gmail.com', 'testfaculty1
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
 VALUES (10019, 'Test', 'Faculty 10019', 'testfaculty19@gmail.com', 'testfaculty19', false);
 
+
 INSERT INTO FACULTY(id)
 VALUES (10011),
        (10012),
@@ -65,6 +67,7 @@ VALUES (10011),
        (10019);
 
 -- Add job tags
+
 
 INSERT INTO tag(id,tag_name, is_delete)
 VALUES (10001,'devops', false),
@@ -79,19 +82,6 @@ VALUES (10001,'devops', false),
        (10010,'frontend developer', false);
 
 -- JOB advertisement data
-
---INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
---VALUES (10001, 10001),
---       (10001, 10002),
---       (10001, 10004),
---       (10001, 10006);
---
---
---INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
---VALUES (10002, 10001),
---       (10002, 10003),
---       (10002, 10008),
---       (10002, 10006);
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -109,10 +99,12 @@ VALUES (10003, 'Boston', 'Massachussets', '543671', 'Software Engineering L3', '
         'At Google we work hard to earn our users’ trust every day. Trust & Safety is Google’s team of abuse fighting and user trust experts working daily to make the internet a safer place. We partner with teams across Google to deliver bold solutions in abuse areas such as malware, spam and account hijacking. A diverse team of Analysts, Policy Specialists, Engineers, and Program Managers, we work to reduce risk and fight abuse across all of Google’s products, protecting our users, advertisers, and publishers across the globe in over 40 languages.',
         10002, FALSE);
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10004, 'Seattle', 'California', '786567', 'Analyst - Software Engineering', 'Goldman Sachs', 'Paternity and Maternity leave',
         'As a member of the RIA (Registered Investment Advisor) engineering team, you will be responsible for building out custody and trading systems that service institutional client needs at scale. As an engineer within RIA, you will be working in a close knit team at the forefront of shaping our clients experience by creating new technology driven businesses. This is an opportunity to work closely with experienced engineers, business developers, and a diverse client base to deliver APIs, services, and technology solutions that scale to meet a broad range of client needs. We are looking for engineers who thrive in a client-driven, agile environment.',
         10007, FALSE);
+
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -121,10 +113,12 @@ VALUES (10005,  'Palo Alto', 'California', '123456', 'Data Engineer', 'Apple', '
         10003, FALSE);
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10006, 'Chicago', 'Chicago', '786790',  'Cloud Software Engineer', 'American Express', 'N/A',
         'From building next-generation apps and microservices in Kotlin to using AI to help protect our customers from fraud, you could be doing transformational work that brings our iconic, global brand into the future. As a part of our tech team, we could work together to bring ground-breaking and diverse ideas to life that power the digital systems, services, products and platforms that millions of customers around the world depend on. If you love to work with APIs, contribute to open source, or use the latest technologies, we’ll support you with an open environment and learning culture to grow your career.',
         10003, FALSE);
+
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -132,15 +126,18 @@ VALUES (10007, 'Palo Alto', 'New Jersey', '567867',  'Machine Learning Engineer'
         'You’ll join a fantastic team of world-class engineers and researchers with extensive experience and reputation in robotics and machine learning to work on very complex and exciting AI projects that could bring high impacts to society. We strive to develop innovative and industry-leading solutions for every challenging problem we work on.',
         10005, FALSE);
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10008, 'Nashvile', 'Tenesse', '454367',  'Software Engineer II', 'Medtronic', 'N/A',
         'The Research and Technology Advanced Development team is seeking a SW Engineer II to help develop the next generation of solutions for surgical navigation and robotics. The ideal candidate will be able to develop creative and state-of-the-art solutions using their software development skills for challenging and multifaceted problems. This role will interact with cross-functional teams and will support the identification of potential concepts, delivery of prototypes, and the ultimate transfer of these solutions to later stages of product development.',
         10003, FALSE);
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10009,  'Dallas', 'Texas', '989089', 'Python AWS Developer', 'Cognizant', 'N/A',
         'Digital technologies, including analytics and AI, give companies a once-in-a-generation opportunity to perform orders of magnitude better than ever before. But clients need new business models built from analyzing customers and business operations at every angle to really understand them. With the power to apply artificial intelligence and data science to business decisions via enterprise data management solutions, we help leading companies prototype, refine, validate and scale the most desirable products and delivery models to enterprise scale within weeks',
         10005, FALSE);
+
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -155,6 +152,7 @@ VALUES (10011, 'Georgia', 'Atlanta', '23452',  'Senior Software Engineer, Full S
         10008, FALSE);
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10012, 'Seattle', 'California', '45678',  'Software Engineering', 'KForce', 'Paid leaves',
         'Kforce has a client in Los Angeles, CA that is seeking a remote DevOps Engineer I. Summary: The Information Security Operations Engineer will strategically improve cybersecurity compliance. The candidate will develop mitigation plans, configure tools, and action alerts to remediate cyber risk and complex threats in Amazon Web Services (AWS).',
@@ -167,16 +165,19 @@ VALUES (10013, 'New York', 'Washington', '345678',  'Senior Frontend Engineer', 
         10007, FALSE);
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10014, 'Kathmandu', 'Bagmati', '213568',  'Software Engineer II, Core', 'Google', 'Paid leaves',
         'The Core team builds the technical foundation behind Google’s flagship products. We are owners and advocates for the underlying design elements, developer platforms, product components, and infrastructure at Google. These are the essential building blocks for excellent, safe, and coherent experiences for our users and drive the pace of innovation for every developer. We look across Google’s products to build central solutions, break down technical barriers and strengthen existing systems. As the Core team, we have a mandate and a unique opportunity to impact important technical decisions across the company.',
         10001, FALSE );
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10015, 'Bharatpur', 'Chitwan', '123467',  'Cloud AI/ML Engineer, Public Sector, Professional Services', 'Google', 'N/A',
         'The Core team builds the technical foundation behind Google’s flagship products. We are owners and advocates for the underlying design elements, developer platforms, product components, and infrastructure at Google. These are the essential building blocks for excellent, safe, and coherent experiences for our users and drive the pace of innovation for every developer. We look across Google’s products to build central solutions, break down technical barriers and strengthen existing systems. As the Core team, we have a mandate and a unique opportunity to impact important technical decisions across the company.',
         10001, FALSE);
+
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -186,10 +187,12 @@ VALUES (10016,  'Mountain View', 'California', '653578', 'Software Engineer III,
 
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10017, 'Redmond', 'Washington', '376854',  'Software Engineer', 'Microsoft', 'sign in bonus',
         'The focus of the Enterprise Support Specialist’s role is to drive and close Microsoft Enterprise Support opportunities to ensure customers are supported throughout all stages of the product lifecycle, improving their health and enabling customer outcomes and consumption. The Support Specialist leverages Microsoft’s unique expertise, including direct access to product teams, to help customers use their Microsoft investments as productively as possible.',
         10006, FALSE);
+
 
 
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
@@ -198,16 +201,48 @@ VALUES (10018, 'Redmond', 'Washington', '376854',  'Software Engineer II', 'Micr
         10005, FALSE);
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10019, 'Seattle', 'California', '236780',  'System Development Engineer', 'Amazon', 'Huge stocks and yearly bonus',
         'We are looking for a Senior System Development Engineer to join our Network Automation Software team. Our team is responsible for software platforms that enable Amazon to safely operate and scale our network. An ideal candidate will have experience designing, building and maintaining mission critical software systems at scale, with a relentless focus on operational and engineering excellence.',
         10003, FALSE);
 
 
+
 INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted)
 VALUES (10020, 'Redmond', 'Washington', '376854',  'Devops Engineer', 'Amazon', 'N/A',
         'We are looking for passionate, hard-working, and talented DevOps Engineers who have experience supporting innovative, mission critical, high volume applications. You will have an enormous opportunity to work within multiple systems researching and identifying the common issues, and driving the teams towards resolution to have a positive impact on customer experience. This job requires you to hit the ground running and your ability to learn quickly and work on disparate and overlapping tasks will define your success. As a DevOps Engineer, you will be a part of 24X7 teams Oncall rotation.',
         10001, FALSE);
+
+-- Add job advertisement tags list data
+INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
+VALUES (10001, 10001),
+       (10001, 10002),
+       (10001, 10004),
+       (10002, 10006),
+       (10002, 10003),
+       (10002, 10008),
+       (10003, 10006),
+       (10003, 10003),
+       (10003, 10008),
+       (10004, 10001),
+       (10004, 10002),
+       (10004, 10002),
+       (10004, 10006),
+       (10005, 10003),
+       (10005, 10003),
+       (10005, 10006),
+       (10006, 10004),
+       (10006, 10001),
+       (10006, 10002),
+       (10007, 10004),
+       (10007, 10005),
+       (10008, 10004),
+       (10008, 10005),
+       (10008, 10006),
+       (10009, 10002);
+
+
 
 --Adding job history dataset
 
@@ -329,3 +364,49 @@ VALUES (10004, FALSE, 'ECE');
 
 INSERT INTO department (id, is_delete, department_name)
 VALUES (10005, FALSE, 'Arts');
+
+--Add comment dataset
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10001, 'great work, keep it up', TRUE, 10001, 10011);
+
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10002, 'excellent work', FALSE, 10002, 10012);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10003, 'Impressive results.', TRUE, 10003, 10011);
+
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10004, 'Keep up the great work.', FALSE, 10004, 10013);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10005, 'Bravo!', TRUE, 10005, 10014);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10006, 'You nailed it!', FALSE, 10006, 10015);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10007, 'You are genius.', TRUE, 10007, 10016);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10008, 'great work, keep it up', FALSE, 10008, 10017);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10009, 'Well done, you can do it better.', TRUE, 10009, 10018);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10010, 'Keep up the momentum.', FALSE, 10010, 10019);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10011, 'You will do great next time. Work hard.', TRUE, 10001, 10011);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10012, 'great work, keep it up', FALSE, 10001, 10011);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10013, 'Great job my dear student', TRUE, 10002, 10012);
+
+INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
+VALUES (10014, 'You are genius.', FALSE, 10002, 10012);
