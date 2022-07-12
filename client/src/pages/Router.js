@@ -14,6 +14,10 @@ import PageNotFound from "./404";
 import StudentProfile from "./student/Profile";
 import UserService from "../services/UserService";
 import FacultyProfile from "./faculty/Profile";
+import Last10JobAdvertisement from "../components/dashboard/Last10JobAdvertisement";
+
+import EditAdvertisement from "../components/job/EditAdvertisement";
+
 import JobMarket from "../components/dashboard/JobMarket";
 import TopCompaniesDashboard from "../components/dashboard/TopCompaniesDashboard";
 import StudentStatistic from "../components/dashboard/StudentStatistic";
@@ -51,6 +55,10 @@ export default function Router() {
               path="student/job-advertisement/add"
               element={<Advertisement />}
             />
+            <Route
+              path="student/job-advertisement/edit"
+              element={<EditAdvertisement />}
+            />
             <Route path="/student/profile/update" element={<Registration />} />
             <Route
               path="/student/job-advertisement"
@@ -86,6 +94,10 @@ export default function Router() {
           </>
         )}
 
+        {/* <Route
+          path="/last-ten-advertisement"
+          element={<Last10JobAdvertisement />}
+        /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

@@ -204,6 +204,14 @@ function Menu() {
           })}
 
         <a
+          href="http://localhost:8081/realms/AMP/account/"
+          className="list-group-item list-group-item-action "
+        >
+          {" "}
+          Update Profile{" "}
+        </a>
+
+        <a
           href="http://localhost:8081/realms/AMP/account/password"
           className="list-group-item list-group-item-action "
         >

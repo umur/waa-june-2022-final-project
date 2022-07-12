@@ -43,4 +43,6 @@ public class Student extends User {
     @Column(name = "is_delete")
     private boolean delete;
 
+    @Column(name="days_to_search_job")
+    private Integer daysToSearchJob;
 }
