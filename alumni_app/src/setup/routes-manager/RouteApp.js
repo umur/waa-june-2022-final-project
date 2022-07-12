@@ -21,6 +21,7 @@ import Login from "../../pages/sign-in/Login";
 import { Dashboard } from "@material-ui/icons";
 import { isAuthorized } from "../auth/Auth";
 import { AUTHCONTEXT } from "../../App";
+import Register from "../../pages/register/Register";
 
 export default function RouteApp() {
   return (
@@ -48,6 +49,7 @@ export default function RouteApp() {
           path="/JobDetails/additional/:id"
           element={<SubmitJob />}
         ></Route>
+          <Route path="/Register" element={<Register />}></Route>
       </Routes>
     </>
   );
