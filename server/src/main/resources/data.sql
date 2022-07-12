@@ -20,17 +20,17 @@ VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9'
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
 VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false);
 
-INSERT INTO STUDENT(id)
-VALUES (10001),
-       (10002),
-       (10003),
-       (10004),
-       (10005),
-       (10006),
-       (10007),
-       (10008),
-       (10009),
-       (10010);
+INSERT INTO STUDENT(id, gpa, days_to_search_job)
+VALUES (10001, 4.0, 10),
+       (10002, 3.4, 20),
+       (10003, 3.0, 30),
+       (10004, 2.88, 45),
+       (10005, 3.8, 15),
+       (10006, 3.7, 50),
+       (10007, 3.7, 30),
+       (10008, 3.8, 20),
+       (10009, 4.0, 12),
+       (10010, 3.10, 40);
 
 -- Add test faculty user
 

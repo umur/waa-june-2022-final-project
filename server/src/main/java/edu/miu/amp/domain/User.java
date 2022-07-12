@@ -8,7 +8,6 @@ import org.hibernate.annotations.Where;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -19,6 +18,7 @@ import java.time.LocalDate;
 @SQLDelete(sql = "UPDATE users SET is_delete = true WHERE id=?")
 @Where(clause = "is_delete = false")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
