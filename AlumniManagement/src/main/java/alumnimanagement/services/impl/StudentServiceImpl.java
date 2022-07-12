@@ -149,11 +149,19 @@ public class StudentServiceImpl implements StudentService {
 
         for(Student s: students){
             String sName=s.getFirstName()+" "+s.getLastName();
-            if(!s.isDeleted()||s.getId() == id||s.getAddress().getState().equals(state)||s.getAddress().getCity().equals(city)||s.getMajor().getDepartmentName().equals(major)||sName.toUpperCase().equals(studentName.toUpperCase())){
-                StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
-                dto1.setState(s.getAddress().getState());
-                dto1.setCity(s.getAddress().getCity());
-                dto.add(dto1);
+            if(!s.isDeleted())
+            {
+                if(s.getId() == id
+                    ||s.getAddress().getState().equals(state)
+                    ||s.getAddress().getCity().equals(city)
+                    ||s.getMajor().getDepartmentName().equals(major)
+                    ||sName.toUpperCase().equals(studentName.toUpperCase()))
+                {
+                    StudentListDto dto1=modelMapper.map(s, StudentListDto.class);
+                    dto1.setState(s.getAddress().getState());
+                    dto1.setCity(s.getAddress().getCity());
+                    dto.add(dto1);
+                }
             }
         }
         return  dto;
