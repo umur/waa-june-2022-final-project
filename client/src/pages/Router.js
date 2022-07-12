@@ -14,6 +14,7 @@ import PageNotFound from "./404";
 import StudentProfile from "./student/Profile";
 import UserService from "../services/UserService";
 import FacultyProfile from "./faculty/Profile";
+import EditAdvertisement from "../components/job/EditAdvertisement";
 
 export default function Router() {
   return (
@@ -33,6 +34,10 @@ export default function Router() {
             <Route
               path="student/job-advertisement/add"
               element={<Advertisement />}
+            />
+            <Route
+              path="student/job-advertisement/edit"
+              element={<EditAdvertisement />}
             />
             <Route path="/student/profile/update" element={<Registration />} />
             <Route

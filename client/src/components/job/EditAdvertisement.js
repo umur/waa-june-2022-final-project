@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { addJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
+import { addJobAdvertisement, editJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
+import { useLocation } from "react-router-dom";
 
-export default function Advertisement() {
+export default function EditAdvertisement() {
+  const location = useLocation();
+  console.log(location.state)
   const initialValues = {
-    title: "",
-    location: "",
-    aboutUs: "",
-    responsibilities: "",
-    benefits: "",
+    title: location.state.title,
+    location: location.state.location,
+    // aboutUs: location.state.aboutUs,
+    responsibilities: location.state.responsibilities,
+    benefits: location.state.benefits
   };
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -36,7 +39,7 @@ export default function Advertisement() {
   const navigate = useNavigate();
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      dispatch(addJobAdvertisement(formValues));
+      dispatch(editJobAdvertisement(formValues));
       navigate("/student/job-advertisement");
     }
   }, [formErrors]);
@@ -73,7 +76,7 @@ export default function Advertisement() {
               <Form.Label className="d-flex">Title</Form.Label>
               <Form.Control
                 type="title"
-                placeholder={"Enter title"}
+                placeholder={location.state.title}
                 name="title"
                 onChange={handleChange}
               />
@@ -88,7 +91,7 @@ export default function Advertisement() {
               <Form.Label className="d-flex">Location</Form.Label>
               <Form.Control
                 type="location"
-                placeholder="Enter location information"
+                placeholder={location.state.location}
                 name="location"
                 onChange={handleChange}
               />
@@ -99,7 +102,7 @@ export default function Advertisement() {
               <Form.Label className="d-flex">About Us</Form.Label>
               <Form.Control
                 type="aboutUs"
-                placeholder="About the company"
+                placeholder={"About the company"}
                 name="aboutUs"
                 onChange={handleChange}
               />
