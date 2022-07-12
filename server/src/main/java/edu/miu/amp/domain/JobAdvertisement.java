@@ -8,6 +8,7 @@ import org.hibernate.annotations.Where;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -48,4 +49,7 @@ public class JobAdvertisement {
     private List<JobApplication> jobApplicationList;
 
     private boolean deleted;
+
+    @Column(name = "vacancy_opening_date")
+    private LocalDate jobAppliedDate;
 }
