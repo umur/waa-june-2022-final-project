@@ -1,7 +1,9 @@
 package alumnimanagement.controller;
 
 import alumnimanagement.dto.UserDto;
+import alumnimanagement.entity.authUser.AdminRole;
 import alumnimanagement.entity.authUser.FacultyRole;
+import alumnimanagement.entity.authUser.StudentRole;
 import alumnimanagement.entity.authUser.UserAuth;
 import alumnimanagement.jwt.JWTUtility;
 import alumnimanagement.services.impl.UserAuthServiceImpl;
@@ -31,8 +33,7 @@ public class LoginController {
 
     private String token;
 
-    @Autowired
-    private UserAuthServiceImpl userService;
+
     private PasswordEncoder passwordEncoder;
     @PostMapping()
     public String authenticate(@RequestBody UserAuth jwtRequest) throws Exception {
@@ -60,11 +61,29 @@ public class LoginController {
             case "FACULTY":
                 FacultyRole fr = new FacultyRole();
                 fr.setPassword(passwordEncoder.encode(userDto.getPassword1()));
-                userService.save(fr);
+                fr.setUsername(userDto.getName());
+                fr.setActive(true);
+                userAuthService.save(fr);
+                break;
+
+            case"STUDENT":
+                StudentRole st=new StudentRole();
+                st.setPassword(passwordEncoder.encode(userDto.getPassword1()));
+                st.setUsername(userDto.getName());
+                st.setActive(true);
+                userAuthService.save(st);
+                break;
+
+            case"ADMIN":
+                AdminRole admin=new AdminRole();
+                admin.setPassword(passwordEncoder.encode(userDto.getPassword1()));
+                admin.setUsername(userDto.getName());
+                admin.setActive(true);
+                userAuthService.save(admin);
                 break;
         }
 
-        return " ";
+        return "Saved successfully";
     }
 
 }
