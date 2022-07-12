@@ -1,0 +1,1 @@
+export const GET_STUDENT_LIST = "GET_STUDENT_LIST";
