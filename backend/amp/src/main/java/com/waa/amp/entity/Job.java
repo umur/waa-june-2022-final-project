@@ -23,8 +23,7 @@ public class Job {
 
     private String description;
 
-    @OneToMany
-    @JoinTable
+    @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
     private String state;
