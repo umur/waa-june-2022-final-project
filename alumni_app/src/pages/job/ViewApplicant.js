@@ -3,13 +3,14 @@ import { useParams } from "react-router";
 import TableMain from "../../common/TableMain";
 
 export default function ViewApplicant() {
-  const { id } = useParams();
+  const { studentID, jobID } = useParams();
+
   const listParams = {
-    showDetail: true,
-    showEdit: true,
-    showDelete: true,
+    showDetail: false,
+    showEdit: false,
+    showDelete: false,
     showAddComment: false,
-    dataUrl: "/jobs/" + id,
+    dataUrl: "/jobs/apply/by/1",
     addCommentUrl: "//",
     editUrl: "",
     deleteUrl: "/",

@@ -15,5 +15,7 @@ public interface AppliedJobService {
 
     List<AppliedJobDTO> findAppliedJobByStudentId(long studentId);
 
-    List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int id);
+    List<AppliedStudentsDTO> findStudentsJobAppliedToJob(int id,int page, int size, String searchValue);
+
+    Long countById(int id);
 }
