@@ -2,7 +2,7 @@ import { Divider, List, makeStyles } from "@material-ui/core";
 import { ListItem, Stack } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { RoleBasePermission } from "../../setup/auth/RoleBasePermission";
+import { roleBasePermission } from "../../setup/auth/Auth";
 import ProfileMenu from "../profile/ProfileMenu";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const role = RoleBasePermission();
+  const role = roleBasePermission();
   let viewData = [];
 
   return (

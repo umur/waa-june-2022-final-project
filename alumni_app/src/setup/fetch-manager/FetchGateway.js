@@ -1,13 +1,24 @@
 import axios from "axios";
+import { useContext } from "react";
+import Cookies from 'js-cookie';
 
 const api_url = 'http://localhost:8085';
 
 export async function getRequest(path) {
+    const auth = 'Bearer ' + Cookies.get('token');
     const fullURL = api_url + path;
     try {
-        const response = await axios.get(fullURL);
+        const config = {
+            headers: {
+                Authorization: auth
+            },
+        };
+
+        const response = await axios.get(fullURL, config);
         return response.data;
     } catch (error) {
+        let as = error;
+        // if (error.code == "ERR_NETWORK") {Cookies.remove('token') }
         console.error(error);
     }
 
@@ -64,9 +75,9 @@ export async function putRequest(path, data) {
     axios.put(fullURL, data)
         .then(response => response)
         .catch(error => {
-            
+
             console.error('There was an error!', error);
         });
 
-    
+
 }

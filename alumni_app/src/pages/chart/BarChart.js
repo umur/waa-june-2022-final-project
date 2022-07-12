@@ -9,7 +9,6 @@ function BarChart(props) {
     const fetchData = async () => {
         let headerData = [];
         let contentData = [];
-
         let response = await getRequest(props.dataUrl);
         response.map((x) => {
             headerData.push(x.name);
