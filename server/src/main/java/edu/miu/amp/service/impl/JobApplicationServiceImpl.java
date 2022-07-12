@@ -1,6 +1,7 @@
 package edu.miu.amp.service.impl;
 
 import edu.miu.amp.domain.JobApplication;
+import edu.miu.amp.dto.JobAdvertisementDto;
 import edu.miu.amp.dto.JobApplicationDto;
 import edu.miu.amp.repository.JobApplicationRepository;
 import edu.miu.amp.service.JobApplicationService;
@@ -62,7 +63,18 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         return toDto(jobApplication);
     }
 
+    @Override
+    public List<JobApplicationDto> Top10JobApplicant() {
+        var result = jobApplicationRepository.findTop10ByOrderByIdDesc();
+        List<JobApplicationDto> jobApplicationDtos = ((result))
+                .stream()
+                .map(ja -> toDto(ja))
+                .collect(Collectors.toList());;
+        return jobApplicationDtos;
+    }
+
     public JobApplicationDto toDto(JobApplication jobApplication) {
+
         JobApplicationDto jobApplicationDto = modelMapper.map(jobApplication, JobApplicationDto.class);
         return jobApplicationDto;
     }

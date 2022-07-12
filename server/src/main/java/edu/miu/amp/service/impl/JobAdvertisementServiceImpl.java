@@ -66,7 +66,21 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         return toDto(jobAdvertisement);
     }
 
+    @Override
+    public List<JobAdvertisementDto> findFirst10Advertisement() {
+        var result = jobAdvertisementRepository.findTop10ByOrderByIdDesc();
+
+     
+        List<JobAdvertisementDto> jobAdvertisement = ((result))
+                .stream()
+                .map(ja -> toDto(ja))
+                .collect(Collectors.toList());;
+        return jobAdvertisement;
+
+    }
+
     public JobAdvertisementDto toDto(JobAdvertisement jobAdvertisement) {
+
         JobAdvertisementDto jobAdvertisementDto = modelMapper.map(jobAdvertisement, JobAdvertisementDto.class);
         return jobAdvertisementDto;
     }

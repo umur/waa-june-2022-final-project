@@ -30,6 +30,12 @@ public class JobAdvertisementController {
         return new ResponseEntity<>(jobAdvertisementService.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/last10Advertisements")
+    public ResponseEntity<List<JobAdvertisementDto>> findLast10Advertisement(){
+        return new ResponseEntity<>(jobAdvertisementService.findFirst10Advertisement(), HttpStatus.OK);
+    }
+
+
     @PostMapping
 //    @RolesAllowed("student")
     public ResponseEntity<JobAdvertisementDto> create(@RequestBody JobAdvertisementDto jobAdvertisementDto){

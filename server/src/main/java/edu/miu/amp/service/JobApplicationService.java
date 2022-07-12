@@ -16,4 +16,6 @@ public interface JobApplicationService {
 
     JobApplicationDto updateById(JobApplicationDto jobApplicationDto, Integer id);
 
+    List<JobApplicationDto> Top10JobApplicant();
+
 }
