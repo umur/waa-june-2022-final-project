@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,4 +24,7 @@ public class UserService {
     }
 
 
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

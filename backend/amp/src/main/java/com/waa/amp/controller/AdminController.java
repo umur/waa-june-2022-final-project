@@ -37,4 +37,9 @@ public class AdminController {
         return ResponseEntity.ok(of("data", facultyService.allFaculty()));
     }
 
+    @GetMapping("/get-user")
+    public ResponseEntity<?> getAllUser() {
+        return ResponseEntity.ok(of("data", userService.getAllUsers()));
+    }
+
 }
