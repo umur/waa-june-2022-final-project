@@ -11,7 +11,7 @@ function StudentProfile() {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.userProfile);
   const jobHistory = useSelector((state) => state.jobHistory);
-  console.log(jobHistory)
+  
   useEffect(() => {
     dispatch(getUserProfile());
     dispatch(getJobHistoryById(userProfile?.id));
@@ -64,6 +64,7 @@ function StudentProfile() {
               return (
                 <JobHistoryInfo
                   key={history?.id}
+                  id={history?.id}
                   companyName={history?.companyName}
                   startDate={history?.startDate}
                   endDate={history?.endDate}

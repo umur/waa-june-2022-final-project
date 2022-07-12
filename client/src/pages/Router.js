@@ -20,6 +20,7 @@ import EditAdvertisement from "../components/job/EditAdvertisement";
 import JobMarket from "../components/dashboard/JobMarket";
 import TopCompaniesDashboard from "../components/dashboard/TopCompaniesDashboard";
 import StudentStatistic from "../components/dashboard/StudentStatistic";
+import EditJobHistory from "./student/EditJobHistory";
 
 export default function Router() {
   return (
@@ -67,6 +68,10 @@ export default function Router() {
             <Route
               path="/student/job-history/add"
               element={<AddJobHistory />}
+            />
+            <Route
+              path="/student/job-history/edit"
+              element={<EditJobHistory />}
             />
           </>
         )}
