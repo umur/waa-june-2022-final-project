@@ -5,6 +5,7 @@ import com.waa.amp.entity.Job;
 import com.waa.amp.entity.Tag;
 import com.waa.amp.service.CommentService;
 import com.waa.amp.service.JobService;
+import com.waa.amp.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class CommonController {
 
     private final JobService jobService;
     private final CommentService commentService;
+    private final StudentService studentService;
 
     @PostMapping("/search-job")
     public ResponseEntity<?> studentSearch(@RequestBody JobSearchReq jobSearchReq) {
@@ -33,5 +35,10 @@ public class CommonController {
     @GetMapping("/getAllTag")
     public ResponseEntity<Map<String, List<Tag>>> getTag() {
         return ResponseEntity.ok(of("tagList", commentService.allTag()));
+    }
+
+    @GetMapping("/get-job")
+    public ResponseEntity<Map<String, List<Job>>> getJob() {
+        return ResponseEntity.ok(of("jobList", studentService.getALlJob()));
     }
 }
