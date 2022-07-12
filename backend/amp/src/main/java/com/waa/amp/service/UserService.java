@@ -26,7 +26,10 @@ public class UserService {
 
 
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAll()
+                .stream()
+                .filter(it -> it.getRoles().get(0).getCode().equalsIgnoreCase("ADMIN"))
+                .toList();
     }
 
     public void activateUser(ActiveUserReq activeUserReq) {
