@@ -1,6 +1,39 @@
 import ReactECharts from "echarts-for-react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getJobHistoryList } from "../../../redux/reducers/JobHistory/actions";
 
 function TopCompanies() {
+  const dispatch = useDispatch();
+
+  const { jobHistory } = useSelector((state) => state.jobHistory);
+
+  useEffect(() => {
+    dispatch(getJobHistoryList());
+  }, []);
+
+  const companyList = [
+    ...new Set(
+      jobHistory.map((data) => {
+        return data.companyName;
+      })
+    ),
+  ];
+
+  const companyListData = companyList.map((x) => {
+    return {
+      name: x,
+      value: 0,
+    };
+  });
+
+  companyListData.forEach((element) => {
+    let filterData = jobHistory.filter((x) => x.companyName == element.name);
+
+    element.value = filterData.length;
+  });
+
   const option = {
     title: {
       text: "Top Companies ",
@@ -19,13 +52,7 @@ function TopCompanies() {
         name: "Location",
         type: "pie",
         radius: "50%",
-        data: [
-          { value: 10, name: "Google" },
-          { value: 50, name: "Apple" },
-          { value: 100, name: "Microsoft" },
-          { value: 200, name: "Walmart" },
-          { value: 40, name: "KForce" },
-        ],
+        data: companyListData,
         emphasis: {
           itemStyle: {
             shadowBlur: 10,

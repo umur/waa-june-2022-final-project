@@ -8,4 +8,6 @@ public class StudentDto extends UserDto {
 
     private Float gpa;
     private String CVFile;
+    private DepartmentDto department;
+    private Integer daysToSearchJob;
 }
