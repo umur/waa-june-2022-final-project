@@ -7,12 +7,14 @@ import InputLabel from "@mui/material/InputLabel";
 import FileUpload from "../../common/FileUpload";
 import "./style.css";
 import { useState, useEffect } from "react";
-import { getRequest } from "../../setup/fetch-manager/FetchGateway";
+import { getRequest, putRequest } from "../../setup/fetch-manager/FetchGateway";
 import { postRequest } from "../../setup/fetch-manager/FetchGateway";
 import { useNavigate } from "react-router";
+import Cookies from "js-cookie";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const id = Cookies.get("id");
   let initialValues = {
     username: "Sudip",
     image: "",
@@ -24,7 +26,7 @@ const Profile = () => {
   const [values, setValues] = useState(initialValues);
 
   const fetchUser = async () => {
-    let response = await getRequest("/auth/get/1");
+    let response = await getRequest("/auth/get/" + id);
     setUserState(response);
     console.log(userState);
   };
@@ -56,8 +58,12 @@ const Profile = () => {
 
   const postData = async () => {
     let params = "";
-    let result = await postRequest(params, values);
+    let result = await putRequest(params, values);
     navigate("/Jobs");
+  };
+
+  const handleButtonClick = () => {
+    postData();
   };
 
   return (
@@ -67,7 +73,6 @@ const Profile = () => {
           {userState != null ? (
             <div>
               <Grid item xs={12} alignContent="center" className="profile-img">
-                <img src="../"></img>
                 <Avatar
                   alt="User Profile"
                   src="../../../public/Profile/1/miu-group-photo.png"
@@ -141,21 +146,12 @@ const Profile = () => {
                 </Grid>
               </Grid>
 
-              {/* <Grid container spacing={3}>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    required
-                    className="text-field"
-                    id="gpa"
-                    label="GPA"
-                    type="number"
-                    // defaultValue={}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid> */}
-
-              <Button variant="contained" fullWidth className="text-field">
+              <Button
+                variant="contained"
+                fullWidth
+                className="text-field"
+                onClick={handleButtonClick}
+              >
                 Edit
               </Button>
             </div>

@@ -17,13 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class UaaController {
     @Autowired
+    Helper helper;
+    @Autowired
     private UserAuthServiceImpl userService;
-
-//    @Autowired
-//    Helper helper;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @PostMapping("/saveAdmin")
     public String saveAdmin(@RequestBody AdminRole user) {
@@ -81,7 +80,10 @@ public class UaaController {
     }
 
     @PutMapping
-    public void editUser(@RequestBody UserAuth userAuth){
+    public void editUser(@RequestBody UserAuth userAuth) {
+        Long id = helper.getLoggedUserId();
+        userAuth.setId(id);
+        userService.save(userAuth);
 
     }
 }
