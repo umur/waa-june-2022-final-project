@@ -30,7 +30,14 @@ public class RegistrationService {
         return user != null;
     }
 
-    public void createUser(CreateUserReq createUserReq) {
+    public boolean createUser(CreateUserReq createUserReq) {
+
+        boolean exists = checkUsername(new CheckUsernameReq(createUserReq.username()));
+
+        if (exists) {
+            return false;
+        }
+
         User user = new User(null,
                 createUserReq.username(),
                 createUserReq.password(),
@@ -49,6 +56,8 @@ public class RegistrationService {
             Faculty faculty = new Faculty(save, createUserReq.firstname(), createUserReq.lastname(), createUserReq.city());
             facultyRepository.save(faculty);
         }
+
+        return true;
     }
 
 

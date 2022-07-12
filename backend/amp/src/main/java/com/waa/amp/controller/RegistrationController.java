@@ -24,9 +24,8 @@ public class RegistrationController {
         return ResponseEntity.ok(Map.of("exist", registrationService.checkUsername(checkUsernameReq)));
     }
 
-
+    @PostMapping
     public ResponseEntity<?> createUser(@RequestBody CreateUserReq createUserReq) {
-        registrationService.createUser(createUserReq);
-        return ResponseEntity.ok(Map.of("created", "OK"));
+        return ResponseEntity.ok(Map.of("created", registrationService.createUser(createUserReq)));
     }
 }
