@@ -7,13 +7,11 @@ import { useLocation } from "react-router-dom";
 
 export default function EditAdvertisement() {
   const location = useLocation();
-  console.log(location.state)
   const initialValues = {
-    title: location.state.title,
-    location: location.state.location,
-    // aboutUs: location.state.aboutUs,
-    responsibilities: location.state.responsibilities,
-    benefits: location.state.benefits
+    title: location.state?.title,
+    location: location.state?.location,
+    responsibilities: location.state?.description,
+    benefits: location.state?.benefits
   };
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -24,6 +22,7 @@ export default function EditAdvertisement() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(formValues)
     setFormValues({
       ...formValues,
       [name]: value,
@@ -39,6 +38,7 @@ export default function EditAdvertisement() {
   const navigate = useNavigate();
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues)
       dispatch(editJobAdvertisement(formValues));
       navigate("/student/job-advertisement");
     }
@@ -76,9 +76,10 @@ export default function EditAdvertisement() {
               <Form.Label className="d-flex">Title</Form.Label>
               <Form.Control
                 type="title"
-                placeholder={location.state.title}
+                placeholder="Enter title"
                 name="title"
                 onChange={handleChange}
+                value={formValues?.title}
               />
               <p className="error">{formErrors.title}</p>
 
@@ -91,14 +92,15 @@ export default function EditAdvertisement() {
               <Form.Label className="d-flex">Location</Form.Label>
               <Form.Control
                 type="location"
-                placeholder={location.state.location}
+                placeholder="Enter location"
                 name="location"
                 onChange={handleChange}
+                value={formValues?.location}
               />
               <p className="error">{formErrors.location}</p>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="aboutUs">
+            {/* <Form.Group className="mb-3" controlId="aboutUs">
               <Form.Label className="d-flex">About Us</Form.Label>
               <Form.Control
                 type="aboutUs"
@@ -107,7 +109,7 @@ export default function EditAdvertisement() {
                 onChange={handleChange}
               />
               <p className="error">{formErrors.aboutUs}</p>
-            </Form.Group>
+            </Form.Group> */}
             {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
@@ -116,9 +118,10 @@ export default function EditAdvertisement() {
               <Form.Control
                 as="textarea"
                 type="responsibility"
-                placeholder="Describe the responsibilities"
+                placeholder="Enter job responsibilities"
                 name="responsibilities"
                 onChange={handleChange}
+                value= {formValues?.responsibilities}
               />
               <p className="error">{formErrors.responsibilities}</p>
             </Form.Group>
@@ -128,9 +131,10 @@ export default function EditAdvertisement() {
               <Form.Control
                 as="textarea"
                 type="responsibility"
-                placeholder="Benefits"
+                placeholder="Enter benefits"
                 name="benefits"
                 onChange={handleChange}
+                value={formValues?.benefits}
               />
               <p className="error">{formErrors.benefits}</p>
             </Form.Group>
