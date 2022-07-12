@@ -32,7 +32,7 @@ public class Job {
 
     private String companyName;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private User postedBy;
 
 

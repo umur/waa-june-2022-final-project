@@ -79,7 +79,7 @@ public class StudentService {
     }
 
     public List<Job> getALlJob(){
-        return jobRepository.findAll();
+        return jobRepository.findAll().stream().peek(Job::getPostedBy).toList();
     }
 
     public Student createStudent(StudentReq studentReq) {
