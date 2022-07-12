@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
-import { getFacultyProfile, getUserProfile } from "../../redux/reducers/UserProfile/actions";
+import { getFacultyProfile } from "../../redux/reducers/UserProfile/actions";
 
 import FileUploadPage from '../../pages/FileUploadPage';
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function FacultyProfile() {
     const dispatch = useDispatch();
     const userProfile = useSelector((state) => state.userProfile);
-    
+
     useEffect(() => {
         dispatch(getFacultyProfile());
     }, []);
