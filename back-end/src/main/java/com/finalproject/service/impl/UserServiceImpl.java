@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PasswordEncoder encoder;
 
-
     @Override
     public List<User> findAll() {
         return userRepo.findAll();
@@ -58,7 +57,7 @@ public class UserServiceImpl implements UserService {
         int newFailAttemps = user.getFailedAttempt() + 1;
         user.setFailedAttempt(newFailAttemps);
         userRepo.save(user);
-//        userRepo.updateFailedAttempts(newFailAttemps, user.getEmail());
+        // userRepo.updateFailedAttempts(newFailAttemps, user.getEmail());
     }
 
     @Override
@@ -98,4 +97,9 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByUsername(username).orElseThrow(() -> new RuntimeException("Error: User is not found"));
     }
 
+    // added
+    @Override
+    public User findBYUserName(String name) {
+        return userRepo.findByUsername(name).orElseThrow();
+    }
 }
