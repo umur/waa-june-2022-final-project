@@ -11,7 +11,7 @@ public class AlumniManagementPortalApplication {
     public static void main(String[] args) {
         //shgds
         SpringApplication.run(AlumniManagementPortalApplication.class, args);
-        System.out.println("GITHUB");
+        //System.out.println("GITHUB");
 
     }
     @Bean
