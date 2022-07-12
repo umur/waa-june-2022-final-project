@@ -32,4 +32,6 @@ public interface JobService {
     Long countById(long id);
 
     List<ReportList>findByTags();
+
+    List<ReportList> jobsByStateTag(String state);
 }

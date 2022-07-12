@@ -4,6 +4,7 @@ import alumnimanagement.dto.JobAdvertisementDTO;
 import alumnimanagement.dto.JobAdvertisementListDTO;
 import alumnimanagement.dto.ReportList;
 import alumnimanagement.dto.StudentListDto;
+import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.services.JobService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -97,5 +98,10 @@ public class JobController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
         jobService.delete(id);
+    }
+
+    @GetMapping("/getByStateTag/{state}")
+    public List<ReportList> jobsByStateTag(@PathVariable String state){
+        return jobService.jobsByStateTag(state);
     }
 }

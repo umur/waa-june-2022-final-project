@@ -7,7 +7,6 @@ import alumnimanagement.entity.job.JobAdvertisement;
 import alumnimanagement.entity.job.Tag;
 import alumnimanagement.repo.JobRepo;
 import alumnimanagement.services.JobService;
-import alumnimanagement.utility.Helper;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -37,7 +36,7 @@ public class JobServiceImpl implements JobService {
     @Override
     public List<JobAdvertisementDTO> getAll() {
         return jobRepo.findAll()
-                .stream().filter(job->!job.isDeleted())
+                .stream().filter(job -> !job.isDeleted())
                 .map((jobAdvertisement ->
                         modelMapper.map(jobAdvertisement, JobAdvertisementDTO.class)))
                 .toList();
@@ -98,9 +97,8 @@ public class JobServiceImpl implements JobService {
 //                dto.setTag(dto.getTag() + " " + t.getTitle());
 //            }
 //            dtos.add(dto);
-        for(JobAdvertisement f : list)
-        {
-            if(!f.isDeleted()) {
+        for (JobAdvertisement f : list) {
+            if (!f.isDeleted()) {
                 JobAdvertisementListDTO dto = new JobAdvertisementListDTO();
                 dto.setId(f.getId());
                 if (f.getAddress() != null) {
@@ -153,8 +151,8 @@ public class JobServiceImpl implements JobService {
 //                    dto.setTag(dto.getTag() + " " + t.getTitle());
 //                }
 //                jobListDto.add(dto);
-        for (JobAdvertisement job: jobs){
-            if(!job.isDeleted()) {
+        for (JobAdvertisement job : jobs) {
+            if (!job.isDeleted()) {
                 String jobTag = "";
                 if (job.getJobTag() != null) {
                     jobTag = job.getJobTag();
@@ -214,29 +212,52 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<ReportList>  findByTags() {
+    public List<ReportList> findByTags() {
         var data = jobRepo.findByTags();
         Map<String, Integer> map = new HashMap<>();
         for (String s : data) {
             String[] splitArr = s.split(",");
             for (String str : splitArr) {
                 if (map.containsKey(str)) {
-                    map.put(str,map.get(str)+1);
-                }else{
-                    map.put(str,1);
+                    map.put(str, map.get(str) + 1);
+                } else {
+                    map.put(str, 1);
                 }
             }
         }
+        return getReportLists(map);
+    }
+
+    private List<ReportList> getReportLists(Map<String, Integer> map) {
         List<ReportList> result2 = new ArrayList<>();
-        for(Map.Entry<String,Integer> set :
-                map.entrySet()){
+        for (Map.Entry<String, Integer> set :
+                map.entrySet()) {
             ReportList dto = new ReportList();
-            long i = set.getValue();
-            dto.value = i;
+            dto.value = (long) set.getValue();
             dto.name = set.getKey();
             result2.add(dto);
 
         }
         return result2;
+    }
+
+    @Override
+    public  List<ReportList> jobsByStateTag(String state) {
+        var result = jobRepo.findJobAdvertisementsByAddressStateContaining(state);
+        Map<String, Integer> map = new HashMap<>();
+        for (JobAdvertisement j: result){
+            var data = j.getJobTag();
+            if (data == null) continue;
+            String[] splitArr = data.split(",");
+            for (String str : splitArr) {
+                if (map.containsKey(str)) {
+                    map.put(str, map.get(str) + 1);
+                } else {
+                    map.put(str, 1);
+                }
+            }
+        }
+
+        return getReportLists(map);
     }
 }
