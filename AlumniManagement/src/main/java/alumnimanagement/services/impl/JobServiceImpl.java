@@ -179,29 +179,52 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<ReportList>  findByTags() {
+    public List<ReportList> findByTags() {
         var data = jobRepo.findByTags();
         Map<String, Integer> map = new HashMap<>();
         for (String s : data) {
             String[] splitArr = s.split(",");
             for (String str : splitArr) {
                 if (map.containsKey(str)) {
-                    map.put(str,map.get(str)+1);
-                }else{
-                    map.put(str,1);
+                    map.put(str, map.get(str) + 1);
+                } else {
+                    map.put(str, 1);
                 }
             }
         }
+        return getReportLists(map);
+    }
+
+    private List<ReportList> getReportLists(Map<String, Integer> map) {
         List<ReportList> result2 = new ArrayList<>();
-        for(Map.Entry<String,Integer> set :
-                map.entrySet()){
+        for (Map.Entry<String, Integer> set :
+                map.entrySet()) {
             ReportList dto = new ReportList();
-            long i = set.getValue();
-            dto.value = i;
+            dto.value = (long) set.getValue();
             dto.name = set.getKey();
             result2.add(dto);
 
         }
         return result2;
+    }
+
+    @Override
+    public  List<ReportList> jobsByStateTag(String state) {
+        var result = jobRepo.findJobAdvertisementsByAddressStateContaining(state);
+        Map<String, Integer> map = new HashMap<>();
+        for (JobAdvertisement j: result){
+            var data = j.getJobTag();
+            if (data == null) continue;
+            String[] splitArr = data.split(",");
+            for (String str : splitArr) {
+                if (map.containsKey(str)) {
+                    map.put(str, map.get(str) + 1);
+                } else {
+                    map.put(str, 1);
+                }
+            }
+        }
+
+        return getReportLists(map);
     }
 }
