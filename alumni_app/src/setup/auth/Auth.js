@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Cookies from 'js-cookie';
 
 export function roleBasePermission() {
     let [userRole, setUserRole] = useState('Admin')
@@ -19,7 +19,14 @@ export function curentLoggedUser() {
     return loggedUser;
 }
 
-export function isAuthorized() {
+export function isAuthorized(token) {
     let [isAuthorized, setIsAuthorized] = useState(false);
+    const cookies = Cookies.get('token');
+    if (cookies == token) {
+        setIsAuthorized(true);
+    }
+    else{
+        setIsAuthorized(false);
+    }
     return isAuthorized;
 }

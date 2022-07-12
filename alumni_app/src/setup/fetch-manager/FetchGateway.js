@@ -1,13 +1,24 @@
 import axios from "axios";
+import { useContext } from "react";
+import Cookies from 'js-cookie';
 
 const api_url = 'http://localhost:8085';
 
 export async function getRequest(path) {
+    const auth = 'Bearer '+ Cookies.get('token');
     const fullURL = api_url + path;
     try {
-        const response = await axios.get(fullURL);
+        const config = {
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc2hpc2hAbWl1LmVkdSIsInJvbGVzIjoiQURNSU4iLCJpZCI6MSwidXNlck5hbWUiOiJhc2hpc2hAbWl1LmVkdSIsImV4cCI6MTY1NzYwMDI2NywiaWF0IjoxNjU3NTgyMjY3fQ.5IILwfiqnI02cOoV4M_sLlDMWq5udmaqXie1m597uMW4Fv5RhSzLBYzRUOmNcpc8YYa3pNKSz34BOsVA6GYBiA',
+            },
+          };
+
+        const response = await axios.get(fullURL, config);
         return response.data;
     } catch (error) {
+        let as =error;
+        debugger
         console.error(error);
     }
 

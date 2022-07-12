@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { postRequest } from "../../setup/fetch-manager/FetchGateway";
+import Cookies from 'js-cookie';
+import { AUTHCONTEXT } from "../../App";
 
 const initialValues = {
     emailAddress: "",
     password: ""
 };
 
-
 export default function Login() {
     const [values, setValues] = useState(initialValues);
+    const {setAuth} = useContext(AUTHCONTEXT)
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setValues({
-          ...values,
-          [name]: value,
+            ...values,
+            [name]: value,
         });
-      };
+    };
 
-      const postData = async () => {
+    const postData = async () => {
+        Cookies.remove('token');
         let params = "/login";
         let result = await postRequest(params, values);
-        alert(result);
-      };
+        setAuth(result)
+        Cookies.set('token', result)
+    };
 
     return (
         <>
@@ -40,13 +44,13 @@ export default function Login() {
 
                                 <div className="form-outline mb-4">
                                     <input type="email" id="form3Example3" className="form-control form-control-lg"
-                                        placeholder="Enter a valid email address" name="username" onChange={handleInputChange}/>
+                                        placeholder="Enter a valid email address" name="username" onChange={handleInputChange} />
                                     <label className="form-label" >Email address</label>
                                 </div>
 
                                 <div className="form-outline mb-3">
                                     <input type="password" id="form3Example4" className="form-control form-control-lg"
-                                        placeholder="Enter password" name="password" onChange={handleInputChange}/>
+                                        placeholder="Enter password" name="password" onChange={handleInputChange} />
                                     <label className="form-label" htmlFor="form3Example4">Password</label>
                                 </div>
 
