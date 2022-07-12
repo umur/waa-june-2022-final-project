@@ -6,29 +6,32 @@ import logo from '../../../src/logo.svg';
 
 import JobHistoryInfo from '../../components/profiles/JobHistoryInfo';
 import FileUploadPage from '../../pages/FileUploadPage';
+import { getJobHistoryById } from "../../redux/reducers/JobHistory/actions";
 
 function StudentProfile() {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.userProfile);
+  const jobHistory = useSelector((state) => state.jobHistory);
 
-  console.log(userProfile)
   useEffect(() => {
     dispatch(getUserProfile());
+    dispatch(getJobHistoryById(userProfile.id));
   }, []);
-
-  const jobHistory = [
-    {
-      id: 1,
-      title: "Software Engineer",
-      location: "Iowa",
-      aboutUs: "test"
-    }, {
-      id: 2,
-      title: "Software Project Manager",
-      location: "Iowa",
-      aboutUs: "test"
-    }
-  ]
+  console.log(jobHistory)
+  console.log(userProfile)
+  // const jobHistory = [
+  //   {
+  //     id: 1,
+  //     title: "Software Engineer",
+  //     location: "Iowa",
+  //     aboutUs: "test"
+  //   }, {
+  //     id: 2,
+  //     title: "Software Project Manager",
+  //     location: "Iowa",
+  //     aboutUs: "test"
+  //   }
+  // ]
 
   return (
     <Container>
@@ -72,15 +75,15 @@ function StudentProfile() {
           <h3>Job History</h3>
           <div className='container'>{
 
-            jobHistory.map(history => {
-              return (
-                <JobHistoryInfo
-                  key={history.id}
-                  title={history.title}
-                  location={history.location}
-                  aboutUs={history.aboutUs}></JobHistoryInfo>
-              )
-            })
+            // jobHistory.map(history => {
+            //   return (
+            //     <JobHistoryInfo
+            //       key={history.id}
+            //       companyName={history.companyName}
+            //       startDate={history.startDate}
+            //       endDate={history.endDate}></JobHistoryInfo>
+            //   )
+            // })
           }
           </div>
         </Container>
