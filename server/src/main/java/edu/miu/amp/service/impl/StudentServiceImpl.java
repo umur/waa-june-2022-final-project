@@ -1,6 +1,8 @@
 package edu.miu.amp.service.impl;
 
+import edu.miu.amp.domain.JobHistory;
 import edu.miu.amp.domain.Student;
+import edu.miu.amp.dto.JobHistoryDto;
 import edu.miu.amp.dto.StudentDto;
 import edu.miu.amp.exception.ResourceNotFoundException;
 import edu.miu.amp.helper.UserPrincipal;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,12 +40,30 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<JobHistoryDto> getStudentJobHistory(Integer id) {
+        var student = studentRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
+
+        var jobHistory = student.getJobHistoryList();
+        System.out.println(jobHistory);
+
+        if (jobHistory == null) {
+//            @TODO
+//          Hibernate returns null @ first and return [] on second time execution
+            return new ArrayList<JobHistoryDto>();
+
+        } else {
+            return jobHistory.stream().map(x -> modelMapper.map(x, JobHistoryDto.class)).toList();
+        }
+
+    }
+
+    @Override
     public StudentDto getMyProfile() {
-        var authUser =UserPrincipal.getAuthUser();
+        var authUser = UserPrincipal.getAuthUser();
 
-        var user = userRepo.findByUserName(authUser.getUserName()).orElse( null );
+        var user = userRepo.findByUserName(authUser.getUserName()).orElse(null);
 
-        var student =  studentRepo.findById(user.getId()).get();
+        var student = studentRepo.findById(user.getId()).get();
         return modelMapper.map(student, StudentDto.class);
 
     }

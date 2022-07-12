@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allJobAdvertisement } from "../../redux/reducers/JobAdvertisement/actions";
 import JobFilter from "./JobFilter";
@@ -12,13 +12,19 @@ export default function JobListings(props) {
     dispatch(allJobAdvertisement());
   }, []);
 
+  const [jobState, setJobState] = useState([]);
+
+  let handleFilterChange = (data) => {
+    setJobState(data);
+  };
+
   return (
     <>
-      <JobFilter></JobFilter>
+      <JobFilter handleFilterChange={handleFilterChange}></JobFilter>
 
       <div className="row">
-        {jobAdvertisement &&
-          [...jobAdvertisement]
+        {jobState &&
+          [...jobState]
             .sort((x, y) => (x.id > y.id ? 1 : -1))
             .map((job) => {
               return (

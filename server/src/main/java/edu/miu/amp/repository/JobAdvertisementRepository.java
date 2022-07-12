@@ -11,6 +11,4 @@ import java.util.List;
 public interface JobAdvertisementRepository extends JpaRepository<JobAdvertisement, Integer> {
 
     public List<JobAdvertisement> findTop10ByOrderByIdDesc() ;
-
-
 }

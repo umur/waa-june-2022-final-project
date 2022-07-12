@@ -69,6 +69,8 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     @Override
     public List<JobAdvertisementDto> findFirst10Advertisement() {
         var result = jobAdvertisementRepository.findTop10ByOrderByIdDesc();
+
+     
         List<JobAdvertisementDto> jobAdvertisement = ((result))
                 .stream()
                 .map(ja -> toDto(ja))

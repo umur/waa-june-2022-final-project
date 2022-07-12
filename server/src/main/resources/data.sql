@@ -53,8 +53,19 @@ VALUES (10018, 'Test', 'Faculty 10018', 'testfaculty18@gmail.com', 'testfaculty1
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete)
 VALUES (10019, 'Test', 'Faculty 10019', 'testfaculty19@gmail.com', 'testfaculty19', false);
 
+INSERT INTO FACULTY(id)
+VALUES (10011),
+       (10012),
+       (10013),
+       (10014),
+       (10015),
+       (10016),
+       (10017),
+       (10018),
+       (10019);
 
 -- Add job tags
+
 INSERT INTO tag(id,tag_name, is_delete)
 VALUES (10001,'devops', false),
        (10002,'java developer', false),
