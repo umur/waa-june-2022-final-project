@@ -45,7 +45,7 @@ public class AmpApplication {
 			jobRepository.save(new Job(null, "description 2", List.of(tag3), "Washington", "Seattle", "Google", user));
 
 			studentRepository.save(new Student(null, userStudent, "username@username", "firstname", "lastname", "cs", "3.5", "Fairfield"));
-			studentRepository.save(new Student(null, userStudent, "anwar@username", "anwar", "hossian", "cs", "3.5", "Fairfield"));
+			//studentRepository.save(new Student(null, userStudent, "anwar@username", "anwar", "hossian", "cs", "3.5", "Fairfield"));
 
 		};
 	}
