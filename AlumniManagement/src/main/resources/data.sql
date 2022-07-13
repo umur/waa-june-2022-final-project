@@ -20,6 +20,7 @@ INSERT INTO address (id,city,state) VALUES (11,'Chitwan','CALIFORNIA');
 INSERT INTO address (id,city,state) VALUES (12,'Bharatpur','ALASKA');
 INSERT INTO address (id,city,state) VALUES (13,'Walling','KANSAS');
 INSERT INTO address (id,city,state) VALUES (14,'Patan','FLORIDA');
+INSERT INTO address (id,city,state) VALUES (15,'Dolpa','ALASKA');
 
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (1,'apokhrel@miu.edu','Ashish','Pokhrel',1,4,1,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (2,'pbudhathoki@miu.edu','Puskar','Budhatoki',12,4,2,1,false);
@@ -28,7 +29,7 @@ INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (5,'sudip@miu.edu','Sudip','Budhatoki',5,4,1,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (6,'sp666@miu.edu','Sudip2','Budhatoki2',6,4,2,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (7,'apokhrel777@miu.edu','Ashish','Pokhrel',1,4,1,1,false);
-INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (8,'pbudhathoki8888@miu.edu','Puskar','Budhatoki',2,4,2,1,false);
+INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (8,'pbudhathoki8888@miu.edu','Puskar','Budhatoki',15,4,2,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (9,'spageni9999@miu.edu','Saugat','Pageni',3,4,3,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (10,'akc10010@miu.edu','Anand','Kc',4,4,4,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (11,'ram@miu.edu','Ram','raj',1,4,1,1,false);
@@ -36,18 +37,13 @@ INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (13,'hari@miu.edu','Hari','Pageni',3,4,3,1,false);
 INSERT INTO student (id,email,first_name,last_name,id_address,gpa,id_major,user_id,is_deleted) VALUES (14,'ramesh@miu.edu','rames','VAi',4,4,4,1,false);
 
-
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Infosys','Mid level java developer needed in Infosys','java Developer',1,5,1231,1,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Data Sys','Top level developer needed ','.Net Developer',2,10,16516,2,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Cotivity','Mid level developer needed ','Backend Developer',1,5,1231,1,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','F1','Mid level developer needed in Infosys','FrontEnd Developer',2,10,16516,2,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Javra','developer needed','java Developer',1,5,1231,1,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Data One','Mid level developer needed in Infosys','.Net Developer',2,10,16516,2,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Infosys Two','Mid level java developer needed in Infosys','MongoDb Developer',1,5,1231,1,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Data Sys Mgmt','Mid level developer needed in Infosys','Spring Developer',2,10,16516,2,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Infosys Dev','Mid level java developer needed in Infosys','java Developer',1,5,1231,1,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus','Data Sys INfo','Mid level developer needed in Infosys','.Net Developer',2,10,16516,2,false);
-INSERT INTO job_advertisement (add_benefit,company_name,job_desc,job_title,student_id,num_opening,payment_amount,id_address,is_deleted) VALUES ('good salary with bonus',' INfo','Top level developer needed in Infosys','.Net Developer',2,10,16516,2,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('good salary with bonus','Amazon','more than 1000','Mid level java developer needed in Amazon','Java, PostgreSQL','Java Developer','Full-Time',5,180000,'2022-07-12',1,1,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Attractive Salary with stock options','Microsoft','more than 1000','Senior level C# developer needed in Microsoft','C#, MySQL','C# Developer','Full-Time',10,220000,'2022-07-01',2,2,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Lunch provided, Recreational Center within company','Shining Star Pvt. Ltd','0-less than 100','Entry level Java Engineer needed in Shining Star Pvt. Ltd','Java','Java Developer','Part-Time',2,80000,'2022-06-25',3,3,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Weekly recreational Activities','IBM','more than 1000','Entry level C# developer needed in IBM','C#, PostgreSQL','Java Developer','Contract',10,90000,'2022-05-10',4,4,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Monthly Hiking trip','MiSUMi Co. Ltd.','100-1000','Mid level C# developer needed in MiSUMi','C#, MySQL','Full Stack Developer','Full-Time',3,150000,'2022-01-12',5,5,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Yearly recreational Activities','CORBA','more than 1000','Entry level C# developer needed in IBM','C#, PostgreSQL','Java Developer','Contract',10,90000,'2022-05-10',4,4,false);
+INSERT INTO job_advertisement(add_benefit, company_name, company_size, job_desc, job_tag, job_title, job_type, num_opening, payment_amount, publish_date, id_address, student_id, is_deleted) VALUES ('Tou trip','Honda Co. Ltd.','100-1000','Mid level C# developer needed in MiSUMi','C#, MySQL','Full Stack Developer','Full-Time',3,150000,'2022-01-12',5,5,false);
 
 
 INSERT INTO faculty (id, active, department, email, first_name, last_logged_in_at, last_name, password, id_address, is_deleted) VALUES (1, true,'cs','faculty@miu.edu','Bibek','2022-01-15','Thokar','admin123',1, false);

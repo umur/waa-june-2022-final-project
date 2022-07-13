@@ -7,10 +7,10 @@ import Container from "@material-ui/core/Container";
 
 export default function HomePage() {
   const [dataUrlByState, setDataUrlByState] = useState(
-    '/reports/studentByCity/""'
+    '/reports/studentByCity/ALASKA'
   );
 
-  const [urlByState, setUrlByState] = useState('/jobs/getByStateTag/""');
+  const [urlByState, setUrlByState] = useState('/jobs/getByStateTag/IOWA');
 
   const setValue = (name, value) => {
     let title = "undefined";
@@ -46,8 +46,8 @@ export default function HomePage() {
           <div className="col-6 mt-2">
             <PieChart dataUrl={"/reports/studentByState"}
               subtext={"Student statistics"}
-              name={"Student per department"}
-              title={"Student Data"}
+              name={"Student per state"}
+              title={"STUDENT DATA BY STATE"}
             ></PieChart>
           </div>
           <div className="col-12 mt-2">
@@ -65,7 +65,7 @@ export default function HomePage() {
             <PieChart
               dataUrl={dataUrlByState}
               subtext={"City statistics"}
-              name={"Cites per State"}
+              name={"STUDENTS DATA PER CITIES"}
               title={"City Data"}
             ></PieChart>
           </div>
@@ -83,7 +83,7 @@ export default function HomePage() {
               dataUrl={"/jobs/getByTags"}
               subtext={"Tags statistics"}
               name={"Jobs as per tags"}
-              title={"Jobs as per Tags"}
+              title={"JOBS AS PER TAGS"}
             ></PieChart>
           </div>
           <div className="col-6 mt-2">
@@ -99,7 +99,7 @@ export default function HomePage() {
               dataUrl={urlByState}
               subtext={"Tags with location"}
               name={"Tags with location"}
-              title={"Tags with location"}
+              title={"TAGS WITH LOCATION"}
             ></PieChart>
           </div>
         </div>
