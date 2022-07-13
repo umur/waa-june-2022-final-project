@@ -35,6 +35,11 @@ public class FacultyController {
         );
     }
 
+    @GetMapping("/get-comment/{studentId}")
+    public ResponseEntity<?> getComment(@PathVariable Long studentId) {
+        return ResponseEntity.ok(commentService.allComment(studentId));
+    }
+
     @PostMapping("/search-student")
     public ResponseEntity<Map<String, List<Student>>> searchStudent(@RequestBody StudentSearchReq studentSearchReq) {
         return ResponseEntity.ok(of("data", studentService.searchStudent(studentSearchReq)));

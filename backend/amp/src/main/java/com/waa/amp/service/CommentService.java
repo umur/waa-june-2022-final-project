@@ -41,6 +41,11 @@ public class CommentService {
         return byStudent.getComments().size();
     }
 
+    public List<Comment> allComment(Long studentId) {
+        StudentComment byStudent = studentCommentRepository.findByStudent(studentRepository.findById(studentId).orElse(null));
+        return byStudent.getComments();
+    }
+
     public List<Tag> allTag() {
         return tagRepository.findAll();
     }
