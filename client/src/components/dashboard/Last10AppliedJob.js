@@ -9,7 +9,7 @@ const Last10Appliedjobs = (props) => {
     "http://localhost:8080/v1/api/job-applications/last10-job-application";
   const get10Jobs = async () => {
     const res = await axios.get(url);
-    console.log(res.data);
+
     setJobState(res.data);
   };
   useEffect(() => {

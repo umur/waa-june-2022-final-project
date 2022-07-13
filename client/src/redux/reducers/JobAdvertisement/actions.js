@@ -30,19 +30,18 @@ export const addJobAdvertisement = (job) => {
 };
 
 export const editJobAdvertisement = (job) => {
-  console.log(job)
   return {
     type: EDIT_JOB_ADVERTISEMENT,
     payload: {
-      job, 
+      job,
       request: {
         url: `/job-advertisements/${job.id}`,
         method: HttpService.HttpMethods.PUT,
-        data: job
-      }
-    }
-  }
-}
+        data: job,
+      },
+    },
+  };
+};
 
 export const deleteJobAdvertisement = (job) => {
   return {

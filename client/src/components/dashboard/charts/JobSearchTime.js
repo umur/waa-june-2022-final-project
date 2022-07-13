@@ -6,7 +6,7 @@ import { getStudentList } from "../../../redux/reducers/Student/actions";
 function JobSearchTime(props) {
   const dispatch = useDispatch();
 
-  const { students } = useSelector((state) => state.student);
+  const { students } = useSelector((state) => state.students);
 
   useEffect(() => {
     dispatch(getStudentList());

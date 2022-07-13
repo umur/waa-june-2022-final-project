@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
-import { getStudentList } from "../../redux/reducers/Student/actions"
+import { getStudentList } from "../../redux/reducers/Student/actions";
 import { Button, Form } from "react-bootstrap";
 
 function StudentFilter(props) {
   const dispatch = useDispatch();
-  const {students}  = useSelector((state) => state.students);
+  const { students } = useSelector((state) => state.students);
 
   useEffect(() => {
     dispatch(getStudentList());
@@ -15,18 +15,18 @@ function StudentFilter(props) {
   const [filterForm, setFilterForm] = useState({});
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFilterForm({
       ...filterForm,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleFilter = (e) => {
     e.preventDefault();
     let filteredData = filterChanged();
-    if(filteredData) props.handleFilterChange(filteredData);
-  }
+    if (filteredData) props.handleFilterChange(filteredData);
+  };
 
   const filterChanged = () => {
     let filteredData = filterByName([].concat(students));
@@ -39,7 +39,7 @@ function StudentFilter(props) {
 
   const filterByName = (data) => {
     if (!filterForm.name) return data;
-    console.log(data)
+
     return data?.filter((x) => {
       return (x.firstName || x.lastName)
         .toLowerCase()
@@ -70,14 +70,9 @@ function StudentFilter(props) {
     return data;
   };
 
+  const cityList = [...new Set(students?.map((data) => data.address?.city))];
 
-  const cityList = [
-    ...new Set(students?.map((data) => data.address?.city)),
-  ];
-
-  const stateList = [
-    ...new Set(students?.map((data) => data.address?.state)),
-  ];
+  const stateList = [...new Set(students?.map((data) => data.address?.state))];
 
   useEffect(() => {
     let filteredData = filterChanged();
@@ -89,45 +84,62 @@ function StudentFilter(props) {
       <Form onSubmit={handleFilter}>
         <div className="row">
           <div className="mb-3 col-3">
-            <label className="form-label">
-              Name
-            </label>
-            <input type="text" name="name" className="form-control" id="name" onChange={handleChange}/>
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              id="name"
+              onChange={handleChange}
+            />
           </div>
 
           <Form.Group className="mb-2 col-2">
-            <Form.Label className="form-label">
-              State
-            </Form.Label>
-            <Form.Select className="form-select" name="state" id="state" onChange={handleChange}>s
-              <option>Select</option>
+            <Form.Label className="form-label">State</Form.Label>
+            <Form.Select
+              className="form-select"
+              name="state"
+              id="state"
+              onChange={handleChange}
+            >
+              s<option>Select</option>
               {stateList?.map((state, index) => {
-                return(
-                  <option key={index} value={state} >{state}</option>
-                )
+                return (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                );
               })}
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-2 col-2">
-            <Form.Label className="form-label">
-              City
-            </Form.Label>
-            <Form.Select className="form-select" name="city" id="city" onChange={handleChange}>
+            <Form.Label className="form-label">City</Form.Label>
+            <Form.Select
+              className="form-select"
+              name="city"
+              id="city"
+              onChange={handleChange}
+            >
               <option>Select</option>
               {cityList?.map((city, index) => {
-                return(
-                  <option key={index} value={city} >{city}</option>
-                )
+                return (
+                  <option key={index} value={city}>
+                    {city}
+                  </option>
+                );
               })}
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-2 col-2">
-            <Form.Label className="form-label">
-              Major
-            </Form.Label>
-            <Form.Select className="form-select" name="major" id="major" onChange={handleChange}>
+            <Form.Label className="form-label">Major</Form.Label>
+            <Form.Select
+              className="form-select"
+              name="major"
+              id="major"
+              onChange={handleChange}
+            >
               <option>Select</option>
               <option value="Compro">Compro</option>
               <option value="MSD">MSD</option>
@@ -142,7 +154,14 @@ function StudentFilter(props) {
           </Form.Group>
           <Form.Group className="mb-1 col-1">
             <Form.Label htmlFor="tagName" className="form-label"></Form.Label>
-            <Button type="submit" className="form-control d-flex" variant="info"> Submit </Button>
+            <Button
+              type="submit"
+              className="form-control d-flex"
+              variant="info"
+            >
+              {" "}
+              Submit{" "}
+            </Button>
           </Form.Group>
         </div>
       </Form>

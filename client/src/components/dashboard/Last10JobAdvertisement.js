@@ -11,7 +11,7 @@ const Last10JobAdvertisement = () => {
 
   const get10Jobs = async (props) => {
     const res = await axios.get(url);
-    console.log(res.data);
+
     tenJobs(res.data);
   };
   useEffect(() => {

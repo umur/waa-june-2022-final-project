@@ -7,7 +7,6 @@ const Registration = () => {
 
   const onSubmit = (data) => {
     setStudentInfo(data);
-    console.log(data);
   };
 
   return (
