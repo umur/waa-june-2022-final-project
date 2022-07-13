@@ -57,7 +57,12 @@ function JobAdvertisementRate(props) {
     let currentData = rateData.filter((y) => {
       return y.month.toLowerCase() === x;
     });
-    return currentData[0];
+    return currentData[0]
+      ? currentData[0]
+      : {
+          month: x,
+          value: 0,
+        };
   });
 
   const option = {
