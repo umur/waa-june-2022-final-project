@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
-import { getStudentsList } from "../../redux/reducers/Student/actions"
+import { getStudentList } from "../../redux/reducers/Student/actions"
+import { Button, Form } from "react-bootstrap";
 
 function StudentFilter(props) {
   const dispatch = useDispatch();
-  const students  = useSelector((state) => state.students);
+  const {students}  = useSelector((state) => state.students);
 
   useEffect(() => {
-    dispatch(getStudentsList());
+    dispatch(getStudentList());
   }, []);
 
-  console.log(students)
   const [filterForm, setFilterForm] = useState({});
 
   const handleChange = (e) => {
@@ -39,6 +39,7 @@ function StudentFilter(props) {
 
   const filterByName = (data) => {
     if (!filterForm.name) return data;
+    console.log(data)
     return data?.filter((x) => {
       return (x.firstName || x.lastName)
         .toLowerCase()
@@ -85,7 +86,7 @@ function StudentFilter(props) {
 
   return (
     <div className="card filter-form">
-      <form onSubmit={handleFilter}>
+      <Form onSubmit={handleFilter}>
         <div className="row">
           <div className="mb-3 col-3">
             <label className="form-label">
@@ -94,49 +95,57 @@ function StudentFilter(props) {
             <input type="text" name="name" className="form-control" id="name" onChange={handleChange}/>
           </div>
 
-          <div className="mb-3 col-3">
-            <label className="form-label">
+          <Form.Group className="mb-2 col-2">
+            <Form.Label className="form-label">
               State
-            </label>
-            <select className="form-select" name="state" id="state" onChange={handleChange}>s
+            </Form.Label>
+            <Form.Select className="form-select" name="state" id="state" onChange={handleChange}>s
               <option>Select</option>
               {stateList?.map((state, index) => {
                 return(
                   <option key={index} value={state} >{state}</option>
                 )
               })}
-            </select>
-          </div>
+            </Form.Select>
+          </Form.Group>
 
-          <div className="mb-3 col-3">
-            <label className="form-label">
+          <Form.Group className="mb-2 col-2">
+            <Form.Label className="form-label">
               City
-            </label>
-            <select className="form-select" name="city" id="city" onChange={handleChange}>
+            </Form.Label>
+            <Form.Select className="form-select" name="city" id="city" onChange={handleChange}>
               <option>Select</option>
               {cityList?.map((city, index) => {
                 return(
                   <option key={index} value={city} >{city}</option>
                 )
               })}
-            </select>
-          </div>
+            </Form.Select>
+          </Form.Group>
 
-          <div className="mb-3 col-3">
-            <label className="form-label">
+          <Form.Group className="mb-2 col-2">
+            <Form.Label className="form-label">
               Major
-            </label>
-            <select className="form-select" name="major" id="major" onChange={handleChange}>
+            </Form.Label>
+            <Form.Select className="form-select" name="major" id="major" onChange={handleChange}>
               <option>Select</option>
-              {students?.map((major, index) => {
+              <option value="Compro">Compro</option>
+              <option value="MSD">MSD</option>
+              <option value="MBA">MBA</option>
+
+              {/* {students?.map((major, index) => {
                 return(
                   <option key={index} value={major} >{major}</option>
                 )
-              })}
-            </select>
-          </div>
+              })} */}
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-1 col-1">
+            <Form.Label htmlFor="tagName" className="form-label"></Form.Label>
+            <Button type="submit" className="form-control d-flex" variant="info"> Submit </Button>
+          </Form.Group>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
