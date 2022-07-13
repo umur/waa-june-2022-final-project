@@ -48,4 +48,10 @@ public class CommonController {
         studentService.updateProfile(studentReq);
         return ResponseEntity.ok("data");
     }
+
+    @GetMapping("/get-profile")
+    public ResponseEntity<?> getProfile() {
+        return ResponseEntity.ok(of("data", studentService.getProfile()));
+    }
+
 }

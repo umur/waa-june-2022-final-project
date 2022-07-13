@@ -35,14 +35,7 @@ public class StudentService {
             tags.add(t);
         }
 
-        var job = new Job(null,
-                jobReq.description(),
-                tags,
-                jobReq.state(),
-                jobReq.city(),
-                jobReq.companyName(),
-                userService.getLoggedUser()
-        );
+        var job = new Job(null, jobReq.description(), tags, jobReq.state(), jobReq.city(), jobReq.companyName(), userService.getLoggedUser());
 
         return jobRepository.save(job);
     }
@@ -59,14 +52,7 @@ public class StudentService {
 
         job.setTags(tags);
 
-        var updatedJob = new Job(id,
-                jobReq.description(),
-                tags,
-                jobReq.state(),
-                jobReq.city(),
-                jobReq.companyName(),
-                userService.getLoggedUser()
-        );
+        var updatedJob = new Job(id, jobReq.description(), tags, jobReq.state(), jobReq.city(), jobReq.companyName(), userService.getLoggedUser());
 
         return jobRepository.save(updatedJob);
     }
@@ -76,7 +62,7 @@ public class StudentService {
         return jobRepository.findAllByPostedBy(loggedUser);
     }
 
-    public List<Job> getALlJob(){
+    public List<Job> getALlJob() {
         return jobRepository.findAll().stream().peek(Job::getPostedBy).toList();
     }
 
@@ -85,14 +71,7 @@ public class StudentService {
     }
 
     public Student updateStudent(Long id, StudentReq studentReq) {
-        Student student = new Student(id,
-                userService.getLoggedUser(),
-                studentReq.email(),
-                studentReq.firstName(),
-                studentReq.lastname(),
-                studentReq.major(),
-                studentReq.gpa(),
-                studentReq.city());
+        Student student = new Student(id, userService.getLoggedUser(), studentReq.email(), studentReq.firstName(), studentReq.lastname(), studentReq.major(), studentReq.gpa(), studentReq.city());
 
         return studentRepository.save(student);
     }
@@ -115,6 +94,22 @@ public class StudentService {
             faculty.setLastname(studentReq.lastname());
             faculty.setCity(studentReq.city());
             facultyRepository.save(faculty);
+        }
+
+    }
+
+    public StudentReq getProfile() {
+        User loggedUser = userService.getLoggedUser();
+        UserType userType = loggedUser.getUserType();
+
+        if (userType == UserType.STUDENT) {
+            Student student = studentRepository.findByUser(loggedUser);
+
+            return new StudentReq(student.getEmail(), student.getFirstname(), student.getLastname(), student.getMajor(), student.getGpa(), student.getCity(), userType);
+
+        } else {
+            Faculty faculty = facultyRepository.findByUser(loggedUser);
+            return new StudentReq(loggedUser.getEmail(), faculty.getFirstname(), faculty.getLastname(), null, null, faculty.getCity(), userType);
         }
 
     }
