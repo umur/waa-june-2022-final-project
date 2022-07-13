@@ -25,10 +25,10 @@ function JobMarket() {
 
         <div className="row">
           <div className="col-md-6">
-            <JobApplicationRate />
+            <JobAdvertisementRate />
           </div>
           <div className="col-md-6">
-            <JobAdvertisementRate />
+            <JobApplicationRate />
           </div>
         </div>
         <div className="row">
