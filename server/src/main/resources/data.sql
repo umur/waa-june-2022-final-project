@@ -1,3 +1,21 @@
+
+--Add data in Department table
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10001, FALSE, 'COMPRO');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10002, FALSE, 'MBA');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10003, FALSE, 'CSE');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10004, FALSE, 'ECE');
+
+INSERT INTO department (id, is_delete, department_name)
+VALUES (10005, FALSE, 'Arts');
+
+
 -- Add Test student user
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
 VALUES (10001, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
@@ -19,6 +37,66 @@ INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city,
 VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
 VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10021, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10022, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10023, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10024, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10025, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10026, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10027, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10028, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10029, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10030, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10031, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10032, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10033, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10034, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10035, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10036, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10037, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10038, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10039, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10040, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10041, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10042, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10043, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10044, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10045, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10046, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10047, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10048, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10049, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
+VALUES (10050, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
 
 INSERT INTO STUDENT(id, gpa, days_to_search_job)
 VALUES (10001, 4.0, 30),
@@ -30,7 +108,37 @@ VALUES (10001, 4.0, 30),
        (10007, 3.7, 30),
        (10008, 3.8, 20),
        (10009, 4.0, 12),
-       (10010, 3.10, 40);
+       (10010, 2.10, 40),
+        (10021, 3.9, 30),
+       (10022, 3.0, 20),
+       (10023, 3.1, 30 ),
+       (10024, 2.48, 45),
+       (10025, 3.8, 15),
+       (10026, 4.0, 20),
+       (10027, 3.2, 25),
+       (10028, 2.45, 15),
+       (10029, 4.0, 20),
+       (10030, 3.10, 18),
+       (10031, 4.0, 30),
+       (10032, 3.4, 20),
+       (10033, 3.0, 30 ),
+       (10034, 2.88, 45),
+       (10035, 3.8, 15),
+       (10036, 3.7, 50),
+       (10037, 3.7, 30),
+       (10038, 3.8, 20),
+       (10039, 4.0, 12),
+       (10040, 2.10, 40),
+       (10041, 3.9, 30),
+       (10042, 3.0, 20),
+       (10043, 3.1, 30 ),
+       (10044, 2.48, 45),
+       (10045, 3.8, 15),
+       (10046, 4.0, 20),
+       (10047, 3.2, 25),
+       (10048, 2.45, 15),
+       (10049, 4.0, 20),
+       (10050, 3.10, 18);
 
 -- Add test faculty user
 
@@ -205,6 +313,63 @@ VALUES (10020, 'Redmond', 'Washington', '376854',  'Devops Engineer', 'Amazon', 
         'We are looking for passionate, hard-working, and talented DevOps Engineers who have experience supporting innovative, mission critical, high volume applications. You will have an enormous opportunity to work within multiple systems researching and identifying the common issues, and driving the teams towards resolution to have a positive impact on customer experience. This job requires you to hit the ground running and your ability to learn quickly and work on disparate and overlapping tasks will define your success. As a DevOps Engineer, you will be a part of 24X7 teams Oncall rotation.',
         10001, FALSE,'2022-04-20');
 
+-- adding more data
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10021, 'Redmond', 'Washington', '376854',  'Devops Engineer', 'Amazon', 'N/A',
+        'We are looking for passionate, hard-working, and talented DevOps Engineers who have experience supporting innovative, mission critical, high volume applications. You will have an enormous opportunity to work within multiple systems researching and identifying the common issues, and driving the teams towards resolution to have a positive impact on customer experience. This job requires you to hit the ground running and your ability to learn quickly and work on disparate and overlapping tasks will define your success. As a DevOps Engineer, you will be a part of 24X7 teams Oncall rotation.',
+        10001, FALSE,'2022-04-20');
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10022, 'Redmond', 'Washington', '376854',  'Software Engineer II', 'Microsoft', 'Stock options',
+        'Ability to meet Microsoft, customer and/or government security screening requirements are required for this role. Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud Background Check upon hire/transfer and every two years thereafter.Microsoft is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. If you need assistance and/or a reasonable accommodation due to a disability during the application or the recruiting process, please send a request via the Accommodation request form.',
+        10003, FALSE,'1999-08-06');
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10023, 'Redmond', 'Washington', '376854',  'Software Engineer', 'Microsoft', 'sign in bonus',
+        'The focus of the Enterprise Support Specialist’s role is to drive and close Microsoft Enterprise Support opportunities to ensure customers are supported throughout all stages of the product lifecycle, improving their health and enabling customer outcomes and consumption. The Support Specialist leverages Microsoft’s unique expertise, including direct access to product teams, to help customers use their Microsoft investments as productively as possible.',
+        10006, FALSE,'2019-01-01');
+
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10024, 'Redmond', 'Washington', '376854',  'Software Engineer II', 'Microsoft', 'Stock options',
+        'Ability to meet Microsoft, customer and/or government security screening requirements are required for this role. Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud Background Check upon hire/transfer and every two years thereafter.Microsoft is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. If you need assistance and/or a reasonable accommodation due to a disability during the application or the recruiting process, please send a request via the Accommodation request form.',
+        10010, FALSE,'2022-08-06');
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10025, 'Seattle', 'California', '45678',  'Software Engineering', 'KForce', 'Paid leaves',
+        'Kforce has a client in Los Angeles, CA that is seeking a remote DevOps Engineer I. Summary: The Information Security Operations Engineer will strategically improve cybersecurity compliance. The candidate will develop mitigation plans, configure tools, and action alerts to remediate cyber risk and complex threats in Amazon Web Services (AWS).',
+        10003, FALSE,'2011-06-30');
+
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10026, 'New York', 'Washington', '345678',  'Senior Frontend Engineer', 'Twitter', 'N/A',
+        'We are looking for individuals with vision, innovation, passion, technical excellence, drive to deliver, collaboration, and execution to help us disrupt the financial industry. Join a team of like-minded people who personify our mission of ownership, craftsmanship, and open communication.',
+        10009, FALSE,'2019-11-28');
+
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10027, 'Kathmandu', 'Bagmati', '213568',  'Software Engineer II, Core', 'Google', 'Paid leaves',
+        'The Core team builds the technical foundation behind Google’s flagship products. We are owners and advocates for the underlying design elements, developer platforms, product components, and infrastructure at Google. These are the essential building blocks for excellent, safe, and coherent experiences for our users and drive the pace of innovation for every developer. We look across Google’s products to build central solutions, break down technical barriers and strengthen existing systems. As the Core team, we have a mandate and a unique opportunity to impact important technical decisions across the company.',
+        10006, FALSE,'2019-12-01');
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10028, 'Kurintar', 'Chitwan', '123456', 'DevOps Engineering', 'KForce', 'N/A',
+        'Kforce has a client based out of Portland, OR that is seeking a Remote Full-Stack Cloud Engineering Manager. This position comes with many benefits including: a 401k with a 10006% match, immediate vesting, and allows you to live the dream of a flexible lifestyle with truly unlimited PTO. In this role, you will be accountable for the team''s output and growth. You will get the opportunity for hands on technical, and mentoring work, which will vary based on the team''s needs. We are looking ideally for someone who has technical skills, Cloud, and React experience.',
+        10007, FALSE, '2022-09-15');
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10029, 'Boston', 'Massachussets', '543671', 'Software Engineering L3', 'Google', 'work from home',
+        'At Google we work hard to earn our users’ trust every day. Trust & Safety is Google’s team of abuse fighting and user trust experts working daily to make the internet a safer place. We partner with teams across Google to deliver bold solutions in abuse areas such as malware, spam and account hijacking. A diverse team of Analysts, Policy Specialists, Engineers, and Program Managers, we work to reduce risk and fight abuse across all of Google’s products, protecting our users, advertisers, and publishers across the globe in over 40 languages.',
+        10008, FALSE, '2012-02-25');
+
+
+INSERT INTO job_advertisement (id, city, state, zip, title, company_name, benefits, description, created_by, deleted, vacancy_opening_date)
+VALUES (10030, 'Seattle', 'California', '786567', 'Analyst - Software Engineering', 'Goldman Sachs', 'Paternity and Maternity leave',
+        'As a member of the RIA (Registered Investment Advisor) engineering team, you will be responsible for building out custody and trading systems that service institutional client needs at scale. As an engineer within RIA, you will be working in a close knit team at the forefront of shaping our clients experience by creating new technology driven businesses. This is an opportunity to work closely with experienced engineers, business developers, and a diverse client base to deliver APIs, services, and technology solutions that scale to meet a broad range of client needs. We are looking for engineers who thrive in a client-driven, agile environment.',
+        10009, FALSE,'2014-05-11');
+
+
+
 -- Add job advertisement tags list data
 INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
 VALUES (10001, 10001),
@@ -341,22 +506,6 @@ VALUES (10015, true, 10011, '2010-10-25');
 
 
 
---Add data in Department table
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10001, FALSE, 'COMPRO');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10002, FALSE, 'MBA');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10003, FALSE, 'CSE');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10004, FALSE, 'ECE');
-
-INSERT INTO department (id, is_delete, department_name)
-VALUES (10005, FALSE, 'Arts');
-
 --Add comment dataset
 
 INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
@@ -402,3 +551,19 @@ VALUES (10013, 'Great job my dear student', TRUE, 10002, 10012);
 
 INSERT INTO comment (id, comment, deleted, student_id, faculty_id)
 VALUES (10014, 'You are genius.', FALSE, 10002, 10012);
+
+
+-- Please donot remove this seq
+select setval('comment_id_seq', max(id)) from comment;
+select setval('job_advertisement_id_seq', max(id)) from job_advertisement;
+select setval('job_application_id_seq', max(id)) from job_application;
+select setval('job_history_id_seq', max(id)) from job_history;
+select setval('tag_id_seq', max(id)) from tag;
+select setval('users_id_seq', max(id)) from users;
+
+
+
+
+
+
+
