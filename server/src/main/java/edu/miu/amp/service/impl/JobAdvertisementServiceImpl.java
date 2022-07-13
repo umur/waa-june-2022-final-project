@@ -82,11 +82,6 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     public JobAdvertisementDto toDto(JobAdvertisement jobAdvertisement) {
 
-        var localTag = jobAdvertisement.getTags();
-
-
-        localTag.stream().forEach(x-> System.out.println(x.getTagName()));
-
         JobAdvertisementDto jobAdvertisementDto = modelMapper.map(jobAdvertisement, JobAdvertisementDto.class);
         return jobAdvertisementDto;
     }

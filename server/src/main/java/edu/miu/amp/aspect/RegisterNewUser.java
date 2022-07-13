@@ -49,28 +49,33 @@ public class RegisterNewUser {
 
             var roles = token.getRealmAccess().getRoles();
 
-            if (existingUser == null) {
-                if (roles.contains("faculty")) {
-                    var newUser = new Faculty();
-                    newUser.setEmail(token.getEmail());
-                    newUser.setUserName(token.getPreferredUsername());
-                    newUser.setFirstName(token.getName());
-                    newUser.setLastName(token.getFamilyName());
-                    facultyRepository.save(newUser);
-                }
-                if (roles.contains("student")) {
-                    var newUser = new Student();
-                    newUser.setEmail(token.getEmail());
-                    newUser.setUserName(token.getPreferredUsername());
-                    newUser.setFirstName(token.getName());
-                    newUser.setLastName(token.getFamilyName());
+            try {
+                if (existingUser == null) {
+                    if (roles.contains("faculty")) {
+                        var newUser = new Faculty();
+                        newUser.setEmail(token.getEmail());
+                        newUser.setUserName(token.getPreferredUsername());
+                        newUser.setFirstName(token.getName());
+                        newUser.setLastName(token.getFamilyName());
+                        facultyRepository.save(newUser);
+                    }
+                    if (roles.contains("student")) {
+                        var newUser = new Student();
+                        newUser.setEmail(token.getEmail());
+                        newUser.setUserName(token.getPreferredUsername());
+                        newUser.setFirstName(token.getName());
+                        newUser.setLastName(token.getFamilyName());
 
-                    studentRepo.save(newUser);
+                        studentRepo.save(newUser);
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("Couldnot register new user");
             }
         }
-
     }
+
+
 }
 
 
