@@ -19,13 +19,13 @@ public class JobApplicationController {
     private JobApplicationService jobApplicationService;
 
     @GetMapping
-    @RolesAllowed("student")
+    @RolesAllowed({"student","faculty"})
     public ResponseEntity<List<JobApplicationDto>> findAll(){
         return new ResponseEntity<>(jobApplicationService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    @RolesAllowed("student")
+    @RolesAllowed({"student","faculty"})
     public ResponseEntity<JobApplicationDto> getById(@PathVariable Integer id){
         return new ResponseEntity<>(jobApplicationService.findById(id), HttpStatus.OK);
     }
