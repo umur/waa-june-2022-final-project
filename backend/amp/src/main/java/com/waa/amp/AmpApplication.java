@@ -32,17 +32,21 @@ public class AmpApplication {
 			var roleFaculty = roleRepository.save(new Role(null, "FACULTY"));
 			var user = userRepository.save(new User(null, "admin", "admin", List.of(role), UserType.ADMIN, true, null));
 			var userStudent = userRepository.save(new User(null, "student", "student", List.of(roleStudent), UserType.STUDENT, true, null));
+			var userStudent1 = userRepository.save(new User(null, "student1", "student1", List.of(roleStudent), UserType.STUDENT, true, null));
 			var userFaculty = userRepository.save(new User(null, "faculty", "faculty", List.of(roleFaculty), UserType.FACULTY, true, null));
 			var tag1 = tagRepository.save(new Tag(null, "Tag 1"));
 			var tag2 = tagRepository.save(new Tag(null, "Tag 2"));
 			var tag3 = tagRepository.save(new Tag(null, "Tag 3"));
 			var tag4 = tagRepository.save(new Tag(null, "Tag 4"));
 
-			var job1 = jobRepository.save(new Job(null, "description 1", List.of(tag1, tag2), "Iowa", "FairField", "KForce", user));
-			var job2 = jobRepository.save(new Job(null, "description 2", List.of(tag4, tag3), "CA", "San Francisco", "Google", user));
+			jobRepository.save(new Job(null, "description 1", List.of(tag1, tag2), "Iowa", "FairField", "KForce", user));
+			jobRepository.save(new Job(null, "description 2", List.of(tag4, tag3), "California", "San Francisco", "Google", user));
+			jobRepository.save(new Job(null, "description 2", List.of(tag4), "Texas", "Houston", "Google", user));
+			jobRepository.save(new Job(null, "description 2", List.of(tag3), "Washington", "Seattle", "Google", user));
+			jobRepository.save(new Job(null, "description 2", List.of(tag3), "Washington", "Seattle", "Google", user));
 
 			studentRepository.save(new Student(null, userStudent, "username@username", "firstname", "lastname", "cs", "3.5", "Fairfield"));
-			//studentRepository.save(new Student(null, userStudent, "anwar@username", "anwar", "hossian", "cs", "3.5", "Fairfield"));
+			studentRepository.save(new Student(null, userStudent1, "anwar@username", "anwar", "hossian", "cs", "3.5", "Fairfield"));
 
 		};
 	}
