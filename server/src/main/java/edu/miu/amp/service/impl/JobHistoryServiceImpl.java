@@ -1,10 +1,14 @@
 package edu.miu.amp.service.impl;
 
 import edu.miu.amp.domain.JobHistory;
+import edu.miu.amp.domain.Student;
 import edu.miu.amp.dto.JobHistoryDto;
 
 import edu.miu.amp.exception.ResourceNotFoundException;
+import edu.miu.amp.helper.UserPrincipal;
 import edu.miu.amp.repository.JobHistoryRepo;
+import edu.miu.amp.repository.StudentRepo;
+import edu.miu.amp.repository.UserRepo;
 import edu.miu.amp.service.JobHistoryService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +29,11 @@ public class JobHistoryServiceImpl implements JobHistoryService {
 
     @Autowired
     private JobHistoryRepo jobHistoryRepo;
+
+    @Autowired
+    private StudentRepo studentRepo;
+    @Autowired
+    private UserRepo userRepo;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -46,6 +56,16 @@ public class JobHistoryServiceImpl implements JobHistoryService {
     @Override
     public JobHistoryDto addJobHistory(JobHistoryDto data) {
         var jobHistory = modelMapper.map(data, JobHistory.class);
+
+        var user = userRepo.findByUserName(UserPrincipal.getAuthUser().getUserName()).orElse(null);
+
+        if (user != null) {
+            var student = studentRepo.findById(user.getId()).get();
+
+            var existingHistory = student.getJobHistoryList();
+            existingHistory.add(jobHistory);
+        }
+
         var jobHistorySaved = jobHistoryRepo.save(jobHistory);
         return modelMapper.map(jobHistorySaved, JobHistoryDto.class);
     }
