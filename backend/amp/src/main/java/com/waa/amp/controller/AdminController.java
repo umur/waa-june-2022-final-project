@@ -2,6 +2,7 @@ package com.waa.amp.controller;
 
 import com.waa.amp.dto.ActiveUserReq;
 import com.waa.amp.entity.User;
+import com.waa.amp.service.EmailService;
 import com.waa.amp.service.FacultyService;
 import com.waa.amp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +23,12 @@ public class AdminController {
 
     private final UserService userService;
     private final FacultyService facultyService;
+    private final EmailService emailService;
 
     @GetMapping("/test")
     public String test(Principal principal) {
         User loggedUser = userService.getLoggedUser();
+        emailService.sendSimpleMessage("hasanat.muztaba@gmail.com", "TEST EMAIL", "SUP!");
         return "Test";
     }
 
