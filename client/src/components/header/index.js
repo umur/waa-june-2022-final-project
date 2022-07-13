@@ -40,7 +40,7 @@ export default function Header() {
 
           <button
             className="btn btn-info navbar-btn navbar-right"
-            style={{ marginRight: 0 }}
+            style={{ marginRight: 0, marginLeft:5}}
             onClick={() => UserService.doLogout()}
           >
             Logout

@@ -24,7 +24,7 @@ const jobAdvertisementReducer = (state = { jobHistory: [] }, action) => {
       return action.payload.data;
     // case DELETE_JOB_ADVERTISEMENT:
     //   return state.filter((job) => job.id !== action.payload.job.id);
-
+    
     default:
       return state;
   }

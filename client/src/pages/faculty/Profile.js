@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Breadcrumb, Container, Row, Col, Card } from 'react-bootstrap';
-import logo from '../../../src/logo.svg';
+import image from '../../../src/userprofile.png'
 import { getFacultyProfile } from "../../redux/reducers/UserProfile/actions";
 
 import FileUploadPage from '../../pages/FileUploadPage';
@@ -21,7 +21,7 @@ export default function FacultyProfile() {
                 <Container fluid="lg">
                     <Row>
                         <Col md={{ span: 3 }}>
-                            <img src={logo} alt="user-image" />
+                            <img src={image} alt="user-image" width="250px" height="250px" />
                         </Col>
                         <Col md={{ span: 6 }}>
                             <div className='row d-flex justify-content-center align-items-center h-100'>
@@ -45,7 +45,7 @@ export default function FacultyProfile() {
                                             </div>
                                         </div>
 
-                                        <FileUploadPage />
+                                        {/* <FileUploadPage /> */}
                                     </div>
                                 </div>
                             </div>

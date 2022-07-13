@@ -1,41 +1,30 @@
 import StudentFilter from "../../components/StudentFilter";
 import StudentInfoCard from "../../components/StudentInfoCard";
+import {useState} from "react";
 
 function SearchStudent() {
-    const studentList = [
-        {
-            id: 1,
-            name: "Pravash Upreti",
-            major: "Compro"
-        }, {
-            id: 1,
-            name: "Ashish Ghimire",
-            major: "Compro"
-        }, {
-            id: 1,
-            name: "Anjana Sharma",
-            major: "Compro"
-        }, {
-            id: 1,
-            name: "Nirmal Silwal",
-            major: "Compro"
-        }
-    ]
+    const [studentState, setStudentState] = useState([]);
+
+    let handleFilterChange = (data) => {
+        setStudentState(data);
+    };
 
     return (
         <div>
-            <StudentFilter></StudentFilter>
+            <StudentFilter handleFilterChange={handleFilterChange}></StudentFilter>
 
             <div className="row">
-
-
                 {
-                    studentList.map(student => {
+                    studentState &&
+                    studentState?.map(student => {
                         return (
                             <StudentInfoCard
                                 key={student.id}
-                                name={student.name}>
-
+                                id={student.id}
+                                firstName={student.firstName}
+                                lastName={student.lastName}
+                                address={student.address}
+                                gpa={student.gpa}>
                             </StudentInfoCard>)
                     })
                 }
