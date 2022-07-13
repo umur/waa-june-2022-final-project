@@ -8,8 +8,8 @@ export default function Advertisement() {
   const initialValues = {
     title: "",
     location: "",
-    aboutUs: "",
-    responsibilities: "",
+    vacancyOpeningDate: "",
+    description: "",
     benefits: "",
   };
 
@@ -36,7 +36,13 @@ export default function Advertisement() {
   const navigate = useNavigate();
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      dispatch(addJobAdvertisement(formValues));
+      const location = formValues.location.split(",");
+      const finalFormVal = {
+        ...formValues,
+        address: { city: location[0], state: location[1] },
+      };
+
+      dispatch(addJobAdvertisement(finalFormVal));
       navigate("/student/job-advertisement");
     }
   }, [formErrors]);
@@ -49,12 +55,12 @@ export default function Advertisement() {
     if (!values.location) {
       errors.location = "Location required";
     }
-    if (!values.aboutUs) {
-      errors.aboutUs = "About Us required";
+    if (!values.vacancyOpeningDate) {
+      errors.vacancyOpeningDate = "VacancyOpeningDate  required";
     }
 
-    if (!values.responsibilities) {
-      errors.responsibilities = "Responsibilities required";
+    if (!values.description) {
+      errors.description = "description required";
     }
 
     return errors;
@@ -95,29 +101,29 @@ export default function Advertisement() {
               <p className="error">{formErrors.location}</p>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="aboutUs">
+            <Form.Group className="mb-3" controlId="vacancyOpeningDate">
               <Form.Label className="d-flex">About Us</Form.Label>
               <Form.Control
-                type="aboutUs"
+                type="date"
                 placeholder="About the company"
-                name="aboutUs"
+                name="vacancyOpeningDate"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.aboutUs}</p>
+              <p className="error">{formErrors.vacancyOpeningDate}</p>
             </Form.Group>
             {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
             <Form.Group className="mb-3" controlId="responsibility">
-              <Form.Label className="d-flex">Job Responsibilities</Form.Label>
+              <Form.Label className="d-flex">Job Description</Form.Label>
               <Form.Control
                 as="textarea"
                 type="responsibility"
-                placeholder="Describe the responsibilities"
-                name="responsibilities"
+                placeholder="Describe the description"
+                name="description"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.responsibilities}</p>
+              <p className="error">{formErrors.description}</p>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="benefits">
