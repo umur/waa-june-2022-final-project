@@ -1,0 +1,15 @@
+
+  \{^_^}/ hi!
+
+  Loading data/db.jsonject
+Error: Unsupported source data/db.jsonject
+    at C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\utils\load.js:79:13
+    at new Promise (<anonymous>)
+    at module.exports (C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\utils\load.js:38:10)
+    at start (C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\run.js:112:12)
+    at module.exports (C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\run.js:149:3)
+    at module.exports (C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\index.js:86:3)
+    at Object.<anonymous> (C:\Users\lwamt\AppData\Roaming\npm\node_modules\json-server\lib\cli\bin.js:6:14)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
