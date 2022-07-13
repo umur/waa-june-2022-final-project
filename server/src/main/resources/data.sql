@@ -513,69 +513,69 @@ VALUES (10001, 10001),
 
 --Adding job history dataset
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10001, 'Great company I have ever worked in my life.', 'Google', '2022-01-10', 'got the new job', '2022-02-10',
-        false);
+        false,10001);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10002, 'Decent work life balance.', 'Goldman Sachs', '2011-12-10',
-        'Building my own startup for venture capatilists', '2012-05-15', false);
+        'Building my own startup for venture capatilists', '2012-05-15', false,10001);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10003, 'Met great work mates and great work life balance overall. Love the time on the company.', 'Microsoft',
-        '2016-5-10', 'joining Google soon as Senior engineering lead manager', '2022-6-15', false);
+        '2016-5-10', 'joining Google soon as Senior engineering lead manager', '2022-6-15', false,10001);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10004, 'Decent work experience and less growth of individual', 'Kforce', '2019-08-10',
-        'joining Goldman sachs in devops teams', '2020-07-05', false);
+        'joining Goldman sachs in devops teams', '2020-07-05', false,10002);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10005,
         'KFC, a subsidiary of Yum is a global chicken restaurant brand with a rich, decades-long history of success and innovation',
-        'KFC', '2017-01-10', 'Opening my own food service', '2022-11-16', false);
+        'KFC', '2017-01-10', 'Opening my own food service', '2022-11-16', false,10002);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10006,
         'Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking. ',
-        'Amazon', '2019-12-10', 'got the new job', '2022-07-01', false);
+        'Amazon', '2019-12-10', 'got the new job', '2022-07-01', false,10004);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10007, '"NASA is a great company to work for; where else can you put people in space as part of your job?"',
-        'NASA', '2001-08-10', 'Retiring', '2022-06-30', false);
+        'NASA', '2001-08-10', 'Retiring', '2022-06-30', false,10005);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10008,
         '"This was my first real world experience (internship), and I learnt a lot and was surrounded by like-minded and smart people."',
-        'Motorola', '2011-12-10', 'not great work life balance', '2018-05-10', false);
+        'Motorola', '2011-12-10', 'not great work life balance', '2018-05-10', false,10006);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10009,
         'Cisco is a great company to work for and afforded me many opportunities to grow my career both internally and externally. "',
-        'Cisco', '2019-09-15', 'got the new job', '2021-07-10', false);
+        'Cisco', '2019-09-15', 'got the new job', '2021-07-10', false,10006);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10010, '"Extremely demanding and rewarding, and worth the experience."', 'Pfizer', '2010-12-10',
-        'got the new job', '2022-02-10', false);
+        'got the new job', '2022-02-10', false,10007);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10011, 'Wellness packagae, internet reimbursement , and discounts and perks', 'Facebook', '2017-07-15',
-        'Joining Google', '2022-06-30', false);
+        'Joining Google', '2022-06-30', false,10004);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10012, 'Great company I have ever worked in my life. Would recommend you to join the company.', 'Google',
-        '2018-11-10', 'starting my own company', '2022-12-15', false);
+        '2018-11-10', 'starting my own company', '2022-12-15', false,10009);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10013, 'Culture is about raising the bar. Expressive environment', 'Google', '2015-01-10',
-        'on my next adventure', '2022-06-10', false);
+        'on my next adventure', '2022-06-10', false,10010);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10014, 'Great company I have ever worked in my life.', 'Google', '2022-01-10', 'got the new job', '2022-02-10',
-        false);
+        false,10001);
 
-INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete)
+INSERT INTO job_history (id, comments, company_name, end_date, reason_to_leave, start_date, is_delete,student_id)
 VALUES (10015, 'Feeling like I am valued and seen.', 'Microsoft', '2011-01-10', 'Retiring my career!', '2020-06-10',
-        false);
+        false,10002);
 
 
 --Job Application data
