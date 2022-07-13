@@ -38,65 +38,65 @@ VALUES (10009, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9'
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
 VALUES (10010, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10021, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+VALUES (10021, 'Test', 'Student 10001', 'teststudent21@gmail.com', 'teststudent21', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10022, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+VALUES (10022, 'Test', 'Student 10002', 'teststudent22@gmail.com', 'teststudent22', false, 'Kurintar','Chitwan', 234510);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10023, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+VALUES (10023, 'Test', 'Student 10003', 'teststudent23@gmail.com', 'teststudent23', false,'Seattle','California', 878363);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10024, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+VALUES (10024, 'Test', 'Student 10004', 'teststudent24@gmail.com', 'teststudent24', false, 'Chicago','Illinios', 123455);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10025, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+VALUES (10025, 'Test', 'Student 10005', 'teststudent25@gmail.com', 'teststudent25', false, 'Boston','Masscchussets', 678965);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10026, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+VALUES (10026, 'Test', 'Student 10006', 'teststudent26@gmail.com', 'teststudent26', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10027, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+VALUES (10027, 'Test', 'Student 10007', 'teststudent27@gmail.com', 'teststudent27', false, 'Seattle','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10028, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+VALUES (10028, 'Test', 'Student 10008', 'teststudent28@gmail.com', 'teststudent28', false, 'Redmond','Washington', 235643);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10029, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+VALUES (10029, 'Test', 'Student 10009', 'teststudent29@gmail.com', 'teststudent29', false, 'Los Angeles','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10030, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+VALUES (10030, 'Test', 'Student 10010', 'teststudent30@gmail.com', 'teststudent30', false, 'Mountain View','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10031, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+VALUES (10031, 'Test', 'Student 10001', 'teststudent31@gmail.com', 'teststudent31', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10032, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+VALUES (10032, 'Test', 'Student 10002', 'teststudent32@gmail.com', 'teststudent32', false, 'Kurintar','Chitwan', 234510);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10033, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+VALUES (10033, 'Test', 'Student 10003', 'teststudent33@gmail.com', 'teststudent33', false,'Seattle','California', 878363);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10034, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+VALUES (10034, 'Test', 'Student 10004', 'teststudent34@gmail.com', 'teststudent34', false, 'Chicago','Illinios', 123455);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10035, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+VALUES (10035, 'Test', 'Student 10005', 'teststudent35@gmail.com', 'teststudent35', false, 'Boston','Masscchussets', 678965);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10036, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+VALUES (10036, 'Test', 'Student 10006', 'teststudent36@gmail.com', 'teststudent36', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10037, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+VALUES (10037, 'Test', 'Student 10007', 'teststudent37@gmail.com', 'teststudent37', false, 'Seattle','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10038, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+VALUES (10038, 'Test', 'Student 10008', 'teststudent38@gmail.com', 'teststudent38', false, 'Redmond','Washington', 235643);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10039, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+VALUES (10039, 'Test', 'Student 10009', 'teststudent39@gmail.com', 'teststudent39', false, 'Los Angeles','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10040, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+VALUES (10040, 'Test', 'Student 10010', 'teststudent40@gmail.com', 'teststudent40', false, 'Mountain View','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10041, 'Test', 'Student 10001', 'teststudent1@gmail.com', 'teststudent1', false, 'Fairfield','Iowa', 52557);
+VALUES (10041, 'Test', 'Student 10001', 'teststudent41@gmail.com', 'teststudent41', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10042, 'Test', 'Student 10002', 'teststudent2@gmail.com', 'teststudent2', false, 'Kurintar','Chitwan', 234510);
+VALUES (10042, 'Test', 'Student 10002', 'teststudent42@gmail.com', 'teststudent42', false, 'Kurintar','Chitwan', 234510);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10043, 'Test', 'Student 10003', 'teststudent3@gmail.com', 'teststudent3', false,'Seattle','California', 878363);
+VALUES (10043, 'Test', 'Student 10003', 'teststudent43@gmail.com', 'teststudent43', false,'Seattle','California', 878363);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10044, 'Test', 'Student 10004', 'teststudent4@gmail.com', 'teststudent4', false, 'Chicago','Illinios', 123455);
+VALUES (10044, 'Test', 'Student 10004', 'teststudent44@gmail.com', 'teststudent44', false, 'Chicago','Illinios', 123455);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10045, 'Test', 'Student 10005', 'teststudent5@gmail.com', 'teststudent5', false, 'Boston','Masscchussets', 678965);
+VALUES (10045, 'Test', 'Student 10005', 'teststudent45@gmail.com', 'teststudent45', false, 'Boston','Masscchussets', 678965);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10046, 'Test', 'Student 10006', 'teststudent6@gmail.com', 'teststudent6', false, 'Fairfield','Iowa', 52557);
+VALUES (10046, 'Test', 'Student 10006', 'teststudent46@gmail.com', 'teststudent46', false, 'Fairfield','Iowa', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10047, 'Test', 'Student 10007', 'teststudent7@gmail.com', 'teststudent7', false, 'Seattle','California', 52557);
+VALUES (10047, 'Test', 'Student 10007', 'teststudent47@gmail.com', 'teststudent47', false, 'Seattle','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10048, 'Test', 'Student 10008', 'teststudent8@gmail.com', 'teststudent8', false, 'Redmond','Washington', 235643);
+VALUES (10048, 'Test', 'Student 10008', 'teststudent48@gmail.com', 'teststudent48', false, 'Redmond','Washington', 235643);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10049, 'Test', 'Student 10009', 'teststudent9@gmail.com', 'teststudent9', false, 'Los Angeles','California', 52557);
+VALUES (10049, 'Test', 'Student 10009', 'teststudent49@gmail.com', 'teststudent49', false, 'Los Angeles','California', 52557);
 INSERT INTO users (id, first_name, last_name, email, user_name, is_delete, city, state, zip)
-VALUES (10050, 'Test', 'Student 10010', 'teststudent10@gmail.com', 'teststudent10', false, 'Mountain View','California', 52557);
+VALUES (10050, 'Test', 'Student 10010', 'teststudent50@gmail.com', 'teststudent50', false, 'Mountain View','California', 52557);
 
 INSERT INTO STUDENT(id, gpa, days_to_search_job)
 VALUES (10001, 4.0, 30),
