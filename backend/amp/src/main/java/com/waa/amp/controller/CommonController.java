@@ -44,7 +44,7 @@ public class CommonController {
     }
 
     @PostMapping("/update-profile")
-    public ResponseEntity<?> updateProfile(StudentReq studentReq) {
+    public ResponseEntity<?> updateProfile(@RequestBody StudentReq studentReq) {
         studentService.updateProfile(studentReq);
         return ResponseEntity.ok("data");
     }
