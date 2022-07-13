@@ -1,7 +1,7 @@
 import { GET_STUDENT_LIST } from "./actionsTypes";
 import { SUCCESS_SUFFIX } from "redux-axios-middleware";
 
-const studentDetails = (state = {studentList: []}, action) => {
+const studentReducer = (state = {studentList: []}, action) => {
     switch(action.type) {
         case GET_STUDENT_LIST + SUCCESS_SUFFIX :
             return {
@@ -14,4 +14,4 @@ const studentDetails = (state = {studentList: []}, action) => {
     }
 }
 
-export default studentDetails;
+export default studentReducer;
