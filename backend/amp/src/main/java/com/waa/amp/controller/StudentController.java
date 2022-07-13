@@ -56,7 +56,7 @@ public class StudentController {
     }
 
     @PostMapping("/apply-job")
-    public ResponseEntity<JobApply> applyJob(JobApplyReq jobApplyReq) {
+    public ResponseEntity<JobApply> applyJob(@RequestBody JobApplyReq jobApplyReq) {
         return ResponseEntity.ok(studentService.applyJob(jobApplyReq));
     }
 
