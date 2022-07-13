@@ -21,3 +21,8 @@ p.error {
   text-align: center;
   font-size: 60px;
 }
+
+.page-section {
+  height: 85vh;
+  overflow: scroll;
+}
