@@ -3,6 +3,8 @@ package edu.miu.amp.dto;
 import edu.miu.amp.domain.Address;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class JobAdvertisementDto {
     private Integer id;
@@ -11,4 +13,5 @@ public class JobAdvertisementDto {
     private String title;
     private String companyName;
     private Address address;
+    private List<TagDto> tags;
 }

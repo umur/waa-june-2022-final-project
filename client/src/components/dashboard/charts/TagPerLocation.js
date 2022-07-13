@@ -1,6 +1,63 @@
 import ReactECharts from "echarts-for-react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { allJobAdvertisement } from "../../../redux/reducers/JobAdvertisement/actions";
 
 function TagPerLocation() {
+  const dispatch = useDispatch();
+
+  const { jobAdvertisement } = useSelector((state) => state.jobAdvertisement);
+
+  useEffect(() => {
+    dispatch(allJobAdvertisement());
+  }, []);
+
+  const stateList = [
+    ...new Set(jobAdvertisement.map((data) => data.address?.state)),
+  ];
+
+  const tagListCollect = [];
+  jobAdvertisement.forEach((job) => {
+    job.tags?.forEach((tag) => {
+      tagListCollect.push(tag.tagName);
+    });
+  });
+
+  const tagList = [...new Set(tagListCollect)];
+
+  const jobPositionObj = tagList.map((data) => ({
+    name: data,
+    type: "bar",
+    stack: "total",
+    label: {
+      show: true,
+    },
+    emphasis: {
+      focus: "series",
+    },
+    data: [],
+  }));
+
+  stateList.forEach((x) => {
+    jobPositionObj.forEach((y) => {
+      const tagPerLocation = jobAdvertisement.filter((data) => {
+        let state = data.address?.state;
+        let tags = data.tags.filter((tag) => tag.tagName == y.name);
+
+        return state == x && tags.length;
+      });
+      y.data.push(tagPerLocation.length);
+    });
+  });
+
+  // jobAdvertisementData.forEach((element) => {
+  //   let filterData = jobAdvertisement.filter(
+  //     (x) => x.address?.state == element.name
+  //   );
+
+  //   element.value = filterData.length;
+  // });
+
   const option = {
     tooltip: {
       trigger: "axis",
@@ -21,58 +78,9 @@ function TagPerLocation() {
     },
     yAxis: {
       type: "category",
-      data: ["Oowa", "California", "Chicago", "Texas"],
+      data: stateList,
     },
-    series: [
-      {
-        name: "DevOps",
-        type: "bar",
-        stack: "total",
-        label: {
-          show: true,
-        },
-        emphasis: {
-          focus: "series",
-        },
-        data: [4, 2, 5, 6],
-      },
-      {
-        name: "Sr Engineer",
-        type: "bar",
-        stack: "total",
-        label: {
-          show: true,
-        },
-        emphasis: {
-          focus: "series",
-        },
-        data: [4, 5, 6, 10],
-      },
-      {
-        name: "React Frontend",
-        type: "bar",
-        stack: "total",
-        label: {
-          show: true,
-        },
-        emphasis: {
-          focus: "series",
-        },
-        data: [5, 6, 7, 8],
-      },
-      {
-        name: "Java Developer",
-        type: "bar",
-        stack: "total",
-        label: {
-          show: true,
-        },
-        emphasis: {
-          focus: "series",
-        },
-        data: [1, 2, 3, 4],
-      },
-    ],
+    series: jobPositionObj,
   };
 
   return (

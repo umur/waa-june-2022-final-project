@@ -224,7 +224,7 @@ VALUES (10020, 'Redmond', 'Washington', '376854',  'Devops Engineer', 'Amazon', 
         10001, FALSE,'2022-04-20');
 
 -- Add job advertisement tags list data
-INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
+INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tags_id)
 VALUES (10001, 10001),
        (10001, 10002),
        (10001, 10004),

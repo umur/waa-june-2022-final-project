@@ -38,7 +38,7 @@ public class JobAdvertisement {
 
     private String companyName;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "jobAdvertisementList")
     private List<Tag> tags;
 
     @ManyToOne
