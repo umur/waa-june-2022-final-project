@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +20,13 @@ public class Comment {
 
     private String comment;
 
-    public Comment(String comment) {
+    private String commentedBy;
+
+    @ManyToOne
+    private Student student;
+
+    public Comment(String comment, String commentedBy) {
         this.comment = comment;
+        this.commentedBy = commentedBy;
     }
 }

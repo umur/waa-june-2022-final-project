@@ -1,13 +1,8 @@
 package com.waa.amp.service;
 
 import com.waa.amp.dto.CommentReq;
-import com.waa.amp.entity.Comment;
-import com.waa.amp.entity.JobComment;
-import com.waa.amp.entity.Tag;
-import com.waa.amp.repository.CommentRepository;
-import com.waa.amp.repository.JobCommentRepository;
-import com.waa.amp.repository.JobRepository;
-import com.waa.amp.repository.TagRepository;
+import com.waa.amp.entity.*;
+import com.waa.amp.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +13,32 @@ import java.util.List;
 public class CommentService {
 
     private final CommentRepository commentRepository;
-    private final JobRepository jobRepository;
-    private final JobCommentRepository jobCommentRepository;
+    private final StudentCommentRepository studentCommentRepository;
     private final TagRepository tagRepository;
+    private final UserService userService;
+    private final FacultyRepository facultyRepository;
+    private final StudentRepository studentRepository;
 
-    public Long postComment(CommentReq commentReq) {
-        var save = commentRepository.save(new Comment(null, commentReq.comment()));
-        var job = jobRepository.findById(commentReq.jobId()).orElseThrow(() -> new RuntimeException("No Job Found"));
-        JobComment jobComment = new JobComment(null, job, new Comment(commentReq.comment()));
-        return jobCommentRepository.save(jobComment).getId();
+    public int postComment(CommentReq commentReq) {
+
+        User loggedUser = userService.getLoggedUser();
+        Faculty faculty = facultyRepository.findByUser(loggedUser);
+        String name = faculty.getFirstname() + " " + faculty.getLastname();
+
+        Student student = studentRepository.findById(commentReq.studentId()).orElse(null);
+
+        Comment save = commentRepository.save(new Comment(commentReq.comment(), name));
+
+        StudentComment byStudent = studentCommentRepository.findByStudent(student);
+
+        if (byStudent == null) {
+            byStudent = new StudentComment(student, save);
+        } else {
+            byStudent.addComments(save);
+        }
+        studentCommentRepository.save(byStudent);
+
+        return byStudent.getComments().size();
     }
 
     public List<Tag> allTag() {

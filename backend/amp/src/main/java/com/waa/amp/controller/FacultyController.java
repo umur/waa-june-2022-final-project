@@ -28,9 +28,10 @@ public class FacultyController {
     private final JobService jobService;
 
     @PostMapping("/post-comment")
-    public ResponseEntity<Map<String, Long>> postComment(@RequestBody CommentReq commentReq){
+    public ResponseEntity<Map<String, Integer>> postComment(@RequestBody CommentReq commentReq){
+        commentService.postComment(commentReq);
         return ResponseEntity.ok(
-                of("commentId", commentService.postComment(commentReq))
+                of("data", commentService.postComment(commentReq))
         );
     }
 
