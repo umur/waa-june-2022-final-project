@@ -104,13 +104,7 @@ function Menu() {
       url: "dashboard",
       active: false,
     },
-    {
-      id: 2,
-      name: "Student Statistics",
-      icon: "none",
-      url: "dashboard/student-statistic",
-      active: false,
-    },
+
     {
       id: 3,
       name: "Job Market",
@@ -123,6 +117,13 @@ function Menu() {
       name: "Top Companies",
       icon: "none",
       url: "dashboard/top-companies",
+      active: false,
+    },
+    {
+      id: 2,
+      name: "Student Statistics",
+      icon: "none",
+      url: "dashboard/student-statistic",
       active: false,
     },
   ];
