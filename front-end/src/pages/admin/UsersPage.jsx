@@ -29,7 +29,8 @@ const UsersPage = () => {
         }
     }, [])
 
-    const updatePassword = (id) => {
+    const updatePassword = (e, id) => {
+        // e.preventDefault();
         saveComponent.current?.showPasswordModal(id);
     }
 
@@ -95,20 +96,20 @@ const UsersPage = () => {
                                             <td>{item.active ? 'Yes' : 'No'}
                                             </td>
                                             <td>
-                                                <form>
-                                                    <button
-                                                        onClick={() => updatePassword(item.id)}
-                                                        className="btn btn-primary me-1">
-                                                        Reset password
-                                                    </button>
+                                                {/* <form> */}
+                                                <button
+                                                    onClick={() => updatePassword(item.id)}
+                                                    className="btn btn-primary me-1">
+                                                    Reset password
+                                                </button>
 
-                                                    {
-                                                        item.active ?
-                                                            <button type="submit" onClick={() => deActivate(item.id)} className="btn btn-danger">Deactivate</button>
-                                                            :
-                                                            <button onClick={() => activate(item.id)} className="btn btn-info">Activate</button>
-                                                    }
-                                                </form>
+                                                {
+                                                    item.active ?
+                                                        <button type="submit" onClick={() => deActivate(item.id)} className="btn btn-danger">Deactivate</button>
+                                                        :
+                                                        <button onClick={() => activate(item.id)} className="btn btn-info">Activate</button>
+                                                }
+                                                {/* </form> */}
                                             </td>
                                         </tr>
                                     )}

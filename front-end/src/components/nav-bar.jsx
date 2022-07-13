@@ -68,12 +68,13 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 }
-                <li className="nav-item">
-                    <NavLink to="/charts" className="nav-link">
-                        Charts
-                    </NavLink>
-                </li>
-
+                {currentUser?.roles[0] === Role.FACULTY || currentUser?.roles[0] === Role.ADMIN || currentUser?.roles[0] === Role.STUDENT &&
+                    <li className="nav-item">
+                        <NavLink to="/charts" className="nav-link">
+                            Charts
+                        </NavLink>
+                    </li>
+                }
             </div>
 
             {!currentUser &&
