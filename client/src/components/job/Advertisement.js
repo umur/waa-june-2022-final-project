@@ -67,7 +67,7 @@ export default function Advertisement() {
   return (
     <Container>
       <Row>
-        <Col md={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }}>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="jobTitle">
               <Form.Label className="d-flex">Title</Form.Label>
