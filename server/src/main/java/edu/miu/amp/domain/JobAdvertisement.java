@@ -51,5 +51,5 @@ public class JobAdvertisement {
     private boolean deleted;
 
     @Column(name = "vacancy_opening_date")
-    private LocalDate jobAppliedDate;
+    private LocalDate vacancyOpeningDate;
 }

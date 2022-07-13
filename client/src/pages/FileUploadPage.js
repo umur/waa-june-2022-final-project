@@ -30,7 +30,6 @@ function FileUploadPage() {
       body: formData,
     }).then((res) => {
       if (res.ok) {
-        console.log(res.data);
         alert("File uploaded successfully");
       }
     });

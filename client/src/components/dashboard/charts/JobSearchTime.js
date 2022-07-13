@@ -6,7 +6,7 @@ import { getStudentList } from "../../../redux/reducers/Student/actions";
 function JobSearchTime(props) {
   const dispatch = useDispatch();
 
-  const { students } = useSelector((state) => state.student);
+  const { students } = useSelector((state) => state.students);
 
   useEffect(() => {
     dispatch(getStudentList());
@@ -29,17 +29,23 @@ function JobSearchTime(props) {
     return 0;
   };
 
-  xAxisData.push("2.0 - 2.5");
-  yAxisData.push(gpaData(2.0, 2.5));
+  xAxisData.push("2.0 - 2.3");
+  yAxisData.push(gpaData(2.0, 2.3));
 
-  xAxisData.push("2.6-3.0");
-  yAxisData.push(gpaData(2.6, 3.0));
+  xAxisData.push("2.3 - 2.7");
+  yAxisData.push(gpaData(2.3, 2.7));
 
-  xAxisData.push("3.1-3.5");
-  yAxisData.push(gpaData(3.1, 3.5));
+  xAxisData.push("2.7 - 3.0");
+  yAxisData.push(gpaData(2.7, 3.0));
 
-  xAxisData.push("3.6-4.0");
-  yAxisData.push(gpaData(3.6, 4.0));
+  xAxisData.push("3.0 - 3.3");
+  yAxisData.push(gpaData(3.0, 3.3));
+
+  xAxisData.push("3.3 - 3.7");
+  yAxisData.push(gpaData(3.3, 3.7));
+
+  xAxisData.push("3.7 - 4.0");
+  yAxisData.push(gpaData(3.7, 4.0));
 
   //   const jobAdvertisementData = stateList.map((x) => {
   //     return {

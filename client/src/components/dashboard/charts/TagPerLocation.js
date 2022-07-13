@@ -90,7 +90,7 @@ function TagPerLocation() {
         notMerge={true}
         lazyUpdate={true}
         theme={"theme_name"}
-        style={{ height: "500px", width: "100%" }}
+        style={{ height: "800px", width: "100%" }}
       />
     </div>
   );
