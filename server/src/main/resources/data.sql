@@ -371,7 +371,7 @@ VALUES (10030, 'Seattle', 'California', '786567', 'Analyst - Software Engineerin
 
 
 -- Add job advertisement tags list data
-INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tag_id)
+INSERT INTO tag_job_advertisement_list(job_advertisement_list_id, tags_id)
 VALUES (10001, 10001),
        (10001, 10002),
        (10001, 10004),
