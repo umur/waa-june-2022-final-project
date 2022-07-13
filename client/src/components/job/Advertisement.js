@@ -102,7 +102,7 @@ export default function Advertisement() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="vacancyOpeningDate">
-              <Form.Label className="d-flex">About Us</Form.Label>
+              <Form.Label className="d-flex">Vacancy Opening Date</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="About the company"
