@@ -1,6 +1,7 @@
 package com.waa.amp.controller;
 
 import com.waa.amp.dto.JobSearchReq;
+import com.waa.amp.dto.StudentReq;
 import com.waa.amp.entity.Job;
 import com.waa.amp.entity.Tag;
 import com.waa.amp.service.CommentService;
@@ -40,5 +41,11 @@ public class CommonController {
     @GetMapping("/get-job")
     public ResponseEntity<Map<String, List<Job>>> getJob() {
         return ResponseEntity.ok(of("jobList", studentService.getALlJob()));
+    }
+
+    @PostMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(StudentReq studentReq) {
+        studentService.updateProfile(studentReq);
+        return ResponseEntity.ok("data");
     }
 }

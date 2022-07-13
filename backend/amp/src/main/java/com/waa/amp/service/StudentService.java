@@ -5,10 +5,7 @@ import com.waa.amp.dto.JobReq;
 import com.waa.amp.dto.StudentReq;
 import com.waa.amp.dto.StudentSearchReq;
 import com.waa.amp.entity.*;
-import com.waa.amp.repository.JobApplyRepository;
-import com.waa.amp.repository.JobRepository;
-import com.waa.amp.repository.StudentRepository;
-import com.waa.amp.repository.TagRepository;
+import com.waa.amp.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +24,7 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final JobApplyRepository jobApplyRepository;
+    private final FacultyRepository facultyRepository;
 
     public Job postJob(JobReq jobReq) {
 
@@ -97,6 +95,28 @@ public class StudentService {
                 studentReq.city());
 
         return studentRepository.save(student);
+    }
+
+    public void updateProfile(StudentReq studentReq) {
+        User loggedUser = userService.getLoggedUser();
+
+        if (studentReq.userType() == UserType.STUDENT) {
+            Student student = studentRepository.findByUser(loggedUser);
+            student.setEmail(studentReq.email());
+            student.setFirstname(studentReq.firstName());
+            student.setLastname(studentReq.lastname());
+            student.setMajor(studentReq.major());
+            student.setGpa(studentReq.gpa());
+            student.setCity(studentReq.city());
+            studentRepository.save(student);
+        } else {
+            Faculty faculty = facultyRepository.findByUser(loggedUser);
+            faculty.setFirstname(studentReq.firstName());
+            faculty.setLastname(studentReq.lastname());
+            faculty.setCity(studentReq.city());
+            facultyRepository.save(faculty);
+        }
+
     }
 
     public Student getById(Long id) {

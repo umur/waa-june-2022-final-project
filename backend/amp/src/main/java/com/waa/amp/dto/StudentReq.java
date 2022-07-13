@@ -1,12 +1,14 @@
 package com.waa.amp.dto;
 
+import com.waa.amp.entity.UserType;
+
 public record StudentReq(
         String email,
         String firstName,
         String lastname,
-        String password,
         String major,
         String gpa,
-        String city
+        String city,
+        UserType userType
 
 ) {}
