@@ -10,12 +10,15 @@ public class JwtResponse {
   private String email;
   private List<String> roles;
 
-  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+  private boolean mfa;
+
+  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, boolean mfa) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
     this.email = email;
     this.roles = roles;
+    this.mfa = mfa;
   }
 
   public String getAccessToken() {
@@ -41,6 +44,15 @@ public class JwtResponse {
   public void setId(Long id) {
     this.id = id;
   }
+
+  public boolean getMfa() {
+    return mfa;
+  }
+
+  public void setMfa(boolean mfa) {
+    this.mfa = mfa;
+  }
+
 
   public String getEmail() {
     return email;

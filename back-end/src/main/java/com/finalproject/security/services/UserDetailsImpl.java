@@ -24,15 +24,18 @@ public class UserDetailsImpl implements UserDetails {
   @JsonIgnore
   private String password;
 
+  private boolean mfa;
+
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+      Collection<? extends GrantedAuthority> authorities, boolean mfa) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
+    this.mfa = mfa;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -45,7 +48,8 @@ public class UserDetailsImpl implements UserDetails {
         user.getUsername(),
         user.getEmail(),
         user.getPassword(),
-        authorities);
+        authorities,
+            user.isMfa());
   }
 
   @Override
@@ -60,6 +64,8 @@ public class UserDetailsImpl implements UserDetails {
   public String getEmail() {
     return email;
   }
+
+  public boolean getMfa() {return mfa;}
 
   @Override
   public String getPassword() {

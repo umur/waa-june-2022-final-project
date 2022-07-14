@@ -30,6 +30,7 @@ public class Student {
 
     @OneToOne
     @ToString.Exclude
+    @JsonIgnore
     private Address address;
 
 //new added
@@ -40,9 +41,7 @@ public class Student {
     @ToString.Exclude
     @OneToOne(mappedBy = "student")
     private  JobAdvertisement jobAdvertisement;
-
-    @JsonIgnore
-    @ToString.Exclude
+    
     @OneToMany(mappedBy = "student")
     private List<Comments> comments;
 

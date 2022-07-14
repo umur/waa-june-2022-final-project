@@ -13,7 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/students")
@@ -30,7 +32,13 @@ public class StudentController {
     // list all the  students
     @GetMapping
     public List<User> findAll() {
-        return studentService.findAllStudent();
+        List<User> students = new ArrayList<>();
+        studentService.findAllStudent().forEach(s -> {
+            if (s.getStudent() !=null) {
+                students.add(s);
+            }
+        });
+        return students;
     }
 
 

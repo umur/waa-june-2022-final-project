@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import User from '../../models/User';
+import { Form, Input, Button, notification, Checkbox } from "antd";
 import './SignupPage.css'
 import { useSelector } from 'react-redux';
 import Authentication from '../../service/authentication';
 
-const SignupPage = () => {
+const SignupPage = (props) => {
 
     // need to implement user class
-    const [user, setUser] = useState(new User('', '', '', ''));
+    const [user, setUser] = useState(new User('', '', '', '', ''));
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [redirect, setRedirect] = useState();
+    const [qrImageUrl, setQrImageUrl] = useState();
     const currentUser = useSelector(state => state.user);
 
     const navigate = useNavigate();
@@ -27,7 +30,7 @@ const SignupPage = () => {
 
     //input onChange(event => handleChange(event))
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, checked } = e.target;
 
         setUser((prevState => {
             return {
@@ -37,6 +40,15 @@ const SignupPage = () => {
         }));
     }
 
+    const handleCheck = (e) => {
+        const { name, checked } = e.target
+        setUser((prevState => {
+            return {
+                ...prevState,
+                [name]: checked
+            }
+        }))
+    }
     //handle register
     const handleRegister = (e) => {
         e.preventDefault();
@@ -49,8 +61,18 @@ const SignupPage = () => {
 
         setLoading(true);
 
+        //         const navigate = useNavigate();
+        // navigate('/other-page', { state: { id: 7, color: 'green' } });
+
         Authentication.register(user).then(u => {
-            navigate('/login');
+            if (u.data.mfa) {
+                console.log(u);
+                setQrImageUrl(u.data.secretImageUri)
+                navigate('/qrcode', { state: { imageUrl: u.data.secretImageUri } })
+            } else {
+                navigate('/login')
+            }
+            // navigate('/login');
         }).catch(err => {
             console.log(err);
             setErrorMessage(err.response.data.message)
@@ -63,6 +85,12 @@ const SignupPage = () => {
             setLoading(false);
         })
     }
+
+    // if (redirect) {
+    //     return (
+    //         <Navigate to={{ pathname: redirect, state: { imageUrl: qrImageUrl } }} />
+    //     )
+    // }
 
     return (
         <div className="container mt-5">
@@ -140,6 +168,20 @@ const SignupPage = () => {
                         <div className="invalid-feedback">
                             Role is required.
                         </div>
+                    </div>
+                    {/* <Form.Item name="mfa" valuePropName="checked">
+                        <Checkbox>Enable two-factor authentication</Checkbox>
+                    </Form.Item> */}
+                    <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="checkbox"
+                            name="mfa"
+                            onChange={(e) => handleCheck(e)}
+                            value={user.mfa} />
+                        <label className="form-check-label">
+                            Use 2Factor
+                        </label>
                     </div>
 
                     <button className="btn btn-info w-100 mt-3"

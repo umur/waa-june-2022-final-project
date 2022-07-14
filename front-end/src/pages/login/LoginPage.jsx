@@ -15,6 +15,7 @@ const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [username, setUsername] = useState();
     const currentUser = useSelector(state => state.user);
 
     const navigate = useNavigate();
@@ -51,8 +52,12 @@ const LoginPage = () => {
 
         Authentication.login(user).then(response => {
             //set user in session
-            dispatch(setCurrentUser(response.data));
-            navigate('/profile');
+            if (response.data.mfa) {
+                navigate('/verify', { state: { username: user.username, password: user.password } })
+            } else {
+                dispatch(setCurrentUser(response.data));
+                navigate('/profile');
+            }
         }).catch(err => {
             console.log(err);
             if (err.response.status === 500) {

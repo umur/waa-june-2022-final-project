@@ -1,5 +1,6 @@
 package com.finalproject.controllers;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -9,14 +10,18 @@ import javax.validation.Valid;
 import com.finalproject.models.*;
 import com.finalproject.payload.request.LoginRequest;
 import com.finalproject.payload.request.SignupRequest;
+import com.finalproject.payload.request.VerifyCodeRequest;
 import com.finalproject.payload.response.JwtResponse;
 import com.finalproject.payload.response.MessageResponse;
+import com.finalproject.payload.response.SignupResponse;
 import com.finalproject.repository.AddressRepository;
 import com.finalproject.repository.RoleRepository;
 import com.finalproject.repository.StudentRepo;
 import com.finalproject.repository.UserRepository;
 import com.finalproject.security.jwt.JwtUtils;
 import com.finalproject.security.services.UserDetailsImpl;
+import com.finalproject.service.TotpManager;
+import com.finalproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +34,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -47,9 +53,14 @@ public class AuthController {
   StudentRepo studentRepo;
 
   @Autowired
+  UserService userService;
+
+  @Autowired
   AddressRepository addressRepo;
   @Autowired
   PasswordEncoder encoder;
+
+  @Autowired private TotpManager totpManager;
 
   @Autowired
   JwtUtils jwtUtils;
@@ -61,8 +72,8 @@ public class AuthController {
     Optional<User> user1 = userRepository.findByUsername(userName);
     Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-    if (user1.isPresent() && user1.get().isAccountNonLocked()) {
-      System.out.println("yes its fine user");
+//    if (user1.isPresent() && user1.get().isAccountNonLocked()) {
+//      System.out.println("yes its fine user");
 
       SecurityContextHolder.getContext().setAuthentication(authentication);
       String jwt = jwtUtils.generateJwtToken(authentication);
@@ -80,12 +91,18 @@ public class AuthController {
               userDetails.getId(),
               userDetails.getUsername(),
               userDetails.getEmail(),
-              roles));
-    } else if (user1.isPresent() && !user1.get().isAccountNonLocked()) {
-        return ResponseEntity.badRequest().body(new MessageResponse("Error: Account is locked"));
-    } else {
-       return ResponseEntity.badRequest().body(new MessageResponse("Error: User is not found!"));
-    }
+              roles,
+              userDetails.getMfa()));
+//    } else if (user1.isPresent() && !user1.get().isAccountNonLocked()) {
+//        return ResponseEntity.badRequest().body(new MessageResponse("Error: Account is locked"));
+//    } else {
+//       return ResponseEntity.badRequest().body(new MessageResponse("Error: User is not found!"));
+//    }
+  }
+
+  @PostMapping("/verify")
+  public ResponseEntity<?> verifyCode(@Valid @RequestBody VerifyCodeRequest verifyCodeRequest) {
+    return userService.verify(verifyCodeRequest, verifyCodeRequest.getCode());
   }
 
   @PostMapping("/signup")
@@ -102,12 +119,19 @@ public class AuthController {
           .body(new MessageResponse("Error: Email is already in use!"));
     }
 
+    // Generate secret
+    if (signUpRequest.isMfa()) {
+      signUpRequest.setMfa(true);
+      signUpRequest.setSecret(totpManager.generateSecret());
+    }
+
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), 
                signUpRequest.getEmail(),
                encoder.encode(signUpRequest.getPassword()));
 
-
+    user.setMfa(signUpRequest.isMfa());
+    user.setSecret(signUpRequest.getSecret());
 
     Set<String> strRoles = Collections.singleton(signUpRequest.getRole());
     Set<Role> roles = new HashSet<>();
@@ -156,6 +180,13 @@ public class AuthController {
     address.setUser(user1);
     addressRepo.save(address);
 
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+//    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+
+    URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/{username}").buildAndExpand(user.getUsername()).toUri();
+
+    System.out.println(location);
+    System.out.println(user.getSecret());
+    return ResponseEntity.created(location)
+            .body(new SignupResponse(user1.isMfa(), totpManager.getUriForImage(user.getSecret())));
   }
 }

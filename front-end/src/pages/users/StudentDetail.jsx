@@ -27,8 +27,6 @@ const StudentDetailPage = () => {
     }, [])
 
 
-    console.log(userStudent);
-
     const handlePost = (e) => {
         // e.preventDefault();
 

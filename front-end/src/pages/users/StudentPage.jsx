@@ -35,6 +35,10 @@ const StudentPage = () => {
         }
     }, [])
 
+    // studentList.forEach((e) => {
+    //     console.log(e.student);
+    // });
+
     const handleSearch = (e) => {
         e.preventDefault();
         if (selectedFilter === "all" && !searchQuery) {
@@ -138,7 +142,6 @@ const StudentPage = () => {
                                     {filteredList.map((item, ind) =>
                                         <tr key={item.id}>
                                             <th scope="row">{ind + 1}</th>
-                                            {/* <td>{item.roles[0].name ?? ""}</td> */}
                                             <td>{item.student.studentId ?? ""}</td>
                                             <td>{item.firstName ?? ""}</td>
                                             <td>{item.lastName ?? ""}</td>
@@ -165,16 +168,3 @@ const StudentPage = () => {
 }
 
 export { StudentPage }
-
-        // setStudentList([
-        //     {
-        //         "id": 1, "Role": "Student", "firstName": "John", "lastName": "Doe", "email": "john@gmail.com", "active": true,
-        //         "address": { "id": 1, "street": "106 S D S", "city": "Fairfield", "state": "IA", "zip": "52556" },
-        //         "major": "Compro", "studentId": "613799"
-        //     },
-        //     {
-        //         "id": 2, "Role": "Student", "firstName": "Jahna", "lastName": "Clara", "email": "john@gmail.com", "active": false,
-        //         "address": { "id": 2, "street": "107 S D S", "city": "Fairfield", "state": "IA", "zip": "52557" },
-        //         "major": "MBA", "studentId": "614800"
-        //     }
-        // ])

@@ -2,15 +2,27 @@ package com.finalproject.service.impl;
 
 import com.finalproject.models.User;
 import com.finalproject.payload.request.PasswordChangeRequest;
+import com.finalproject.payload.request.VerifyCodeRequest;
+import com.finalproject.payload.response.JwtResponse;
 import com.finalproject.repository.UserRepository;
+import com.finalproject.security.jwt.JwtUtils;
+import com.finalproject.security.services.UserDetailsImpl;
+import com.finalproject.service.TotpManager;
 import com.finalproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +37,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder encoder;
+
+    @Autowired private TotpManager totpManager;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @Autowired
+    JwtUtils jwtUtils;
 
     @Override
     public List<User> findAll() {
@@ -101,5 +121,33 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findBYUserName(String name) {
         return userRepo.findByUsername(name).orElseThrow();
+    }
+
+    @Override
+    public ResponseEntity<?> verify(VerifyCodeRequest verifyCodeRequest, String code) {
+        User user = userRepo.findByUsername(verifyCodeRequest.getUsername()).orElseThrow(() -> new RuntimeException( String.format("username %s", verifyCodeRequest.getUsername())));
+        if(!totpManager.verifyCode(code, user.getSecret())) {
+            System.out.println("Code is incorrect");
+            return ResponseEntity.badRequest().body("nok");
+        } else {
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(verifyCodeRequest.getUsername(), verifyCodeRequest.getPassword()));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String jwt = jwtUtils.generateJwtToken(authentication);
+
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            List<String> roles = userDetails.getAuthorities().stream()
+                    .map(item -> item.getAuthority())
+                    .collect(Collectors.toList());
+
+            user.setLast_logged(LocalDateTime.now());
+            userRepo.save(user);
+
+            return ResponseEntity.ok(new JwtResponse(jwt,
+                    userDetails.getId(),
+                    userDetails.getUsername(),
+                    userDetails.getEmail(),
+                    roles,
+                    userDetails.getMfa()));
+        }
     }
 }

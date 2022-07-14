@@ -11,6 +11,10 @@ class AuthenticationService {
     register(user) {
         return axios.post(BASE_URL + '/signup', user);
     }
+
+    verify(req) {
+        return axios.post(BASE_URL + '/verify', req)
+    }
 }
 
 export default new AuthenticationService();

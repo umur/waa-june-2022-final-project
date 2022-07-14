@@ -25,9 +25,8 @@ public class JobAdvertisement {
     private String company;
     private String states;
     private String city;
-   @Column(insertable = false)
-
-   private boolean mark_delete = false;
+   @Column(columnDefinition = "BOOLEAN DEFAULT false")
+   private boolean mark_delete;
 
 //    @JsonIgnore
     @ManyToMany(cascade = CascadeType.PERSIST)

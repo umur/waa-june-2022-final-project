@@ -15,6 +15,8 @@ import { JobListPage } from './pages/job/JobListPage';
 import { JobsDetailPage } from './pages/job/JobDetailPage';
 import JobsRecent from './pages/job/JobRecent';
 import { ChartsPage } from './pages/charts/ChartsPage';
+import QrCode from './pages/qrcode/QrCodePage';
+import VerifyCode from './pages/verify/VerifyPage';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/user/:id' element={<ProfileEdit />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/qrcode" element={<QrCode />} />
+          <Route path="/verify" element={<VerifyCode />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path='/charts' element={<ChartsPage />} />
           <Route path="/403" element={<UnauthorizedPage />} />

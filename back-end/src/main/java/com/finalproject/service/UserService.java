@@ -1,7 +1,11 @@
 package com.finalproject.service;
 
 import com.finalproject.models.User;
+import com.finalproject.payload.request.LoginRequest;
 import com.finalproject.payload.request.PasswordChangeRequest;
+import com.finalproject.payload.request.VerifyCodeRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,4 +33,5 @@ public interface UserService {
 
     User findBYUserName(String name);
 
+    ResponseEntity<?> verify(VerifyCodeRequest verifyCodeRequest, String code);
 }
