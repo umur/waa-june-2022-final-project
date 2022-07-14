@@ -18,7 +18,7 @@ public class AmpUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByEmail(username)
+        return userRepo.findByEmailAndActive(username, true)
                 .map(AmpUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("Wrong username/password"));
     }
