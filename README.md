@@ -19,7 +19,7 @@ Create dashboard pages for students and faculty:
 * Students can apply to the jobs.
 	* Student's CV will be also visible to owners of the job advertisements that the student has applied.
 * Students and Faculty can filter job advertisements:
-	* by tags.
+	* by tags.  --------????????
 	* by state.
 	* by city
 	* by companyName.
@@ -29,7 +29,7 @@ Create dashboard pages for students and faculty:
 	* by major.
 	* by name.
 	* by student id.
-* Auto-complete tags while typing.
+* Auto-complete tags while typing. --------?????????
 * Faculty can write comments on students.
 	* Only faculty can see the comments.
 * Students can add their professional job experiences.
@@ -46,7 +46,7 @@ Create dashboard pages for students and faculty:
 	* Average time spent to find a job per gpa range.
 	* Add at least 4 more charts as you see fit.
 *   All delete operations should be a soft deletion.
-* Log all user activities on the system.
+* Log all user activities on the system.  ----??????????
 	* Optional: Log data before/after for update operations.
 * Limit login attempts. If a user try to login with an invalid password more than 5 times, the system will lock the user and make it unable to login for 15 minutes.
 
