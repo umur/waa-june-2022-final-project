@@ -5,8 +5,8 @@ spring:
     name: spring-security-demo-1
   datasource:
     password: 1
-    url: jdbc:postgresql://localhost:5455/spring-data-demo
-#    url: jdbc:postgresql://spring-data-demo:5432/spring-data-demo
+#    url: jdbc:postgresql://localhost:5455/spring-data-demo
+    url: jdbc:postgresql://spring-data-demo:5432/spring-data-demo
     username: postgres
   jpa:
     hibernate:

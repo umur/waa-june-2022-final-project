@@ -1,11 +1,35 @@
-#Start with a base image containing Java runtime
 FROM openjdk:17 as build
 
-#Information around who maintains the image
-MAINTAINER byambadorj.me
+# Set the current working directory inside the image
+WORKDIR /app
 
-# Add the application's jar to the container
-COPY target/spring-boot-security-jwt-0.0.1-SNAPSHOT.jar backend-0.0.1-SNAPSHOT.jar
+# Copy maven executable to the image
+COPY mvnw .
+COPY .mvn .mvn
 
-#execute the application
-ENTRYPOINT ["java","-jar","/backend-0.0.1-SNAPSHOT.jar"]
+# Copy the pom.xml file
+COPY pom.xml .
+
+# Build all the dependencies in preparation to go offline. 
+# This is a separate step so the dependencies will be cached unless 
+# the pom.xml file has changed.
+RUN ./mvnw dependency:go-offline -B
+
+# Copy the project source
+COPY src src
+
+# Package the application
+RUN ./mvnw package -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+#### Stage 2: A minimal docker image with command to run the app 
+FROM openjdk:17
+
+ARG DEPENDENCY=/app/target/dependency
+
+# Copy project dependencies from the build stage
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.finalproject.SpringBootApplication"]

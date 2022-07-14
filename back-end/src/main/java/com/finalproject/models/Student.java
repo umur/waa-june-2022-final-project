@@ -41,7 +41,7 @@ public class Student {
     @ToString.Exclude
     @OneToOne(mappedBy = "student")
     private  JobAdvertisement jobAdvertisement;
-    
+
     @OneToMany(mappedBy = "student")
     private List<Comments> comments;
 

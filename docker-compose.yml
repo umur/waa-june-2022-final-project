@@ -1,0 +1,56 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3.7'
+
+# Define services
+services:
+  # Database Service (Mysql)
+  db:
+    image: postgres
+    ports:
+      - '5455:5432'
+    restart: always
+    container_name: spring-data-demo
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
+      - POSTGRES_DB=spring-data-demo
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "localhost" ]
+      timeout: 20s
+      retries: 10
+    networks:
+      - backend
+  # App backend service
+  app-server:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: ./back-end/ # Use an image built from the specified dockerfile in the directory.
+      dockerfile: Dockerfile
+    container_name: back-end
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:postgresql://spring-data-demo:5432/spring-data-demo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1
+    networks:
+      - backend
+  client-server:
+    build:
+      context: ./front-end/
+      dockerfile: Dockerfile
+    container_name: front-end
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend
+networks:
+  backend:
