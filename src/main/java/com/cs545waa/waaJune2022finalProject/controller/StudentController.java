@@ -85,5 +85,19 @@ public class StudentController {
         studentService.addExperience(professionalExperienceDto, username);
 
     }
+    @DeleteMapping("/delete-experience")
+    public ResponseEntity deleteExperience(@RequestParam Integer experienceId,Principal principal) {
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username = user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        studentService.removeExperience(experienceId,username);
+        return ResponseEntity.ok().build();
+
+    }
+    @GetMapping("/experience")
+    public ResponseEntity<List<ProfessionalExperienceDto>> getExperience(Principal principal){
+        KeycloakPrincipal user=(KeycloakPrincipal)principal;
+        String username = user.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        return ResponseEntity.ok().body(studentService.getStudentByUsername(username).getProfessionalExperiences());
+    }
 }
 

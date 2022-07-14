@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/job-applications")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class JobApplicationController {
     private final JobService jobService;
 
@@ -30,12 +31,12 @@ public class JobApplicationController {
 
     //    -------------------- apply for a job -------------------
     @PostMapping("/apply")
-    public void applyToJob(@RequestParam Integer jobId, Principal principal){
+    public ResponseEntity applyToJob(@RequestParam Integer jobId, Principal principal){
 
         KeycloakPrincipal user=(KeycloakPrincipal)principal;
         String username=user.getKeycloakSecurityContext().getToken().getPreferredUsername();
-
         jobService.applyToJob(jobId,username);
+        return ResponseEntity.ok().build();
     }
 
     //    -----------------------  get list of advertisements ---------

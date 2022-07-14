@@ -48,11 +48,23 @@ insert into job_advertisement (benefits, company_name, description, student_id) 
 insert into job_advertisement (benefits, company_name, description, student_id) values ('4000$','Google','Senior Data Analyst',2);
 insert into job_advertisement (benefits, company_name, description, student_id) values ('5000$','Microsoft','DevOps Engineer',3);
 insert into job_advertisement (benefits, company_name, description, student_id) values ('6000$','Apple','iOS Developer',4);
+insert into job_advertisement (benefits, company_name, description, student_id) values ('4000$','Asus','Fullstack Developer',2);
+insert into job_advertisement (benefits, company_name, description, student_id) values ('5600','Asus','System Analyst',2);
+insert into job_advertisement (benefits, company_name, description, student_id) values ('7800$','Asus','Graphic Designer',2);
+insert into job_advertisement (benefits, company_name, description, student_id) values ('9400$','Asus','Project Manager',2);
+insert into job_advertisement (benefits, company_name, description, student_id) values ('4300$','Asus','React Developer',3);
 
 insert into address ( city, state, street, zip, job_ad_id) values ('Fairfield','IA','1007 N 4th St.',52557,1);
 insert into address ( city, state, street, zip, job_ad_id) values ('Burlington','IA','1008 N 4th St.',52557,2);
 insert into address ( city, state, street, zip, job_ad_id) values ('Iowa','IA','1009 N 4th St.',52557,3);
 insert into address ( city, state, street, zip, job_ad_id) values ('Kabul','KB','17th Yakhsazi St.',1010,4);
+
+insert into address ( city, state, street, zip, job_ad_id) values ('Fairfield','IA','1007 N 4th St.',52557,5);
+insert into address ( city, state, street, zip, job_ad_id) values ('Burlington','IA','1008 N 4th St.',52557,6);
+insert into address ( city, state, street, zip, job_ad_id) values ('Iowa','IA','1009 N 4th St.',52557,7);
+insert into address ( city, state, street, zip, job_ad_id) values ('Kabul','KB','17th Yakhsazi St.',1010,8);
+insert into address ( city, state, street, zip, job_ad_id) values ('Balkh','BL','7th St.',1010,9);
+
 
 insert into job_attachment (name,url,job_advertisement_id) values ('AM-0192','n/a',1);
 insert into job_attachment (name,url,job_advertisement_id) values ('GO-042','n/a',2);

@@ -14,6 +14,7 @@ public interface StudentService {
 
         StudentDto getStudentByUsername(String username);
     void addExperience(ProfessionalExperienceDto professionalExperienceDto,String username);
+    public void removeExperience(Integer experienceId,String Username);
     public CvDto getCV(Integer id);
 
 

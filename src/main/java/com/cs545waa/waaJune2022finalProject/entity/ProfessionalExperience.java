@@ -21,8 +21,7 @@ public class ProfessionalExperience {
     LocalDate startDate;
     LocalDate finishDate;
     String description;
-
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Tag> tags;
 
     @ManyToOne
