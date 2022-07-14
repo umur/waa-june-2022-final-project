@@ -1,10 +1,7 @@
 package com.cs545waa.waaJune2022finalProject.service.impl;
 
 import com.cs545waa.waaJune2022finalProject.Exceptions.RecordNotFoundException;
-import com.cs545waa.waaJune2022finalProject.dto.ApplicantDTO;
-import com.cs545waa.waaJune2022finalProject.dto.JobADvertismentGetDTO;
-import com.cs545waa.waaJune2022finalProject.dto.JobAdvertisementDto;
-import com.cs545waa.waaJune2022finalProject.dto.PagingRequest;
+import com.cs545waa.waaJune2022finalProject.dto.*;
 import com.cs545waa.waaJune2022finalProject.entity.JobAdvertisement;
 import com.cs545waa.waaJune2022finalProject.entity.JobApplication;
 import com.cs545waa.waaJune2022finalProject.entity.JobAttachment;
@@ -77,13 +74,12 @@ public class JobServiceImp implements JobService {
         return null;
     }
     @Override
-    public List<JobAdvertisementDto> getJobAllAdvertisements() {
+    public List<JobAdvertisementDto> getAllJobAdvertisements(String username) {
         // return 10 jobs
-        List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
-         jobRepo.findAll().forEach( jobAdvertisement -> {
-            jobAdvertisementDtos.add(modelMapper.map(jobAdvertisement,JobAdvertisementDto.class));
-        });
-         return jobAdvertisementDtos;
+         return jobRepo.getJobAdvertisementByStudent(studentRepo.getStudentByUsername(username))
+                 .stream()
+                 .map(ad->modelMapper.map(ad,JobAdvertisementDto.class))
+                 .collect(Collectors.toList());
     }
 
     @Override
@@ -151,5 +147,18 @@ public class JobServiceImp implements JobService {
             throw new RecordNotFoundException("No Job Advertisements  record exist for given id");
 
         }
+    }
+
+
+    ///////////////////////////////////////////
+    @Override
+    public List<TagCount> countTotalTagsByName() {
+        return jobRepo.countTotalTagsByName();
+    }
+
+    @Override
+    public List<JobCount> countTotalJobsByCompanyName() {
+
+        return jobRepo.countTotalJobsByCompanyName();
     }
 }

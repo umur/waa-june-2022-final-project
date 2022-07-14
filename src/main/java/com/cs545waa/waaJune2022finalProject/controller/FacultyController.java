@@ -16,6 +16,7 @@ import java.security.Principal;
 @RequestMapping("/faculties")
 @Data
 @AllArgsConstructor
+@CrossOrigin("*")
 public class FacultyController {
     private final FacultyService facultyService;
 

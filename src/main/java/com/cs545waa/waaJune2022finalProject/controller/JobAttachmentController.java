@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/jobattachment")
-@CrossOrigin
+@CrossOrigin("*")
 public class JobAttachmentController {
     @Autowired
     private JobAttachmentService jobAttachmentService;

@@ -6,7 +6,9 @@ import com.cs545waa.waaJune2022finalProject.dto.StudentDto;
 import com.cs545waa.waaJune2022finalProject.entity.*;
 import com.cs545waa.waaJune2022finalProject.repository.AddressRepo;
 
+import com.cs545waa.waaJune2022finalProject.repository.ProfessionalExperienceRepo;
 import com.cs545waa.waaJune2022finalProject.repository.StudentRepo;
+import com.cs545waa.waaJune2022finalProject.repository.TagRepo;
 import com.cs545waa.waaJune2022finalProject.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +25,8 @@ import javax.transaction.Transactional;
 public class StudentServiceImpl implements StudentService {
 
     StudentRepo studentRepo;
+    ProfessionalExperienceRepo professionalExperienceRepo;
+    TagRepo tagRepo;
     ModelMapper modelMapper;
 
     AddressRepo addressRepo;
@@ -52,6 +56,12 @@ public class StudentServiceImpl implements StudentService {
         professionalExperience.setStudent(studentRepo.getStudentByUsername(username));
         studentRepo.getStudentByUsername(username).getProfessionalExperiences().add(professionalExperience);
 
+    }
+
+    @Override
+    public void removeExperience(Integer experienceId,String username) {
+        Student s= studentRepo.getStudentByUsername(username);
+         professionalExperienceRepo.deleteById(experienceId);
     }
 
     @Override
