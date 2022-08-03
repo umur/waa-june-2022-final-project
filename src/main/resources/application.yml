@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: AlumniManagement
+
+  datasource:
+    password: 1
+    url: jdbc:postgresql://localhost:5432/AlumniManagement
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+
+        format_sql: true
+    show-sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080
+
+#keycloak:
+#  auth-server-url: http://localhost:8180
+#  realm: CS545WAA-FinalProject
+#  resource: waa-june-2022-final-project
+#  public-client: true
+#  security-constraints:
+#    role
+#  security-constraints[0].authRoles[0]:USER
+#  keycloak.security-constraints[0].securityCollections[0].patterns[0]=/students/*
+#keycloak.principal-attribute=preferred_username
+
