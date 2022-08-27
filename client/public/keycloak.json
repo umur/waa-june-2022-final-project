@@ -1,6 +1,6 @@
 {
   "realm": "AMP",
-  "auth-server-url": "http://localhost:8081/",
+  "auth-server-url": "http://keycloak.default.svc.cluster.local:8081/",
   "ssl-required": "external",
   "resource": "amp",
   "public-client": true,
