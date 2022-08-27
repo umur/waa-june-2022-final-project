@@ -3,7 +3,7 @@ server:
   replicaCount: 1
 
 image:
-  tag: latest
+  tag: v1
   pullPolicy: IfNotPresent
 
 service:

@@ -23,4 +23,9 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
           name: "http"
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "securepassword"
+          - name: POSTGRES_DB
+            value: "amp"
           

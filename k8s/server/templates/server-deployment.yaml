@@ -25,3 +25,6 @@ spec:
           name: "http"
         - containerPort: {{ .Values.service.internalDebugPort }}
           name: "debug"
+        env:
+          - name: SERVER_PORT
+            value: "8080"

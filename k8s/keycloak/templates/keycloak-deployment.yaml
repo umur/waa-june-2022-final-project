@@ -25,3 +25,8 @@ spec:
           name: "http"
         - containerPort: {{ .Values.service.internalDebugPort }}
           name: "debug"
+        env:
+          - name: KEYCLOAK_ADMIN
+            value: "admin"
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            value: "1234"
