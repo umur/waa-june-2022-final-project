@@ -1,0 +1,14 @@
+server:
+  image: pravashdocker/waa-server
+  replicaCount: 1
+
+image:
+  tag: v1
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  externalPort: 8080
+  internalPort: 8080
+  externalDebugPort: 5005
+  internalDebugPort: 5005

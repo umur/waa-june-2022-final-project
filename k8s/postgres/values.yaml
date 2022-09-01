@@ -1,0 +1,12 @@
+postgres:
+  image: postgres
+  replicaCount: 1
+
+image:
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  externalPort: 5432
+  internalPort: 5432

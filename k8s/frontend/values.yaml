@@ -1,0 +1,12 @@
+frontend:
+  image: pravashdocker/waa-frontend
+  replicaCount: 1
+
+image:
+  tag: v1
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  externalPort: 3000
+  internalPort: 80
