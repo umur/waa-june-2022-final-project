@@ -1,0 +1,22 @@
+.profile-img {
+    display: flex;
+    justify-content: center;
+
+}
+
+.text-field {
+    margin-top: 10px;
+}
+
+.profile-paper {
+    padding: 20px 40px;
+    margin-top: 40px;
+}
+
+.file-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+
+}

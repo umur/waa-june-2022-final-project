@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: AlumniManagement
+
+  datasource:
+    password: 12345678
+    url: jdbc:postgresql://localhost:5432/almuni-database
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+        format_sql: true
+    show-sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8085
+
+jwt:
+  secret: mySecretKey
